@@ -4,7 +4,7 @@ from typing import Annotated, Any
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import select
+from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from orchestrator.api.v1.auth import BotExecutionPrincipal, require_bot_execution_access, require_dashboard_operator
@@ -76,8 +76,10 @@ async def dispatch_execution(
 @router.get("", dependencies=[Depends(require_dashboard_operator)])
 async def list_executions(
     capability: str | None = None,
+    bot_type: str | None = None,
     status_filter: str | None = Query(default=None, alias="status"),
     limit: int = 50,
+    cursor: str | None = None,
     session: AsyncSession = Depends(db_session),
 ) -> dict[str, Any]:
     if not 1 <= limit <= 200:
@@ -89,14 +91,49 @@ async def list_executions(
         except ValueError as exc:
             raise HTTPException(status_code=422, detail="Invalid execution status") from exc
 
-    statement = select(ExecutionModel).order_by(ExecutionModel.created_at.desc()).limit(limit)
+    statement = select(ExecutionModel).order_by(
+        ExecutionModel.created_at.desc(),
+        ExecutionModel.id.desc(),
+    ).limit(limit + 1)
     if capability:
         statement = statement.where(ExecutionModel.requested_capability == capability)
+    if bot_type:
+        if bot_type != "instagram":
+            raise HTTPException(status_code=422, detail="Unsupported bot_type filter")
+        statement = statement.where(
+            ExecutionModel.requested_capability.in_(
+                ["instagram.maduracion", "instagram.prospecting"]
+            )
+        )
+    if cursor:
+        try:
+            cursor_dt_raw, cursor_id_raw = cursor.split("|", 1)
+            from datetime import datetime
+            cursor_dt = datetime.fromisoformat(cursor_dt_raw.replace("Z", "+00:00"))
+            cursor_id = UUID(cursor_id_raw)
+        except (ValueError, TypeError) as exc:
+            raise HTTPException(status_code=422, detail="Invalid cursor") from exc
+        statement = statement.where(
+            or_(
+                ExecutionModel.created_at < cursor_dt,
+                (
+                    (ExecutionModel.created_at == cursor_dt)
+                    & (ExecutionModel.id < cursor_id)
+                ),
+            )
+        )
     if parsed_status is not None:
         statement = statement.where(ExecutionModel.status == parsed_status)
     result = await session.execute(statement)
-    items = [ExecutionResponse.model_validate(item) for item in result.scalars().all()]
-    return {"items": items, "total": len(items)}
+    rows = list(result.scalars().all())
+    has_more = len(rows) > limit
+    rows = rows[:limit]
+    items = [ExecutionResponse.model_validate(item) for item in rows]
+    next_cursor = None
+    if has_more and rows:
+        last = rows[-1]
+        next_cursor = f"{last.created_at.isoformat()}|{last.id}"
+    return {"items": items, "total": len(items), "next_cursor": next_cursor}
 
 
 @router.get("/{execution_id}", response_model=ExecutionResponse, dependencies=[Depends(require_dashboard_operator)])
