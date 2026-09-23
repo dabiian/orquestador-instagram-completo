@@ -85,3 +85,34 @@ class InstagramScheduleTests(SimpleTestCase):
     def test_naive_start_date_is_rejected(self):
         with self.assertRaises(ValueError):
             _scheduled_start_date({"start_date": "2026-09-23T14:00:00"})
+
+
+class InstagramTaskTypeOperationTests(SimpleTestCase):
+    @patch("dashboard.orchestrator.adapter.TaskType.objects.select_related")
+    def test_rejects_task_type_from_other_operation(self, select_related):
+        task = type("Task", (), {
+            "id": 7,
+            "operation": "maduracion",
+            "platform": type("Platform", (), {"platform_name": "instagram"})(),
+        })()
+        select_related.return_value.filter.return_value = [task]
+        adapter = InstagramOrchestratorAdapter()
+        with self.assertRaisesMessage(
+            ValueError,
+            "Task types do not belong to Instagram operation prospecting: [7]",
+        ):
+            adapter._resolve_task_types([7], "instagram.prospecting")
+
+    @patch("dashboard.orchestrator.adapter.TaskType.objects.select_related")
+    def test_legacy_uncategorized_task_type_remains_compatible(self, select_related):
+        task = type("Task", (), {
+            "id": 8,
+            "operation": None,
+            "platform": type("Platform", (), {"platform_name": "instagram"})(),
+        })()
+        select_related.return_value.filter.return_value = [task]
+        adapter = InstagramOrchestratorAdapter()
+        self.assertEqual(
+            adapter._resolve_task_types([8], "instagram.prospecting"),
+            [8],
+        )
