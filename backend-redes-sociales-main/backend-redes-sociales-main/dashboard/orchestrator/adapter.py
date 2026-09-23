@@ -226,7 +226,7 @@ class InstagramOrchestratorAdapter:
 
             targets = payload.get("targets") or {}
             accounts = self._resolve_accounts(targets)
-            task_types = self._resolve_task_types(payload.get("task_types") or [])
+            task_types = self._resolve_task_types(payload.get("task_types") or [], capability)
             options = payload.get("options") or {}
             max_accounts = options.get("max_accounts")
             if max_accounts is not None:
@@ -256,7 +256,7 @@ class InstagramOrchestratorAdapter:
                 task_ids.append(task.id)
             return task_ids, False
 
-    def _resolve_task_types(self, task_type_ids: list[Any]) -> list[int]:
+    def _resolve_task_types(self, task_type_ids: list[Any], capability: str) -> list[int]:
         ids = [int(value) for value in task_type_ids]
         rows = list(TaskType.objects.select_related("platform").filter(id__in=ids))
         found = {row.id: row for row in rows}
@@ -266,6 +266,14 @@ class InstagramOrchestratorAdapter:
         invalid = [row.id for row in rows if (row.platform.platform_name or "").strip().lower() != "instagram"]
         if invalid:
             raise ValueError(f"Task types are not Instagram tasks: {invalid}")
+
+        operation = capability.rsplit(".", 1)[-1]
+        categorized = [row for row in rows if row.operation]
+        mismatched = [row.id for row in categorized if row.operation != operation]
+        if mismatched:
+            raise ValueError(
+                f"Task types do not belong to Instagram operation {operation}: {mismatched}"
+            )
         return ids
 
     def _resolve_accounts(self, targets: dict[str, Any]) -> list[SocialMediaAccount]:
