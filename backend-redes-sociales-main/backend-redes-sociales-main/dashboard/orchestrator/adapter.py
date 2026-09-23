@@ -268,8 +268,12 @@ class InstagramOrchestratorAdapter:
             raise ValueError(f"Task types are not Instagram tasks: {invalid}")
 
         operation = capability.rsplit(".", 1)[-1]
-        categorized = [row for row in rows if row.operation]
-        mismatched = [row.id for row in categorized if row.operation != operation]
+        uncategorized = [row.id for row in rows if not row.operation]
+        if uncategorized:
+            raise ValueError(
+                f"Instagram task types are missing an operation category: {uncategorized}"
+            )
+        mismatched = [row.id for row in rows if row.operation != operation]
         if mismatched:
             raise ValueError(
                 f"Task types do not belong to Instagram operation {operation}: {mismatched}"
