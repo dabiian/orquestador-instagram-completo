@@ -29,7 +29,7 @@ def instagram_catalog(request):
         TaskType.objects.select_related("platform")
         .filter(instagram_tasks)
         .order_by("id")
-        .values("id", "task_name", "descripcion", "platform__platform_name")
+        .values("id", "task_name", "descripcion", "operation", "platform__platform_name")
     )
     # The legacy schema has no platform FK on SocialMediaAccount. Fail closed:
     # only rows explicitly marked as Instagram are exposed by this catalog.
