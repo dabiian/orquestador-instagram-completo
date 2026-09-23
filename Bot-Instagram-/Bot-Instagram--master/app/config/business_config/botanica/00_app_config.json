@@ -1,0 +1,156 @@
+{
+  "project": {
+    "name": "botanica-espiritual-facebook-outreach-bot",
+    "company_name": "Botánica Espiritual [NOMBRE]",
+    "owner_name": "Asesor/a Espiritual",
+    "channels": [
+      "facebook",
+      "whatsapp"
+    ],
+    "default_language": "es",
+    "service_area": [
+      "Chicago",
+      "Cicero",
+      "Berwyn",
+      "Oak Park",
+      "Evanston"
+    ],
+    "target_categories": [
+      "tarot_cartas",
+      "amor_pareja",
+      "limpieza_espiritual",
+      "brujeria_hechizos",
+      "santeria_rituales",
+      "productos_esotericos"
+    ],
+    "target_category_labels": {
+      "tarot_cartas": "Lectura de Cartas / Tarot",
+      "amor_pareja": "Amarres de Amor / Unión de Pareja",
+      "limpieza_espiritual": "Limpieza Espiritual / Protección",
+      "brujeria_hechizos": "Brujería / Hechizos / Trabajos Espirituales",
+      "santeria_rituales": "Santería / Rituales",
+      "productos_esotericos": "Productos Esotéricos / Velas / Baños"
+    }
+  },
+  "company_contact": {
+    "office_phone": "[CAMPAIGN_PHONE]",
+    "whatsapp": "[CAMPAIGN_WHATSAPP]",
+    "website": "[CAMPAIGN_URL]",
+    "facebook": "[CAMPAIGN_FACEBOOK_URL]",
+    "business_email": "[CAMPAIGN_EMAIL]",
+    "alert_whatsapp": "[OWNER_ALERT_WHATSAPP]"
+  },
+  "workflow": {
+    "intro_comment_once_per_account": true,
+    "reply_window_hours": 72,
+    "service_request_priority_over_data_request": true,
+    "price_request_priority_over_data_request": true,
+    "alert_after_min_answers": [
+      "Q1",
+      "Q2"
+    ],
+    "human_takeover_stops_bot": true,
+    "likes_only_mode_after_no_response": true,
+    "dm_or_whatsapp_for_private_details": true,
+    "never_make_guaranteed_results_claims": true,
+    "never_pressure_with_fear_or_urgency": true
+  },
+  "statuses": {
+    "NEW": {
+      "label": "Nuevo Prospecto",
+      "color": "#8b949e",
+      "dot": "#8b949e"
+    },
+    "COMMENTED": {
+      "label": "Comentario Enviado",
+      "color": "#1877F2",
+      "dot": "#1877F2"
+    },
+    "NO_RESPONSE": {
+      "label": "Sin Respuesta → Solo Likes",
+      "color": "#484f58",
+      "dot": "#484f58"
+    },
+    "RESPONDED": {
+      "label": "Respondió",
+      "color": "#42b883",
+      "dot": "#42b883"
+    },
+    "REQUESTED_DATA": {
+      "label": "🔔 Solicitó Datos",
+      "color": "#f5a623",
+      "dot": "#f5a623"
+    },
+    "REQUESTED_SERVICE": {
+      "label": "🔮 Solicitó Consulta / Servicio",
+      "color": "#9b59b6",
+      "dot": "#9b59b6"
+    },
+    "REQUESTED_QUOTE": {
+      "label": "💰 Preguntó Precio",
+      "color": "#e74c3c",
+      "dot": "#e74c3c"
+    },
+    "ALERTED": {
+      "label": "⚡ Alerta Enviada",
+      "color": "#9b59b6",
+      "dot": "#9b59b6"
+    },
+    "HUMAN_TAKEOVER": {
+      "label": "👤 Humano toma control",
+      "color": "#1abc9c",
+      "dot": "#1abc9c"
+    },
+    "BLACKLISTED": {
+      "label": "🚫 Competencia / Bloqueado",
+      "color": "#111827",
+      "dot": "#111827"
+    }
+  },
+  "safety_limits": {
+    "absolute_rules": {
+      "intro_comment_per_account_lifetime_max": 1,
+      "likes_or_loves_per_account_per_week_max": 3,
+      "likes_or_loves_per_account_per_week_min_target": 1
+    },
+    "daily_limits": {
+      "new_intro_comments_max": 12,
+      "new_intro_comments_min_target": 6,
+      "follows_max": 20,
+      "follows_min_target": 8,
+      "likes_loves_max": 35,
+      "likes_loves_min_target": 15,
+      "auto_replies_limit": null
+    },
+    "delays_seconds": {
+      "between_intro_comments": {
+        "min": 600,
+        "max": 1200
+      },
+      "between_follows": {
+        "min": 240,
+        "max": 540
+      },
+      "between_likes": {
+        "min": 90,
+        "max": 240
+      },
+      "comment_to_auto_reply": {
+        "min": 600,
+        "max": 1800
+      },
+      "post_detected_to_intro_comment": {
+        "min": 900,
+        "max": 2700
+      }
+    },
+    "content_safety_rules": [
+      "No prometer resultados garantizados.",
+      "No usar miedo, amenazas espirituales ni presión emocional.",
+      "No pedir datos íntimos públicamente.",
+      "Mover detalles sensibles a DM o WhatsApp.",
+      "No diagnosticar salud, embarazo, enfermedad, muerte o temas legales.",
+      "No afirmar poderes absolutos: usar lenguaje de orientación, consulta, trabajo espiritual o acompañamiento."
+    ]
+  }
+}

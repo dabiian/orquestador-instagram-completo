@@ -1,0 +1,72 @@
+{
+  "industry": "cleaning",
+  "core_services": [
+    "commercial cleaning",
+    "janitorial services",
+    "office cleaning",
+    "building cleaning",
+    "industrial cleaning",
+    "facility cleaning",
+    "disinfection services"
+  ],
+  "direct_competitor_signals": [
+    "commercial cleaning",
+    "commercial cleaners",
+    "commercial cleaning company",
+    "janitorial services",
+    "janitorial company",
+    "office cleaning",
+    "office cleaners",
+    "building cleaning",
+    "facility cleaning",
+    "industrial cleaning",
+    "professional cleaning services",
+    "disinfection services"
+  ],
+  "possible_competitor_signals": [
+    "residential and commercial cleaning",
+    "property maintenance",
+    "facility maintenance",
+    "building maintenance",
+    "maintenance services"
+  ],
+  "adjacent_businesses": [
+    "property management",
+    "real estate",
+    "realtor",
+    "general contractor",
+    "construction",
+    "handyman",
+    "landscaping",
+    "moving company",
+    "facility management"
+  ],
+  "referral_opportunities": [
+    "property management",
+    "real estate",
+    "realtor",
+    "general contractor",
+    "construction company",
+    "facility management",
+    "building management",
+    "office management",
+    "commercial property owner",
+    "landscaping company",
+    "moving company"
+  ],
+  "exclude_as_competitor": [
+    "property management",
+    "real estate",
+    "realtor",
+    "general contractor",
+    "landscaping",
+    "handyman",
+    "moving company"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

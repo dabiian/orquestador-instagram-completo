@@ -1,0 +1,160 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "instagram-frontend"
+        IMAGE_TAG = "latest"
+        CONTAINER_NAME = "instagram-frontend"
+        PORT = "3000"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo '====== Clonando repositorio ======'
+                checkout scm
+            }
+        }
+
+        stage('Check Node Version') {
+            steps {
+                echo '====== Verificando versión de Node.js ======'
+                sh '''
+                    node --version
+                    npm --version
+                    
+                    # Instalar nvm si no existe
+                    if [ ! -s "$HOME/.nvm/nvm.sh" ]; then
+                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+                    fi
+                    
+                    # Usar nvm para instalar Node.js 22
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+                    
+                    nvm install 22
+                    nvm use 22
+                    nvm alias default 22
+                    
+                    echo "Node.js actualizado a:"
+                    node --version
+                    npm --version
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo '====== Instalando dependencias ======'
+                sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+                    nvm use 22
+                    
+                    npm install
+                '''
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo '====== Construyendo aplicación ======'
+                sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+                    nvm use 22
+                    
+                    npm run build
+                    echo "✓ Build completado"
+                    ls -la dist/
+                '''
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo '====== Construyendo imagen Docker ======'
+                sh '''
+                    docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+                    echo "✓ Imagen construida: ${IMAGE_NAME}:${IMAGE_TAG}"
+                    docker images | grep instagram-frontend
+                '''
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                echo '====== Desplegando contenedor Docker ======'
+                sh '''
+                    echo "Deteniendo contenedor anterior si existe..."
+                    docker stop ${CONTAINER_NAME} || true
+                    docker rm ${CONTAINER_NAME} || true
+                    sleep 2
+                    
+                    echo "Iniciando nuevo contenedor..."
+                    docker run -d \
+                      --name ${CONTAINER_NAME} \
+                      -p ${PORT}:3000 \
+                      --restart unless-stopped \
+                      -e NODE_ENV=production \
+                      ${IMAGE_NAME}:${IMAGE_TAG}
+                    
+                    sleep 3
+                    
+                    echo "Verificando contenedor..."
+                    docker ps | grep ${CONTAINER_NAME}
+                    
+                    echo "✓ Contenedor corriendo en puerto ${PORT}"
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                echo '====== Verificando acceso a la aplicación ======'
+                sh '''
+                    echo "Esperando a que la aplicación inicie..."
+                    sleep 5
+                    
+                    # Intentar acceder a la aplicación
+                    for i in {1..10}; do
+                        echo "Intento $i..."
+                        if curl -sf http://localhost:${PORT} > /dev/null; then
+                            echo "✓ Aplicación accesible en http://localhost:${PORT}"
+                            exit 0
+                        fi
+                        sleep 2
+                    done
+                    
+                    echo "⚠ Aplicación no responde, mostrando logs..."
+                    docker logs ${CONTAINER_NAME}
+                    exit 1
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '====== ✓ Pipeline ejecutado exitosamente ======'
+            sh 'echo "Aplicación disponible en: http://localhost:${PORT}"'
+        }
+        failure {
+            echo '====== ✗ Pipeline falló ======'
+            sh '''
+                echo "Mostrando logs del contenedor..."
+                docker logs ${CONTAINER_NAME} || true
+            '''
+        }
+        always {
+            sh '''
+                echo "Estado de Docker:"
+                docker ps
+                echo ""
+                echo "Imagen:"
+                docker images | grep instagram-frontend
+            '''
+        }
+    }
+}
+    

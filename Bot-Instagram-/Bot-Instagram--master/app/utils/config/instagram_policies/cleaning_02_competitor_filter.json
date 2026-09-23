@@ -1,0 +1,629 @@
+{
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#e74c3c",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Primera línea de defensa. Si el nombre contiene estas palabras → competencia confirmada al instante.",
+      "logic": "BLOQUEO AUTOMÁTICO — no se analiza nada más",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "cleaning",
+          "example": "Quick Cleaning, Deep Cleaning Co."
+        },
+        {
+          "word": "cleaner",
+          "example": "Pro Cleaners Chicago"
+        },
+        {
+          "word": "cleaners",
+          "example": "Chicago Cleaners LLC"
+        },
+        {
+          "word": "maid",
+          "example": "Maid Brigade, The Maids"
+        },
+        {
+          "word": "maids",
+          "example": "Chicago Maids Service"
+        },
+        {
+          "word": "janitorial",
+          "example": "Janitorial Solutions Inc."
+        },
+        {
+          "word": "housekeeping",
+          "example": "Elite Housekeeping Services"
+        },
+        {
+          "word": "housekeeper",
+          "example": "Chicago Housekeeper Pro"
+        },
+        {
+          "word": "sparkle",
+          "example": "Sparkle Clean, Sparkle Services"
+        },
+        {
+          "word": "pristine",
+          "example": "Pristine Clean Chicago"
+        },
+        {
+          "word": "spotless",
+          "example": "Spotless Home Services"
+        },
+        {
+          "word": "sparkling",
+          "example": "Sparkling Homes Co."
+        },
+        {
+          "word": "tidying",
+          "example": "Tidying Up Chicago"
+        },
+        {
+          "word": "tidy",
+          "example": "Tidy Team Services"
+        },
+        {
+          "word": "scrub",
+          "example": "Scrub Masters Chicago"
+        },
+        {
+          "word": "sanitize",
+          "example": "Sanitize Pro Services"
+        },
+        {
+          "word": "sanitizing",
+          "example": "Sanitizing Solutions"
+        },
+        {
+          "word": "disinfect",
+          "example": "Disinfect & Clean Co."
+        },
+        {
+          "word": "sweep",
+          "example": "Sweep & Shine Chicago"
+        },
+        {
+          "word": "mop",
+          "example": "Mop Stars Services"
+        },
+        {
+          "word": "polish",
+          "example": "Polish & Shine Cleaners"
+        }
+      ],
+      "note": "Buscar estas palabras en el nombre de cuenta sin importar mayúsculas/minúsculas. 'CLEANING', 'Cleaning', 'cleaning' → todas se detectan igual."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#e67e22",
+      "points": 50,
+      "speed": "Inmediato",
+      "description": "Facebook asigna una categoría oficial a cada página de negocio. Si la categoría es limpieza → bloqueo automático.",
+      "logic": "BLOQUEO AUTOMÁTICO",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "Cleaning Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Maid Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Janitorial Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Carpet Cleaning Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Window Cleaning Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Pressure Washing Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "House Cleaning",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Commercial Cleaning",
+          "example": "Categoría oficial FB"
+        }
+      ],
+      "note": "La categoría de página es un campo estructurado de la API de Facebook — no hay ambigüedad, es exacta."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#f5a623",
+      "points": 40,
+      "speed": "2–3 segundos",
+      "description": "Analizar el texto de la bio o descripción de la página. Buscar frases que describan servicios de limpieza.",
+      "logic": "2+ coincidencias → BLOQUEO | 1 coincidencia → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "we clean",
+          "example": "'We clean homes and offices'"
+        },
+        {
+          "word": "cleaning services",
+          "example": "'Professional cleaning services'"
+        },
+        {
+          "word": "house cleaning",
+          "example": "'House cleaning Chicago'"
+        },
+        {
+          "word": "move out clean",
+          "example": "'Move out cleaning specialists'"
+        },
+        {
+          "word": "move-out clean",
+          "example": "'Move-out cleaning'"
+        },
+        {
+          "word": "deep clean",
+          "example": "'Deep cleaning available'"
+        },
+        {
+          "word": "post construction clean",
+          "example": "'Post construction cleanup'"
+        },
+        {
+          "word": "residential cleaning",
+          "example": "'Residential cleaning service'"
+        },
+        {
+          "word": "commercial cleaning",
+          "example": "'Commercial cleaning company'"
+        },
+        {
+          "word": "office cleaning",
+          "example": "'Office cleaning Chicago'"
+        },
+        {
+          "word": "cleaning company",
+          "example": "'Local cleaning company'"
+        },
+        {
+          "word": "cleaning business",
+          "example": "'Our cleaning business'"
+        },
+        {
+          "word": "fully insured cleaning",
+          "example": "'Fully insured cleaning'"
+        },
+        {
+          "word": "bonded cleaning",
+          "example": "'Bonded and insured cleaners'"
+        },
+        {
+          "word": "eco-friendly cleaning",
+          "example": "'Eco-friendly cleaning products'"
+        },
+        {
+          "word": "green cleaning",
+          "example": "'Green cleaning solutions'"
+        }
+      ],
+      "note": "Analizar con IA para detectar variaciones: 'limpieza', 'limpiar', 'aseo' también aplican para perfiles en español."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#9b59b6",
+      "points": 35,
+      "speed": "5–10 segundos",
+      "description": "Revisar los últimos 5 posts de la cuenta. Si el contenido visual/textual muestra trabajo de limpieza → competencia.",
+      "logic": "3+ posts sobre limpieza → BLOQUEO | 1–2 posts → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "before & after cleaning",
+          "example": "Foto de antes/después de limpiar"
+        },
+        {
+          "word": "before and after",
+          "example": "Comparativa de limpieza"
+        },
+        {
+          "word": "freshly cleaned",
+          "example": "'Just finished this freshly cleaned home'"
+        },
+        {
+          "word": "just finished cleaning",
+          "example": "'Just finished cleaning this property'"
+        },
+        {
+          "word": "cleaning crew",
+          "example": "'Our cleaning crew in action'"
+        },
+        {
+          "word": "cleaning team",
+          "example": "'Meet our cleaning team'"
+        },
+        {
+          "word": "cleaning supplies",
+          "example": "Foto de cubetas, trapeadores, productos"
+        },
+        {
+          "word": "mop bucket",
+          "example": "Foto con mopa y cubeta"
+        },
+        {
+          "word": "vacuum",
+          "example": "Foto usando aspiradora en casa ajena"
+        },
+        {
+          "word": "scrubbing",
+          "example": "'Scrubbing the bathroom tiles'"
+        },
+        {
+          "word": "spotless results",
+          "example": "'Spotless results every time'"
+        },
+        {
+          "word": "book your cleaning",
+          "example": "'Book your cleaning today'"
+        },
+        {
+          "word": "schedule a clean",
+          "example": "'Schedule a clean this week'"
+        },
+        {
+          "word": "cleaning special",
+          "example": "'Cleaning special this weekend'"
+        },
+        {
+          "word": "free estimate",
+          "example": "'Free cleaning estimate'"
+        }
+      ],
+      "note": "El análisis visual de imágenes con IA puede detectar productos de limpieza, uniformes, etc. sin necesidad de texto."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#1877F2",
+      "points": 25,
+      "speed": "Inmediato",
+      "description": "Revisar los hashtags en sus propias publicaciones. Si usan hashtags de servicio de limpieza → señal fuerte.",
+      "logic": "2+ hashtags de limpieza → BLOQUEO | 1 hashtag → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#CleaningService",
+          "example": "Hashtag propio de limpieza"
+        },
+        {
+          "word": "#HouseCleaning",
+          "example": "Servicio residencial"
+        },
+        {
+          "word": "#MaidService",
+          "example": "Servicio de limpieza doméstica"
+        },
+        {
+          "word": "#DeepCleaning",
+          "example": "Servicio de limpieza profunda"
+        },
+        {
+          "word": "#CleaningCompany",
+          "example": "Empresa de limpieza"
+        },
+        {
+          "word": "#MoveOutCleaning",
+          "example": "Limpieza de mudanza"
+        },
+        {
+          "word": "#PostConstructionCleaning",
+          "example": "Limpieza post-obra"
+        },
+        {
+          "word": "#ResidentialCleaning",
+          "example": "Limpieza residencial"
+        },
+        {
+          "word": "#CommercialCleaning",
+          "example": "Limpieza comercial"
+        },
+        {
+          "word": "#CleaningBusiness",
+          "example": "Negocio de limpieza"
+        },
+        {
+          "word": "#BookNowCleaning",
+          "example": "Llamado a la acción de limpieza"
+        },
+        {
+          "word": "#ChicagoCleaning",
+          "example": "Limpieza en Chicago"
+        },
+        {
+          "word": "#CleanHome",
+          "example": "Casa limpia — lo usan los cleaners"
+        },
+        {
+          "word": "#ProfessionalCleaning",
+          "example": "Limpieza profesional"
+        },
+        {
+          "word": "#CleaningMotivation",
+          "example": "Comunidad de cleaners"
+        }
+      ],
+      "note": "Diferenciar: '#CleanHome' usado por un Airbnb host hablando de su propiedad ≠ '#CleanHome' usado por un cleaner en su propio post."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "layer_L3_block_if_keyword_hits_gte": 2,
+    "layer_L4_block_if_keyword_hits_gte": 3,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "block_if_score_gte": 60
+  },
+  "clean_exports": {
+    "account_name_keywords": [
+      "cleaning",
+      "cleaner",
+      "cleaners",
+      "maid",
+      "maids",
+      "janitorial",
+      "housekeeping",
+      "housekeeper",
+      "sparkle",
+      "pristine",
+      "spotless",
+      "sparkling",
+      "tidying",
+      "tidy",
+      "scrub",
+      "sanitize",
+      "sanitizing",
+      "disinfect",
+      "sweep",
+      "mop",
+      "polish"
+    ],
+    "blocked_fb_categories": [
+      "Cleaning Service",
+      "Maid Service",
+      "Janitorial Service",
+      "Carpet Cleaning Service",
+      "Window Cleaning Service",
+      "Pressure Washing Service",
+      "House Cleaning",
+      "Commercial Cleaning"
+    ],
+    "bio_keywords": [
+      "we clean",
+      "cleaning services",
+      "house cleaning",
+      "move out clean",
+      "move-out clean",
+      "deep clean",
+      "post construction clean",
+      "residential cleaning",
+      "commercial cleaning",
+      "office cleaning",
+      "cleaning company",
+      "cleaning business",
+      "fully insured cleaning",
+      "bonded cleaning",
+      "eco-friendly cleaning",
+      "green cleaning"
+    ],
+    "post_keywords": [
+      "before & after cleaning",
+      "before and after",
+      "freshly cleaned",
+      "just finished cleaning",
+      "cleaning crew",
+      "cleaning team",
+      "cleaning supplies",
+      "mop bucket",
+      "vacuum",
+      "scrubbing",
+      "spotless results",
+      "book your cleaning",
+      "schedule a clean",
+      "cleaning special",
+      "free estimate"
+    ],
+    "competitor_hashtags": [
+      "#CleaningService",
+      "#HouseCleaning",
+      "#MaidService",
+      "#DeepCleaning",
+      "#CleaningCompany",
+      "#MoveOutCleaning",
+      "#PostConstructionCleaning",
+      "#ResidentialCleaning",
+      "#CommercialCleaning",
+      "#CleaningBusiness",
+      "#BookNowCleaning",
+      "#ChicagoCleaning",
+      "#CleanHome",
+      "#ProfessionalCleaning",
+      "#CleaningMotivation"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Sparkle Home Services",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'sparkle' encontrado en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría: Cleaning Service",
+          "points": 50
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "No analizada — ya bloqueada en L1",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Z Movers Chicago",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Ninguna palabra de limpieza en nombre",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Moving & Storage Company",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "Bio: 'Local movers serving Chicago since 2010'",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts: camiones, mudanzas, cajas — no limpieza",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Hashtags: #ChicagoMovers #MovingDay — ninguno de limpieza",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Fresh Start Chicago",
+      "type": "ambiguous",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre ambiguo — no contiene palabras clave",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Home Service — genérica",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "'cleaning services' encontrado en bio",
+          "points": 40
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts: remodelación, no limpieza",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": true,
+          "detail": "#CleaningService encontrado en 1 post",
+          "points": 25
+        }
+      ],
+      "total": 65,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

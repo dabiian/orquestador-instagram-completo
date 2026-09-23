@@ -1,0 +1,72 @@
+{
+  "industry": "marketing",
+  "core_services": [
+    "digital marketing",
+    "social media management",
+    "social media marketing",
+    "lead generation",
+    "marketing services",
+    "advertising",
+    "content marketing",
+    "seo",
+    "online advertising"
+  ],
+  "direct_competitor_signals": [
+    "digital marketing agency",
+    "digital marketing",
+    "marketing agency",
+    "marketing services",
+    "social media management",
+    "social media marketing",
+    "social media agency",
+    "lead generation agency",
+    "lead generation services",
+    "advertising agency",
+    "content marketing",
+    "seo agency",
+    "seo services",
+    "online advertising"
+  ],
+  "possible_competitor_signals": [
+    "branding agency",
+    "creative agency",
+    "web design agency",
+    "public relations",
+    "communications agency",
+    "growth agency"
+  ],
+  "adjacent_businesses": [
+    "web design",
+    "graphic design",
+    "branding",
+    "photography",
+    "videography",
+    "public relations",
+    "business consulting"
+  ],
+  "referral_opportunities": [
+    "web design agency",
+    "graphic designer",
+    "branding agency",
+    "photographer",
+    "videographer",
+    "public relations agency",
+    "business consultant",
+    "web developer",
+    "creative agency"
+  ],
+  "exclude_as_competitor": [
+    "photographer",
+    "videographer",
+    "web developer",
+    "graphic designer",
+    "business consultant",
+    "public relations"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

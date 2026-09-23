@@ -1,0 +1,428 @@
+{
+  "main_flow": [
+    {
+      "id": "F1",
+      "icon": "🔍",
+      "title": "Bot encuentra cuenta o publicación nueva",
+      "desc": "Busca publicaciones relacionadas con tarot, amor, pareja, energía, limpiezas espirituales, velas, rituales o consultas esotéricas dentro del área configurada.",
+      "sub": "Verifica registro: ¿Ya fue contactada esta cuenta?",
+      "branches": [
+        {
+          "label": "✅ Primera vez",
+          "color": "#42b883",
+          "next": "Continúa al paso F2"
+        },
+        {
+          "label": "⛔ Ya fue contactada",
+          "color": "#e74c3c",
+          "next": "Solo dar Like/Love → No comentar nunca más"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "icon": "💬",
+      "title": "Comentario de introducción espiritual (1 sola vez)",
+      "desc": "IA genera un comentario breve, humano y respetuoso según el contexto del post. Puede mencionar orientación espiritual, lectura, limpieza o acompañamiento solo si encaja naturalmente.",
+      "sub": "Estado inicial: COMMENTED",
+      "note": "No vender agresivamente. No prometer resultados. No usar miedo. Esta es la única introducción del bot en esa cuenta."
+    },
+    {
+      "id": "F3",
+      "icon": "⏳",
+      "title": "Espera respuesta",
+      "desc": "El bot monitorea si la cuenta respondió el comentario.",
+      "sub": "Ventana de espera: 72 horas",
+      "branches": [
+        {
+          "label": "✅ Respondió",
+          "color": "#42b883",
+          "next": "Analiza intención → F4"
+        },
+        {
+          "label": "❌ Sin respuesta tras 72h",
+          "color": "#484f58",
+          "next": "Estado: NO_RESPONSE → Modo Like/Love"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "icon": "🧠",
+      "title": "IA clasifica la respuesta",
+      "desc": "Clasifica si la persona pidió datos, consulta, precio, o solo respondió de forma general.",
+      "branches": [
+        {
+          "label": "📋 Solicitó datos/info",
+          "color": "#f5a623",
+          "next": "Bot responde con contacto básico → alerta"
+        },
+        {
+          "label": "🔮 Solicitó consulta o servicio",
+          "color": "#9b59b6",
+          "next": "Bot pide canal privado y detalles mínimos → alerta"
+        },
+        {
+          "label": "💰 Preguntó precio",
+          "color": "#e74c3c",
+          "next": "Bot pide tipo de servicio y contexto mínimo → alerta urgente"
+        },
+        {
+          "label": "👍 Respuesta positiva general",
+          "color": "#42b883",
+          "next": "Bot agradece + invita a escribir por privado → alerta"
+        },
+        {
+          "label": "❓ Respuesta ambigua",
+          "color": "#8b949e",
+          "next": "Bot responde amistosamente → Estado: RESPONDED"
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "icon": "🔔",
+      "title": "Alerta al dueño/a o asesor/a",
+      "desc": "Sistema envía notificación por email y WhatsApp.",
+      "channels": [
+        "📧 Email",
+        "💬 WhatsApp",
+        "📊 Dashboard del bot"
+      ],
+      "sub": "Incluye: nombre de cuenta, categoría, texto exacto, intención detectada y enlace directo a la conversación."
+    },
+    {
+      "id": "F6",
+      "icon": "👤",
+      "title": "Humano toma control",
+      "desc": "El bot se detiene en ese prospecto. El asesor continúa por DM o WhatsApp.",
+      "sub": "Estado final: HUMAN_TAKEOVER"
+    },
+    {
+      "id": "F7",
+      "icon": "❤️",
+      "title": "Modo mantenimiento: Likes/Loves",
+      "desc": "Para cuentas sin respuesta o ya contactadas, el bot solo reacciona ocasionalmente a publicaciones futuras.",
+      "sub": "Máximo 1–3 reacciones por semana por cuenta.",
+      "note": "Objetivo: recordación de marca sin parecer spam."
+    }
+  ],
+  "example_timelines": [
+    {
+      "id": "ex1",
+      "company": "Perfil interesado en tarot",
+      "category": "tarot_cartas",
+      "icon": "🃏",
+      "color": "#9b59b6",
+      "timeline": [
+        {
+          "actor": "BOT",
+          "action": "Encuentra publicación sobre dudas de amor y energía",
+          "detail": "Verifica en registro: ¿Ya fue contactado antes? → NO",
+          "status": "NEW",
+          "type": "search"
+        },
+        {
+          "actor": "BOT",
+          "action": "Deja comentario breve",
+          "detail": "\"A veces una lectura ayuda a mirar la situación con más calma. Si necesitas orientación, estamos disponibles por mensaje 🔮\"",
+          "status": "COMMENTED",
+          "type": "comment",
+          "note": "Comentario suave, sin prometer resultados."
+        },
+        {
+          "actor": "PROSPECTO",
+          "action": "Responde: 'Me interesa una lectura, ¿cómo funciona?'",
+          "detail": "Bot detecta intención: REQUESTED_SERVICE",
+          "status": "REQUESTED_SERVICE",
+          "type": "response"
+        },
+        {
+          "actor": "BOT",
+          "action": "Responde con canal privado",
+          "detail": "\"Claro, con gusto. Para cuidar tu privacidad, escríbenos por WhatsApp o DM y te explicamos las opciones de lectura disponibles.\"",
+          "status": "ALERTED",
+          "type": "botreply"
+        },
+        {
+          "actor": "SISTEMA",
+          "action": "🔔 ALERTA enviada",
+          "detail": "Email + WhatsApp: prospecto pidió lectura de cartas/tarot.",
+          "status": "HUMAN_TAKEOVER",
+          "type": "alert"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "company": "Perfil preguntando por amor/pareja",
+      "category": "amor_pareja",
+      "icon": "❤️",
+      "color": "#e74c3c",
+      "timeline": [
+        {
+          "actor": "BOT",
+          "action": "Detecta comentario/post sobre separación o pareja",
+          "detail": "Verifica registro: primera vez.",
+          "status": "NEW",
+          "type": "search"
+        },
+        {
+          "actor": "BOT",
+          "action": "Deja comentario de introducción",
+          "detail": "\"Cuando hay temas de pareja, hablarlo con calma puede ayudar mucho. Damos orientación espiritual privada si necesitas una consulta.\"",
+          "status": "COMMENTED",
+          "type": "comment"
+        },
+        {
+          "actor": "PROSPECTO",
+          "action": "Responde: '¿Cuánto cuesta un amarre?'",
+          "detail": "Bot detecta keywords: cuánto, cuesta, amarre.",
+          "status": "REQUESTED_QUOTE",
+          "type": "response"
+        },
+        {
+          "actor": "BOT",
+          "action": "Pide detalles mínimos sin dar precio público",
+          "detail": "\"Para orientarte bien necesitamos saber si buscas consulta, lectura o trabajo espiritual. Mejor lo vemos por privado para cuidar tu caso.\"",
+          "status": "ALERTED",
+          "type": "botreply"
+        },
+        {
+          "actor": "SISTEMA",
+          "action": "🚨 ALERTA URGENTE enviada",
+          "detail": "Prospecto preguntó precio de servicio espiritual. Responder manualmente.",
+          "status": "HUMAN_TAKEOVER",
+          "type": "alert"
+        }
+      ]
+    }
+  ],
+  "documents_registry": [
+    {
+      "order": "01",
+      "id": "activity-map",
+      "title": "Bot Activity Map — Botánica Espiritual",
+      "file": "botanica-bot-map.jsx",
+      "icon": "🗺️",
+      "color": "#1877F2",
+      "readFirst": true,
+      "summary": "Mapa maestro del comportamiento del bot: discovery, comentario inicial, clasificación de respuestas, alerta y takeover humano.",
+      "contains": [
+        "7 fases operativas",
+        "Estados del prospecto",
+        "Reglas anti-spam",
+        "Reglas de seguridad de contenido espiritual"
+      ],
+      "connects": [
+        "Todos los demás documentos se conectan a este mapa."
+      ],
+      "tab": "All tabs"
+    },
+    {
+      "order": "02",
+      "id": "competitor-filter",
+      "title": "Filtro Anti-Competencia Espiritual",
+      "file": "filtro-anti-competencia-botanica.jsx",
+      "icon": "🛡️",
+      "color": "#e74c3c",
+      "readFirst": false,
+      "summary": "Sistema para bloquear otras botánicas, tarotistas, brujos, santeros o tiendas esotéricas antes de comentar.",
+      "contains": [
+        "5 capas de detección",
+        "Sistema de puntaje",
+        "Keywords limpias para dev"
+      ],
+      "connects": [
+        "Corre antes de agregar una cuenta como prospecto."
+      ],
+      "tab": "Layers / Examples / Decision Flow"
+    },
+    {
+      "order": "03",
+      "id": "hashtags",
+      "title": "Hashtags de Discovery Espiritual",
+      "file": "hashtags-botanica.jsx",
+      "icon": "#️⃣",
+      "color": "#42b883",
+      "readFirst": false,
+      "summary": "Hashtags por categoría para detectar conversaciones o perfiles relacionados con espiritualidad dentro del área configurada.",
+      "contains": [
+        "Tarot",
+        "Amor y pareja",
+        "Limpieza espiritual",
+        "Brujería",
+        "Santería",
+        "Productos esotéricos"
+      ],
+      "connects": [
+        "Usado en F1 para discovery."
+      ],
+      "tab": "Category selector"
+    },
+    {
+      "order": "04",
+      "id": "comment-templates",
+      "title": "Intro Comment Templates — Botánica",
+      "file": "comment-templates-botanica.jsx",
+      "icon": "💬",
+      "color": "#9b59b6",
+      "readFirst": false,
+      "summary": "Ejemplos de tono y estructura para comentarios humanos, místicos y no agresivos.",
+      "contains": [
+        "Reglas globales",
+        "Plantillas por categoría",
+        "Patrones prohibidos"
+      ],
+      "connects": [
+        "Usado en F2 para el comentario único."
+      ],
+      "tab": "Category → Template"
+    },
+    {
+      "order": "05",
+      "id": "response-data",
+      "title": "Response: Data Request — Botánica",
+      "file": "response-data-request-botanica.jsx",
+      "icon": "📋",
+      "color": "#f5a623",
+      "readFirst": false,
+      "summary": "Qué responde el bot cuando piden teléfono, WhatsApp, dirección, horario o web.",
+      "contains": [
+        "Triggers",
+        "Respuestas públicas",
+        "Reglas de privacidad"
+      ],
+      "connects": [
+        "F4 cuando intent=REQUESTED_DATA."
+      ],
+      "tab": "Templates / Detection / Rules"
+    },
+    {
+      "order": "06",
+      "id": "response-quote",
+      "title": "Response: Service / Price Request — Botánica",
+      "file": "response-service-request-botanica.jsx",
+      "icon": "🚨",
+      "color": "#e74c3c",
+      "readFirst": false,
+      "summary": "Qué hace el bot cuando piden lectura, amarre, limpia, precio o consulta.",
+      "contains": [
+        "Flujo de 4 preguntas",
+        "Templates",
+        "Detección",
+        "Reglas de no precio público"
+      ],
+      "connects": [
+        "F4 cuando intent=REQUESTED_SERVICE o REQUESTED_QUOTE."
+      ],
+      "tab": "Flow / Bot Comments / Questions / Detection"
+    },
+    {
+      "order": "07",
+      "id": "alerts",
+      "title": "Alert Templates — Botánica",
+      "file": "alert-templates-botanica.jsx",
+      "icon": "🔔",
+      "color": "#9b59b6",
+      "readFirst": false,
+      "summary": "Alertas por email y WhatsApp cuando hay lead caliente.",
+      "contains": [
+        "DATA",
+        "SERVICE",
+        "QUOTE",
+        "Notas dev"
+      ],
+      "connects": [
+        "Salida final de F5."
+      ],
+      "tab": "Events"
+    }
+  ],
+  "pending_items": [
+    {
+      "id": "P1",
+      "title": "Definir datos reales de campaña",
+      "priority": "HIGH",
+      "color": "#e74c3c",
+      "description": "Reemplazar placeholders de teléfono, WhatsApp, web, Facebook, email y nombre de la botánica.",
+      "options": [
+        {
+          "name": "CAMPAIGN_PHONE",
+          "cost": "Requerido",
+          "complexity": "Bajo",
+          "best": "Número público para llamadas"
+        },
+        {
+          "name": "CAMPAIGN_WHATSAPP",
+          "cost": "Requerido",
+          "complexity": "Bajo",
+          "best": "Canal principal para consultas privadas"
+        },
+        {
+          "name": "CAMPAIGN_URL",
+          "cost": "Opcional",
+          "complexity": "Bajo",
+          "best": "Web o landing"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "title": "Validar blacklist de competidores",
+      "priority": "MEDIUM",
+      "color": "#f5a623",
+      "description": "Ajustar keywords para evitar comentar en páginas de otras botánicas, tarotistas o brujos.",
+      "options": [
+        {
+          "name": "account_name_keywords[]",
+          "cost": "Lista base incluida",
+          "complexity": "Layer 1",
+          "best": "bloqueo rápido"
+        },
+        {
+          "name": "blocked_fb_categories[]",
+          "cost": "Lista base incluida",
+          "complexity": "Layer 2",
+          "best": "bloqueo por categoría"
+        },
+        {
+          "name": "competitor_hashtags[]",
+          "cost": "Lista base incluida",
+          "complexity": "Layer 5",
+          "best": "riesgo por hashtags"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Intro Comment",
+      "def": "Primer y único comentario automático que el bot deja en una cuenta."
+    },
+    {
+      "term": "Prospecto",
+      "def": "Cuenta agregada al registro después del comentario inicial."
+    },
+    {
+      "term": "REQUESTED_SERVICE",
+      "def": "Cuando la persona pide lectura, consulta, limpia, amarre, ritual o ayuda espiritual."
+    },
+    {
+      "term": "REQUESTED_QUOTE",
+      "def": "Cuando pregunta precio, costo, tarifa o cotización."
+    },
+    {
+      "term": "HUMAN_TAKEOVER",
+      "def": "El asesor toma control y el bot deja de responder automáticamente."
+    },
+    {
+      "term": "Garantía prohibida",
+      "def": "El bot no debe prometer resultados seguros, tiempos exactos ni manipular con miedo."
+    },
+    {
+      "term": "Privacidad espiritual",
+      "def": "Los detalles del caso se manejan por DM o WhatsApp, no en comentarios públicos."
+    }
+  ]
+}

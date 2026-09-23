@@ -1,0 +1,249 @@
+{
+  "trigger_keywords": [
+    "how much",
+    "quote",
+    "quotation",
+    "estimate",
+    "price",
+    "pricing",
+    "cost",
+    "rates",
+    "rate",
+    "charge",
+    "fee",
+    "affordable",
+    "budget",
+    "precio",
+    "cuanto cuesta",
+    "cuánto cuesta",
+    "cotización",
+    "estimado",
+    "tarifa",
+    "costo",
+    "honorarios",
+    "valor",
+    "consulta legal",
+    "abogado",
+    "honorarios abogado",
+    "cuánto cobran",
+    "cuanto cobran",
+    "asesoría legal",
+    "asesoria legal"
+  ],
+  "trigger_examples": [
+    {
+      "word": "how much",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can I get a quote?'"
+    },
+    {
+      "word": "quotation",
+      "example": "'Send me a quotation'"
+    },
+    {
+      "word": "estimate",
+      "example": "'Can you give me an estimate?'"
+    },
+    {
+      "word": "price",
+      "example": "'What's the price?'"
+    },
+    {
+      "word": "pricing",
+      "example": "'What's your pricing?'"
+    },
+    {
+      "word": "cost",
+      "example": "'What does it cost?'"
+    },
+    {
+      "word": "rates",
+      "example": "'What are your rates?'"
+    },
+    {
+      "word": "rate",
+      "example": "'What's your rate?'"
+    },
+    {
+      "word": "charge",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "fee",
+      "example": "'What's the fee?'"
+    },
+    {
+      "word": "affordable",
+      "example": "'Is it affordable?'"
+    },
+    {
+      "word": "budget",
+      "example": "'Do you work with my budget?'"
+    },
+    {
+      "word": "precio",
+      "example": "'¿Cuál es el precio?'"
+    },
+    {
+      "word": "cuanto cuesta",
+      "example": "'¿Cuanto cuesta?'"
+    },
+    {
+      "word": "cuánto cuesta",
+      "example": "'¿Cuánto cuesta?'"
+    },
+    {
+      "word": "cotización",
+      "example": "'¿Me das una cotización?'"
+    },
+    {
+      "word": "estimado",
+      "example": "'¿Me das un estimado?'"
+    },
+    {
+      "word": "tarifa",
+      "example": "'¿Cuál es la tarifa?'"
+    },
+    {
+      "word": "costo",
+      "example": "'¿Cuál es el costo?'"
+    },
+    {
+      "word": "honorarios",
+      "example": "'¿Cuáles son los honorarios?'"
+    },
+    {
+      "word": "valor",
+      "example": "'¿Qué valor tiene?'"
+    },
+    {
+      "word": "cuánto cobran",
+      "example": "'¿Cuánto cobran por llevar mi caso?'"
+    },
+    {
+      "word": "honorarios abogado",
+      "example": "'¿Cuáles son los honorarios del abogado?'"
+    },
+    {
+      "word": "consulta legal",
+      "example": "'¿La consulta legal tiene costo?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#1a3c6e",
+      "topic": "Área legal",
+      "question": "¿En qué área legal necesitas ayuda?",
+      "options": [
+        "Derecho Penal",
+        "Derecho Laboral",
+        "Derecho de Familia",
+        "Derecho Civil",
+        "Derecho Tributario",
+        "Derecho Administrativo",
+        "Derecho Comercial",
+        "No sé aún — quiero orientación"
+      ],
+      "why": "Determina el abogado o ruta interna correcta sin dar asesoría jurídica pública."
+    },
+    {
+      "number": "Q2",
+      "color": "#c8a84b",
+      "topic": "Tipo de caso",
+      "question": "¿Cómo clasificarías tu situación?",
+      "options": [
+        "Soy el acusado / imputado",
+        "Soy la víctima",
+        "Soy empresa en disputa",
+        "Trámite o asesoría preventiva",
+        "No sé cómo clasificarlo"
+      ],
+      "why": "Permite priorizar penal, víctima, empresa o preventivo antes de alertar al humano."
+    },
+    {
+      "number": "Q3",
+      "color": "#c0392b",
+      "topic": "Urgencia",
+      "question": "¿Qué tan urgente es?",
+      "options": [
+        "URGENTE — tengo proceso activo o citación",
+        "Esta semana — hay plazo próximo",
+        "Sin urgencia — quiero orientarme",
+        "Tengo juicio o audiencia programada"
+      ],
+      "why": "Casos con citación, audiencia o plazo deben escalarse primero."
+    },
+    {
+      "number": "Q4",
+      "color": "#6c3483",
+      "topic": "Ciudad / ubicación",
+      "question": "¿En qué ciudad estás?",
+      "options": [
+        "Bogotá",
+        "Medellín",
+        "Cali",
+        "Barranquilla",
+        "Bucaramanga",
+        "Otra ciudad en Colombia"
+      ],
+      "why": "La firma atiende Bogotá y cobertura nacional; la ciudad ayuda a orientar el caso."
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard legal consultation request",
+      "trigger": "They ask for price, quote, consultation cost, fees, or legal help",
+      "recommended": true,
+      "comment": "Claro, te orientamos ⚖️ Para no darte una respuesta incompleta por aquí, cuéntanos rápido:\n\n1️⃣ ¿Qué área legal es? (penal, laboral, familia, civil, tributario, comercial...)\n2️⃣ ¿Eres acusado, víctima, empresa o es un trámite?\n3️⃣ ¿Es urgente o tienes citación/proceso activo?\n4️⃣ ¿En qué ciudad estás?\n\nCon eso te conectamos con López & López Abogados para una primera consulta sin costo.",
+      "notes": [
+        "No da honorarios públicamente",
+        "Recolecta datos mínimos",
+        "Mantiene límite ético",
+        "Escala a humano"
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "When they just ask 'cuánto cobran?'",
+      "trigger": "Very short reply — 'precio?', 'cuánto cobran?', 'honorarios?'",
+      "recommended": false,
+      "comment": "Depende del tipo de caso ⚖️ La primera consulta con López & López Abogados es sin costo. ¿Es un tema penal, laboral, familia, civil, tributario o comercial?",
+      "notes": [
+        "Respuesta breve",
+        "No da precio",
+        "Pregunta Q1 mínima",
+        "Invita consulta gratis"
+      ]
+    },
+    {
+      "id": "Q-URGENT",
+      "label": "When they signal urgency",
+      "trigger": "Reply contains 'urgente', 'hoy', 'citación', 'audiencia', 'fiscalía', 'proceso activo'",
+      "recommended": false,
+      "comment": "Si hay citación, audiencia o proceso activo, conviene revisarlo cuanto antes ⚠️ Escríbenos por WhatsApp al 321 424 3885 y dinos el área del caso y la ciudad. La primera consulta es sin costo.",
+      "notes": [
+        "Prioriza urgencia",
+        "Pide lo mínimo",
+        "No da asesoría legal concreta",
+        "Activa alerta URGENT"
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "QUOTE",
+    "quote_alert_after_min_answers": [
+      "Q1",
+      "Q2"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_via_dm": true,
+    "dm_quote_template_manual": true
+  }
+}

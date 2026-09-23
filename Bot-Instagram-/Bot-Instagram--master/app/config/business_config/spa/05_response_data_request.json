@@ -1,0 +1,166 @@
+{
+  "trigger_keywords": [
+    "send info",
+    "send your info",
+    "information",
+    "more info",
+    "contact",
+    "reach you",
+    "get in touch",
+    "website",
+    "details",
+    "phone",
+    "number",
+    "email",
+    "how to book",
+    "interested",
+    "tell me more",
+    "DM me",
+    "message me",
+    "call me",
+    "consulta",
+    "consulta gratis",
+    "información",
+    "más información",
+    "contacto",
+    "cita",
+    "agendar",
+    "tratamientos"
+  ],
+  "trigger_examples": [
+    {
+      "word": "send info",
+      "example": "'Can you send info?'"
+    },
+    {
+      "word": "send your info",
+      "example": "'Send your info!'"
+    },
+    {
+      "word": "information",
+      "example": "'Send me information about the treatments'"
+    },
+    {
+      "word": "more info",
+      "example": "'Can I get more info?'"
+    },
+    {
+      "word": "contact",
+      "example": "'How can I contact you?'"
+    },
+    {
+      "word": "reach you",
+      "example": "'How do I reach you?'"
+    },
+    {
+      "word": "get in touch",
+      "example": "'How do I get in touch?'"
+    },
+    {
+      "word": "website",
+      "example": "'Do you have a website?'"
+    },
+    {
+      "word": "details",
+      "example": "'Send me details'"
+    },
+    {
+      "word": "phone",
+      "example": "'What's your phone number?'"
+    },
+    {
+      "word": "number",
+      "example": "'Can I get your number?'"
+    },
+    {
+      "word": "email",
+      "example": "'What's your email?'"
+    },
+    {
+      "word": "how to book",
+      "example": "'How do I book a consultation?'"
+    },
+    {
+      "word": "interested",
+      "example": "'I'm interested!'"
+    },
+    {
+      "word": "tell me more",
+      "example": "'Tell me more about Botox/facials/body contouring'"
+    },
+    {
+      "word": "DM me",
+      "example": "'DM me your info'"
+    },
+    {
+      "word": "message me",
+      "example": "'Message me please'"
+    },
+    {
+      "word": "call me",
+      "example": "'Give me a call'"
+    },
+    {
+      "word": "consulta gratis",
+      "example": "'¿Tienen consulta gratis?'"
+    },
+    {
+      "word": "agendar",
+      "example": "'¿Cómo puedo agendar?'"
+    }
+  ],
+  "public_reply_templates": [
+    {
+      "id": "D1",
+      "label": "Standard — most common",
+      "trigger": "They ask for info, contact, consultation, treatments, website, or how to reach SPA 312",
+      "recommended": true,
+      "template": "Of course! Here's everything you need ✨\n\n🌐 [CAMPAIGN URL]\n📞 Call or text: [CAMPAIGN PHONE NUMBER]\n📍 SPA 312 Chicago\n💬 FREE consultation available\n\nQuick question — are you interested in face, body, or both? We can guide you from there 🌿",
+      "notes": [
+        "'Of course!' = warm, not robotic",
+        "Free consultation is the main conversion hook for SPA 312",
+        "Asks only one soft qualifier: face/body/both",
+        "Does not reveal private owner cell publicly",
+        "No prices in public comment",
+        "Works for English posts; if the original post is Spanish, use the Spanish equivalent with the same structure"
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "Short version — when they just say 'interested!'",
+      "trigger": "Short positive reply — 'Interested!', 'Info?', 'Need this!', 'Me interesa'",
+      "recommended": false,
+      "template": "Love that ✨ We offer a FREE consultation at SPA 312 Chicago so we can understand your goals first. Are you thinking face, body, or both?",
+      "notes": [
+        "Matches their brevity",
+        "No info dump",
+        "Consultation-first instead of selling treatment immediately",
+        "One question only",
+        "Good for fast public replies"
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "When they say 'DM me' or 'Message me'",
+      "trigger": "They explicitly ask to be contacted privately",
+      "recommended": false,
+      "template": "Will do! Sending you a message now ✨ We can also help you schedule a FREE consultation at SPA 312 Chicago if that works better.",
+      "notes": [
+        "Acknowledges private contact request",
+        "Keeps public reply short",
+        "Bot should send DM with full SPA 312 consultation message",
+        "No pricing publicly",
+        "Use Spanish version when the prospect wrote in Spanish"
+      ]
+    }
+  ],
+  "rules": {
+    "reply_in_same_comment_thread": true,
+    "alert_event_id": "DATA",
+    "office_phone_sms_allowed": true,
+    "cell_reveal_policy": "never_reveal_private_owner_cell_publicly_use_campaign_phone_or_dm_only",
+    "dm_follow_up_only_for_template_ids": [
+      "D3"
+    ]
+  }
+}

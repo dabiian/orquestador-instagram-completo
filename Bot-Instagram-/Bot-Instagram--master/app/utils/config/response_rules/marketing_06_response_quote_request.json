@@ -1,0 +1,225 @@
+{
+  "trigger_keywords": [
+    "how much",
+    "quote",
+    "quotation",
+    "estimate",
+    "price",
+    "pricing",
+    "cost",
+    "rates",
+    "rate",
+    "charge",
+    "fee",
+    "affordable",
+    "budget",
+    "seo audit",
+    "audit",
+    "strategy call",
+    "consultation",
+    "website audit",
+    "marketing plan",
+    "seo cost",
+    "website cost",
+    "app cost"
+  ],
+  "trigger_examples": [
+    {
+      "word": "how much",
+      "example": "'How much do you charge for SEO?'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can we get a quote for a website?'"
+    },
+    {
+      "word": "quotation",
+      "example": "'Send us a quotation for marketing'"
+    },
+    {
+      "word": "estimate",
+      "example": "'Can you give us an estimate?'"
+    },
+    {
+      "word": "price",
+      "example": "'What's your price for SEO?'"
+    },
+    {
+      "word": "pricing",
+      "example": "'What's your pricing?'"
+    },
+    {
+      "word": "cost",
+      "example": "'What does SEO cost?'"
+    },
+    {
+      "word": "rates",
+      "example": "'What are your rates?'"
+    },
+    {
+      "word": "rate",
+      "example": "'What's your monthly rate?'"
+    },
+    {
+      "word": "charge",
+      "example": "'How much do you charge for websites?'"
+    },
+    {
+      "word": "fee",
+      "example": "'What's your setup fee?'"
+    },
+    {
+      "word": "affordable",
+      "example": "'Are you affordable for small businesses?'"
+    },
+    {
+      "word": "budget",
+      "example": "'Do you work with our budget?'"
+    },
+    {
+      "word": "seo audit",
+      "example": "'How do I get the SEO audit?'"
+    },
+    {
+      "word": "audit",
+      "example": "'Can I get the audit?'"
+    },
+    {
+      "word": "strategy call",
+      "example": "'Can we schedule a strategy call?'"
+    },
+    {
+      "word": "consultation",
+      "example": "'Do you offer a consultation?'"
+    },
+    {
+      "word": "website audit",
+      "example": "'Can you review my website?'"
+    },
+    {
+      "word": "marketing plan",
+      "example": "'Can you help with a marketing plan?'"
+    },
+    {
+      "word": "seo cost",
+      "example": "'What is the SEO cost?'"
+    },
+    {
+      "word": "website cost",
+      "example": "'What does a website cost?'"
+    },
+    {
+      "word": "app cost",
+      "example": "'How much for an app?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#1877F2",
+      "topic": "Primary digital goal",
+      "question": "What's your main goal right now — more Google traffic, a better website, a mobile app, or overall digital strategy?",
+      "options": [
+        "More Google traffic / SEO",
+        "Better website",
+        "Mobile app",
+        "Digital strategy / content",
+        "Spanish SEO",
+        "Not sure — I need a consultation"
+      ],
+      "why": "This replaces the cleaning quote intake. Boxmark should route to SEO audit, website audit, app strategy, or consultation based on the prospect's goal."
+    },
+    {
+      "number": "Q2",
+      "color": "#42b883",
+      "topic": "Current online presence",
+      "question": "Do you currently have a website and Google Business Profile active?",
+      "options": [
+        "Website + Google Business Profile",
+        "Website only",
+        "Google Business Profile only",
+        "No website yet",
+        "Not sure"
+      ],
+      "why": "Determines whether the first step should be SEO audit, website audit, GBP/local SEO setup, or full digital foundation."
+    },
+    {
+      "number": "Q3",
+      "color": "#f5a623",
+      "topic": "Timeline and urgency",
+      "question": "Are you trying to improve this now, this quarter, or just exploring options?",
+      "options": [
+        "Now",
+        "This quarter",
+        "Before a launch/opening",
+        "Just exploring"
+      ],
+      "why": "Separates urgent growth or launch needs from low-intent research."
+    },
+    {
+      "number": "Q4",
+      "color": "#9b59b6",
+      "topic": "Market and language",
+      "question": "Are your customers mostly English-speaking, Spanish-speaking, or both?",
+      "options": [
+        "Mostly English",
+        "Mostly Spanish",
+        "Both",
+        "Not sure"
+      ],
+      "why": "Spanish SEO is Boxmark's differentiator. This detects whether the strongest offer should be bilingual SEO."
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard audit / pricing request",
+      "trigger": "They ask for price, quote, estimate, SEO audit, website audit, or marketing help",
+      "recommended": true,
+      "comment": "Happy to help — the best first step is a free audit so we can see where your business stands before talking numbers 🔍\n\nQuick question: what's your main goal right now — more Google traffic, a better website, a mobile app, or overall digital strategy?\n\nOnce we know that, we'll point you to the right audit or strategy call.",
+      "notes": [
+        "Does not send pricing publicly",
+        "Uses free audit as the primary CTA",
+        "Asks only the most important routing question",
+        "Keeps the thread consultative instead of salesy"
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "When they just say 'how much?' with no context",
+      "trigger": "Very short reply — just 'how much?', 'price?', 'cost?'",
+      "recommended": false,
+      "comment": "Depends on the goal — SEO, website, apps and strategy are all different. Start with the free audit here and we'll show you the right next step: https://boxmarkdigital.com/free-seo-audit 🔍",
+      "notes": [
+        "Matches brevity",
+        "Avoids public price ranges",
+        "Routes to audit instead of negotiation",
+        "Useful when there is not enough context"
+      ]
+    },
+    {
+      "id": "Q-URGENT",
+      "label": "When they signal urgency",
+      "trigger": "Reply contains 'ASAP', 'urgent', 'launching soon', 'opening soon', 'this week', 'need leads now'",
+      "recommended": false,
+      "comment": "Got it — if you're launching or need leads soon, start with the free audit so we can see the fastest opportunities first 🔍 What's the priority right now: Google traffic, website fixes, or both?",
+      "notes": [
+        "Matches urgency without overpromising",
+        "Keeps the first question focused",
+        "Triggers urgent lead alert internally",
+        "Avoids promising instant SEO results"
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "QUOTE",
+    "quote_alert_after_min_answers": [
+      "Q1"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_via_dm": true,
+    "dm_quote_template_manual": true
+  }
+}

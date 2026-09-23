@@ -1,0 +1,594 @@
+{
+  "tables": [
+    {
+      "name": "prospects",
+      "purpose": "Tabla maestra por cuenta prospecto. Aquí vive el estado principal del flujo.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "platform",
+          "varchar(30)",
+          "facebook"
+        ],
+        [
+          "external_account_id",
+          "varchar(255)",
+          "ID externo de la cuenta/página/perfil"
+        ],
+        [
+          "account_name",
+          "varchar(255)",
+          "Nombre visible"
+        ],
+        [
+          "category_key",
+          "varchar(80)",
+          "tarot_cartas, amor_pareja, limpieza_espiritual, brujeria_hechizos, santeria_rituales, productos_esotericos"
+        ],
+        [
+          "profile_url",
+          "text",
+          "URL del perfil/página"
+        ],
+        [
+          "source_hashtag",
+          "varchar(160)",
+          "Hashtag por el que fue descubierto"
+        ],
+        [
+          "status",
+          "varchar(50)",
+          "NEW, COMMENTED, NO_RESPONSE, RESPONDED, REQUESTED_DATA, REQUESTED_SERVICE, REQUESTED_QUOTE, ALERTED, HUMAN_TAKEOVER, BLACKLISTED"
+        ],
+        [
+          "preferred_language",
+          "varchar(10)",
+          "es, en, unknown"
+        ],
+        [
+          "first_seen_at",
+          "timestamptz",
+          "Primera vez detectado"
+        ],
+        [
+          "first_commented_at",
+          "timestamptz",
+          "Fecha del primer intro comment"
+        ],
+        [
+          "last_checked_at",
+          "timestamptz",
+          "Última revisión"
+        ],
+        [
+          "last_response_at",
+          "timestamptz",
+          "Última respuesta del prospecto"
+        ],
+        [
+          "last_alert_at",
+          "timestamptz",
+          "Última alerta enviada"
+        ],
+        [
+          "assigned_to",
+          "varchar(120)",
+          "Asesor/a asignado/a"
+        ],
+        [
+          "human_takeover",
+          "boolean",
+          "Si humano tomó control"
+        ],
+        [
+          "human_takeover_at",
+          "timestamptz",
+          "Fecha de takeover"
+        ],
+        [
+          "competitor_score",
+          "int",
+          "Puntaje anti-competencia"
+        ],
+        [
+          "is_blacklisted",
+          "boolean",
+          "Si quedó bloqueado"
+        ],
+        [
+          "blacklist_reason",
+          "text",
+          "Motivo del bloqueo"
+        ],
+        [
+          "notes",
+          "text",
+          "Notas operativas"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ],
+        [
+          "updated_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "prospect_posts",
+      "purpose": "Posts detectados del prospecto y contexto usado por el bot.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "prospect_id",
+          "bigint fk prospects.id",
+          "Relación al prospecto"
+        ],
+        [
+          "external_post_id",
+          "varchar(255)",
+          "ID externo del post"
+        ],
+        [
+          "post_url",
+          "text",
+          "URL directa al post"
+        ],
+        [
+          "post_text",
+          "text",
+          "Texto normalizado del post"
+        ],
+        [
+          "post_published_at",
+          "timestamptz",
+          "Fecha del post"
+        ],
+        [
+          "matched_hashtag",
+          "varchar(160)",
+          "Hashtag que disparó hallazgo"
+        ],
+        [
+          "detected_spiritual_context",
+          "jsonb",
+          "Contexto espiritual detectado por IA"
+        ],
+        [
+          "used_for_intro_comment",
+          "boolean",
+          "Si fue usado para comentar"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "prospect_comments",
+      "purpose": "Todos los comentarios del bot, prospecto y humano dentro del hilo.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "prospect_id",
+          "bigint fk prospects.id",
+          "Relación al prospecto"
+        ],
+        [
+          "post_id",
+          "bigint fk prospect_posts.id",
+          "Post relacionado"
+        ],
+        [
+          "platform_comment_id",
+          "varchar(255)",
+          "ID externo del comentario"
+        ],
+        [
+          "actor_type",
+          "varchar(20)",
+          "bot, prospect, human"
+        ],
+        [
+          "comment_kind",
+          "varchar(50)",
+          "intro_comment, auto_reply_data, auto_reply_service, auto_reply_quote, generic_reply, human_reply"
+        ],
+        [
+          "template_id",
+          "varchar(50)",
+          "T1, A1, D1, Q-MAIN, etc."
+        ],
+        [
+          "body",
+          "text",
+          "Texto exacto enviado/recibido"
+        ],
+        [
+          "is_public",
+          "boolean",
+          "Si fue público"
+        ],
+        [
+          "sent_at",
+          "timestamptz",
+          "Fecha/hora"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "prospect_replies_classification",
+      "purpose": "Resultado de clasificación de cada respuesta recibida.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "prospect_comment_id",
+          "bigint fk prospect_comments.id",
+          "Comentario del prospecto analizado"
+        ],
+        [
+          "intent",
+          "varchar(50)",
+          "REQUESTED_DATA, REQUESTED_SERVICE, REQUESTED_QUOTE, POSITIVE, AMBIGUOUS"
+        ],
+        [
+          "confidence",
+          "numeric(5,4)",
+          "Confianza del clasificador"
+        ],
+        [
+          "matched_keywords",
+          "jsonb",
+          "Keywords detectadas"
+        ],
+        [
+          "service_category_detected",
+          "varchar(80)",
+          "Categoría espiritual detectada"
+        ],
+        [
+          "priority",
+          "int",
+          "Prioridad operativa"
+        ],
+        [
+          "decision_payload",
+          "jsonb",
+          "Payload completo de decisión"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "service_request_answers",
+      "purpose": "Respuestas estructuradas Q1-Q4 para consulta, servicio o precio.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "prospect_id",
+          "bigint fk prospects.id",
+          "Relación al prospecto"
+        ],
+        [
+          "q1_service_type",
+          "text",
+          "Tipo de servicio solicitado"
+        ],
+        [
+          "q2_private_channel",
+          "text",
+          "WhatsApp o DM"
+        ],
+        [
+          "q3_general_context",
+          "text",
+          "Contexto general no íntimo"
+        ],
+        [
+          "q4_availability",
+          "text",
+          "Disponibilidad solicitada"
+        ],
+        [
+          "min_answers_ready_for_alert",
+          "boolean",
+          "True cuando ya hay Q1+Q2"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ],
+        [
+          "updated_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "alerts_log",
+      "purpose": "Registro de alertas enviadas por email/WhatsApp.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "prospect_id",
+          "bigint fk prospects.id",
+          "Relación al prospecto"
+        ],
+        [
+          "event_code",
+          "varchar(20)",
+          "DATA, SERVICE o QUOTE"
+        ],
+        [
+          "priority",
+          "int",
+          "Prioridad"
+        ],
+        [
+          "email_sent",
+          "boolean",
+          "Si se envió email"
+        ],
+        [
+          "whatsapp_sent",
+          "boolean",
+          "Si se envió WhatsApp"
+        ],
+        [
+          "email_message_id",
+          "varchar(255)",
+          "ID proveedor email"
+        ],
+        [
+          "whatsapp_message_id",
+          "varchar(255)",
+          "ID proveedor WhatsApp"
+        ],
+        [
+          "payload",
+          "jsonb",
+          "Payload real enviado"
+        ],
+        [
+          "sent_at",
+          "timestamptz",
+          "Fecha/hora de envío"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "discovery_runs",
+      "purpose": "Cada ejecución de discovery por hashtag/categoría.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "category_key",
+          "varchar(80)",
+          "Categoría buscada"
+        ],
+        [
+          "hashtag_used",
+          "varchar(160)",
+          "Hashtag usado"
+        ],
+        [
+          "run_started_at",
+          "timestamptz",
+          "Inicio"
+        ],
+        [
+          "run_finished_at",
+          "timestamptz",
+          "Fin"
+        ],
+        [
+          "accounts_found",
+          "int",
+          "Cuentas halladas"
+        ],
+        [
+          "accounts_kept",
+          "int",
+          "Cuentas válidas"
+        ],
+        [
+          "accounts_blocked",
+          "int",
+          "Cuentas filtradas"
+        ],
+        [
+          "meta",
+          "jsonb",
+          "Detalles de la corrida"
+        ]
+      ]
+    },
+    {
+      "name": "blacklist_accounts",
+      "purpose": "Bloqueos explícitos por competencia o decisión manual.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "platform",
+          "varchar(30)",
+          "facebook"
+        ],
+        [
+          "external_account_id",
+          "varchar(255)",
+          "ID externo"
+        ],
+        [
+          "account_name",
+          "varchar(255)",
+          "Nombre visible"
+        ],
+        [
+          "profile_url",
+          "text",
+          "URL del perfil"
+        ],
+        [
+          "source",
+          "varchar(40)",
+          "auto_filter o manual"
+        ],
+        [
+          "score",
+          "int",
+          "Puntaje de riesgo"
+        ],
+        [
+          "matched_layers",
+          "jsonb",
+          "Capas activadas"
+        ],
+        [
+          "evidence",
+          "jsonb",
+          "Evidencia textual"
+        ],
+        [
+          "reason",
+          "text",
+          "Motivo resumido"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "reaction_events",
+      "purpose": "Likes/Loves de mantenimiento de marca.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "prospect_id",
+          "bigint fk prospects.id",
+          "Relación al prospecto"
+        ],
+        [
+          "post_id",
+          "bigint fk prospect_posts.id",
+          "Post afectado"
+        ],
+        [
+          "reaction_type",
+          "varchar(20)",
+          "like o love"
+        ],
+        [
+          "reacted_at",
+          "timestamptz",
+          "Fecha/hora"
+        ],
+        [
+          "week_bucket",
+          "varchar(10)",
+          "Ej. 2026-W11"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    },
+    {
+      "name": "config_snapshots",
+      "purpose": "Versionado de configs JSON para saber con qué reglas corrió el bot.",
+      "columns": [
+        [
+          "id",
+          "bigserial pk",
+          "Identificador interno"
+        ],
+        [
+          "config_name",
+          "varchar(120)",
+          "Nombre del config"
+        ],
+        [
+          "version",
+          "varchar(40)",
+          "Versión"
+        ],
+        [
+          "payload",
+          "jsonb",
+          "JSON completo"
+        ],
+        [
+          "is_active",
+          "boolean",
+          "Versión activa"
+        ],
+        [
+          "created_at",
+          "timestamptz",
+          "Auditoría"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+INSTAGRAM_MADURACION_CAPABILITY = "instagram.maduracion"
+INSTAGRAM_PROSPECTING_CAPABILITY = "instagram.prospecting"

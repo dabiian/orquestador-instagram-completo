@@ -1,0 +1,176 @@
+{
+  "trigger_keywords": [
+    "send info",
+    "send your info",
+    "information",
+    "more info",
+    "contact",
+    "reach you",
+    "get in touch",
+    "website",
+    "details",
+    "phone",
+    "number",
+    "email",
+    "how to book",
+    "interested",
+    "tell me more",
+    "DM me",
+    "message me",
+    "call me",
+    "audit",
+    "seo audit",
+    "free audit",
+    "strategy call",
+    "consultation",
+    "link"
+  ],
+  "trigger_examples": [
+    {
+      "word": "send info",
+      "example": "'Can you send info?'"
+    },
+    {
+      "word": "send your info",
+      "example": "'Send your info!'"
+    },
+    {
+      "word": "information",
+      "example": "'Can you send information about Boxmark?'"
+    },
+    {
+      "word": "more info",
+      "example": "'Can we get more info?'"
+    },
+    {
+      "word": "contact",
+      "example": "'How can we contact you?'"
+    },
+    {
+      "word": "reach you",
+      "example": "'How do we reach you?'"
+    },
+    {
+      "word": "get in touch",
+      "example": "'How do we get in touch?'"
+    },
+    {
+      "word": "website",
+      "example": "'Do you have a website?'"
+    },
+    {
+      "word": "details",
+      "example": "'Send us details'"
+    },
+    {
+      "word": "phone",
+      "example": "'What's your phone number?'"
+    },
+    {
+      "word": "number",
+      "example": "'Can I get your number?'"
+    },
+    {
+      "word": "email",
+      "example": "'What's your email?'"
+    },
+    {
+      "word": "how to book",
+      "example": "'How do we book the audit?'"
+    },
+    {
+      "word": "interested",
+      "example": "'We're interested!'"
+    },
+    {
+      "word": "tell me more",
+      "example": "'Tell me more about SEO'"
+    },
+    {
+      "word": "DM me",
+      "example": "'DM me the audit link'"
+    },
+    {
+      "word": "message me",
+      "example": "'Message me'"
+    },
+    {
+      "word": "call me",
+      "example": "'Give us a call'"
+    },
+    {
+      "word": "audit",
+      "example": "'Can I get the audit?'"
+    },
+    {
+      "word": "seo audit",
+      "example": "'Send the SEO audit link'"
+    },
+    {
+      "word": "free audit",
+      "example": "'Is the audit free?'"
+    },
+    {
+      "word": "strategy call",
+      "example": "'Can we do a strategy call?'"
+    },
+    {
+      "word": "consultation",
+      "example": "'How do I schedule a consultation?'"
+    },
+    {
+      "word": "link",
+      "example": "'Send the link'"
+    }
+  ],
+  "public_reply_templates": [
+    {
+      "id": "D1",
+      "label": "Standard — audit/contact info",
+      "trigger": "They ask for info, contact, website, audit link, or how to reach Boxmark",
+      "recommended": true,
+      "template": "Of course! Here's the best place to start 🔍\n\n🌐 Free SEO Audit: https://boxmarkdigital.com/free-seo-audit\n🌐 Website: https://boxmarkdigital.com\n📞 Call: 888-315-2721\n\nThe audit shows where your business stands on Google and where competitors may be taking traffic — no commitment, just clear data.",
+      "notes": [
+        "Starts with the free SEO audit because it is Boxmark's strongest CTA",
+        "Gives website and phone without sounding pushy",
+        "Explains the value of the audit instead of just dumping contact info",
+        "Works for English-speaking business owners"
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "Short version — when they just say 'interested!'",
+      "trigger": "Short positive reply — 'Interested', 'send it', 'sounds good'",
+      "recommended": false,
+      "template": "Absolutely — start here: https://boxmarkdigital.com/free-seo-audit 🔍 It will show where your business stands on Google. You can also call Boxmark Digital at 888-315-2721.",
+      "notes": [
+        "Matches their short reply",
+        "Prioritizes the audit link",
+        "Phone is secondary",
+        "No long service list in a short thread"
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "When they say 'DM me' or 'Message me'",
+      "trigger": "They explicitly ask to be contacted privately",
+      "recommended": false,
+      "template": "Will do — sending you the free SEO audit link now 🔍 You can also start here if it's easier: https://boxmarkdigital.com/free-seo-audit",
+      "notes": [
+        "Acknowledges DM request immediately",
+        "Keeps public comment short",
+        "Bot then sends DM with full audit and contact template",
+        "Good for groups where long public comments look spammy"
+      ]
+    }
+  ],
+  "rules": {
+    "reply_in_same_comment_thread": true,
+    "alert_event_id": "DATA",
+    "office_phone_sms_allowed": false,
+    "cell_reveal_policy": "no_private_cell_available_reveal_business_phone_and_free_audit_link_when_prospect_requests_info",
+    "dm_follow_up_only_for_template_ids": [
+      "D3"
+    ]
+  }
+}

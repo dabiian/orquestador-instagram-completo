@@ -1,0 +1,350 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "genuine warm reaction to their personal post",
+    "second_sentence": "optional natural bridge to self-care, glow-up, event prep, or free consultation only if supported by the actual post content",
+    "template_usage_rule": "Templates are style references only. Do not reuse their concrete nouns, scenes, body comments, or sample compliments unless those details are present in the current post.",
+    "tone": "warm_aspirational_friend_not_sales_rep",
+    "forbidden_phrases": [
+      "You need...",
+      "Fix your...",
+      "Guaranteed results",
+      "limited time discount",
+      "cheap botox",
+      "book now",
+      "needles",
+      "injections",
+      "we can make you look younger",
+      "your body needs work"
+    ],
+    "allow_signature": false,
+    "emoji_max": 2,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false
+  },
+  "categories": [
+    {
+      "id": "brides",
+      "label": "Novias / Brides",
+      "icon": "💍",
+      "color": "#E91E8C",
+      "context": "Bride posts wedding planning, dress, venue, countdown, engagement photos, bridal shower, or asks for beauty/wellness recommendations.",
+      "rule": "Lead with genuine celebration. Bridge to bridal glow/event prep and free consultation, not pressure or pricing.",
+      "templates": [
+        {
+          "id": "B1-EN",
+          "trigger": "EN — Bride shares wedding countdown or planning update",
+          "template": "Congrats on the upcoming wedding! 💍 If you're planning your bridal glow-up, SPA 312 Chicago does free consultations to help map the right facial, skin, or injectable plan for your timeline ✨",
+          "why": [
+            "Celebrates first",
+            "Mentions timeline because brides have deadlines",
+            "Free consultation replaces quote pressure"
+          ]
+        },
+        {
+          "id": "B2-EN",
+          "trigger": "EN — Bride asks for beauty or self-care recommendations",
+          "template": "Such an exciting season for you 💍 We help Chicago brides with skin prep, facials, Botox, fillers, and body treatments when they want everything planned before the big day ✨",
+          "why": [
+            "Matches wedding context",
+            "Lists relevant services without pricing",
+            "Keeps tone aspirational"
+          ]
+        },
+        {
+          "id": "B3-ES",
+          "trigger": "ES — Novia publica avances de boda o cuenta regresiva",
+          "template": "¡Felicidades por tu boda! 💍 Si estás preparando tu glow-up de novia, en SPA 312 Chicago hacemos consulta gratis para armar un plan de piel, faciales o estética según tus fechas ✨",
+          "why": [
+            "Celebra primero",
+            "Habla de planificación, no de presión",
+            "Consulta gratis como puente natural"
+          ]
+        },
+        {
+          "id": "B4-ES",
+          "trigger": "ES — Novia pide recomendaciones de belleza",
+          "template": "Qué emoción esa etapa de boda 💍 En SPA 312 Chicago ayudamos a novias con faciales, cuidado de piel, Botox, rellenos y tratamientos corporales antes del gran día ✨",
+          "why": [
+            "Responde al contexto real",
+            "Evita precios",
+            "Tono cálido y aspiracional"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postpartum",
+      "label": "Postpartum / Moms",
+      "icon": "👶",
+      "color": "#9b59b6",
+      "context": "Mom posts baby photos, self-care after pregnancy, getting back to herself, or asks for wellness recommendations.",
+      "rule": "Lead with empathy and congratulations. Never comment on body size, insecurity, weight, medical recovery, or mental health; only mention self-care if the post is positive and safe.",
+      "templates": [
+        {
+          "id": "P1-EN",
+          "trigger": "EN — Mom shares positive baby or self-care post",
+          "template": "Congrats on your little one 🌸 When you're ready for some you-time, SPA 312 Chicago offers free consultations for gentle self-care, skin, and body treatment options 💕",
+          "why": [
+            "Empathetic",
+            "Does not mention body problems",
+            "Frames treatment as self-care"
+          ]
+        },
+        {
+          "id": "P2-EN",
+          "trigger": "EN — Mom asks for self-care recommendations",
+          "template": "You deserve that reset 🌸 SPA 312 Chicago helps moms with facials, skin care, and body treatments, and the consultation is free so you can see what actually fits your goals 💕",
+          "why": [
+            "Responds to self-care ask",
+            "Consultation-first",
+            "No medical claims"
+          ]
+        },
+        {
+          "id": "P3-ES",
+          "trigger": "ES — Mamá comparte post positivo con bebé",
+          "template": "¡Felicidades por tu bebé! 🌸 Cuando quieras darte un momento para ti, en SPA 312 Chicago ofrecemos consulta gratis para opciones de piel, cuidado personal y tratamientos corporales 💕",
+          "why": [
+            "Cálido",
+            "No comenta inseguridades",
+            "Ofrece consulta sin presión"
+          ]
+        },
+        {
+          "id": "P4-ES",
+          "trigger": "ES — Mamá pide recomendaciones de autocuidado",
+          "template": "Te mereces ese espacio para ti 🌸 En SPA 312 Chicago ayudamos con faciales, cuidado de piel y tratamientos corporales, empezando con una consulta gratis según tus metas 💕",
+          "why": [
+            "Valida autocuidado",
+            "No presiona",
+            "Evita lenguaje médico"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weightloss",
+      "label": "Weight Loss Journey",
+      "icon": "💪",
+      "color": "#f5a623",
+      "context": "Person shares positive fitness/weight-loss progress, wellness goal, confidence update, or asks about toning/body contouring.",
+      "rule": "Only engage with positive, goal-oriented posts. Skip posts with distress, eating disorder signals, shame, extreme dieting, or negative body image.",
+      "templates": [
+        {
+          "id": "W1-EN",
+          "trigger": "EN — Positive fitness progress post",
+          "template": "That consistency is impressive 💪 If you're looking into non-surgical body contouring as a next step, SPA 312 Chicago offers a free consultation to see what fits your goals ✨",
+          "why": [
+            "Compliments effort, not body size",
+            "Non-surgical and consultation-first",
+            "No guarantees"
+          ]
+        },
+        {
+          "id": "W2-EN",
+          "trigger": "EN — Prospect asks about stubborn areas or toning",
+          "template": "That question comes up a lot on body goals 💪 SPA 312 Chicago does free consultations for body contouring options so you can understand what makes sense before choosing anything ✨",
+          "why": [
+            "Answers without diagnosing",
+            "No pressure",
+            "Frames as education"
+          ]
+        },
+        {
+          "id": "W3-ES",
+          "trigger": "ES — Post positivo de progreso fitness",
+          "template": "Esa constancia se nota muchísimo 💪 Si estás considerando contorno corporal no quirúrgico, en SPA 312 Chicago ofrecemos consulta gratis para ver qué opción encaja con tus metas ✨",
+          "why": [
+            "Reconoce esfuerzo",
+            "No juzga cuerpo",
+            "Consulta como primer paso"
+          ]
+        },
+        {
+          "id": "W4-ES",
+          "trigger": "ES — Pregunta sobre zonas difíciles o tonificación",
+          "template": "Esa duda es súper común cuando una está trabajando sus metas 💪 En SPA 312 Chicago hacemos consulta gratis para revisar opciones de contorno corporal sin compromiso ✨",
+          "why": [
+            "Empático",
+            "No promete resultados",
+            "Evita lenguaje agresivo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skincare",
+      "label": "Skincare Enthusiasts",
+      "icon": "✨",
+      "color": "#1abc9c",
+      "context": "Person posts skincare routine, glow-up, facial result, acne/texture/hyperpigmentation question, or asks for facial recommendations.",
+      "rule": "Lead with a positive skincare observation only if visible and appropriate. Bridge to free skin consultation, facials, microneedling, peels, or dermaplaning.",
+      "templates": [
+        {
+          "id": "S1-EN",
+          "trigger": "EN — Positive skincare or glow post",
+          "template": "Your skin looks so fresh ✨ If you ever want a personalized skin plan, SPA 312 Chicago offers free consultations for facials, microneedling, peels, and dermaplaning 🌿",
+          "why": [
+            "Specific to skincare",
+            "No overclaim",
+            "Free consultation"
+          ]
+        },
+        {
+          "id": "S2-EN",
+          "trigger": "EN — Prospect asks for facial/skincare recommendation",
+          "template": "For skin goals, a consultation makes all the difference 🌿 SPA 312 Chicago can help match you with the right facial, peel, microneedling, or dermaplaning option ✨",
+          "why": [
+            "Educational",
+            "No hard sell",
+            "Keeps treatment choices open"
+          ]
+        },
+        {
+          "id": "S3-ES",
+          "trigger": "ES — Post positivo de piel o glow-up",
+          "template": "Tu piel se ve súper fresca ✨ Si algún día quieres un plan personalizado, en SPA 312 Chicago ofrecemos consulta gratis para faciales, microneedling, peelings y dermaplaning 🌿",
+          "why": [
+            "Tono positivo",
+            "No exagera resultados",
+            "Puente natural"
+          ]
+        },
+        {
+          "id": "S4-ES",
+          "trigger": "ES — Pide recomendación de facial/skincare",
+          "template": "Para metas de piel, una consulta ayuda muchísimo 🌿 En SPA 312 Chicago podemos orientarte entre faciales, peelings, microneedling o dermaplaning según lo que buscas ✨",
+          "why": [
+            "Responde la necesidad",
+            "No presiona",
+            "No diagnostica"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "latina",
+      "label": "Comunidad Latina Chicago",
+      "icon": "🌺",
+      "color": "#e74c3c",
+      "context": "Latina community posts in Chicago, quinceañera prep, eventos, self-care, beauty recommendations, or women asking for spa treatments in Spanish.",
+      "rule": "Default to Spanish when the post is Spanish or mixed. Warm, familiar, respectful. Avoid sounding like a clinic ad.",
+      "templates": [
+        {
+          "id": "L1-ES",
+          "trigger": "ES — Post en comunidad latina pidiendo spa/tratamientos",
+          "template": "¡Claro! 🌺 En SPA 312 Chicago trabajamos cuidado de piel, faciales, contorno corporal, Botox, rellenos y láser; también ofrecemos consulta gratis para orientarte según tus metas ✨",
+          "why": [
+            "Español por defecto",
+            "Servicios principales",
+            "Consulta gratis"
+          ]
+        },
+        {
+          "id": "L2-ES",
+          "trigger": "ES — Foto de evento, quinceañera o preparación personal",
+          "template": "¡Te ves increíble! 🌺 Si estás preparándote para un evento, en SPA 312 Chicago podemos ayudarte con faciales, piel y tratamientos estéticos con consulta gratis ✨",
+          "why": [
+            "Conecta con evento",
+            "No menciona defectos",
+            "Tono cercano"
+          ]
+        },
+        {
+          "id": "L3-EN",
+          "trigger": "EN — Latina community post in English asking for beauty recommendations",
+          "template": "You look amazing 🌺 If you're looking for aesthetic treatments in Chicago, SPA 312 offers free consultations for skin care, body contouring, injectables, and laser ✨",
+          "why": [
+            "Warm opener",
+            "Broad enough for multiple interests",
+            "No pricing"
+          ]
+        },
+        {
+          "id": "L4-ES",
+          "trigger": "ES — Pregunta general de autocuidado",
+          "template": "Qué bueno que estés buscando algo para ti 🌺 En SPA 312 Chicago empezamos con consulta gratis para recomendarte opciones de piel, cuerpo o estética según lo que quieras lograr ✨",
+          "why": [
+            "Self-care first",
+            "No hard CTA",
+            "Adaptable"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "antiaging",
+      "label": "Anti-Aging / Professionals",
+      "icon": "⏳",
+      "color": "#1877F2",
+      "context": "Professional woman posts confidence, headshots, networking, aging gracefully, events, or asks about non-surgical rejuvenation.",
+      "rule": "Use respectful, confidence-oriented language. Never say she looks old, tired, aged, or needs correction.",
+      "templates": [
+        {
+          "id": "A1-EN",
+          "trigger": "EN — Professional woman posts headshot/event photo",
+          "template": "You look polished and confident ✨ If you're ever curious about non-surgical facial refresh options, SPA 312 Chicago offers free consultations for Botox, fillers, PRP, and skin tightening.",
+          "why": [
+            "Compliments confidence",
+            "No age-shaming",
+            "Consultation-first"
+          ]
+        },
+        {
+          "id": "A2-EN",
+          "trigger": "EN — Asks about anti-aging or facial rejuvenation",
+          "template": "For facial refresh goals, a free consultation is the safest first step ✨ SPA 312 Chicago can walk you through Botox, fillers, PRP, and skin tightening options without pressure.",
+          "why": [
+            "Answers question",
+            "Safety/education focused",
+            "No guaranteed results"
+          ]
+        },
+        {
+          "id": "A3-ES",
+          "trigger": "ES — Mujer profesional publica foto/evento",
+          "template": "Te ves súper segura y elegante ✨ Si algún día te interesa un refresh facial no quirúrgico, en SPA 312 Chicago ofrecemos consulta gratis para Botox, rellenos, PRP y tensado de piel.",
+          "why": [
+            "Respeto",
+            "No menciona edad de forma negativa",
+            "Puente natural"
+          ]
+        },
+        {
+          "id": "A4-ES",
+          "trigger": "ES — Pregunta sobre rejuvenecimiento facial",
+          "template": "Para un refresh facial, lo mejor es empezar con una consulta gratis ✨ En SPA 312 Chicago podemos orientarte sobre Botox, rellenos, PRP y tensado de piel sin presión.",
+          "why": [
+            "Consulta primero",
+            "No promete resultados",
+            "Tono profesional"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "You need Botox!",
+      "why": "Agresivo, ofensivo y puede generar rechazo inmediato."
+    },
+    {
+      "bad": "We can fix your body after pregnancy.",
+      "why": "Lenguaje sensible y prohibido; nunca comentar inseguridades corporales."
+    },
+    {
+      "bad": "Guaranteed results with our treatments!",
+      "why": "Promesa médica/estética no permitida."
+    },
+    {
+      "bad": "Cheap Botox and fillers, book now!",
+      "why": "Suena spam, devalúa el servicio y usa CTA agresivo."
+    },
+    {
+      "bad": "Your wrinkles would look better with injectables.",
+      "why": "Comentario invasivo, negativo y riesgoso para la marca."
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+name: Bootstrap Instagram Task
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bootstrap:
+    name: Bootstrap en ${{ matrix.runner_label }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        runner_label:
+          - maduracion-pc-1
+          - maduracion-pc-2
+          - maduracion-pc-3
+          - maduracion-pc-4
+          - maduracion-pc-5
+          - maduracion-pc-6
+          - maduracion-pc-7
+          - maduracion-pc-8
+          - maduracion-pc-9
+          - maduracion-pc-10
+          - maduracion-pc-11
+
+    runs-on: [self-hosted, Windows, X64, "${{ matrix.runner_label }}"]
+
+    steps:
+      - name: Crear script y tarea programada para usuario instagram
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $InstagramUser = "instagram"
+          $ProjectRoot = "C:\Users\instagram\Desktop\instagram"
+          $DeployDir = Join-Path $ProjectRoot "deploy"
+          $LogDir = Join-Path $ProjectRoot "logs"
+          $StartScript = Join-Path $DeployDir "start_bot2_visible.ps1"
+
+          $TaskName = "Deploy Instagram Bot 2"
+          $TaskPath = "\BotDeploy\"
+          $TaskUser = "$env:COMPUTERNAME\$InstagramUser"
+
+          Write-Host "=============================================="
+          Write-Host "PC: $env:COMPUTERNAME"
+          Write-Host "Usuario runner actual: $env:USERNAME"
+          Write-Host "Usuario tarea: $TaskUser"
+          Write-Host "Proyecto: $ProjectRoot"
+          Write-Host "=============================================="
+
+          if (!(Test-Path $DeployDir)) {
+            New-Item -ItemType Directory -Path $DeployDir -Force | Out-Null
+          }
+
+          if (!(Test-Path $LogDir)) {
+            New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
+          }
+
+          $ScriptContent = @'
+          $ErrorActionPreference = "Stop"
+
+          $ProjectRoot = "C:\Users\instagram\Desktop\instagram"
+          $DeployScript = Join-Path $ProjectRoot "deploy\deploy.ps1"
+          $LogDir = Join-Path $ProjectRoot "logs"
+
+          if (!(Test-Path $LogDir)) {
+              New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
+          }
+
+          $LogFile = Join-Path $LogDir "deploy-from-task.log"
+
+          "==================================================" | Out-File $LogFile -Append -Encoding UTF8
+          "Deploy iniciado: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" | Out-File $LogFile -Append -Encoding UTF8
+          "PC: $env:COMPUTERNAME" | Out-File $LogFile -Append -Encoding UTF8
+          "Usuario actual: $env:USERNAME" | Out-File $LogFile -Append -Encoding UTF8
+          "Ruta deploy: $DeployScript" | Out-File $LogFile -Append -Encoding UTF8
+
+          if (!(Test-Path $DeployScript)) {
+              "ERROR: No existe deploy.ps1 en $DeployScript" | Out-File $LogFile -Append -Encoding UTF8
+              exit 1
+          }
+
+          Set-Location $ProjectRoot
+
+          powershell.exe `
+              -NoProfile `
+              -ExecutionPolicy Bypass `
+              -File $DeployScript `
+              *>> $LogFile
+
+          $ExitCode = $LASTEXITCODE
+
+          "Deploy finalizado: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" | Out-File $LogFile -Append -Encoding UTF8
+          "ExitCode: $ExitCode" | Out-File $LogFile -Append -Encoding UTF8
+
+          exit $ExitCode
+          '@
+
+          Set-Content -Path $StartScript -Value $ScriptContent -Encoding UTF8 -Force
+
+          Write-Host "Script creado en: $StartScript"
+
+          $Action = New-ScheduledTaskAction `
+            -Execute "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" `
+            -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$StartScript`"" `
+            -WorkingDirectory $ProjectRoot
+
+          $Principal = New-ScheduledTaskPrincipal `
+            -UserId $TaskUser `
+            -LogonType Interactive `
+            -RunLevel Limited
+
+          $Settings = New-ScheduledTaskSettingsSet `
+            -AllowStartIfOnBatteries `
+            -DontStopIfGoingOnBatteries `
+            -ExecutionTimeLimit (New-TimeSpan -Hours 3) `
+            -MultipleInstances IgnoreNew
+
+          Register-ScheduledTask `
+            -TaskName $TaskName `
+            -TaskPath $TaskPath `
+            -Action $Action `
+            -Principal $Principal `
+            -Settings $Settings `
+            -Force
+
+          Write-Host "Tarea registrada correctamente: $TaskPath$TaskName"
+
+          Get-ScheduledTask -TaskPath $TaskPath -TaskName $TaskName | Format-List TaskName,TaskPath,State

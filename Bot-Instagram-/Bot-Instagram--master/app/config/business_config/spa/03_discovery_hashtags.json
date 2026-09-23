@@ -1,0 +1,577 @@
+{
+  "policy": {
+    "geo_only": true,
+    "must_contain_chicago_or_suburb_or_il": true,
+    "exclude_global_hashtags": true,
+    "double_validation_rule": [
+      "hashtag is likely to be used by a real local person, bride, mom, skincare enthusiast, beauty buyer, fitness/wellness user, or Chicago-area lifestyle account",
+      "hashtag points specifically to Chicago, Illinois, a Chicago neighborhood, a nearby suburb, or a Chicago-area life-event community"
+    ]
+  },
+  "categories": [
+    {
+      "id": "brides",
+      "label": "Brides / Wedding Prep",
+      "hashtags": [
+        {
+          "tag": "#ChicagoBrides",
+          "why": "Local brides in Chicago; strong fit for pre-wedding facials, Botox, fillers, body contouring, and glow-up packages"
+        },
+        {
+          "tag": "#ChicagoBride",
+          "why": "Single-person bride intent; useful for finding individuals rather than only vendors"
+        },
+        {
+          "tag": "#ChicagoBrideToBe",
+          "why": "Bride with an upcoming wedding; high intent for beauty preparation"
+        },
+        {
+          "tag": "#ChicagoWedding",
+          "why": "Chicago wedding content; good discovery source for brides, bridal parties, and local event activity"
+        },
+        {
+          "tag": "#ChicagoWeddings",
+          "why": "Local wedding community; useful for identifying brides, bridesmaids, and engagement-related posts"
+        },
+        {
+          "tag": "#ChicagoWeddingPlanning",
+          "why": "Planning-stage audience; good timing for spa packages before the event date"
+        },
+        {
+          "tag": "#ChicagoEngaged",
+          "why": "Recently engaged Chicago users; early-stage prospecting for longer treatment timelines"
+        },
+        {
+          "tag": "#ChicagoEngagement",
+          "why": "Engagement posts in Chicago; useful for identifying future brides before they search for beauty services"
+        },
+        {
+          "tag": "#ChicagoBridalShower",
+          "why": "Local bridal shower activity; good signal for women preparing for wedding-related events"
+        },
+        {
+          "tag": "#ChicagoBachelorette",
+          "why": "Bachelorette-related posts in Chicago; useful for group spa and beauty prep opportunities"
+        },
+        {
+          "tag": "#IllinoisBrides",
+          "why": "Illinois brides close enough to travel to Chicago for med spa or spa services"
+        },
+        {
+          "tag": "#IllinoisWedding",
+          "why": "Broader Illinois wedding intent while still keeping geographic relevance"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#BrideToBe",
+          "reason": "Global; too broad and not Chicago-specific"
+        },
+        {
+          "tag": "#WeddingPlanning",
+          "reason": "Global; attracts vendors and users outside the service area"
+        },
+        {
+          "tag": "#WeddingInspo",
+          "reason": "Global; weak local buyer intent"
+        },
+        {
+          "tag": "#BridalBeauty",
+          "reason": "Global; no Chicago filter"
+        },
+        {
+          "tag": "#WeddingDay",
+          "reason": "Global; usually too late for treatment prospecting"
+        }
+      ]
+    },
+    {
+      "id": "postpartum",
+      "label": "Moms / Self-Care",
+      "hashtags": [
+        {
+          "tag": "#ChicagoMoms",
+          "why": "Large local mom community; strong audience for self-care, facials, wellness, and non-invasive treatments"
+        },
+        {
+          "tag": "#ChicagoMom",
+          "why": "Individual local mom signal; useful for finding personal accounts"
+        },
+        {
+          "tag": "#ChicagoMomLife",
+          "why": "Lifestyle posts from Chicago moms; good fit for soft self-care outreach"
+        },
+        {
+          "tag": "#ChicagoNewMom",
+          "why": "New moms in Chicago; useful for self-care and recovery-focused messaging without sensitive claims"
+        },
+        {
+          "tag": "#NewMomChicago",
+          "why": "Variant used by local new moms; keeps the discovery geo-specific"
+        },
+        {
+          "tag": "#ChicagoWorkingMoms",
+          "why": "Busy professional moms; good audience for quick treatments and maintenance services"
+        },
+        {
+          "tag": "#ChicagoParenting",
+          "why": "Local parenting community; useful for finding real residents and family lifestyle accounts"
+        },
+        {
+          "tag": "#ChicagoFamilyLife",
+          "why": "Chicago family lifestyle posts; good for broad local discovery"
+        },
+        {
+          "tag": "#ChicagoSelfCare",
+          "why": "Direct self-care intent in Chicago; strong spa relevance"
+        },
+        {
+          "tag": "#ChicagoWellness",
+          "why": "Local wellness audience; good fit for facial, skin, and body treatment prospects"
+        },
+        {
+          "tag": "#ChicagoWomen",
+          "why": "Broad local female audience; useful as a top-of-funnel prospecting hashtag"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#MomLife",
+          "reason": "Global; no city filter"
+        },
+        {
+          "tag": "#Postpartum",
+          "reason": "Global and potentially sensitive; not ideal for cold prospecting"
+        },
+        {
+          "tag": "#NewMom",
+          "reason": "Global; weak local targeting"
+        },
+        {
+          "tag": "#Motherhood",
+          "reason": "Global and too broad"
+        },
+        {
+          "tag": "#PostpartumBody",
+          "reason": "Sensitive body-image context; avoid using it for outreach discovery"
+        }
+      ]
+    },
+    {
+      "id": "weightloss",
+      "label": "Fitness / Body Goals",
+      "hashtags": [
+        {
+          "tag": "#ChicagoWeightLoss",
+          "why": "Local weight-loss journey content; relevant for body contouring and wellness-focused spa services"
+        },
+        {
+          "tag": "#WeightLossChicago",
+          "why": "Search-order variant for Chicago weight-loss prospects"
+        },
+        {
+          "tag": "#ChicagoFitness",
+          "why": "Large local fitness audience; useful for finding body-conscious prospects"
+        },
+        {
+          "tag": "#ChicagoFitnessWomen",
+          "why": "Local women-focused fitness audience; better fit for spa and body treatments"
+        },
+        {
+          "tag": "#ChicagoFitnessJourney",
+          "why": "Personal progress posts from Chicago users; stronger prospect signal than generic fitness tags"
+        },
+        {
+          "tag": "#ChicagoWellness",
+          "why": "Local wellness users; good overlap with non-invasive treatments and self-care"
+        },
+        {
+          "tag": "#ChicagoHealthyLiving",
+          "why": "Health-conscious local audience; useful for softer body and wellness messaging"
+        },
+        {
+          "tag": "#HealthyLivingChicago",
+          "why": "Variant for local healthy lifestyle discovery"
+        },
+        {
+          "tag": "#ChicagoGlowUp",
+          "why": "Transformation-focused local audience; strong fit for beauty and body-service prospecting"
+        },
+        {
+          "tag": "#GlowUpChicago",
+          "why": "Variant with local glow-up intent"
+        },
+        {
+          "tag": "#ChicagoGymLife",
+          "why": "Local gym lifestyle posts; useful for finding residents interested in body goals"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#WeightLossJourney",
+          "reason": "Global and can be sensitive; no Chicago targeting"
+        },
+        {
+          "tag": "#FitnessMotivation",
+          "reason": "Global; too broad for local prospecting"
+        },
+        {
+          "tag": "#BodyTransformation",
+          "reason": "Global and may attract sensitive body-image posts"
+        },
+        {
+          "tag": "#BeforeAndAfterWeightLoss",
+          "reason": "Often sensitive and not geo-specific"
+        },
+        {
+          "tag": "#FatLoss",
+          "reason": "Global and too aggressive for compliant spa outreach"
+        }
+      ]
+    },
+    {
+      "id": "skincare",
+      "label": "Skincare / Facial Interest",
+      "hashtags": [
+        {
+          "tag": "#ChicagoSkincare",
+          "why": "Direct local skincare interest; strong fit for facials, peels, microneedling, and maintenance treatments"
+        },
+        {
+          "tag": "#SkincareChicago",
+          "why": "Search-order variant for local skincare discovery"
+        },
+        {
+          "tag": "#ChicagoSkinCare",
+          "why": "Alternate capitalization-style variant often used in beauty content"
+        },
+        {
+          "tag": "#ChicagoFacials",
+          "why": "Direct local facial-treatment intent"
+        },
+        {
+          "tag": "#FacialsChicago",
+          "why": "Variant for facial service discovery in Chicago"
+        },
+        {
+          "tag": "#ChicagoFacial",
+          "why": "Singular variant that may catch individual facial-related posts"
+        },
+        {
+          "tag": "#ChicagoGlow",
+          "why": "Beauty outcome signal; useful for finding users interested in radiant skin"
+        },
+        {
+          "tag": "#ChicagoBeauty",
+          "why": "Broad local beauty audience; useful for top-of-funnel discovery"
+        },
+        {
+          "tag": "#ChicagoBeautyCommunity",
+          "why": "Local beauty-focused audience; useful for finding beauty buyers and enthusiasts"
+        },
+        {
+          "tag": "#ChicagoBeautyBlogger",
+          "why": "Local beauty content creators; useful for partnerships, UGC, and high-visibility prospects"
+        },
+        {
+          "tag": "#ChicagoDermaplaning",
+          "why": "Specific skincare-service interest with local targeting"
+        },
+        {
+          "tag": "#ChicagoChemicalPeel",
+          "why": "Specific treatment interest; good for higher-intent skincare discovery"
+        },
+        {
+          "tag": "#ChicagoMicroneedling",
+          "why": "High-intent local skincare treatment hashtag"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Skincare",
+          "reason": "Global; no Chicago filter"
+        },
+        {
+          "tag": "#SkinCareRoutine",
+          "reason": "Global; attracts users outside the service area"
+        },
+        {
+          "tag": "#FacialTreatment",
+          "reason": "Global and often provider-heavy"
+        },
+        {
+          "tag": "#Microneedling",
+          "reason": "Global; no local signal"
+        },
+        {
+          "tag": "#ChemicalPeel",
+          "reason": "Global; no Chicago targeting"
+        }
+      ]
+    },
+    {
+      "id": "injectables",
+      "label": "Botox / Fillers Interest",
+      "hashtags": [
+        {
+          "tag": "#ChicagoBotox",
+          "why": "Direct local Botox intent; strongest discovery tag for injectable prospects"
+        },
+        {
+          "tag": "#BotoxChicago",
+          "why": "Search-order variant for Chicago Botox discovery"
+        },
+        {
+          "tag": "#ChicagoFillers",
+          "why": "Direct local dermal filler intent"
+        },
+        {
+          "tag": "#FillersChicago",
+          "why": "Search-order variant for local filler prospects"
+        },
+        {
+          "tag": "#ChicagoLipFiller",
+          "why": "Specific local lip filler intent; strong buyer signal"
+        },
+        {
+          "tag": "#LipFillerChicago",
+          "why": "Variant for users looking at lip filler in Chicago"
+        },
+        {
+          "tag": "#ChicagoLipFillers",
+          "why": "Plural variant for local lip filler discovery"
+        },
+        {
+          "tag": "#LipFillersChicago",
+          "why": "Plural search-order variant"
+        },
+        {
+          "tag": "#ChicagoJuvederm",
+          "why": "Brand-aware filler interest in Chicago"
+        },
+        {
+          "tag": "#JuvedermChicago",
+          "why": "Brand search-order variant for local injectable prospects"
+        },
+        {
+          "tag": "#ChicagoAntiAging",
+          "why": "Local anti-aging audience; relevant for Botox, fillers, facials, and skin treatments"
+        },
+        {
+          "tag": "#AntiAgingChicago",
+          "why": "Variant for local anti-aging discovery"
+        },
+        {
+          "tag": "#ChicagoAesthetics",
+          "why": "Local aesthetic-treatment audience; useful but should be filtered because providers also use it"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Botox",
+          "reason": "Global; no Chicago filter"
+        },
+        {
+          "tag": "#Fillers",
+          "reason": "Global; no city targeting"
+        },
+        {
+          "tag": "#LipFiller",
+          "reason": "Global; too broad"
+        },
+        {
+          "tag": "#Injectables",
+          "reason": "Global and provider-heavy"
+        },
+        {
+          "tag": "#MedSpa",
+          "reason": "Global and mostly competitor/provider content"
+        }
+      ]
+    },
+    {
+      "id": "latina",
+      "label": "Chicago Local Lifestyle / Neighborhoods",
+      "hashtags": [
+        {
+          "tag": "#ChicagoLifestyle",
+          "why": "Broad local lifestyle signal; useful for finding real Chicago residents"
+        },
+        {
+          "tag": "#ChicagoLife",
+          "why": "Local resident and lifestyle content; good top-of-funnel discovery"
+        },
+        {
+          "tag": "#ChicagoWomen",
+          "why": "Broad local female audience; relevant for spa, skincare, and aesthetic services"
+        },
+        {
+          "tag": "#WomenOfChicago",
+          "why": "Local women-focused discovery without relying on Spanish-language tags"
+        },
+        {
+          "tag": "#ChicagoGirls",
+          "why": "Local lifestyle content from women in Chicago; useful for soft beauty prospecting"
+        },
+        {
+          "tag": "#ChicagoGirl",
+          "why": "Individual local lifestyle signal"
+        },
+        {
+          "tag": "#RiverNorthChicago",
+          "why": "High-income Chicago neighborhood tag; useful for discovering local lifestyle and beauty prospects"
+        },
+        {
+          "tag": "#WestLoopChicago",
+          "why": "Popular Chicago neighborhood with strong lifestyle and dining activity"
+        },
+        {
+          "tag": "#LincolnParkChicago",
+          "why": "Local neighborhood tag; useful for residents close to premium spa services"
+        },
+        {
+          "tag": "#LakeviewChicago",
+          "why": "Neighborhood-based discovery for Chicago residents"
+        },
+        {
+          "tag": "#GoldCoastChicago",
+          "why": "Premium neighborhood audience; relevant for aesthetic and anti-aging services"
+        },
+        {
+          "tag": "#WickerParkChicago",
+          "why": "Lifestyle-heavy neighborhood tag; useful for beauty and self-care prospects"
+        },
+        {
+          "tag": "#LoganSquareChicago",
+          "why": "Local neighborhood community tag; useful for real resident discovery"
+        },
+        {
+          "tag": "#SouthLoopChicago",
+          "why": "Neighborhood-based discovery close to downtown Chicago"
+        },
+        {
+          "tag": "#NapervilleIL",
+          "why": "Nearby affluent suburb; useful for prospects willing to travel for spa services"
+        },
+        {
+          "tag": "#OakBrookIL",
+          "why": "Nearby premium suburb; relevant for higher-ticket aesthetic services"
+        },
+        {
+          "tag": "#EvanstonIL",
+          "why": "Nearby suburb with local lifestyle activity and Chicago access"
+        },
+        {
+          "tag": "#SchaumburgIL",
+          "why": "Nearby suburb with strong local audience and service-area relevance"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#LatinaBeauty",
+          "reason": "Global; not Chicago-specific and not fully English-focused"
+        },
+        {
+          "tag": "#MujeresLatinas",
+          "reason": "Spanish-language and global; does not match the English-only requirement"
+        },
+        {
+          "tag": "#Hispanas",
+          "reason": "Spanish-language and not geo-specific"
+        },
+        {
+          "tag": "#BellezaLatina",
+          "reason": "Spanish-language and no local Chicago filter"
+        },
+        {
+          "tag": "#LatinaMakeup",
+          "reason": "Global; weak local buyer signal"
+        }
+      ]
+    },
+    {
+      "id": "laser_skin_tightening",
+      "label": "Laser Hair Removal / Skin Tightening",
+      "hashtags": [
+        {
+          "tag": "#ChicagoLaserHairRemoval",
+          "why": "Direct local laser hair removal intent; high relevance for spa prospecting"
+        },
+        {
+          "tag": "#LaserHairRemovalChicago",
+          "why": "Search-order variant for local laser hair removal prospects"
+        },
+        {
+          "tag": "#ChicagoHairRemoval",
+          "why": "Broader local hair removal intent"
+        },
+        {
+          "tag": "#HairRemovalChicago",
+          "why": "Variant for local hair removal discovery"
+        },
+        {
+          "tag": "#ChicagoSmoothSkin",
+          "why": "Outcome-focused local beauty tag; useful for laser and skincare audiences"
+        },
+        {
+          "tag": "#SmoothSkinChicago",
+          "why": "Variant for smooth-skin interest in Chicago"
+        },
+        {
+          "tag": "#ChicagoSkinTightening",
+          "why": "Direct local skin-tightening treatment intent"
+        },
+        {
+          "tag": "#SkinTighteningChicago",
+          "why": "Search-order variant for skin-tightening prospects"
+        },
+        {
+          "tag": "#ChicagoBodyContouring",
+          "why": "Direct body contouring interest in Chicago; useful for higher-ticket treatment discovery"
+        },
+        {
+          "tag": "#BodyContouringChicago",
+          "why": "Variant for local body contouring prospects"
+        },
+        {
+          "tag": "#ChicagoPRP",
+          "why": "Local PRP interest; relevant for advanced skin and wellness treatments"
+        },
+        {
+          "tag": "#PRPChicago",
+          "why": "Search-order variant for PRP-related discovery"
+        },
+        {
+          "tag": "#ChicagoNonSurgical",
+          "why": "Local non-surgical treatment interest; relevant for body and skin services"
+        },
+        {
+          "tag": "#NonSurgicalChicago",
+          "why": "Variant for users researching non-surgical treatments in Chicago"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#LaserHairRemoval",
+          "reason": "Global; no Chicago filter"
+        },
+        {
+          "tag": "#SmoothSkin",
+          "reason": "Global; too broad"
+        },
+        {
+          "tag": "#SkinTightening",
+          "reason": "Global; no local signal"
+        },
+        {
+          "tag": "#PRP",
+          "reason": "Global; too broad and provider-heavy"
+        },
+        {
+          "tag": "#NonSurgical",
+          "reason": "Global and ambiguous"
+        }
+      ]
+    }
+  ]
+}

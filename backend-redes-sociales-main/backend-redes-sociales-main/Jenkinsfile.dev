@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'backend-redes-app-dev'
+        CONTAINER_NAME = 'my-backend-app-dev'
+        REDIS_URL = 'redis://127.0.0.1:6379/0'
+    }
+
+    stages {
+        stage('Construir') {
+            steps {
+                sh 'docker build -f Dockerfile.dev -t $IMAGE_NAME .'
+            }
+        }
+
+        stage('Desplegar') {
+            steps {
+                sh 'docker stop $CONTAINER_NAME || true'
+                sh 'docker rm $CONTAINER_NAME || true'
+                sh '''
+                docker run -d --restart=always \
+                  --name $CONTAINER_NAME \
+                  --env-file .env \
+                  -e REDIS_URL=$REDIS_URL \
+                  -p 8002:8002 \
+                  $IMAGE_NAME
+                '''
+            }
+        }
+    }
+}

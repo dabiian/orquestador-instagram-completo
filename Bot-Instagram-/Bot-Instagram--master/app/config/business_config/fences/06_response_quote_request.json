@@ -1,0 +1,192 @@
+{
+  "trigger_keywords": [
+    "how much",
+    "quote",
+    "quotation",
+    "estimate",
+    "price",
+    "pricing",
+    "cost",
+    "rates",
+    "rate",
+    "charge",
+    "fee",
+    "affordable",
+    "budget",
+    "free estimate",
+    "fence quote",
+    "fencing quote",
+    "linear feet",
+    "linear foot",
+    "install price",
+    "repair price",
+    "gate price"
+  ],
+  "trigger_examples": [
+    {
+      "word": "how much",
+      "example": "'How much do you charge for a fence?'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can we get a fence quote?'"
+    },
+    {
+      "word": "quotation",
+      "example": "'Send us a quotation for the gate'"
+    },
+    {
+      "word": "estimate",
+      "example": "'Can you give us an estimate?'"
+    },
+    {
+      "word": "price",
+      "example": "'What's your price for wood fence?'"
+    },
+    {
+      "word": "pricing",
+      "example": "'What's your fencing pricing?'"
+    },
+    {
+      "word": "cost",
+      "example": "'What does a vinyl fence cost?'"
+    },
+    {
+      "word": "rates",
+      "example": "'What are your rates?'"
+    },
+    {
+      "word": "rate",
+      "example": "'What's your rate per linear foot?'"
+    },
+    {
+      "word": "charge",
+      "example": "'How much do you charge to install?'"
+    },
+    {
+      "word": "fee",
+      "example": "'What's your fee for measuring?'"
+    },
+    {
+      "word": "affordable",
+      "example": "'Are you affordable?'"
+    },
+    {
+      "word": "budget",
+      "example": "'Can this fit our budget?'"
+    },
+    {
+      "word": "free estimate",
+      "example": "'Do you do free estimates?'"
+    },
+    {
+      "word": "fence quote",
+      "example": "'Need a fence quote'"
+    },
+    {
+      "word": "linear feet",
+      "example": "'Price for 120 linear feet?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#1877F2",
+      "topic": "Type of fencing job",
+      "question": "What type of fencing job do you need?",
+      "options": [
+        "New fence installation",
+        "Fence repair",
+        "Gate installation / gate repair",
+        "Full fence replacement"
+      ],
+      "why": "Determines the base scope — new install, repair, gate work, and full replacement are priced differently"
+    },
+    {
+      "number": "Q2",
+      "color": "#42b883",
+      "topic": "Linear footage / project size",
+      "question": "About how many linear feet do you need? If you don't know, do you need us to measure?",
+      "options": [
+        "I have approximate linear footage",
+        "I don't know — I need measurement",
+        "Large project (HOA / commercial / industrial)"
+      ],
+      "why": "Primary pricing factor for fencing — material, labor, posts, and gates depend heavily on linear footage"
+    },
+    {
+      "number": "Q3",
+      "color": "#f5a623",
+      "topic": "Date & urgency",
+      "question": "When do you need it done? Do you have a specific deadline or is it flexible?",
+      "options": null,
+      "why": "Urgent installs, inspection deadlines, pool safety, tenant turnover, or listing dates can affect scheduling"
+    },
+    {
+      "number": "Q4",
+      "color": "#9b59b6",
+      "topic": "Existing fence / material",
+      "question": "Is there an existing fence, or are we starting from scratch? Do you already know the material you want?",
+      "options": [
+        "New install — no fence currently",
+        "Replacing old fence",
+        "Repairing damaged section",
+        "Not sure about material yet"
+      ],
+      "why": "Existing fence removal, repair complexity, and material choice affect the final quote"
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard quote request",
+      "trigger": "They ask for price, quote, estimate, or how much",
+      "recommended": true,
+      "comment": "Happy to get you a quote! Quick questions:\n\n1️⃣ What type of job? (new install, repair, gate, replacement)\n2️⃣ Roughly how many linear feet? (or we can measure)\n3️⃣ When do you need it?\n4️⃣ Is there an existing fence or are we starting from scratch?\n\nOnce we have that, we'll get you an exact number fast!",
+      "notes": [
+        "Casual opener — 'Happy to' not overly formal",
+        "4 questions in one comment — numbered for easy reading on mobile",
+        "Linear footage is the key pricing factor for fences",
+        "Asks whether there is an existing fence to account for removal or repair",
+        "No prices given publicly — avoids competitors seeing rates"
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "When they just say 'how much?' with no context",
+      "trigger": "Very short reply — just 'how much?' or 'what's your price?'",
+      "recommended": false,
+      "comment": "Depends on the fence job! Quick question — is it a new install, repair, gate, or replacement, and about how many linear feet?",
+      "notes": [
+        "Matches their brevity — they were short, bot is short",
+        "Two questions only — job type and linear footage are the minimum to estimate",
+        "Does not give a public price without scope"
+      ]
+    },
+    {
+      "id": "Q-URGENT",
+      "label": "When they signal urgency",
+      "trigger": "Reply contains 'ASAP', 'urgent', 'today', 'tomorrow', 'last minute', 'deadline'",
+      "recommended": false,
+      "comment": "We can help with urgent fence jobs around Chicago. What type of job is it and roughly how many linear feet? We'll check availability and get you a quote fast 🛠️",
+      "notes": [
+        "Matches urgency without overpromising",
+        "Only asks 2 questions because urgent leads need a shorter path",
+        "Availability matters for fence installs and repairs",
+        "Triggers URGENT flag in alert to the human closer"
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "QUOTE",
+    "quote_alert_after_min_answers": [
+      "Q1",
+      "Q2"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_via_dm": true,
+    "dm_quote_template_manual": true
+  }
+}

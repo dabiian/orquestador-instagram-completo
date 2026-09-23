@@ -1,0 +1,252 @@
+{
+  "trigger_keywords": [
+    "how much",
+    "quote",
+    "quotation",
+    "estimate",
+    "price",
+    "pricing",
+    "cost",
+    "rates",
+    "rate",
+    "charge",
+    "fee",
+    "affordable",
+    "budget",
+    "precio",
+    "cuanto cuesta",
+    "cuánto cuesta",
+    "cotización",
+    "estimado",
+    "tarifa",
+    "costo",
+    "honorarios",
+    "valor",
+    "valoración",
+    "valoracion",
+    "precio botox",
+    "precio hilos",
+    "cuánto vale",
+    "cuanto vale",
+    "procedimiento",
+    "paquete"
+  ],
+  "trigger_examples": [
+    {
+      "word": "how much",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can I get a quote?'"
+    },
+    {
+      "word": "quotation",
+      "example": "'Send me a quotation'"
+    },
+    {
+      "word": "estimate",
+      "example": "'Can you give me an estimate?'"
+    },
+    {
+      "word": "price",
+      "example": "'What's the price?'"
+    },
+    {
+      "word": "pricing",
+      "example": "'What's your pricing?'"
+    },
+    {
+      "word": "cost",
+      "example": "'What does it cost?'"
+    },
+    {
+      "word": "rates",
+      "example": "'What are your rates?'"
+    },
+    {
+      "word": "rate",
+      "example": "'What's your rate?'"
+    },
+    {
+      "word": "charge",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "fee",
+      "example": "'What's the fee?'"
+    },
+    {
+      "word": "affordable",
+      "example": "'Is it affordable?'"
+    },
+    {
+      "word": "budget",
+      "example": "'Do you work with my budget?'"
+    },
+    {
+      "word": "precio",
+      "example": "'¿Cuál es el precio?'"
+    },
+    {
+      "word": "cuanto cuesta",
+      "example": "'¿Cuanto cuesta?'"
+    },
+    {
+      "word": "cuánto cuesta",
+      "example": "'¿Cuánto cuesta?'"
+    },
+    {
+      "word": "cotización",
+      "example": "'¿Me das una cotización?'"
+    },
+    {
+      "word": "estimado",
+      "example": "'¿Me das un estimado?'"
+    },
+    {
+      "word": "tarifa",
+      "example": "'¿Cuál es la tarifa?'"
+    },
+    {
+      "word": "costo",
+      "example": "'¿Cuál es el costo?'"
+    },
+    {
+      "word": "honorarios",
+      "example": "'¿Cuáles son los honorarios?'"
+    },
+    {
+      "word": "valor",
+      "example": "'¿Qué valor tiene?'"
+    },
+    {
+      "word": "precio botox",
+      "example": "'¿Precio del Botox?'"
+    },
+    {
+      "word": "precio hilos",
+      "example": "'¿Cuánto cuestan los hilos PDO?'"
+    },
+    {
+      "word": "cuánto vale",
+      "example": "'¿Cuánto vale la valoración?'"
+    },
+    {
+      "word": "procedimiento",
+      "example": "'¿Cuánto cuesta ese procedimiento?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#c8965a",
+      "topic": "Procedimiento de interés",
+      "question": "¿Qué procedimiento te interesa?",
+      "options": [
+        "Botox / toxina botulínica",
+        "Ácido hialurónico / rellenos",
+        "Hilos PDO",
+        "Endolifting facial",
+        "Blefaroplastia / párpados",
+        "Foxy Eyes",
+        "Rinomodelación / nariz",
+        "Alectomía nasal",
+        "Otoplastia / orejas",
+        "No sé — quiero una valoración"
+      ],
+      "why": "Determina la ruta de valoración sin dar precio público."
+    },
+    {
+      "number": "Q2",
+      "color": "#d4679e",
+      "topic": "Zona a tratar",
+      "question": "¿Qué zona quieres tratar?",
+      "options": [
+        "Frente / entrecejo",
+        "Ojos / párpados / ojeras",
+        "Nariz",
+        "Pómulos / mejillas",
+        "Labios",
+        "Cuello / papada",
+        "Varias zonas",
+        "No sé"
+      ],
+      "why": "Ayuda a la doctora a orientar la valoración."
+    },
+    {
+      "number": "Q3",
+      "color": "#f5a623",
+      "topic": "Fecha estimada",
+      "question": "¿Para cuándo te gustaría hacer el procedimiento? ¿Tienes un evento próximo?",
+      "options": null,
+      "why": "La fecha importa para bodas, viajes, grados y tiempos de recuperación/resultado."
+    },
+    {
+      "number": "Q4",
+      "color": "#9b59b6",
+      "topic": "Motivación / urgencia",
+      "question": "¿Cuál es tu motivación principal?",
+      "options": [
+        "Tengo evento próximo",
+        "Sin fecha específica — quiero explorar",
+        "Lo antes posible",
+        "Primera vez — solo quiero informarme"
+      ],
+      "why": "Permite priorizar y ajustar el tono del seguimiento humano."
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard valuation request",
+      "trigger": "They ask for price, quote, procedure cost, valuation, package, or how much",
+      "recommended": true,
+      "comment": "¡Con gusto te orientamos! ✨ El precio depende del procedimiento y de la valoración, así que primero necesitamos unos datos rápidos:\n\n1️⃣ ¿Qué procedimiento te interesa? (Botox, hilos PDO, endolifting, rellenos, foxy eyes, párpados, nariz...)\n2️⃣ ¿Qué zona quieres tratar?\n3️⃣ ¿Tienes una fecha o evento próximo?\n4️⃣ ¿Es tu primera vez con medicina estética?\n\nCon eso la Dra. Deysi Torres te guía en una valoración gratuita.",
+      "notes": [
+        "No da precios públicamente",
+        "Recolecta datos mínimos",
+        "Termina en valoración gratuita",
+        "No diagnostica"
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "When they just say 'precio?'",
+      "trigger": "Very short reply — 'precio?', 'cuánto vale?', 'costo?'",
+      "recommended": false,
+      "comment": "Depende del procedimiento y la zona ✨ La valoración con la Dra. Deysi Torres es gratuita. ¿Te interesa Botox, hilos PDO, rellenos, endolifting o aún no sabes cuál?",
+      "notes": [
+        "Breve",
+        "No precio público",
+        "Pregunta Q1 mínima",
+        "Valoración gratuita"
+      ]
+    },
+    {
+      "id": "Q-URGENT",
+      "label": "When they signal event urgency",
+      "trigger": "Reply contains 'boda', 'viaje', 'grado', 'evento', 'urgente', 'lo antes posible'",
+      "recommended": false,
+      "comment": "Perfecto, si tienes evento próximo hay que revisar tiempos ✨ ¿Qué procedimiento o zona te interesa y para qué fecha lo necesitas? La Dra. Deysi Torres puede orientarte en valoración gratuita.",
+      "notes": [
+        "Activa contexto de fecha",
+        "Pregunta tratamiento + timing",
+        "No promete resultados",
+        "Activa alerta URGENT"
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "QUOTE",
+    "quote_alert_after_min_answers": [
+      "Q1",
+      "Q2"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_via_dm": true,
+    "dm_quote_template_manual": true
+  }
+}

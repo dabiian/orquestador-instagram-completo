@@ -1,0 +1,113 @@
+{
+  "trigger_keywords": [
+    "info",
+    "información",
+    "mas info",
+    "más info",
+    "datos",
+    "contacto",
+    "contactar",
+    "telefono",
+    "teléfono",
+    "numero",
+    "número",
+    "whatsapp",
+    "dirección",
+    "ubicación",
+    "horario",
+    "website",
+    "pagina",
+    "página",
+    "facebook",
+    "instagram",
+    "como funciona",
+    "cómo funciona",
+    "dm",
+    "inbox",
+    "mensaje",
+    "me interesa",
+    "interesada",
+    "interesado",
+    "send info",
+    "contact",
+    "phone",
+    "number",
+    "details",
+    "website"
+  ],
+  "trigger_examples": [
+    {
+      "word": "información",
+      "example": "'Me puedes dar información?'"
+    },
+    {
+      "word": "whatsapp",
+      "example": "'Tienen WhatsApp?'"
+    },
+    {
+      "word": "teléfono",
+      "example": "'Cuál es el teléfono?'"
+    },
+    {
+      "word": "dirección",
+      "example": "'Dónde están ubicados?'"
+    },
+    {
+      "word": "horario",
+      "example": "'Qué horario manejan?'"
+    },
+    {
+      "word": "me interesa",
+      "example": "'Me interesa una consulta'"
+    },
+    {
+      "word": "DM",
+      "example": "'Mándame DM'"
+    }
+  ],
+  "public_reply_templates": [
+    {
+      "id": "D1",
+      "label": "Standard — piden datos generales",
+      "trigger": "Piden información, contacto, WhatsApp, web u horario",
+      "recommended": true,
+      "template": "Claro, con gusto 🔮\n\n📞 Tel: [CAMPAIGN PHONE NUMBER]\n💬 WhatsApp: [CAMPAIGN WHATSAPP]\n🌐 [CAMPAIGN URL]\n📘 Facebook: [CAMPAIGN FACEBOOK]\n\nPara consultas personales es mejor escribir por privado o WhatsApp.",
+      "notes": [
+        "Da datos sin presión.",
+        "Mueve casos personales a canal privado.",
+        "No promete resultados."
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "Short — respuesta corta positiva",
+      "trigger": "Dicen 'me interesa', 'info', 'quiero saber'",
+      "recommended": false,
+      "template": "Claro, escríbenos por WhatsApp al [CAMPAIGN WHATSAPP] y te orientamos con privacidad según lo que necesites 🔮",
+      "notes": [
+        "Útil cuando la respuesta del prospecto fue corta.",
+        "Evita llenar el hilo público."
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "When they ask for DM",
+      "trigger": "Piden mensaje privado o inbox",
+      "recommended": false,
+      "template": "Claro, te escribimos por privado. También puedes contactarnos por WhatsApp al [CAMPAIGN WHATSAPP] si prefieres atención más directa.",
+      "notes": [
+        "Confirma acción.",
+        "WhatsApp como backup."
+      ]
+    }
+  ],
+  "rules": {
+    "reply_in_same_comment_thread": true,
+    "alert_event_id": "DATA",
+    "public_reply_must_not_ask_private_case_details": true,
+    "dm_follow_up_only_for_template_ids": [
+      "D3"
+    ],
+    "whatsapp_preferred_for_private_consultation": true
+  }
+}

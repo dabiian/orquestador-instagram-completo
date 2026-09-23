@@ -1,0 +1,74 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+logs/
+screenshots/
+screenshots_click_errors/
+
+# Environment files
+.env
+*.env
+*.env.local
+
+# SQLite / local DB and caches
+.self_healer/*.db
+.self_healer/*.sqlite
+.self_healer/*.json
+.self_healer/cache/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.hypothesis/
+.dmypy.json
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+*.spec
+
+# IDEs / editors
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.cache/
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.Trashes
+Thumbs.db
+
+# Misc
+*.pyc
+.mypy_cache/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Temporary directories
+tmp/
+temp/
+

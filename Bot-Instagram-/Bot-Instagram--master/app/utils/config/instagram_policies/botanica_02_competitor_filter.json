@@ -1,0 +1,2027 @@
+{
+  "competitor_definition": {
+    "summary": "Para campañas de botánicas, un competidor no es solo quien vende servicios espirituales. También es cualquier perfil, página o comunidad que publique contenido místico/espiritual de forma recurrente y atraiga la misma audiencia: horóscopos, tarot, zodiacales, rituales, limpias, energías, signos, predicciones, astrología, brujería, santería o consejos espirituales.",
+    "block_even_without_explicit_sales": true,
+    "reason": "Las páginas de contenido espiritual/místico compiten por la misma atención, comunidad y conversación aunque no tengan CTA comercial visible.",
+    "safe_only_if": "Solo considerar seguro cuando el perfil sea una persona normal expresando un problema personal o buscando ayuda, sin nombre temático, sin contenido recurrente y sin señales de página espiritual."
+  },
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#e74c3c",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Si el nombre contiene palabras claras de botánica, hierbería/yerbería, maestro/maestra espiritual, vidente, astrólogo, tarotista, horóscopos, tienda esotérica o proveedor de contenido/servicios espirituales, se considera competencia confirmada.",
+      "logic": "BLOQUEO AUTOMÁTICO cuando el nombre tenga señal espiritual/mística clara. Para esta campaña, 'botánica', 'hierbería', 'yerbería', 'maestro', 'maestra', 'vidente', 'astrólogo/astróloga', 'tarot', 'horóscopos' y equivalentes bloquean de una.",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "botanica",
+          "example": "Botanica La Fe"
+        },
+        {
+          "word": "botánica",
+          "example": "Botánica Espiritual"
+        },
+        {
+          "word": "botanica espiritual",
+          "example": "Botanica Espiritual San Miguel"
+        },
+        {
+          "word": "botánica espiritual",
+          "example": "Botánica Espiritual La Esperanza"
+        },
+        {
+          "word": "tarot",
+          "example": "Tarot de Ana"
+        },
+        {
+          "word": "tarotista",
+          "example": "Tarotista María"
+        },
+        {
+          "word": "cartas",
+          "example": "Lectura de Cartas"
+        },
+        {
+          "word": "lectura de cartas",
+          "example": "Lectura de Cartas y Tarot"
+        },
+        {
+          "word": "oraculo",
+          "example": "Oraculo Diario"
+        },
+        {
+          "word": "oráculo",
+          "example": "Oráculo Espiritual"
+        },
+        {
+          "word": "vidente",
+          "example": "Vidente Espiritual"
+        },
+        {
+          "word": "videncia",
+          "example": "Videncia y Tarot"
+        },
+        {
+          "word": "predicciones",
+          "example": "Predicciones Diarias"
+        },
+        {
+          "word": "prediccion",
+          "example": "Prediccion Espiritual"
+        },
+        {
+          "word": "predicción",
+          "example": "Predicción Espiritual"
+        },
+        {
+          "word": "horoscopo",
+          "example": "Horoscopo Diario"
+        },
+        {
+          "word": "horóscopo",
+          "example": "Horóscopo Diario"
+        },
+        {
+          "word": "horoscopos",
+          "example": "Horoscopos Diarios"
+        },
+        {
+          "word": "horóscopos",
+          "example": "Horóscopos Diarios"
+        },
+        {
+          "word": "zodiaco",
+          "example": "Zodiaco Diario"
+        },
+        {
+          "word": "zodiacal",
+          "example": "Guía Zodiacal"
+        },
+        {
+          "word": "signos zodiacales",
+          "example": "Signos Zodiacales Hoy"
+        },
+        {
+          "word": "astrologia",
+          "example": "Astrologia y Tarot"
+        },
+        {
+          "word": "astrología",
+          "example": "Astrología Espiritual"
+        },
+        {
+          "word": "astrologo",
+          "example": "Astrologo Espiritual"
+        },
+        {
+          "word": "astrólogo",
+          "example": "Astrólogo Espiritual"
+        },
+        {
+          "word": "astrologa",
+          "example": "Astrologa Espiritual"
+        },
+        {
+          "word": "astróloga",
+          "example": "Astróloga Espiritual"
+        },
+        {
+          "word": "psychic",
+          "example": "Psychic Reader Chicago"
+        },
+        {
+          "word": "psychic reader",
+          "example": "Psychic Reader Chicago"
+        },
+        {
+          "word": "spiritual advisor",
+          "example": "Spiritual Advisor Chicago"
+        },
+        {
+          "word": "spiritual healer",
+          "example": "Spiritual Healer Services"
+        },
+        {
+          "word": "spiritual medium",
+          "example": "Spiritual Medium Maria"
+        },
+        {
+          "word": "psychic medium",
+          "example": "Psychic Medium Readings"
+        },
+        {
+          "word": "medium reader",
+          "example": "Medium Reader Online"
+        },
+        {
+          "word": "palm reader",
+          "example": "Palm Reader Chicago"
+        },
+        {
+          "word": "palmistry",
+          "example": "Palmistry Readings"
+        },
+        {
+          "word": "lectura de mano",
+          "example": "Lectura de Mano y Tarot"
+        },
+        {
+          "word": "brujo",
+          "example": "Brujo Mayor"
+        },
+        {
+          "word": "bruja",
+          "example": "Bruja Blanca"
+        },
+        {
+          "word": "brujeria",
+          "example": "Brujeria y Amarres"
+        },
+        {
+          "word": "brujería",
+          "example": "Centro de Brujería"
+        },
+        {
+          "word": "santero",
+          "example": "Santero Cubano"
+        },
+        {
+          "word": "santera",
+          "example": "Santera Espiritual"
+        },
+        {
+          "word": "santeria",
+          "example": "Santeria Chicago"
+        },
+        {
+          "word": "santería",
+          "example": "Casa de Santería"
+        },
+        {
+          "word": "esoterica",
+          "example": "Tienda Esoterica"
+        },
+        {
+          "word": "esotérica",
+          "example": "Botánica Esotérica"
+        },
+        {
+          "word": "esoterismo",
+          "example": "Esoterismo y Magia"
+        },
+        {
+          "word": "tienda esoterica",
+          "example": "Tienda Esoterica Luna"
+        },
+        {
+          "word": "tienda esotérica",
+          "example": "Tienda Esotérica San Judas"
+        },
+        {
+          "word": "centro espiritual",
+          "example": "Centro Espiritual de Ayuda"
+        },
+        {
+          "word": "consulta espiritual",
+          "example": "Consulta Espiritual Online"
+        },
+        {
+          "word": "consultas espirituales",
+          "example": "Consultas Espirituales por WhatsApp"
+        },
+        {
+          "word": "maestro espiritual",
+          "example": "Maestro Espiritual Carlos"
+        },
+        {
+          "word": "maestra espiritual",
+          "example": "Maestra Espiritual Rosa"
+        },
+        {
+          "word": "guia espiritual",
+          "example": "Guia Espiritual y Tarot"
+        },
+        {
+          "word": "guía espiritual",
+          "example": "Guía Espiritual y Limpias"
+        },
+        {
+          "word": "servicios espirituales",
+          "example": "Servicios Espirituales de Amor"
+        },
+        {
+          "word": "trabajos espirituales",
+          "example": "Trabajos Espirituales Garantizados"
+        },
+        {
+          "word": "hechizos",
+          "example": "Hechizos de Amor"
+        },
+        {
+          "word": "amarres",
+          "example": "Amarres Poderosos"
+        },
+        {
+          "word": "amarres de amor",
+          "example": "Amarres de Amor Chicago"
+        },
+        {
+          "word": "endulzamientos",
+          "example": "Endulzamientos de Amor"
+        },
+        {
+          "word": "curandero",
+          "example": "Curandero Espiritual"
+        },
+        {
+          "word": "curandera",
+          "example": "Curandera Espiritual"
+        },
+        {
+          "word": "spell caster",
+          "example": "Love Spell Caster"
+        },
+        {
+          "word": "spellcaster",
+          "example": "Powerful Spellcaster"
+        },
+        {
+          "word": "love spell caster",
+          "example": "Love Spell Caster USA"
+        },
+        {
+          "word": "rootworker",
+          "example": "Rootworker Spiritual Services"
+        },
+        {
+          "word": "hoodoo",
+          "example": "Hoodoo Spiritual Work"
+        },
+        {
+          "word": "voodoo",
+          "example": "Voodoo Love Spells"
+        },
+        {
+          "word": "wicca",
+          "example": "Wicca Spells and Readings"
+        },
+        {
+          "word": "metaphysical store",
+          "example": "Metaphysical Store Chicago"
+        },
+        {
+          "word": "candle shop",
+          "example": "Spiritual Candle Shop"
+        },
+        {
+          "word": "cartomancia",
+          "example": "Cartomancia y Tarot"
+        },
+        {
+          "word": "hierberia",
+          "example": "Hierberia Espiritual San Miguel"
+        },
+        {
+          "word": "hierbería",
+          "example": "Hierbería Espiritual San Miguel"
+        },
+        {
+          "word": "yerberia",
+          "example": "Yerberia La Fe"
+        },
+        {
+          "word": "yerbería",
+          "example": "Yerbería La Fe"
+        },
+        {
+          "word": "herberia",
+          "example": "Herberia Espiritual"
+        },
+        {
+          "word": "herbería",
+          "example": "Herbería Espiritual"
+        },
+        {
+          "word": "maestro",
+          "example": "Maestro Carlos"
+        },
+        {
+          "word": "maestra",
+          "example": "Maestra Rosa"
+        },
+        {
+          "word": "maestro vidente",
+          "example": "Maestro Vidente José"
+        },
+        {
+          "word": "maestra vidente",
+          "example": "Maestra Vidente María"
+        },
+        {
+          "word": "maestro tarotista",
+          "example": "Maestro Tarotista"
+        },
+        {
+          "word": "maestra tarotista",
+          "example": "Maestra Tarotista"
+        },
+        {
+          "word": "vidente espiritual",
+          "example": "Vidente Espiritual"
+        },
+        {
+          "word": "astrologo vidente",
+          "example": "Astrologo Vidente"
+        },
+        {
+          "word": "astrólogo vidente",
+          "example": "Astrólogo Vidente"
+        },
+        {
+          "word": "astrologa vidente",
+          "example": "Astrologa Vidente"
+        },
+        {
+          "word": "astróloga vidente",
+          "example": "Astróloga Vidente"
+        },
+        {
+          "word": "horoscopo diario",
+          "example": "Horoscopo Diario"
+        },
+        {
+          "word": "horóscopo diario",
+          "example": "Horóscopo Diario"
+        },
+        {
+          "word": "horoscopos diarios",
+          "example": "Horoscopos Diarios"
+        },
+        {
+          "word": "horóscopos diarios",
+          "example": "Horóscopos Diarios"
+        }
+      ],
+      "safe_single_terms": [
+        "amor",
+        "desamor",
+        "fe",
+        "energía",
+        "energia",
+        "sanación",
+        "sanacion"
+      ],
+      "note": "Buscar sin importar mayúsculas, acentos o variantes simples. En esta campaña, si el nombre trae botánica/hierbería/yerbería/maestro/maestra/vidente/astrólogo/tarot/horóscopos, se bloquea directo."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#e67e22",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Si la página tiene una categoría oficial claramente espiritual, mística, astrológica, vidente, tarotista, esotérica o de contenido espiritual, se bloquea de una. Las categorías amplias solo se revisan cuando no hay señales en nombre, bio o publicaciones.",
+      "logic": "Categorías claras como Astrólogo, Vidente, Astrologist & Psychic, Psychic, Tarot Reader o Spiritual Center → BLOQUEO INMEDIATO. Categorías amplias → REVISAR solo si no hay otras señales.",
+      "action": "hybrid",
+      "keywords": [
+        {
+          "word": "Astrologist & Psychic",
+          "example": "Categoría FB de proveedor espiritual"
+        },
+        {
+          "word": "Psychic",
+          "example": "Categoría FB de vidente/psíquico"
+        },
+        {
+          "word": "Tarot Reader",
+          "example": "Categoría FB de lector de tarot"
+        },
+        {
+          "word": "Spiritual Center",
+          "example": "Categoría FB de centro espiritual"
+        },
+        {
+          "word": "Astrologer",
+          "example": "Categoría FB de astrólogo"
+        },
+        {
+          "word": "Fortune Teller",
+          "example": "Categoría FB de adivinación"
+        },
+        {
+          "word": "Religious Bookstore",
+          "example": "Puede vender productos espirituales/esotéricos"
+        },
+        {
+          "word": "Metaphysical Supply Store",
+          "example": "Tienda metafísica o esotérica"
+        },
+        {
+          "word": "Religious Center",
+          "example": "Centro religioso/espiritual"
+        },
+        {
+          "word": "Alternative & Holistic Health Service",
+          "example": "Puede ser competencia espiritual"
+        },
+        {
+          "word": "Personal Blog",
+          "example": "Bloquear si el nombre/contenido es espiritual o místico"
+        },
+        {
+          "word": "Digital Creator",
+          "example": "Bloquear si el nombre/contenido es espiritual o místico"
+        },
+        {
+          "word": "Entertainment Website",
+          "example": "Bloquear si publica horóscopos/tarot/predicciones"
+        },
+        {
+          "word": "Astrólogo y vidente",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Astrologo y vidente",
+          "example": "Categoría FB sin acento"
+        },
+        {
+          "word": "Astróloga y vidente",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Astrologa y vidente",
+          "example": "Categoría FB sin acento"
+        },
+        {
+          "word": "Astrólogo",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Astrologo",
+          "example": "Categoría FB sin acento"
+        },
+        {
+          "word": "Astróloga",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Astrologa",
+          "example": "Categoría FB sin acento"
+        },
+        {
+          "word": "Vidente",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Psíquico",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Psiquico",
+          "example": "Categoría FB sin acento"
+        },
+        {
+          "word": "Psíquica",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Psiquica",
+          "example": "Categoría FB sin acento"
+        },
+        {
+          "word": "Lector de tarot",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Lectora de tarot",
+          "example": "Categoría FB en español"
+        },
+        {
+          "word": "Tarotista",
+          "example": "Categoría FB en español"
+        }
+      ],
+      "review_keywords": [
+        {
+          "word": "Religious Organization",
+          "example": "Revisar; puede ser iglesia, templo, santería o comunidad religiosa"
+        },
+        {
+          "word": "Shopping & Retail",
+          "example": "Revisar si vende productos esotéricos"
+        },
+        {
+          "word": "Bookstore",
+          "example": "Revisar; puede ser tienda esotérica o librería normal"
+        },
+        {
+          "word": "Health/Beauty",
+          "example": "Revisar; puede no tener relación espiritual"
+        },
+        {
+          "word": "Community Organization",
+          "example": "Revisar; puede ser comunidad espiritual no comercial"
+        },
+        {
+          "word": "Fictional Character",
+          "example": "No limpiar riesgo; revisar nombre y publicaciones"
+        },
+        {
+          "word": "Personaje de ficción",
+          "example": "No limpiar riesgo; revisar nombre y publicaciones"
+        }
+      ],
+      "note": "Categoría astrológica, vidente, tarotista, psychic o spiritual center bloquea directo, aunque la bio no venda servicios."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#f5a623",
+      "points": 40,
+      "speed": "2–3 segundos",
+      "description": "Buscar si la bio posiciona la cuenta como página espiritual, mística, astrológica, tarotista, esotérica o de consejos/horóscopos. No se exige que venda servicios.",
+      "logic": "2+ señales místicas/espirituales → BLOQUEO aunque no exista venta explícita. 1 señal fuerte en bio de página temática → REVISAR o BLOQUEAR según score. Señales comerciales suman riesgo adicional.",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "horoscopo diario",
+          "example": "Horoscopo diario para todos los signos"
+        },
+        {
+          "word": "horóscopo diario",
+          "example": "Horóscopo diario para todos los signos"
+        },
+        {
+          "word": "horoscopos diarios",
+          "example": "Horoscopos diarios y consejos"
+        },
+        {
+          "word": "horóscopos diarios",
+          "example": "Horóscopos diarios y consejos"
+        },
+        {
+          "word": "signos zodiacales",
+          "example": "Contenido para signos zodiacales"
+        },
+        {
+          "word": "zodiaco",
+          "example": "Consejos del zodiaco"
+        },
+        {
+          "word": "astrologia",
+          "example": "Astrologia diaria"
+        },
+        {
+          "word": "astrología",
+          "example": "Astrología diaria"
+        },
+        {
+          "word": "predicciones",
+          "example": "Predicciones de amor y suerte"
+        },
+        {
+          "word": "predicciones de amor",
+          "example": "Predicciones de amor para cada signo"
+        },
+        {
+          "word": "tarot diario",
+          "example": "Tarot diario y mensajes espirituales"
+        },
+        {
+          "word": "lectura de cartas",
+          "example": "Hacemos lectura de cartas"
+        },
+        {
+          "word": "lectura del tarot",
+          "example": "Consulta de tarot"
+        },
+        {
+          "word": "lecturas de tarot",
+          "example": "Lecturas de tarot por WhatsApp"
+        },
+        {
+          "word": "tarot online",
+          "example": "Tarot online para el amor"
+        },
+        {
+          "word": "mensajes del universo",
+          "example": "Mensajes del universo para tu signo"
+        },
+        {
+          "word": "energia espiritual",
+          "example": "Contenido de energia espiritual"
+        },
+        {
+          "word": "energía espiritual",
+          "example": "Contenido de energía espiritual"
+        },
+        {
+          "word": "vibras espirituales",
+          "example": "Vibras espirituales y consejos"
+        },
+        {
+          "word": "consejos espirituales",
+          "example": "Consejos espirituales diarios"
+        },
+        {
+          "word": "contenido espiritual",
+          "example": "Contenido espiritual diario"
+        },
+        {
+          "word": "amarres de amor",
+          "example": "Especialistas en amarres de amor"
+        },
+        {
+          "word": "amarres efectivos",
+          "example": "Amarres efectivos para recuperar tu pareja"
+        },
+        {
+          "word": "endulzamientos",
+          "example": "Endulzamientos de pareja"
+        },
+        {
+          "word": "limpias espirituales",
+          "example": "Limpias espirituales y protección"
+        },
+        {
+          "word": "limpieza espiritual",
+          "example": "Servicio o contenido de limpieza espiritual"
+        },
+        {
+          "word": "trabajos espirituales",
+          "example": "Trabajos espirituales efectivos"
+        },
+        {
+          "word": "servicios espirituales",
+          "example": "Ofrecemos servicios espirituales"
+        },
+        {
+          "word": "consulta espiritual",
+          "example": "Agenda tu consulta espiritual"
+        },
+        {
+          "word": "consultas espirituales",
+          "example": "Consultas espirituales privadas"
+        },
+        {
+          "word": "maestro espiritual",
+          "example": "Maestro espiritual con experiencia"
+        },
+        {
+          "word": "maestra espiritual",
+          "example": "Maestra espiritual especialista en amor"
+        },
+        {
+          "word": "guia espiritual",
+          "example": "Guia espiritual para casos difíciles"
+        },
+        {
+          "word": "guía espiritual",
+          "example": "Guía espiritual para parejas"
+        },
+        {
+          "word": "brujeria blanca",
+          "example": "Brujería blanca para protección"
+        },
+        {
+          "word": "brujería blanca",
+          "example": "Brujería blanca y limpias"
+        },
+        {
+          "word": "brujeria negra",
+          "example": "Brujería negra"
+        },
+        {
+          "word": "brujería negra",
+          "example": "Brujería negra"
+        },
+        {
+          "word": "velas preparadas",
+          "example": "Velas preparadas para amor"
+        },
+        {
+          "word": "velones preparados",
+          "example": "Velones preparados para protección"
+        },
+        {
+          "word": "baños esotéricos",
+          "example": "Baños esotéricos"
+        },
+        {
+          "word": "baños espirituales",
+          "example": "Baños espirituales para abrir caminos"
+        },
+        {
+          "word": "rituales de amor",
+          "example": "Rituales de amor personalizados"
+        },
+        {
+          "word": "rituales de protección",
+          "example": "Rituales de protección energética"
+        },
+        {
+          "word": "abre caminos",
+          "example": "Trabajo espiritual abre caminos"
+        },
+        {
+          "word": "retorno de pareja",
+          "example": "Retorno de pareja con trabajo espiritual"
+        },
+        {
+          "word": "regreso de pareja",
+          "example": "Regreso de pareja"
+        },
+        {
+          "word": "psychic readings",
+          "example": "Love psychic readings"
+        },
+        {
+          "word": "tarot readings",
+          "example": "Tarot readings online"
+        },
+        {
+          "word": "daily horoscope",
+          "example": "Daily horoscope and zodiac signs"
+        },
+        {
+          "word": "horoscope",
+          "example": "Horoscope content"
+        },
+        {
+          "word": "zodiac signs",
+          "example": "Zodiac signs content"
+        },
+        {
+          "word": "astrology",
+          "example": "Astrology predictions"
+        },
+        {
+          "word": "love spells",
+          "example": "Love spells specialist"
+        },
+        {
+          "word": "spell work",
+          "example": "Spiritual spell work"
+        },
+        {
+          "word": "spiritual work",
+          "example": "Spiritual work for love"
+        },
+        {
+          "word": "spiritual advisor",
+          "example": "Spiritual advisor for love cases"
+        },
+        {
+          "word": "spiritual healer",
+          "example": "Spiritual healer and advisor"
+        },
+        {
+          "word": "rootwork",
+          "example": "Rootwork for love and protection"
+        },
+        {
+          "word": "candle work",
+          "example": "Candle work for love"
+        }
+      ],
+      "commercial_signals": [
+        {
+          "word": "agenda",
+          "example": "Agenda tu consulta"
+        },
+        {
+          "word": "cita",
+          "example": "Solicita tu cita"
+        },
+        {
+          "word": "citas",
+          "example": "Citas disponibles"
+        },
+        {
+          "word": "consulta",
+          "example": "Consulta por WhatsApp"
+        },
+        {
+          "word": "consultas",
+          "example": "Consultas privadas"
+        },
+        {
+          "word": "servicio",
+          "example": "Servicio espiritual"
+        },
+        {
+          "word": "servicios",
+          "example": "Servicios espirituales"
+        },
+        {
+          "word": "especialista",
+          "example": "Especialista en amarres"
+        },
+        {
+          "word": "especialistas",
+          "example": "Especialistas en trabajos espirituales"
+        },
+        {
+          "word": "hacemos",
+          "example": "Hacemos limpias espirituales"
+        },
+        {
+          "word": "realizamos",
+          "example": "Realizamos amarres"
+        },
+        {
+          "word": "trabajamos",
+          "example": "Trabajamos casos de amor"
+        },
+        {
+          "word": "atendemos",
+          "example": "Atendemos por WhatsApp"
+        },
+        {
+          "word": "whatsapp",
+          "example": "Consulta por WhatsApp"
+        },
+        {
+          "word": "inbox",
+          "example": "Escríbenos al inbox"
+        },
+        {
+          "word": "dm",
+          "example": "Send DM"
+        },
+        {
+          "word": "mensaje",
+          "example": "Envía mensaje"
+        },
+        {
+          "word": "llama",
+          "example": "Llama ahora"
+        },
+        {
+          "word": "resultados",
+          "example": "Resultados espirituales"
+        },
+        {
+          "word": "garantizado",
+          "example": "Trabajo garantizado"
+        },
+        {
+          "word": "garantizados",
+          "example": "Resultados garantizados"
+        },
+        {
+          "word": "precio",
+          "example": "Pregunta por precio"
+        },
+        {
+          "word": "promoción",
+          "example": "Promoción de lectura"
+        },
+        {
+          "word": "promotion",
+          "example": "Reading promotion"
+        },
+        {
+          "word": "book now",
+          "example": "Book your reading now"
+        },
+        {
+          "word": "call now",
+          "example": "Call now for a reading"
+        }
+      ],
+      "safe_problem_phrases": [
+        "problemas amorosos",
+        "problemas familiares",
+        "necesito ayuda",
+        "no encuentro trabajo",
+        "me siento bloqueado",
+        "me siento bloqueada",
+        "quiero recuperar mi pareja",
+        "estoy triste",
+        "tengo mala suerte",
+        "me dejaron",
+        "no sé qué hacer",
+        "necesito orientación",
+        "busco ayuda espiritual"
+      ],
+      "note": "No clasificar como seguro una página que publica horóscopos, tarot, signos, predicciones o limpias solo porque no venda. Para botánicas, ese contenido ya es competencia."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#9b59b6",
+      "points": 35,
+      "speed": "5–10 segundos",
+      "description": "Revisar publicaciones recientes. Si la cuenta publica horóscopos, tarot, predicciones, signos zodiacales, limpias, rituales, energías, amarres, velas o consejos espirituales de forma recurrente, es competencia aunque el contenido sea informativo o entretenimiento.",
+      "logic": "2+ publicaciones místicas/espirituales recurrentes → BLOQUEO. 1 publicación aislada → sumar puntos y revisar. Si además hay CTA comercial → BLOQUEO inmediato por score.",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "horoscopo de hoy",
+          "example": "Horoscopo de hoy para Aries"
+        },
+        {
+          "word": "horóscopo de hoy",
+          "example": "Horóscopo de hoy para Aries"
+        },
+        {
+          "word": "horoscopo diario",
+          "example": "Horoscopo diario"
+        },
+        {
+          "word": "horóscopo diario",
+          "example": "Horóscopo diario"
+        },
+        {
+          "word": "signo de hoy",
+          "example": "Mensaje para tu signo de hoy"
+        },
+        {
+          "word": "signos zodiacales",
+          "example": "Publicación de signos zodiacales"
+        },
+        {
+          "word": "zodiaco",
+          "example": "Consejos del zodiaco"
+        },
+        {
+          "word": "predicción de amor",
+          "example": "Predicción de amor para tu signo"
+        },
+        {
+          "word": "predicciones",
+          "example": "Predicciones espirituales"
+        },
+        {
+          "word": "tarot diario",
+          "example": "Carta del tarot diario"
+        },
+        {
+          "word": "carta del día",
+          "example": "Carta del día del tarot"
+        },
+        {
+          "word": "mensaje del universo",
+          "example": "Mensaje del universo para ti"
+        },
+        {
+          "word": "ritual de luna",
+          "example": "Ritual de luna llena"
+        },
+        {
+          "word": "luna llena",
+          "example": "Ritual o energía de luna llena"
+        },
+        {
+          "word": "limpia energética",
+          "example": "Consejo de limpia energética"
+        },
+        {
+          "word": "limpia espiritual",
+          "example": "Post de limpia espiritual"
+        },
+        {
+          "word": "limpieza espiritual",
+          "example": "Post de limpieza espiritual"
+        },
+        {
+          "word": "protección energética",
+          "example": "Consejo de protección energética"
+        },
+        {
+          "word": "energía espiritual",
+          "example": "Consejo de energía espiritual"
+        },
+        {
+          "word": "agenda tu lectura",
+          "example": "Post ofreciendo lectura"
+        },
+        {
+          "word": "agenda tu consulta",
+          "example": "CTA comercial"
+        },
+        {
+          "word": "consulta por whatsapp",
+          "example": "CTA comercial"
+        },
+        {
+          "word": "escríbeme por whatsapp",
+          "example": "CTA comercial"
+        },
+        {
+          "word": "manda inbox",
+          "example": "CTA comercial"
+        },
+        {
+          "word": "envía mensaje",
+          "example": "CTA comercial"
+        },
+        {
+          "word": "amarre efectivo",
+          "example": "Oferta de amarre"
+        },
+        {
+          "word": "amarres de amor",
+          "example": "Oferta de servicio"
+        },
+        {
+          "word": "regresa tu pareja",
+          "example": "Promesa típica de competencia"
+        },
+        {
+          "word": "recupera tu pareja",
+          "example": "Promesa comercial"
+        },
+        {
+          "word": "retorno de pareja",
+          "example": "Servicio espiritual"
+        },
+        {
+          "word": "velón preparado",
+          "example": "Producto esotérico"
+        },
+        {
+          "word": "velones preparados",
+          "example": "Producto esotérico"
+        },
+        {
+          "word": "velas preparadas",
+          "example": "Producto esotérico"
+        },
+        {
+          "word": "baño de suerte",
+          "example": "Producto/servicio"
+        },
+        {
+          "word": "baños esotéricos",
+          "example": "Producto/servicio"
+        },
+        {
+          "word": "lectura de amor",
+          "example": "Servicio de tarot"
+        },
+        {
+          "word": "lectura de cartas",
+          "example": "Servicio de lectura"
+        },
+        {
+          "word": "tarot en vivo",
+          "example": "Live de lectura"
+        },
+        {
+          "word": "trabajo espiritual",
+          "example": "Servicio ofrecido"
+        },
+        {
+          "word": "trabajos espirituales",
+          "example": "Servicio ofrecido"
+        },
+        {
+          "word": "ritual de protección",
+          "example": "Servicio ofrecido"
+        },
+        {
+          "word": "rituales de amor",
+          "example": "Servicio ofrecido"
+        },
+        {
+          "word": "consulta gratis",
+          "example": "Lead magnet de competidor"
+        },
+        {
+          "word": "primera consulta gratis",
+          "example": "Lead magnet de competidor"
+        },
+        {
+          "word": "psychic reading",
+          "example": "Servicio en inglés"
+        },
+        {
+          "word": "tarot reading",
+          "example": "Servicio en inglés"
+        },
+        {
+          "word": "daily horoscope",
+          "example": "Contenido de horóscopo en inglés"
+        },
+        {
+          "word": "zodiac signs",
+          "example": "Contenido zodiacal en inglés"
+        },
+        {
+          "word": "astrology reading",
+          "example": "Contenido astrológico en inglés"
+        },
+        {
+          "word": "love spells",
+          "example": "Servicio en inglés"
+        },
+        {
+          "word": "spell work",
+          "example": "Servicio en inglés"
+        },
+        {
+          "word": "book your reading",
+          "example": "CTA comercial en inglés"
+        }
+      ],
+      "commercial_signals": [
+        "agenda",
+        "consulta",
+        "consultas",
+        "cita",
+        "citas",
+        "whatsapp",
+        "inbox",
+        "dm",
+        "mensaje",
+        "llama",
+        "escríbeme",
+        "escribeme",
+        "servicio",
+        "servicios",
+        "disponible",
+        "disponibles",
+        "promoción",
+        "promocion",
+        "precio",
+        "book now",
+        "call now",
+        "send dm"
+      ],
+      "informational_competitor_signals": [
+        "horoscopo",
+        "horóscopo",
+        "horoscopos",
+        "horóscopos",
+        "zodiaco",
+        "signos zodiacales",
+        "astrologia",
+        "astrología",
+        "predicciones",
+        "tarot",
+        "carta del día",
+        "carta del dia",
+        "mensaje del universo",
+        "limpia espiritual",
+        "limpieza espiritual",
+        "limpia energética",
+        "limpia energetica",
+        "ritual",
+        "rituales",
+        "energia espiritual",
+        "energía espiritual",
+        "protección energética",
+        "proteccion energetica"
+      ],
+      "note": "El contenido informativo/entretenido espiritual también bloquea si es recurrente. Ejemplo: una página de horóscopos diarios con posts de tarot y limpias es competencia."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#1877F2",
+      "points": 25,
+      "speed": "Inmediato",
+      "description": "Hashtags de servicios, contenido místico, horóscopos, astrología, tarot o espiritualidad usados por la cuenta. Sirven como señal de competencia si el perfil es temático o recurrente.",
+      "logic": "2+ hashtags espirituales/místicos → BLOQUEO si además el nombre, bio o publicaciones son del mismo tema. 1 hashtag aislado en persona común → revisar contexto.",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#Botanica",
+          "example": "Hashtag de negocio"
+        },
+        {
+          "word": "#Botánica",
+          "example": "Hashtag de negocio"
+        },
+        {
+          "word": "#BotanicaChicago",
+          "example": "Competidor local"
+        },
+        {
+          "word": "#BotánicaChicago",
+          "example": "Competidor local"
+        },
+        {
+          "word": "#Tarotista",
+          "example": "Servicio"
+        },
+        {
+          "word": "#Tarot",
+          "example": "Contenido/servicio"
+        },
+        {
+          "word": "#TarotDiario",
+          "example": "Contenido místico recurrente"
+        },
+        {
+          "word": "#TarotReading",
+          "example": "Servicio"
+        },
+        {
+          "word": "#LecturaDeCartas",
+          "example": "Servicio"
+        },
+        {
+          "word": "#Horoscopo",
+          "example": "Contenido místico"
+        },
+        {
+          "word": "#Horóscopo",
+          "example": "Contenido místico"
+        },
+        {
+          "word": "#HoroscopoDiario",
+          "example": "Contenido místico recurrente"
+        },
+        {
+          "word": "#HoróscopoDiario",
+          "example": "Contenido místico recurrente"
+        },
+        {
+          "word": "#Horoscopos",
+          "example": "Contenido místico"
+        },
+        {
+          "word": "#Horóscopos",
+          "example": "Contenido místico"
+        },
+        {
+          "word": "#Zodiaco",
+          "example": "Contenido astrológico"
+        },
+        {
+          "word": "#SignosZodiacales",
+          "example": "Contenido astrológico"
+        },
+        {
+          "word": "#Astrologia",
+          "example": "Contenido astrológico"
+        },
+        {
+          "word": "#Astrología",
+          "example": "Contenido astrológico"
+        },
+        {
+          "word": "#Predicciones",
+          "example": "Contenido místico"
+        },
+        {
+          "word": "#AmarresDeAmor",
+          "example": "Servicio"
+        },
+        {
+          "word": "#Amarres",
+          "example": "Servicio"
+        },
+        {
+          "word": "#Brujeria",
+          "example": "Servicio/tema"
+        },
+        {
+          "word": "#Brujería",
+          "example": "Servicio/tema"
+        },
+        {
+          "word": "#LimpiezaEspiritual",
+          "example": "Servicio/tema"
+        },
+        {
+          "word": "#LimpiasEspirituales",
+          "example": "Servicio/tema"
+        },
+        {
+          "word": "#Santeria",
+          "example": "Servicio/tema"
+        },
+        {
+          "word": "#Santería",
+          "example": "Servicio/tema"
+        },
+        {
+          "word": "#VelasPreparadas",
+          "example": "Producto esotérico"
+        },
+        {
+          "word": "#VelonesPreparados",
+          "example": "Producto esotérico"
+        },
+        {
+          "word": "#Endulzamientos",
+          "example": "Servicio"
+        },
+        {
+          "word": "#TrabajosEspirituales",
+          "example": "Servicio"
+        },
+        {
+          "word": "#ConsultaEspiritual",
+          "example": "Servicio"
+        },
+        {
+          "word": "#PsychicReading",
+          "example": "Servicio"
+        },
+        {
+          "word": "#PsychicReader",
+          "example": "Servicio"
+        },
+        {
+          "word": "#DailyHoroscope",
+          "example": "Contenido místico"
+        },
+        {
+          "word": "#ZodiacSigns",
+          "example": "Contenido astrológico"
+        },
+        {
+          "word": "#Astrology",
+          "example": "Contenido astrológico"
+        },
+        {
+          "word": "#LoveSpells",
+          "example": "Servicio"
+        },
+        {
+          "word": "#SpellWork",
+          "example": "Servicio"
+        },
+        {
+          "word": "#SpiritualAdvisor",
+          "example": "Servicio"
+        }
+      ],
+      "note": "Para botánicas, hashtags de horóscopo, tarot, zodiaco, astrología y predicciones no son prospectos: son señales de página competidora o de contenido espiritual competidor."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "block_if_score_gte": 60,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "normalize_accents_before_matching": true,
+    "case_insensitive_matching": true,
+    "trim_extra_spaces_before_matching": true,
+    "spiritual_mystic_content_is_competitor": true,
+    "do_not_require_explicit_commercial_offer": true,
+    "do_not_mark_safe_because_content_is_informational": true,
+    "do_not_mark_safe_because_content_is_entertainment": true,
+    "category_does_not_override_name_or_content_signals": true,
+    "ignore_safe_single_terms_without_mystic_or_commercial_context": true,
+    "do_not_block_topic_only_personal_problem_profiles": true,
+    "topic_only_requires_review_when_multiple_signals_exist": true,
+    "layer_L1_block_if_account_name_keyword_hit": true,
+    "layer_L1_do_not_block_single_safe_terms": true,
+    "layer_L2_block_if_category_in_blocked_list": true,
+    "layer_L2_review_if_category_in_review_list": true,
+    "layer_L2_review_category_points": 35,
+    "layer_L3_block_if_keyword_hits_gte": 2,
+    "layer_L3_block_if_mystic_identity_keyword_hits_gte": 1,
+    "layer_L3_block_if_service_keyword_and_commercial_signal": true,
+    "layer_L3_single_keyword_without_commercial_signal_points": 40,
+    "layer_L4_block_if_keyword_hits_gte": 2,
+    "layer_L4_block_if_informational_competitor_posts_gte": 2,
+    "layer_L4_block_if_service_posts_with_commercial_signal_gte": 1,
+    "layer_L4_single_post_without_commercial_signal_points": 35,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "layer_L5_requires_context_for_block": true,
+    "commercial_signal_boost_points": 20,
+    "informational_mystic_signal_points": 35,
+    "max_points": 200,
+    "layer_L1_block_if_name_contains_botanica_hierberia_maestro_vidente_astrologo": true,
+    "layer_L2_block_if_category_is_astrologer_psychic_tarot_vidente": true,
+    "do_not_require_commercial_cta_for_mystic_competitor_categories": true,
+    "do_not_mark_safe_due_to_generic_category_when_name_has_mystic_keyword": true
+  },
+  "ai_decision_rules": [
+    "Si el nombre del perfil contiene botánica, botanica, hierbería, hierberia, yerbería, yerberia, maestro, maestra, vidente, astrólogo, astrologo, astróloga, astrologa, tarotista, tarot, horóscopos u horoscopos, clasificar como BLOQUEAR.",
+    "Si la categoría de Facebook es Astrólogo y vidente, Astrologist & Psychic, Psychic, Tarot Reader, Spiritual Center, Astrólogo, Astrologo, Vidente, Psíquico, Psiquico o equivalente, clasificar como BLOQUEAR de una.",
+    "No exigir venta explícita cuando el nombre o la categoría ya identifican una página mística/espiritual de competencia.",
+    "Si el perfil es de horóscopos, astrología, tarot, zodiaco, predicciones, rituales, limpias, brujería, santería o contenido espiritual recurrente, clasificar como BLOQUEAR aunque no venda servicios.",
+    "No usar la ausencia de WhatsApp, precios, agenda o CTA comercial como razón para marcar SEGURO.",
+    "No usar categorías genéricas o raras de Facebook como 'Personaje de ficción' para limpiar el riesgo si el nombre o publicaciones son espirituales/místicas.",
+    "Una persona normal diciendo 'necesito una limpia', 'tengo problemas amorosos' o 'busco ayuda espiritual' puede ser prospecto.",
+    "Una página que publica consejos, horóscopos, tarot, limpias o rituales para una audiencia espiritual es competencia.",
+    "La diferencia clave es: usuario con necesidad personal = SEGURO; página temática espiritual/mística = BLOQUEAR."
+  ],
+  "clean_exports": {
+    "account_name_keywords": [
+      "botanica",
+      "botánica",
+      "botanica espiritual",
+      "botánica espiritual",
+      "tarot",
+      "tarotista",
+      "cartas",
+      "lectura de cartas",
+      "oraculo",
+      "oráculo",
+      "vidente",
+      "videncia",
+      "predicciones",
+      "prediccion",
+      "predicción",
+      "horoscopo",
+      "horóscopo",
+      "horoscopos",
+      "horóscopos",
+      "zodiaco",
+      "zodiacal",
+      "signos zodiacales",
+      "astrologia",
+      "astrología",
+      "astrologo",
+      "astrólogo",
+      "astrologa",
+      "astróloga",
+      "psychic",
+      "psychic reader",
+      "spiritual advisor",
+      "spiritual healer",
+      "spiritual medium",
+      "psychic medium",
+      "medium reader",
+      "palm reader",
+      "palmistry",
+      "lectura de mano",
+      "brujo",
+      "bruja",
+      "brujeria",
+      "brujería",
+      "santero",
+      "santera",
+      "santeria",
+      "santería",
+      "esoterica",
+      "esotérica",
+      "esoterismo",
+      "tienda esoterica",
+      "tienda esotérica",
+      "centro espiritual",
+      "consulta espiritual",
+      "consultas espirituales",
+      "maestro espiritual",
+      "maestra espiritual",
+      "guia espiritual",
+      "guía espiritual",
+      "servicios espirituales",
+      "trabajos espirituales",
+      "hechizos",
+      "amarres",
+      "amarres de amor",
+      "endulzamientos",
+      "curandero",
+      "curandera",
+      "spell caster",
+      "spellcaster",
+      "love spell caster",
+      "rootworker",
+      "hoodoo",
+      "voodoo",
+      "wicca",
+      "metaphysical store",
+      "candle shop",
+      "cartomancia",
+      "hierberia",
+      "hierbería",
+      "yerberia",
+      "yerbería",
+      "herberia",
+      "herbería",
+      "maestro",
+      "maestra",
+      "maestro vidente",
+      "maestra vidente",
+      "maestro tarotista",
+      "maestra tarotista",
+      "vidente espiritual",
+      "astrologo vidente",
+      "astrólogo vidente",
+      "astrologa vidente",
+      "astróloga vidente",
+      "horoscopo diario",
+      "horóscopo diario",
+      "horoscopos diarios",
+      "horóscopos diarios"
+    ],
+    "safe_single_terms": [
+      "amor",
+      "desamor",
+      "fe",
+      "energía",
+      "energia",
+      "sanación",
+      "sanacion"
+    ],
+    "blocked_fb_categories": [
+      "Astrologist & Psychic",
+      "Psychic",
+      "Tarot Reader",
+      "Spiritual Center",
+      "Astrologer",
+      "Fortune Teller",
+      "Religious Bookstore",
+      "Metaphysical Supply Store",
+      "Religious Center",
+      "Alternative & Holistic Health Service",
+      "Personal Blog",
+      "Digital Creator",
+      "Entertainment Website",
+      "Astrólogo y vidente",
+      "Astrologo y vidente",
+      "Astróloga y vidente",
+      "Astrologa y vidente",
+      "Astrólogo",
+      "Astrologo",
+      "Astróloga",
+      "Astrologa",
+      "Vidente",
+      "Psíquico",
+      "Psiquico",
+      "Psíquica",
+      "Psiquica",
+      "Lector de tarot",
+      "Lectora de tarot",
+      "Tarotista"
+    ],
+    "review_fb_categories": [
+      "Religious Organization",
+      "Shopping & Retail",
+      "Bookstore",
+      "Health/Beauty",
+      "Community Organization",
+      "Fictional Character",
+      "Personaje de ficción"
+    ],
+    "bio_keywords": [
+      "horoscopo diario",
+      "horóscopo diario",
+      "horoscopos diarios",
+      "horóscopos diarios",
+      "signos zodiacales",
+      "zodiaco",
+      "astrologia",
+      "astrología",
+      "predicciones",
+      "predicciones de amor",
+      "tarot diario",
+      "lectura de cartas",
+      "lectura del tarot",
+      "lecturas de tarot",
+      "tarot online",
+      "mensajes del universo",
+      "energia espiritual",
+      "energía espiritual",
+      "vibras espirituales",
+      "consejos espirituales",
+      "contenido espiritual",
+      "amarres de amor",
+      "amarres efectivos",
+      "endulzamientos",
+      "limpias espirituales",
+      "limpieza espiritual",
+      "trabajos espirituales",
+      "servicios espirituales",
+      "consulta espiritual",
+      "consultas espirituales",
+      "maestro espiritual",
+      "maestra espiritual",
+      "guia espiritual",
+      "guía espiritual",
+      "brujeria blanca",
+      "brujería blanca",
+      "brujeria negra",
+      "brujería negra",
+      "velas preparadas",
+      "velones preparados",
+      "baños esotéricos",
+      "baños espirituales",
+      "rituales de amor",
+      "rituales de protección",
+      "abre caminos",
+      "retorno de pareja",
+      "regreso de pareja",
+      "psychic readings",
+      "tarot readings",
+      "daily horoscope",
+      "horoscope",
+      "zodiac signs",
+      "astrology",
+      "love spells",
+      "spell work",
+      "spiritual work",
+      "spiritual advisor",
+      "spiritual healer",
+      "rootwork",
+      "candle work"
+    ],
+    "post_keywords": [
+      "horoscopo de hoy",
+      "horóscopo de hoy",
+      "horoscopo diario",
+      "horóscopo diario",
+      "signo de hoy",
+      "signos zodiacales",
+      "zodiaco",
+      "predicción de amor",
+      "predicciones",
+      "tarot diario",
+      "carta del día",
+      "mensaje del universo",
+      "ritual de luna",
+      "luna llena",
+      "limpia energética",
+      "limpia espiritual",
+      "limpieza espiritual",
+      "protección energética",
+      "energía espiritual",
+      "agenda tu lectura",
+      "agenda tu consulta",
+      "consulta por whatsapp",
+      "escríbeme por whatsapp",
+      "manda inbox",
+      "envía mensaje",
+      "amarre efectivo",
+      "amarres de amor",
+      "regresa tu pareja",
+      "recupera tu pareja",
+      "retorno de pareja",
+      "velón preparado",
+      "velones preparados",
+      "velas preparadas",
+      "baño de suerte",
+      "baños esotéricos",
+      "lectura de amor",
+      "lectura de cartas",
+      "tarot en vivo",
+      "trabajo espiritual",
+      "trabajos espirituales",
+      "ritual de protección",
+      "rituales de amor",
+      "consulta gratis",
+      "primera consulta gratis",
+      "psychic reading",
+      "tarot reading",
+      "daily horoscope",
+      "zodiac signs",
+      "astrology reading",
+      "love spells",
+      "spell work",
+      "book your reading"
+    ],
+    "commercial_signals": [
+      "agenda",
+      "cita",
+      "citas",
+      "consulta",
+      "consultas",
+      "servicio",
+      "servicios",
+      "especialista",
+      "especialistas",
+      "hacemos",
+      "realizamos",
+      "trabajamos",
+      "atendemos",
+      "whatsapp",
+      "inbox",
+      "dm",
+      "mensaje",
+      "llama",
+      "resultados",
+      "garantizado",
+      "garantizados",
+      "precio",
+      "promoción",
+      "promotion",
+      "book now",
+      "call now"
+    ],
+    "informational_competitor_signals": [
+      "horoscopo",
+      "horóscopo",
+      "horoscopos",
+      "horóscopos",
+      "zodiaco",
+      "signos zodiacales",
+      "astrologia",
+      "astrología",
+      "predicciones",
+      "tarot",
+      "carta del día",
+      "carta del dia",
+      "mensaje del universo",
+      "limpia espiritual",
+      "limpieza espiritual",
+      "limpia energética",
+      "limpia energetica",
+      "ritual",
+      "rituales",
+      "energia espiritual",
+      "energía espiritual",
+      "protección energética",
+      "proteccion energetica"
+    ],
+    "safe_problem_phrases": [
+      "problemas amorosos",
+      "problemas familiares",
+      "necesito ayuda",
+      "no encuentro trabajo",
+      "me siento bloqueado",
+      "me siento bloqueada",
+      "quiero recuperar mi pareja",
+      "estoy triste",
+      "tengo mala suerte",
+      "me dejaron",
+      "no sé qué hacer",
+      "necesito orientación",
+      "busco ayuda espiritual"
+    ],
+    "competitor_hashtags": [
+      "#Botanica",
+      "#Botánica",
+      "#BotanicaChicago",
+      "#BotánicaChicago",
+      "#Tarotista",
+      "#Tarot",
+      "#TarotDiario",
+      "#TarotReading",
+      "#LecturaDeCartas",
+      "#Horoscopo",
+      "#Horóscopo",
+      "#HoroscopoDiario",
+      "#HoróscopoDiario",
+      "#Horoscopos",
+      "#Horóscopos",
+      "#Zodiaco",
+      "#SignosZodiacales",
+      "#Astrologia",
+      "#Astrología",
+      "#Predicciones",
+      "#AmarresDeAmor",
+      "#Amarres",
+      "#Brujeria",
+      "#Brujería",
+      "#LimpiezaEspiritual",
+      "#LimpiasEspirituales",
+      "#Santeria",
+      "#Santería",
+      "#VelasPreparadas",
+      "#VelonesPreparados",
+      "#Endulzamientos",
+      "#TrabajosEspirituales",
+      "#ConsultaEspiritual",
+      "#PsychicReading",
+      "#PsychicReader",
+      "#DailyHoroscope",
+      "#ZodiacSigns",
+      "#Astrology",
+      "#LoveSpells",
+      "#SpellWork",
+      "#SpiritualAdvisor"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Horoscopos Diarios",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'horoscopos' encontrado en nombre. Página temática mística/espiritual.",
+          "points": 60
+        },
+        {
+          "id": "L4",
+          "hit": true,
+          "detail": "Publicaciones recurrentes de tarot y limpieza espiritual. No se exige venta explícita.",
+          "points": 35
+        }
+      ],
+      "total": 95,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Botánica La Esperanza",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'botánica' encontrado en nombre",
+          "points": 60
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Despertar Espiritual y Amor",
+      "type": "review_or_competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre espiritual amplio; revisar si es página temática o persona común",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": true,
+          "detail": "Si publica contenido espiritual recurrente, se bloquea",
+          "points": 35
+        }
+      ],
+      "total": 35,
+      "result": "REVISAR"
+    },
+    {
+      "account": "Consejos de Amor Chicago",
+      "type": "ambiguous",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre no confirma botánica ni servicio espiritual",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": true,
+          "detail": "Si solo habla de desamor personal o frases generales, no bloquear automáticamente",
+          "points": 10
+        }
+      ],
+      "total": 10,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Tarot y Amarres Chicago",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'tarot' y 'amarres' en nombre",
+          "points": 60
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Laura Pérez",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre personal sin señal de negocio o página espiritual",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "Frase tipo 'busco ayuda espiritual', pero no ofrece contenido recurrente ni servicios",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Hierbería Espiritual San Miguel",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'hierbería' encontrado en nombre",
+          "points": 60
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Maestro Vidente José",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'maestro' y 'vidente' encontrados en nombre",
+          "points": 60
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Página con categoría Astrólogo y vidente",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría 'Astrólogo y vidente' bloquea directo",
+          "points": 60
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

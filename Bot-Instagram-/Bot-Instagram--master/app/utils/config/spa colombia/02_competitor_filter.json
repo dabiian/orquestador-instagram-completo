@@ -1,0 +1,68 @@
+{
+  "industry": "spa colombia",
+  "core_services": [
+    "spa",
+    "day spa",
+    "massage",
+    "facials",
+    "skin treatments",
+    "body treatments",
+    "wellness treatments",
+    "beauty treatments"
+  ],
+  "direct_competitor_signals": [
+    "spa",
+    "day spa",
+    "med spa",
+    "massage spa",
+    "massage therapy",
+    "facial spa",
+    "skin treatment spa",
+    "body treatment spa",
+    "wellness spa",
+    "beauty spa"
+  ],
+  "possible_competitor_signals": [
+    "massage therapist",
+    "esthetician",
+    "beauty salon",
+    "skin care clinic",
+    "wellness center",
+    "holistic wellness"
+  ],
+  "adjacent_businesses": [
+    "beauty salon",
+    "barbershop",
+    "esthetician",
+    "fitness",
+    "yoga",
+    "wellness",
+    "health",
+    "beauty"
+  ],
+  "referral_opportunities": [
+    "beauty salon",
+    "esthetician",
+    "fitness studio",
+    "yoga studio",
+    "wellness center",
+    "hotel",
+    "wedding business",
+    "event planner",
+    "beauty professional"
+  ],
+  "exclude_as_competitor": [
+    "hair salon",
+    "barbershop",
+    "fitness",
+    "yoga",
+    "wedding planner",
+    "event planner"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

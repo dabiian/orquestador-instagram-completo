@@ -1,0 +1,1901 @@
+{
+  "policy": {
+    "geo_preferred": true,
+    "must_contain_city_or_service_area_when_possible": true,
+    "exclude_global_hashtags_when_too_broad": true,
+    "double_validation_rule": [
+      "tag debe ser una frase normal del listado del usuario, no un hashtag",
+      "tag debe ayudar a descubrir personas con posible necesidad espiritual, emocional, amorosa, energética, laboral o económica",
+      "si la frase es de servicio espiritual explícito, debe pasar filtro anti-competencia antes de comentar",
+      "validar siempre el contexto del post y del grupo antes de generar comentario"
+    ],
+    "default_service_area_tokens": [
+      "Chicago",
+      "Cicero",
+      "Berwyn",
+      "OakPark",
+      "Evanston",
+      "IL"
+    ],
+    "phrase_source": "Pasted text.txt",
+    "note": "La clave se mantiene como hashtags por compatibilidad, pero cada tag contiene una frase normal sin #."
+  },
+  "categories": [
+    {
+      "id": "generales/intencion_espiritual",
+      "label": "Generales — interés o necesidad espiritual",
+      "hashtags": [
+        {
+          "tag": "necesito ayuda espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "alguien conoce una botanica",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "busco tarotista",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "recomendaciones de tarot",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "lectura de cartas",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "lectura de tarot urgente",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "limpia espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "necesito una limpia",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "malas energias",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "siento malas vibras",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "trabajos espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ritual de amor",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "amarres efectivos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "problemas de pareja",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "mi pareja me dejo",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "quiero recuperar a mi ex",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "alejar malas energias",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "proteccion espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "trabajo de brujeria",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "magia blanca",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "hechizos de amor",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "consulta espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "santeria",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ayuda con santeria",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "santa muerte",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "devoto de la santa muerte",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "veladoras espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "rituales para dinero",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "abundancia y prosperidad",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "atraer dinero",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "bloqueos espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "me hicieron brujeria",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "como quitar brujeria",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "me siento salado",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "envidia y malas energias",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "trabajo espiritual urgente",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "consejera espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "consulta de tarot",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarot en español",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "bruja recomendada",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "espiritualidad latina",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ritual para abrir caminos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "abrir caminos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "cierres de caminos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "proteccion contra enemigos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "problemas amorosos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "problemas familiares",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "depresion espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "energias negativas",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "curacion espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "desespero amoroso",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "amarres en chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarot chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "limpias en chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "rituales en chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "santeria chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica latina",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica mexicana",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica hispana",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ayuda espiritual urgente",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "rituales efectivos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "lectura espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "consultas espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "quiero atraer suerte",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "mala suerte",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "problemas economicos espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "necesito un consejo espiritual",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "busco vidente",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "vidente recomendada",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarotista recomendada",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "espiritualidad y energia",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "manifestacion y abundancia",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "quiero atraer amor",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ritual para pareja",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ritual para negocio",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ritual para trabajo",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "limpia para negocio",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "proteccion para negocio",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "veladora para amor",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "veladora para dinero",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "veladora de proteccion",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "aceites espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "baños espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "baños de prosperidad",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "baños de amor",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "productos esotericos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "donde venden veladoras",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "donde venden inciensos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "donde venden productos espirituales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "donde hacen limpias",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "alguien recomienda una botanica",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "recomendacion de botanica",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica cerca",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica latina chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "botanica mexicana chicago",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarot para lgbt",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "espiritualidad lgbt",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "rituales gay",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "amarres gay",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "lectura de tarot gay",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "santeria lgbt",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "brujeria gay",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "problemas de amor gay",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "energias negativas pareja",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "quiero recuperar a mi novio",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "quiero recuperar a mi novia",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "me engañaron",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ruptura amorosa",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "problemas sentimentales",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "me siento bloqueado",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "necesito abrir caminos",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "como atraer clientes",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "rituales para ventas",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "negocio estancado",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "limpia para casa",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "mal ambiente en casa",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "presencias negativas",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "proteccion del hogar",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "oraciones poderosas",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "veladoras de la santa muerte",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "devocion santa muerte",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "espiritualidad mexicana",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "espiritualidad colombiana",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "consejos de tarot",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarot amor",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarot dinero",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "tarot trabajo",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "ritual urgente",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        },
+        {
+          "tag": "consulta urgente",
+          "why": "Frase general del listado para descubrir personas con intención, curiosidad o necesidad espiritual sin usar hashtags."
+        }
+      ],
+      "removed": []
+    },
+    {
+      "id": "trabajo_dinero/abre_caminos_prosperidad",
+      "label": "Trabajo, dinero y oportunidades",
+      "hashtags": [
+        {
+          "tag": "busco trabajo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "necesito trabajo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "alguien tiene trabajo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo urgente",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleo urgente",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para hispanos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para latinos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo sin papeles",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleos sin papeles",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo cash",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en efectivo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de limpieza",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleo de limpieza",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo housekeeping",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "limpieza de casas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "limpieza de apartamentos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de oficina",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo desde casa",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo fines de semana",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo tiempo completo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo medio tiempo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para mujeres",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para hombres",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para parejas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para inmigrantes",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "necesito ingresos extra",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "busco clientes",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "busco oportunidades",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "alguien recomienda trabajo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "alguien sabe de trabajo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "clasificados de trabajo",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo hoy",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo inmediato",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo esta semana",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleos en chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en houston",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en dallas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en miami",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en orlando",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en tampa",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en los angeles",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en new york",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en queens",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en bronx",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en brooklyn",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en las vegas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en phoenix",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en atlanta",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para mujeres hispanas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleos para hispanos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para comunidad latina",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "busco trabajo de limpieza",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "necesito trabajo de limpieza",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de housekeeping",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de hotel",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en restaurantes",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de cocina",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo en construcción",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de mudanza",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de delivery",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para uber",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para doordash",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para repartidor",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de cuidadora",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo de nanny",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo cuidando ancianos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para empezar inmediato",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleo rápido",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "necesito dinero urgente",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "necesito clientes para mi negocio",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "promocionar negocio latino",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "servicios para hispanos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "negocio latino",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "emprendedores latinos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "emprendedoras latinas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "dueños de negocio hispano",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "marketing para latinos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "negocios en chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "negocios latinos chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "marketplace chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "compra y venta chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "servicios locales chicago",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "clasificados hispanos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "anuncios hispanos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "publicidad para latinos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "ventas para hispanos",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo lgbt",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "empleos lgbt",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo comunidad gay",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para trans",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para lesbianas",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "trabajo para gays",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "emprendedores lgbt",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "negocios lgbt",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        },
+        {
+          "tag": "servicios lgbt",
+          "why": "Frase del listado relacionada con trabajo, dinero, negocio u oportunidades; puede detectar necesidad de orientación, prosperidad o abrir caminos."
+        }
+      ],
+      "removed": []
+    },
+    {
+      "id": "energias/limpieza_proteccion",
+      "label": "Energías, protección y ambiente cargado",
+      "hashtags": [
+        {
+          "tag": "malas energias",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "energia pesada",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "se siente algo raro en mi casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi casa tiene malas vibras",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento energias negativas",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "presencias extrañas",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento una presencia en mi casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi casa se siente pesada",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "hay algo raro en mi hogar",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mucha negatividad en mi casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mal ambiente en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "problemas espirituales",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento miedo en mi casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "no puedo dormir en mi casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "pesadillas constantes",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ruidos extraños en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "se caen las cosas solas",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi casa se siente oscura",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento que me observan",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "malas vibras en mi negocio",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "energia negativa en mi negocio",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "todo me sale mal",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mala suerte",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "estoy salado",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento envidia alrededor",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "me hicieron brujeria",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "creo que me hicieron un trabajo",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "como quitar brujeria",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "como limpiar mi casa espiritualmente",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "limpia espiritual para casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "limpia espiritual urgente",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "proteccion espiritual para hogar",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "necesito una limpia",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "quiero limpiar energias negativas",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "proteccion contra envidia",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "problemas por envidia",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mal de ojo",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mucho conflicto en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "peleas constantes en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi pareja cambio de repente",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "todo empezo a salir mal",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "bloqueos espirituales",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "cierres de caminos",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "necesito abrir caminos",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "problemas espirituales en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "malas energias despues de una visita",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi negocio no prospera",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "clientes no llegan",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "energia pesada en el negocio",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "proteccion para negocio",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento cansancio todo el tiempo",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "depresion espiritual",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "angustia espiritual",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "me siento drenado",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "me siento sin energia",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "algo me sigue",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "siento que alguien me hizo daño",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "trabajo espiritual negativo",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ataques espirituales",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "energias oscuras",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "como proteger mi hogar",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "como quitar malas vibras",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ritual de proteccion",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "baño espiritual",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "baño para quitar salacion",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "baño para abrir caminos",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "veladora de proteccion",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "oraciones de proteccion",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "limpia con huevo",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "limpia para quitar malas energias",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "como atraer energia positiva",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "proteccion contra enemigos",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "personas envidiosas",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "envidia y chismes",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "amarres y brujeria",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "trabajo de magia negra",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "espiritus en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "actividad paranormal",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi casa esta cargada",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "malas vibras en mi cuarto",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "energia negativa familiar",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ambiente pesado en casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "todo se rompe en mi casa",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mala energia en mi relacion",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "mi pareja se alejo",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "problemas amorosos espirituales",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "tristeza sin razon",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ansiedad espiritual",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "me siento bloqueado",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "dinero bloqueado",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "no me rinde el dinero",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "problemas economicos espirituales",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "rituales para prosperidad",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ritual para suerte",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ritual para dinero",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "consulta espiritual urgente",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        },
+        {
+          "tag": "ayuda espiritual urgente",
+          "why": "Frase del listado relacionada con energía pesada, malas vibras, casa, negocio o protección; útil para detectar posibles necesidades de limpieza u orientación espiritual."
+        }
+      ],
+      "removed": []
+    },
+    {
+      "id": "directas/intencion_espiritual_o_emocional",
+      "label": "Directas — amor, guía, protección y ayuda espiritual",
+      "hashtags": [
+        {
+          "tag": "problemas de amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "mi pareja me engaña",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "quiero recuperar a mi ex",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "mi esposo cambio conmigo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "mi novia me dejo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ruptura amorosa",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "desespero amoroso",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas sentimentales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "quiero atraer amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ritual para amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "amarres efectivos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "amarres de amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como recuperar a mi pareja",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "alejar tercera persona",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "endulzamiento amoroso",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas familiares",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "peleas familiares",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas con hijos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas matrimoniales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "necesito consejo espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "busco ayuda espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "consulta espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "consulta de tarot",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "lectura de cartas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "lectura espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "tarot amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "tarot dinero",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "tarot trabajo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "tarot urgente",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "vidente recomendada",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "bruja recomendada",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "santera recomendada",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "curandera espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "espiritualidad latina",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "espiritualidad mexicana",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "espiritualidad colombiana",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "brujeria latina",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "magia blanca",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "trabajos espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "rituales efectivos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "rituales para dinero",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "rituales para prosperidad",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "rituales para abrir caminos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "abrir caminos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "bloqueos espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "cierres de caminos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "mala suerte",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "todo me sale mal",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas economicos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "necesito atraer dinero",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "atraer clientes",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "atraer suerte",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "prosperidad para negocio",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "proteccion para negocio",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "limpia para negocio",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "negocio estancado",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ventas bajas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "clientes no llegan",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "envidia en el trabajo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "envidia en negocio",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "proteccion contra enemigos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "mal de ojo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "personas envidiosas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "energia negativa",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "energia pesada",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "malas vibras",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "limpias espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "baños espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "baños de prosperidad",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "baños de amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "baños contra envidia",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "proteccion espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "proteccion del hogar",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "proteccion familiar",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "veladoras espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "veladora para amor",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "veladora para dinero",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "veladora de proteccion",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "veladora abre caminos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "veladora santa muerte",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "devotos santa muerte",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "santa muerte milagrosa",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "santeria",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ifa y santeria",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "yerberia",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "botanica latina",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "productos esotericos",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "aceites espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "inciensos espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "rituales con velas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "oraciones poderosas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "oracion para proteccion",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "manifestacion y abundancia",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ley de atraccion",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como atraer abundancia",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como atraer clientes",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como atraer dinero",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como atraer suerte",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "depresion espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ansiedad espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "tristeza espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "me siento bloqueado",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "me siento drenado",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "presencias extrañas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "mi casa se siente rara",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "actividad paranormal",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "espiritus en casa",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "proteccion contra brujeria",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "me hicieron brujeria",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como quitar brujeria",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "como quitar salacion",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "limpia con huevo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "consulta urgente",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ayuda urgente",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "quiero cambiar mi suerte",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas de inmigracion y desesperacion",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "no consigo trabajo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "necesito trabajo urgente",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas financieros",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "deudas y desesperacion",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "quiero mejorar mi vida",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "quiero paz espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "quiero tranquilidad",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas emocionales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "me siento solo",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "me siento perdido",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "necesito guia espiritual",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "consejos espirituales",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "tarot para lgbt",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "rituales gay",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "amarres gay",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "espiritualidad lgbt",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "santeria lgbt",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "brujeria queer",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas amorosos gay",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "problemas sentimentales lesbianas",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "energia negativa pareja gay",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "ritual para pareja gay",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        },
+        {
+          "tag": "consulta espiritual lgbt",
+          "why": "Frase directa del listado con intención emocional o espiritual clara; útil para detectar prospectos con necesidad explícita o situación fuerte."
+        }
+      ],
+      "removed": []
+    }
+  ]
+}

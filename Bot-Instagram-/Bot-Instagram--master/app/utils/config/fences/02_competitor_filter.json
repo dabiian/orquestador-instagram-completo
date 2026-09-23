@@ -1,0 +1,74 @@
+{
+  "industry": "fences",
+  "core_services": [
+    "fence installation",
+    "fence replacement",
+    "fence repair",
+    "residential fencing",
+    "commercial fencing",
+    "privacy fencing",
+    "wood fencing",
+    "vinyl fencing",
+    "chain link fencing",
+    "metal fencing"
+  ],
+  "direct_competitor_signals": [
+    "fence installation",
+    "fence installer",
+    "fence company",
+    "fencing company",
+    "commercial fencing",
+    "residential fencing",
+    "fence contractor",
+    "fence repair",
+    "fence replacement",
+    "privacy fence installation",
+    "chain link fence installation",
+    "wood fence installation",
+    "vinyl fence installation",
+    "metal fence installation"
+  ],
+  "possible_competitor_signals": [
+    "fence and deck",
+    "fence and landscaping",
+    "property maintenance",
+    "general outdoor contractor",
+    "exterior contractor"
+  ],
+  "adjacent_businesses": [
+    "general contractor",
+    "construction",
+    "landscaping",
+    "property management",
+    "real estate",
+    "realtor",
+    "handyman",
+    "home improvement"
+  ],
+  "referral_opportunities": [
+    "general contractor",
+    "construction company",
+    "landscaping company",
+    "property management",
+    "real estate",
+    "realtor",
+    "home builder",
+    "remodeling company",
+    "handyman"
+  ],
+  "exclude_as_competitor": [
+    "general contractor",
+    "construction",
+    "landscaping",
+    "property management",
+    "real estate",
+    "realtor",
+    "handyman"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

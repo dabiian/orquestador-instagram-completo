@@ -1,0 +1,1537 @@
+{
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#e74c3c",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Primera línea de defensa. Si el nombre pertenece a una empresa, estudio, clínica, spa o persona/marca personal que ofrezca cuidado facial, skincare, estética general, beauty services, inyectables, láser, cejas, pestañas, depilación, maquillaje profesional o tratamientos corporales → competencia confirmada.",
+      "logic": "BLOQUEO AUTOMÁTICO — no se analiza nada más",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "medspa",
+          "example": "Chicago MedSpa Lounge, Bella MedSpa"
+        },
+        {
+          "word": "med spa",
+          "example": "Luxury Med Spa Chicago"
+        },
+        {
+          "word": "medical spa",
+          "example": "Medical Spa Chicago"
+        },
+        {
+          "word": "spa",
+          "example": "Urban Spa Chicago, Spa 312 competitor"
+        },
+        {
+          "word": "facial spa",
+          "example": "Chicago Facial Spa"
+        },
+        {
+          "word": "facial studio",
+          "example": "Ana Facial Studio"
+        },
+        {
+          "word": "facial bar",
+          "example": "Glow Facial Bar"
+        },
+        {
+          "word": "facials by",
+          "example": "Facials by Ana"
+        },
+        {
+          "word": "skin by",
+          "example": "Skin by Maria"
+        },
+        {
+          "word": "beauty by",
+          "example": "Beauty by Valeria"
+        },
+        {
+          "word": "aesthetics",
+          "example": "Aesthetics by Ana, Chicago Aesthetics"
+        },
+        {
+          "word": "aesthetic",
+          "example": "Aesthetic Studio Chicago"
+        },
+        {
+          "word": "esthetic",
+          "example": "Esthetic Studio Chicago"
+        },
+        {
+          "word": "esthetics",
+          "example": "Skin Esthetics Chicago"
+        },
+        {
+          "word": "esthetician",
+          "example": "Licensed Esthetician Ana"
+        },
+        {
+          "word": "facialist",
+          "example": "Chicago Facialist"
+        },
+        {
+          "word": "skincare",
+          "example": "Chicago Skincare Studio"
+        },
+        {
+          "word": "skin care",
+          "example": "Skin Care by Laura"
+        },
+        {
+          "word": "skin clinic",
+          "example": "Skin Clinic Chicago"
+        },
+        {
+          "word": "skincare clinic",
+          "example": "Skincare Clinic Chicago"
+        },
+        {
+          "word": "skin studio",
+          "example": "Glow Skin Studio"
+        },
+        {
+          "word": "skin lab",
+          "example": "Chicago Skin Lab"
+        },
+        {
+          "word": "face studio",
+          "example": "Face Studio Chicago"
+        },
+        {
+          "word": "face clinic",
+          "example": "Face Clinic Chicago"
+        },
+        {
+          "word": "beauty clinic",
+          "example": "Beauty Clinic Chicago"
+        },
+        {
+          "word": "beauty bar",
+          "example": "Beauty Bar Chicago"
+        },
+        {
+          "word": "beauty lounge",
+          "example": "Beauty Lounge Chicago"
+        },
+        {
+          "word": "beauty studio",
+          "example": "Beauty Studio Chicago"
+        },
+        {
+          "word": "botox",
+          "example": "Botox by Ana, Chicago Botox Studio"
+        },
+        {
+          "word": "botox studio",
+          "example": "Botox Studio Chicago"
+        },
+        {
+          "word": "botox clinic",
+          "example": "Botox Clinic Chicago"
+        },
+        {
+          "word": "filler",
+          "example": "Lip Filler Studio"
+        },
+        {
+          "word": "fillers",
+          "example": "Chicago Fillers"
+        },
+        {
+          "word": "filler studio",
+          "example": "Filler Studio Chicago"
+        },
+        {
+          "word": "filler clinic",
+          "example": "Lip Filler Clinic"
+        },
+        {
+          "word": "injection",
+          "example": "Injection Lounge Chicago"
+        },
+        {
+          "word": "injection bar",
+          "example": "Chicago Injection Bar"
+        },
+        {
+          "word": "injector",
+          "example": "Injector by Nicole"
+        },
+        {
+          "word": "injectables",
+          "example": "Injectables Chicago"
+        },
+        {
+          "word": "laser studio",
+          "example": "Laser Studio Chicago"
+        },
+        {
+          "word": "laser clinic",
+          "example": "Laser Clinic Chicago"
+        },
+        {
+          "word": "laser hair removal",
+          "example": "Laser Hair Removal Chicago"
+        },
+        {
+          "word": "body contouring",
+          "example": "Body Contouring Studio Chicago"
+        },
+        {
+          "word": "body sculpting",
+          "example": "Body Sculpting Chicago"
+        },
+        {
+          "word": "skin tightening",
+          "example": "Skin Tightening Studio Chicago"
+        },
+        {
+          "word": "hydrafacial",
+          "example": "Hydrafacial Chicago"
+        },
+        {
+          "word": "hydrofacial",
+          "example": "Hydrofacial Studio"
+        },
+        {
+          "word": "microneedling",
+          "example": "Microneedling Chicago"
+        },
+        {
+          "word": "chemical peel",
+          "example": "Chemical Peel Studio"
+        },
+        {
+          "word": "dermaplaning",
+          "example": "Dermaplaning by Ana"
+        },
+        {
+          "word": "anti aging",
+          "example": "Anti Aging Clinic Chicago"
+        },
+        {
+          "word": "lash studio",
+          "example": "Lash Studio Chicago"
+        },
+        {
+          "word": "lashes",
+          "example": "Lashes by Andrea"
+        },
+        {
+          "word": "brow studio",
+          "example": "Brow Studio Chicago"
+        },
+        {
+          "word": "brows",
+          "example": "Brows by Camila"
+        },
+        {
+          "word": "waxing studio",
+          "example": "Waxing Studio Chicago"
+        },
+        {
+          "word": "sugaring",
+          "example": "Sugaring Studio Chicago"
+        },
+        {
+          "word": "makeup artist",
+          "example": "Makeup Artist Chicago"
+        },
+        {
+          "word": "makeup studio",
+          "example": "Makeup Studio Chicago"
+        },
+        {
+          "word": "cosmetology",
+          "example": "Cosmetology Studio Chicago"
+        },
+        {
+          "word": "cosmetologist",
+          "example": "Cosmetologist Ana"
+        },
+        {
+          "word": "estética",
+          "example": "Estética Laura Chicago"
+        },
+        {
+          "word": "estetica",
+          "example": "Estetica Bella Chicago"
+        },
+        {
+          "word": "esteticista",
+          "example": "Esteticista en Chicago"
+        },
+        {
+          "word": "faciales",
+          "example": "Faciales by Ana"
+        },
+        {
+          "word": "limpieza facial",
+          "example": "Limpieza Facial Chicago"
+        },
+        {
+          "word": "cuidado facial",
+          "example": "Cuidado Facial Chicago"
+        },
+        {
+          "word": "clínica estética",
+          "example": "Clínica Estética Chicago"
+        },
+        {
+          "word": "clinica estetica",
+          "example": "Clinica Estetica Chicago"
+        },
+        {
+          "word": "depilación láser",
+          "example": "Depilación Láser Chicago"
+        },
+        {
+          "word": "depilacion laser",
+          "example": "Depilacion Laser Chicago"
+        },
+        {
+          "word": "cejas",
+          "example": "Cejas by Maria"
+        },
+        {
+          "word": "pestañas",
+          "example": "Pestañas by Laura"
+        }
+      ],
+      "note": "Bloquear tanto negocios como marcas personales. Ejemplo: 'Skin by Ana', 'Facials by Maria', 'Beauty by Laura', 'Lashes by Camila' o 'Licensed Esthetician' son competencia aunque parezcan perfiles personales. No exigir que el perfil diga 'empresa'."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#e67e22",
+      "points": 55,
+      "speed": "Inmediato",
+      "description": "Facebook asigna una categoría oficial. Si la categoría corresponde a spa, medspa, estética, belleza, cuidado de piel, faciales, cejas, pestañas, maquillaje, depilación, cosmética o tratamientos corporales → bloqueo automático.",
+      "logic": "BLOQUEO AUTOMÁTICO",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "Medical Spa",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Spa",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Day Spa",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Facial Spa",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Beauty Salon",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Beauty, Cosmetic & Personal Care",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Health/Beauty",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Skin Care Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Laser Hair Removal Service",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Waxing Service",
+          "example": "Servicio de depilación"
+        },
+        {
+          "word": "Makeup Artist",
+          "example": "Servicio beauty profesional"
+        },
+        {
+          "word": "Eyelash Service",
+          "example": "Servicio de pestañas"
+        },
+        {
+          "word": "Eyebrow Service",
+          "example": "Servicio de cejas"
+        },
+        {
+          "word": "Permanent Makeup",
+          "example": "Micropigmentación / PMU"
+        },
+        {
+          "word": "Cosmetics Store",
+          "example": "Revisar si también ofrece servicios"
+        },
+        {
+          "word": "Massage Service",
+          "example": "Puede competir en spa/wellness"
+        },
+        {
+          "word": "Aesthetic Clinic",
+          "example": "Categoría de clínica estética"
+        },
+        {
+          "word": "Cosmetic Surgeon",
+          "example": "Categoría médica/estética relacionada"
+        },
+        {
+          "word": "Dermatologist",
+          "example": "Categoría médica/estética relacionada"
+        },
+        {
+          "word": "Cosmetology School",
+          "example": "Puede atraer audiencia y vender servicios beauty"
+        }
+      ],
+      "note": "Para SPA en Chicago, bloquear negocios de estética facial/general antes de comentar. Si la categoría es beauty/skincare/spa y el perfil vende o agenda servicios, no tratarlo como prospecto."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#f5a623",
+      "points": 50,
+      "speed": "2–3 segundos",
+      "description": "Analizar bio o descripción. Si una empresa o persona ofrece, agenda, promociona o vende cuidado facial, tratamientos de piel, estética general, faciales, inyectables, láser, cejas, pestañas, maquillaje, depilación, body contouring o servicios beauty → competencia.",
+      "logic": "1 coincidencia fuerte de servicio/proveedor → BLOQUEO | 2 coincidencias débiles → BLOQUEO | señales sueltas sin oferta → sumar riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "book your treatment",
+          "example": "'Book your treatment today'"
+        },
+        {
+          "word": "book a facial",
+          "example": "'Book a facial with me'"
+        },
+        {
+          "word": "book your facial",
+          "example": "'Book your facial today'"
+        },
+        {
+          "word": "facial appointments",
+          "example": "'Facial appointments available'"
+        },
+        {
+          "word": "taking appointments",
+          "example": "'Taking appointments for facials'"
+        },
+        {
+          "word": "appointments available",
+          "example": "'Appointments available this week'"
+        },
+        {
+          "word": "accepting new clients",
+          "example": "'Accepting new skincare clients'"
+        },
+        {
+          "word": "dm to book",
+          "example": "'DM to book your facial'"
+        },
+        {
+          "word": "link to book",
+          "example": "'Link to book treatments'"
+        },
+        {
+          "word": "licensed esthetician",
+          "example": "'Licensed esthetician in Chicago'"
+        },
+        {
+          "word": "esthetician",
+          "example": "'Esthetician | Facials | Waxing'"
+        },
+        {
+          "word": "facialist",
+          "example": "'Facialist in Chicago'"
+        },
+        {
+          "word": "skin specialist",
+          "example": "'Skin specialist for acne and anti-aging'"
+        },
+        {
+          "word": "skin therapist",
+          "example": "'Skin therapist and facialist'"
+        },
+        {
+          "word": "skincare services",
+          "example": "'Skincare services by appointment'"
+        },
+        {
+          "word": "skin care services",
+          "example": "'Skin care services in Chicago'"
+        },
+        {
+          "word": "skin treatments",
+          "example": "'Advanced skin treatments'"
+        },
+        {
+          "word": "facial treatments",
+          "example": "'Custom facial treatments'"
+        },
+        {
+          "word": "custom facials",
+          "example": "'Custom facials for acne and glow'"
+        },
+        {
+          "word": "acne facial",
+          "example": "'Acne facial available'"
+        },
+        {
+          "word": "anti aging facial",
+          "example": "'Anti-aging facial treatments'"
+        },
+        {
+          "word": "glow facial",
+          "example": "'Glow facial special'"
+        },
+        {
+          "word": "hydrafacial",
+          "example": "'Hydrafacial treatment available'"
+        },
+        {
+          "word": "hydrofacial",
+          "example": "'Hydrofacial packages'"
+        },
+        {
+          "word": "dermaplaning",
+          "example": "'Dermaplaning appointments'"
+        },
+        {
+          "word": "chemical peel",
+          "example": "'Chemical peel treatments'"
+        },
+        {
+          "word": "chemical peels",
+          "example": "'Chemical peels available'"
+        },
+        {
+          "word": "microneedling",
+          "example": "'Microneedling sessions'"
+        },
+        {
+          "word": "microdermabrasion",
+          "example": "'Microdermabrasion facial'"
+        },
+        {
+          "word": "botox",
+          "example": "'Botox available'"
+        },
+        {
+          "word": "we offer botox",
+          "example": "'We offer Botox and fillers'"
+        },
+        {
+          "word": "botox and fillers",
+          "example": "'Botox and fillers available'"
+        },
+        {
+          "word": "lip fillers",
+          "example": "'Lip fillers by appointment'"
+        },
+        {
+          "word": "lip filler",
+          "example": "'Lip filler appointments'"
+        },
+        {
+          "word": "dermal fillers",
+          "example": "'Dermal fillers and injectables'"
+        },
+        {
+          "word": "injectables",
+          "example": "'Injectables and skin treatments'"
+        },
+        {
+          "word": "licensed injector",
+          "example": "'Licensed injector in Chicago'"
+        },
+        {
+          "word": "certified injector",
+          "example": "'Certified injector'"
+        },
+        {
+          "word": "laser hair removal",
+          "example": "'Laser hair removal packages'"
+        },
+        {
+          "word": "skin tightening",
+          "example": "'RF skin tightening'"
+        },
+        {
+          "word": "body contouring",
+          "example": "'Body contouring specials'"
+        },
+        {
+          "word": "body sculpting",
+          "example": "'Body sculpting appointments'"
+        },
+        {
+          "word": "waxing services",
+          "example": "'Waxing services available'"
+        },
+        {
+          "word": "sugaring services",
+          "example": "'Sugaring services in Chicago'"
+        },
+        {
+          "word": "brow services",
+          "example": "'Brow services and lamination'"
+        },
+        {
+          "word": "brow lamination",
+          "example": "'Brow lamination appointments'"
+        },
+        {
+          "word": "lash services",
+          "example": "'Lash services available'"
+        },
+        {
+          "word": "lash extensions",
+          "example": "'Lash extensions by appointment'"
+        },
+        {
+          "word": "makeup services",
+          "example": "'Makeup services for events'"
+        },
+        {
+          "word": "makeup artist",
+          "example": "'Chicago makeup artist'"
+        },
+        {
+          "word": "beauty services",
+          "example": "'Beauty services in Chicago'"
+        },
+        {
+          "word": "aesthetic services",
+          "example": "'Aesthetic services by appointment'"
+        },
+        {
+          "word": "medspa chicago",
+          "example": "'Medspa Chicago'"
+        },
+        {
+          "word": "medical spa",
+          "example": "'Medical spa and aesthetics'"
+        },
+        {
+          "word": "aesthetic clinic",
+          "example": "'Aesthetic clinic in Chicago'"
+        },
+        {
+          "word": "free consultation",
+          "example": "'Free skin consultation'"
+        },
+        {
+          "word": "consulta gratis",
+          "example": "'Consulta gratis para faciales'"
+        },
+        {
+          "word": "agenda tu cita",
+          "example": "'Agenda tu cita de facial'"
+        },
+        {
+          "word": "citas disponibles",
+          "example": "'Citas disponibles para limpieza facial'"
+        },
+        {
+          "word": "faciales",
+          "example": "'Faciales personalizados'"
+        },
+        {
+          "word": "limpieza facial",
+          "example": "'Limpieza facial profunda'"
+        },
+        {
+          "word": "tratamientos faciales",
+          "example": "'Tratamientos faciales en Chicago'"
+        },
+        {
+          "word": "tratamientos estéticos",
+          "example": "'Tratamientos estéticos disponibles'"
+        },
+        {
+          "word": "cuidado de la piel",
+          "example": "'Cuidado de la piel y faciales'"
+        },
+        {
+          "word": "cuidado facial",
+          "example": "'Cuidado facial profesional'"
+        },
+        {
+          "word": "esteticista",
+          "example": "'Esteticista certificada'"
+        },
+        {
+          "word": "estética facial",
+          "example": "'Estética facial avanzada'"
+        },
+        {
+          "word": "depilación láser",
+          "example": "'Depilación láser en Chicago'"
+        },
+        {
+          "word": "cejas",
+          "example": "'Diseño de cejas / brow lamination'"
+        },
+        {
+          "word": "pestañas",
+          "example": "'Extensiones de pestañas'"
+        },
+        {
+          "word": "maquillaje profesional",
+          "example": "'Maquillaje profesional para eventos'"
+        }
+      ],
+      "note": "La clave es detectar oferta de servicio, no solo interés. Una usuaria que dice 'I love skincare' puede ser prospecto; una persona que dice 'licensed esthetician', 'book a facial', 'DM to book', 'facials by appointment' o 'citas disponibles' es competencia."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#9b59b6",
+      "points": 40,
+      "speed": "5–10 segundos",
+      "description": "Revisar últimos posts. Si el contenido muestra venta, agenda, promoción o demostración de cuidado facial, estética general, servicios beauty, cabina, camilla, antes/después clínico, equipo láser, maquillaje profesional, pestañas, cejas, depilación o CTAs para reservar → competencia.",
+      "logic": "2+ posts sobre servicios estéticos → BLOQUEO | 1 post fuerte con CTA de agenda/servicio → sumar alto riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "before and after botox",
+          "example": "Antes/después de Botox"
+        },
+        {
+          "word": "before and after fillers",
+          "example": "Antes/después de fillers"
+        },
+        {
+          "word": "before and after facial",
+          "example": "Antes/después de facial"
+        },
+        {
+          "word": "before and after acne",
+          "example": "Antes/después de tratamiento de acné"
+        },
+        {
+          "word": "lip filler results",
+          "example": "Resultados de labios/rellenos"
+        },
+        {
+          "word": "facial results",
+          "example": "Resultados de facial"
+        },
+        {
+          "word": "skin results",
+          "example": "Resultados de piel"
+        },
+        {
+          "word": "glow results",
+          "example": "Resultados de tratamiento glow"
+        },
+        {
+          "word": "treatment room",
+          "example": "Foto de cabina o sala de tratamiento"
+        },
+        {
+          "word": "spa room",
+          "example": "Cabina de spa"
+        },
+        {
+          "word": "facial bed",
+          "example": "Camilla/cama facial"
+        },
+        {
+          "word": "esthetician table",
+          "example": "Mesa/camilla de esteticista"
+        },
+        {
+          "word": "injection equipment",
+          "example": "Jeringas, guantes, camilla, insumos visibles"
+        },
+        {
+          "word": "laser machine",
+          "example": "Equipo láser visible"
+        },
+        {
+          "word": "facial machine",
+          "example": "Máquina facial visible"
+        },
+        {
+          "word": "botox appointment",
+          "example": "'Botox appointments available'"
+        },
+        {
+          "word": "filler appointment",
+          "example": "'Book your filler appointment'"
+        },
+        {
+          "word": "facial appointment",
+          "example": "'Book your facial appointment'"
+        },
+        {
+          "word": "skincare appointment",
+          "example": "'Skincare appointments available'"
+        },
+        {
+          "word": "laser hair removal package",
+          "example": "Promoción de paquetes láser"
+        },
+        {
+          "word": "skin treatment special",
+          "example": "Especiales de tratamientos de piel"
+        },
+        {
+          "word": "facial promotion",
+          "example": "Promoción de faciales"
+        },
+        {
+          "word": "chemical peel results",
+          "example": "Resultados de peeling"
+        },
+        {
+          "word": "microneedling results",
+          "example": "Resultados de microneedling"
+        },
+        {
+          "word": "hydrafacial special",
+          "example": "Promoción de Hydrafacial"
+        },
+        {
+          "word": "dermaplaning special",
+          "example": "Promoción de dermaplaning"
+        },
+        {
+          "word": "body contouring special",
+          "example": "Oferta de contorno corporal"
+        },
+        {
+          "word": "brow lamination appointment",
+          "example": "Agenda para brow lamination"
+        },
+        {
+          "word": "lash extension appointment",
+          "example": "Agenda para extensiones de pestañas"
+        },
+        {
+          "word": "waxing appointment",
+          "example": "Agenda para depilación"
+        },
+        {
+          "word": "makeup appointment",
+          "example": "Agenda para maquillaje profesional"
+        },
+        {
+          "word": "book now spa",
+          "example": "CTA directo de agenda para spa"
+        },
+        {
+          "word": "limited spots beauty",
+          "example": "Urgencia comercial para tratamientos"
+        },
+        {
+          "word": "free skin consultation",
+          "example": "Consulta gratis de piel ofrecida por negocio"
+        },
+        {
+          "word": "dm to book facial",
+          "example": "CTA de reserva de facial"
+        },
+        {
+          "word": "link in bio to book",
+          "example": "CTA de reserva de servicios"
+        },
+        {
+          "word": "agenda tu facial",
+          "example": "CTA en español para facial"
+        },
+        {
+          "word": "citas disponibles",
+          "example": "Disponibilidad de citas de estética"
+        }
+      ],
+      "note": "El análisis visual debe detectar cabinas, camillas, equipos láser, máquinas faciales, vaporizadores, jeringas, guantes, antes/después estético, posts de agenda, menús de precios y piezas promocionales de beauty/spa."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#1877F2",
+      "points": 30,
+      "speed": "Inmediato",
+      "description": "Revisar hashtags propios. Si el perfil usa hashtags comerciales o profesionales de spa, skincare, facialist, esthetician, beauty services, inyectables, láser, cejas, pestañas, maquillaje, depilación o estética → señal fuerte de competencia.",
+      "logic": "2+ hashtags comerciales/profesionales → BLOQUEO | 1 hashtag fuerte + CTA o bio de servicio → BLOQUEO",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#MedSpa",
+          "example": "Hashtag comercial de medspa"
+        },
+        {
+          "word": "#MedSpaChicago",
+          "example": "Medspa local en Chicago"
+        },
+        {
+          "word": "#ChicagoMedSpa",
+          "example": "Variante local de medspa"
+        },
+        {
+          "word": "#SpaChicago",
+          "example": "Spa local"
+        },
+        {
+          "word": "#ChicagoSpa",
+          "example": "Spa local"
+        },
+        {
+          "word": "#ChicagoFacials",
+          "example": "Faciales en Chicago"
+        },
+        {
+          "word": "#FacialsChicago",
+          "example": "Faciales locales"
+        },
+        {
+          "word": "#FacialistChicago",
+          "example": "Profesional facial local"
+        },
+        {
+          "word": "#ChicagoFacialist",
+          "example": "Variante local"
+        },
+        {
+          "word": "#ChicagoEsthetician",
+          "example": "Esteticista local"
+        },
+        {
+          "word": "#EstheticianChicago",
+          "example": "Esteticista local"
+        },
+        {
+          "word": "#SkincareChicago",
+          "example": "Skincare local"
+        },
+        {
+          "word": "#ChicagoSkincare",
+          "example": "Skincare local"
+        },
+        {
+          "word": "#SkincareClinic",
+          "example": "Clínica de cuidado de piel"
+        },
+        {
+          "word": "#SkincareClinicChicago",
+          "example": "Clínica local"
+        },
+        {
+          "word": "#SkinCareService",
+          "example": "Servicio de cuidado de piel"
+        },
+        {
+          "word": "#BotoxChicago",
+          "example": "Servicio de Botox en Chicago"
+        },
+        {
+          "word": "#ChicagoBotox",
+          "example": "Variante local de Botox"
+        },
+        {
+          "word": "#FillerChicago",
+          "example": "Servicio de fillers en Chicago"
+        },
+        {
+          "word": "#FillersChicago",
+          "example": "Servicio de fillers local"
+        },
+        {
+          "word": "#ChicagoFillers",
+          "example": "Variante local de fillers"
+        },
+        {
+          "word": "#LipFillersChicago",
+          "example": "Fillers de labios en Chicago"
+        },
+        {
+          "word": "#LipFillerChicago",
+          "example": "Variante local"
+        },
+        {
+          "word": "#AestheticsChicago",
+          "example": "Estética comercial local"
+        },
+        {
+          "word": "#ChicagoAesthetics",
+          "example": "Variante local"
+        },
+        {
+          "word": "#LaserHairRemovalChicago",
+          "example": "Servicio láser local"
+        },
+        {
+          "word": "#ChicagoLaserHairRemoval",
+          "example": "Variante local"
+        },
+        {
+          "word": "#BodyContouringChicago",
+          "example": "Servicio de contorno corporal"
+        },
+        {
+          "word": "#ChicagoBodyContouring",
+          "example": "Variante local"
+        },
+        {
+          "word": "#ChemicalPeelChicago",
+          "example": "Servicio de peeling local"
+        },
+        {
+          "word": "#MicroneedlingChicago",
+          "example": "Servicio de microneedling local"
+        },
+        {
+          "word": "#HydrafacialChicago",
+          "example": "Servicio Hydrafacial local"
+        },
+        {
+          "word": "#DermaplaningChicago",
+          "example": "Servicio dermaplaning local"
+        },
+        {
+          "word": "#BeautyClinicChicago",
+          "example": "Clínica beauty local"
+        },
+        {
+          "word": "#ChicagoBeautyServices",
+          "example": "Servicios beauty locales"
+        },
+        {
+          "word": "#ChicagoLashes",
+          "example": "Servicio de pestañas local"
+        },
+        {
+          "word": "#LashesChicago",
+          "example": "Servicio de pestañas local"
+        },
+        {
+          "word": "#ChicagoBrows",
+          "example": "Servicio de cejas local"
+        },
+        {
+          "word": "#BrowsChicago",
+          "example": "Servicio de cejas local"
+        },
+        {
+          "word": "#BrowLaminationChicago",
+          "example": "Brow lamination local"
+        },
+        {
+          "word": "#WaxingChicago",
+          "example": "Depilación local"
+        },
+        {
+          "word": "#SugaringChicago",
+          "example": "Sugaring local"
+        },
+        {
+          "word": "#ChicagoMakeupArtist",
+          "example": "Maquillaje profesional local"
+        },
+        {
+          "word": "#MakeupArtistChicago",
+          "example": "Maquillaje profesional local"
+        },
+        {
+          "word": "#FacialesChicago",
+          "example": "Faciales en español local"
+        },
+        {
+          "word": "#EsteticaChicago",
+          "example": "Estética en español local"
+        },
+        {
+          "word": "#EstéticaChicago",
+          "example": "Estética en español local"
+        }
+      ],
+      "note": "Diferenciar consumidor vs proveedor: una mujer usando #ChicagoFacials para buscar/self-care puede ser prospecto; una cuenta que combina hashtags profesionales con 'DM to book', precios, agenda, antes/después o bio de servicio es competencia."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "layer_L3_block_if_keyword_hits_gte": 1,
+    "layer_L4_block_if_keyword_hits_gte": 2,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "block_if_score_gte": 60
+  },
+  "clean_exports": {
+    "account_name_keywords": [
+      "medspa",
+      "med spa",
+      "medical spa",
+      "spa",
+      "facial spa",
+      "facial studio",
+      "facial bar",
+      "facials by",
+      "skin by",
+      "beauty by",
+      "aesthetics",
+      "aesthetic",
+      "esthetic",
+      "esthetics",
+      "esthetician",
+      "facialist",
+      "skincare",
+      "skin care",
+      "skin clinic",
+      "skincare clinic",
+      "skin studio",
+      "skin lab",
+      "face studio",
+      "face clinic",
+      "beauty clinic",
+      "beauty bar",
+      "beauty lounge",
+      "beauty studio",
+      "botox",
+      "botox studio",
+      "botox clinic",
+      "filler",
+      "fillers",
+      "filler studio",
+      "filler clinic",
+      "injection",
+      "injection bar",
+      "injector",
+      "injectables",
+      "laser studio",
+      "laser clinic",
+      "laser hair removal",
+      "body contouring",
+      "body sculpting",
+      "skin tightening",
+      "hydrafacial",
+      "hydrofacial",
+      "microneedling",
+      "chemical peel",
+      "dermaplaning",
+      "anti aging",
+      "lash studio",
+      "lashes",
+      "brow studio",
+      "brows",
+      "waxing studio",
+      "sugaring",
+      "makeup artist",
+      "makeup studio",
+      "cosmetology",
+      "cosmetologist",
+      "estética",
+      "estetica",
+      "esteticista",
+      "faciales",
+      "limpieza facial",
+      "cuidado facial",
+      "clínica estética",
+      "clinica estetica",
+      "depilación láser",
+      "depilacion laser",
+      "cejas",
+      "pestañas"
+    ],
+    "blocked_fb_categories": [
+      "Medical Spa",
+      "Spa",
+      "Day Spa",
+      "Facial Spa",
+      "Beauty Salon",
+      "Beauty, Cosmetic & Personal Care",
+      "Health/Beauty",
+      "Skin Care Service",
+      "Laser Hair Removal Service",
+      "Waxing Service",
+      "Makeup Artist",
+      "Eyelash Service",
+      "Eyebrow Service",
+      "Permanent Makeup",
+      "Cosmetics Store",
+      "Massage Service",
+      "Aesthetic Clinic",
+      "Cosmetic Surgeon",
+      "Dermatologist",
+      "Cosmetology School"
+    ],
+    "bio_keywords": [
+      "book your treatment",
+      "book a facial",
+      "book your facial",
+      "facial appointments",
+      "taking appointments",
+      "appointments available",
+      "accepting new clients",
+      "dm to book",
+      "link to book",
+      "licensed esthetician",
+      "esthetician",
+      "facialist",
+      "skin specialist",
+      "skin therapist",
+      "skincare services",
+      "skin care services",
+      "skin treatments",
+      "facial treatments",
+      "custom facials",
+      "acne facial",
+      "anti aging facial",
+      "glow facial",
+      "hydrafacial",
+      "hydrofacial",
+      "dermaplaning",
+      "chemical peel",
+      "chemical peels",
+      "microneedling",
+      "microdermabrasion",
+      "botox",
+      "we offer botox",
+      "botox and fillers",
+      "lip fillers",
+      "lip filler",
+      "dermal fillers",
+      "injectables",
+      "licensed injector",
+      "certified injector",
+      "laser hair removal",
+      "skin tightening",
+      "body contouring",
+      "body sculpting",
+      "waxing services",
+      "sugaring services",
+      "brow services",
+      "brow lamination",
+      "lash services",
+      "lash extensions",
+      "makeup services",
+      "makeup artist",
+      "beauty services",
+      "aesthetic services",
+      "medspa chicago",
+      "medical spa",
+      "aesthetic clinic",
+      "free consultation",
+      "consulta gratis",
+      "agenda tu cita",
+      "citas disponibles",
+      "faciales",
+      "limpieza facial",
+      "tratamientos faciales",
+      "tratamientos estéticos",
+      "cuidado de la piel",
+      "cuidado facial",
+      "esteticista",
+      "estética facial",
+      "depilación láser",
+      "cejas",
+      "pestañas",
+      "maquillaje profesional"
+    ],
+    "post_keywords": [
+      "before and after botox",
+      "before and after fillers",
+      "before and after facial",
+      "before and after acne",
+      "lip filler results",
+      "facial results",
+      "skin results",
+      "glow results",
+      "treatment room",
+      "spa room",
+      "facial bed",
+      "esthetician table",
+      "injection equipment",
+      "laser machine",
+      "facial machine",
+      "botox appointment",
+      "filler appointment",
+      "facial appointment",
+      "skincare appointment",
+      "laser hair removal package",
+      "skin treatment special",
+      "facial promotion",
+      "chemical peel results",
+      "microneedling results",
+      "hydrafacial special",
+      "dermaplaning special",
+      "body contouring special",
+      "brow lamination appointment",
+      "lash extension appointment",
+      "waxing appointment",
+      "makeup appointment",
+      "book now spa",
+      "limited spots beauty",
+      "free skin consultation",
+      "dm to book facial",
+      "link in bio to book",
+      "agenda tu facial",
+      "citas disponibles"
+    ],
+    "competitor_hashtags": [
+      "#MedSpa",
+      "#MedSpaChicago",
+      "#ChicagoMedSpa",
+      "#SpaChicago",
+      "#ChicagoSpa",
+      "#ChicagoFacials",
+      "#FacialsChicago",
+      "#FacialistChicago",
+      "#ChicagoFacialist",
+      "#ChicagoEsthetician",
+      "#EstheticianChicago",
+      "#SkincareChicago",
+      "#ChicagoSkincare",
+      "#SkincareClinic",
+      "#SkincareClinicChicago",
+      "#SkinCareService",
+      "#BotoxChicago",
+      "#ChicagoBotox",
+      "#FillerChicago",
+      "#FillersChicago",
+      "#ChicagoFillers",
+      "#LipFillersChicago",
+      "#LipFillerChicago",
+      "#AestheticsChicago",
+      "#ChicagoAesthetics",
+      "#LaserHairRemovalChicago",
+      "#ChicagoLaserHairRemoval",
+      "#BodyContouringChicago",
+      "#ChicagoBodyContouring",
+      "#ChemicalPeelChicago",
+      "#MicroneedlingChicago",
+      "#HydrafacialChicago",
+      "#DermaplaningChicago",
+      "#BeautyClinicChicago",
+      "#ChicagoBeautyServices",
+      "#ChicagoLashes",
+      "#LashesChicago",
+      "#ChicagoBrows",
+      "#BrowsChicago",
+      "#BrowLaminationChicago",
+      "#WaxingChicago",
+      "#SugaringChicago",
+      "#ChicagoMakeupArtist",
+      "#MakeupArtistChicago",
+      "#FacialesChicago",
+      "#EsteticaChicago",
+      "#EstéticaChicago"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Chicago MedSpa Lounge",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'medspa' encontrado en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría: Medical Spa",
+          "points": 55
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "No analizada — ya bloqueada en L1",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Maria Lopez",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre personal — ninguna señal de que ofrezca servicios estéticos",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Perfil personal — sin categoría de negocio estética",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "Bio personal: madre, Chicago, lifestyle — no vende ni agenda tratamientos",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts: boda, familia, self-care — no venta de spa ni estética",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Hashtags: #ChicagoBrides #ChicagoSelfCare — no profesionales/comerciales",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Facials by Ana",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'facials by' encontrado en nombre; marca personal que ofrece faciales",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "No necesaria — ya bloqueada por nombre",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "Bio: 'licensed esthetician' y 'DM to book'",
+          "points": 50
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Glow Beauty by Ana",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'beauty by' encontrado en nombre; posible marca personal de servicios beauty",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría: Skin Care Service",
+          "points": 55
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "'facial appointments' y 'accepting new clients' encontrados en bio",
+          "points": 50
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts no analizados porque L1+L2+L3 ya bloquean",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": true,
+          "detail": "#ChicagoEsthetician encontrado",
+          "points": 30
+        }
+      ],
+      "total": 195,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

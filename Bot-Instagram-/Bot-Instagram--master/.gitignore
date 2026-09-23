@@ -1,0 +1,67 @@
+# Entornos virtuales Python
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Variables de entorno
+
+# Logs
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Node / Vue / React
+node_modules/
+dist/
+build/
+.vite/
+
+# Python / Django / FastAPI
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# IDEs
+.vscode/
+.idea/
+
+# Archivos de sistema
+*.pid
+pids/
+
+
+# Backups / dumps de base de datos
+*.dump
+*.backup
+*.sql
+*.tar
+
+# Docker / runtime local
+docker-data/
+postgres_data/
+.pgdata/
+
+# Capturas / archivos generados por el bot
+screenshots/
+app/utilities/images/posts/generated/
+app/utilities/images/histories/generated/
+app/utilities/images/tagged/generated/
+
+# Cache de testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment / secrets
+.env
+*.env
+*.env.local

@@ -1,0 +1,632 @@
+{
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#e74c3c",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Primera línea de defensa. Si el nombre contiene términos propios de agencias de marketing, SEO, diseño web o desarrollo digital → competencia confirmada al instante.",
+      "logic": "BLOQUEO AUTOMÁTICO — no se analiza nada más",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "digital marketing",
+          "example": "Chicago Digital Marketing Agency"
+        },
+        {
+          "word": "marketing agency",
+          "example": "Blue Lake Marketing Agency"
+        },
+        {
+          "word": "seo agency",
+          "example": "Chicago SEO Agency"
+        },
+        {
+          "word": "seo company",
+          "example": "Local SEO Company Chicago"
+        },
+        {
+          "word": "seo services",
+          "example": "SEO Services Chicago"
+        },
+        {
+          "word": "web design",
+          "example": "Web Design Chicago"
+        },
+        {
+          "word": "web designer",
+          "example": "Chicago Web Designer"
+        },
+        {
+          "word": "web development",
+          "example": "Web Development Studio"
+        },
+        {
+          "word": "web developer",
+          "example": "WordPress Web Developer"
+        },
+        {
+          "word": "social media agency",
+          "example": "Social Media Agency Chicago"
+        },
+        {
+          "word": "advertising agency",
+          "example": "Advertising Agency Illinois"
+        },
+        {
+          "word": "marketing company",
+          "example": "Small Business Marketing Company"
+        },
+        {
+          "word": "branding agency",
+          "example": "Chicago Branding Agency"
+        },
+        {
+          "word": "creative agency",
+          "example": "Creative Agency Chicago"
+        },
+        {
+          "word": "growth agency",
+          "example": "Business Growth Agency"
+        },
+        {
+          "word": "lead generation",
+          "example": "Lead Generation Pros"
+        },
+        {
+          "word": "ppc agency",
+          "example": "PPC Agency Chicago"
+        },
+        {
+          "word": "google ads agency",
+          "example": "Google Ads Agency"
+        },
+        {
+          "word": "content marketing",
+          "example": "Content Marketing Studio"
+        },
+        {
+          "word": "app development",
+          "example": "Mobile App Development Chicago"
+        }
+      ],
+      "note": "Buscar sin importar mayúsculas/minúsculas. También detectar variaciones con guiones, abreviaturas y nombres compuestos como 'SEO Co', 'Web Dev', 'Marketing Pros'."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#e67e22",
+      "points": 50,
+      "speed": "Inmediato",
+      "description": "Facebook asigna una categoría oficial. Si la página pertenece a marketing, publicidad, SEO, diseño web o desarrollo digital → bloqueo automático.",
+      "logic": "BLOQUEO AUTOMÁTICO",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "Marketing Agency",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Advertising Agency",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Internet Company",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Web Designer",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Software Company",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Graphic Designer",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Consulting Agency",
+          "example": "Cuando la bio confirma marketing"
+        },
+        {
+          "word": "Media Agency",
+          "example": "Agencia de medios"
+        },
+        {
+          "word": "Business Service",
+          "example": "Revisar si la bio/post confirma servicios de marketing"
+        },
+        {
+          "word": "SEO Company",
+          "example": "Categoría o descripción de página"
+        }
+      ],
+      "note": "Si la categoría es genérica como Business Service, no bloquear solo por categoría; combinar con bio, posts o hashtags. Si es Marketing Agency/Web Designer/Advertising Agency, bloqueo directo."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#f5a623",
+      "points": 40,
+      "speed": "2–3 segundos",
+      "description": "Analizar bio o descripción. Buscar frases que indiquen que la cuenta vende marketing digital, SEO, diseño web, publicidad, branding o desarrollo de apps.",
+      "logic": "2+ coincidencias → BLOQUEO | 1 coincidencia → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "we do seo",
+          "example": "We do SEO for local businesses"
+        },
+        {
+          "word": "digital marketing services",
+          "example": "Digital marketing services for small businesses"
+        },
+        {
+          "word": "web design agency",
+          "example": "Web design agency in Chicago"
+        },
+        {
+          "word": "seo agency",
+          "example": "Local SEO agency"
+        },
+        {
+          "word": "google ranking",
+          "example": "Helping businesses improve Google ranking"
+        },
+        {
+          "word": "rank on google",
+          "example": "We help you rank on Google"
+        },
+        {
+          "word": "social media management",
+          "example": "Social media management for businesses"
+        },
+        {
+          "word": "marketing for businesses",
+          "example": "Marketing for small businesses"
+        },
+        {
+          "word": "lead generation",
+          "example": "Lead generation agency"
+        },
+        {
+          "word": "website design",
+          "example": "Custom website design"
+        },
+        {
+          "word": "wordpress websites",
+          "example": "WordPress websites for local businesses"
+        },
+        {
+          "word": "google ads",
+          "example": "Google Ads management"
+        },
+        {
+          "word": "ppc management",
+          "example": "PPC management services"
+        },
+        {
+          "word": "brand development",
+          "example": "Brand development and digital strategy"
+        },
+        {
+          "word": "content marketing",
+          "example": "Content marketing for growth"
+        },
+        {
+          "word": "mobile app development",
+          "example": "Mobile app development company"
+        }
+      ],
+      "note": "Diferenciar entre un negocio que habla de su marketing propio y una agencia que vende marketing a terceros. Si se presenta como proveedor de marketing, bloquear."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#9b59b6",
+      "points": 35,
+      "speed": "5–10 segundos",
+      "description": "Revisar posts recientes. Si publican resultados de SEO, diseños de websites, campañas, dashboards de ads o servicios de marketing para clientes → competencia.",
+      "logic": "3+ posts sobre marketing digital → BLOQUEO | 1–2 posts → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "seo results",
+          "example": "Screenshot de crecimiento orgánico o rankings"
+        },
+        {
+          "word": "website launch",
+          "example": "Anuncio de nuevo website creado para cliente"
+        },
+        {
+          "word": "new website design",
+          "example": "Diseño web entregado"
+        },
+        {
+          "word": "ranking screenshot",
+          "example": "Captura de posición en Google"
+        },
+        {
+          "word": "google analytics",
+          "example": "Dashboard de tráfico o conversiones"
+        },
+        {
+          "word": "google ads campaign",
+          "example": "Reporte de campaña de Google Ads"
+        },
+        {
+          "word": "social media campaign",
+          "example": "Campaña gestionada para cliente"
+        },
+        {
+          "word": "client results",
+          "example": "Caso de éxito de cliente"
+        },
+        {
+          "word": "free seo audit",
+          "example": "CTA de auditoría SEO gratis"
+        },
+        {
+          "word": "book a strategy call",
+          "example": "CTA propio de agencia"
+        },
+        {
+          "word": "marketing consultation",
+          "example": "Consulta de marketing para empresas"
+        },
+        {
+          "word": "branding project",
+          "example": "Proyecto de marca para cliente"
+        },
+        {
+          "word": "app development",
+          "example": "App móvil desarrollada para cliente"
+        },
+        {
+          "word": "content strategy",
+          "example": "Estrategia de contenido para cliente"
+        },
+        {
+          "word": "lead gen campaign",
+          "example": "Campaña de generación de leads"
+        }
+      ],
+      "note": "El análisis visual puede detectar dashboards, mockups de website, capturas de Google, anuncios de campañas y piezas de branding."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#1877F2",
+      "points": 25,
+      "speed": "Inmediato",
+      "description": "Revisar hashtags propios. Si usan hashtags de agencia de marketing, SEO, diseño web o publicidad → señal fuerte de competencia.",
+      "logic": "2+ hashtags de marketing → BLOQUEO | 1 hashtag → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#DigitalMarketing",
+          "example": "Hashtag de agencia"
+        },
+        {
+          "word": "#SEOChicago",
+          "example": "SEO local en Chicago"
+        },
+        {
+          "word": "#MarketingAgency",
+          "example": "Agencia de marketing"
+        },
+        {
+          "word": "#WebDesignChicago",
+          "example": "Diseño web Chicago"
+        },
+        {
+          "word": "#ChicagoMarketing",
+          "example": "Marketing en Chicago"
+        },
+        {
+          "word": "#SEOServices",
+          "example": "Servicios SEO"
+        },
+        {
+          "word": "#LocalSEO",
+          "example": "SEO local"
+        },
+        {
+          "word": "#WebDevelopment",
+          "example": "Desarrollo web"
+        },
+        {
+          "word": "#SocialMediaMarketing",
+          "example": "Gestión social media"
+        },
+        {
+          "word": "#GoogleAds",
+          "example": "Publicidad PPC"
+        },
+        {
+          "word": "#ContentMarketing",
+          "example": "Marketing de contenidos"
+        },
+        {
+          "word": "#LeadGeneration",
+          "example": "Generación de leads"
+        },
+        {
+          "word": "#BrandingAgency",
+          "example": "Agencia de branding"
+        },
+        {
+          "word": "#PPCManagement",
+          "example": "Gestión PPC"
+        },
+        {
+          "word": "#MarketingConsultant",
+          "example": "Consultor de marketing"
+        }
+      ],
+      "note": "Diferenciar: un negocio usando #SmallBusinessMarketing para pedir ayuda ≠ una agencia usando #DigitalMarketing para vender servicios."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "layer_L3_block_if_keyword_hits_gte": 2,
+    "layer_L4_block_if_keyword_hits_gte": 3,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "block_if_score_gte": 60
+  },
+  "clean_exports": {
+    "account_name_keywords": [
+      "digital marketing",
+      "marketing agency",
+      "seo agency",
+      "seo company",
+      "seo services",
+      "web design",
+      "web designer",
+      "web development",
+      "web developer",
+      "social media agency",
+      "advertising agency",
+      "marketing company",
+      "branding agency",
+      "creative agency",
+      "growth agency",
+      "lead generation",
+      "ppc agency",
+      "google ads agency",
+      "content marketing",
+      "app development"
+    ],
+    "blocked_fb_categories": [
+      "Marketing Agency",
+      "Advertising Agency",
+      "Internet Company",
+      "Web Designer",
+      "Software Company",
+      "Graphic Designer",
+      "Media Agency",
+      "SEO Company"
+    ],
+    "bio_keywords": [
+      "we do seo",
+      "digital marketing services",
+      "web design agency",
+      "seo agency",
+      "google ranking",
+      "rank on google",
+      "social media management",
+      "marketing for businesses",
+      "lead generation",
+      "website design",
+      "wordpress websites",
+      "google ads",
+      "ppc management",
+      "brand development",
+      "content marketing",
+      "mobile app development"
+    ],
+    "post_keywords": [
+      "seo results",
+      "website launch",
+      "new website design",
+      "ranking screenshot",
+      "google analytics",
+      "google ads campaign",
+      "social media campaign",
+      "client results",
+      "free seo audit",
+      "book a strategy call",
+      "marketing consultation",
+      "branding project",
+      "app development",
+      "content strategy",
+      "lead gen campaign"
+    ],
+    "competitor_hashtags": [
+      "#DigitalMarketing",
+      "#SEOChicago",
+      "#MarketingAgency",
+      "#WebDesignChicago",
+      "#ChicagoMarketing",
+      "#SEOServices",
+      "#LocalSEO",
+      "#WebDevelopment",
+      "#SocialMediaMarketing",
+      "#GoogleAds",
+      "#ContentMarketing",
+      "#LeadGeneration",
+      "#BrandingAgency",
+      "#PPCManagement",
+      "#MarketingConsultant"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Chicago SEO Growth Agency",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'SEO' y 'Agency' encontrados en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría: Marketing Agency",
+          "points": 50
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "No analizada — ya bloqueada en L1",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Garcia Roofing Chicago",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "No contiene palabras de agencia de marketing",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Roofing Service",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "Bio: 'Roofing contractor serving Chicago'",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts: proyectos de techo y clientes — no vende marketing",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Hashtags: #ChicagoRoofing #RoofRepair",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Northside Business Growth",
+      "type": "ambiguous",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre ambiguo — no confirma agencia",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Business Service",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "Bio menciona 'lead generation'",
+          "points": 40
+        },
+        {
+          "id": "L4",
+          "hit": true,
+          "detail": "Posts muestran campañas de marketing para clientes",
+          "points": 35
+        },
+        {
+          "id": "L5",
+          "hit": true,
+          "detail": "Usa #DigitalMarketing",
+          "points": 25
+        }
+      ],
+      "total": 100,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+{
+  "policy": {
+    "geo_only": true,
+    "must_contain_chicago_or_suburb_or_il": false,
+    "exclude_global_hashtags": true,
+    "double_validation_rule": [
+      "hashtag used by a real person, business owner, worker, family case, victim, accountant, or Colombian business community",
+      "hashtag points specifically to Bogotá, Colombia, CO, or a Colombian service area"
+    ]
+  },
+  "categories": [
+    {
+      "id": "personas",
+      "label": "Personas Naturales / Casos Urgentes",
+      "hashtags": [
+        {
+          "tag": "#AbogadoBogota",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AsesoriaLegalBogota",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DerechosBogota",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AyudaLegalColombia",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoColombia",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#JusticiaColombia",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DerechosHumanosColombia",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ConsultaLegalBogota",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoPenalBogota",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoFamiliaBogota",
+          "why": "Prospección legal para Personas Naturales / Casos Urgentes con enfoque Bogotá/Colombia"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#LegalAdvice",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Lawyer",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Attorney",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#LawFirm",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Derecho",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Justicia",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#AyudaLegal",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "empresas",
+      "label": "Empresarios / Emprendedores / PYMES",
+      "hashtags": [
+        {
+          "tag": "#EmpresariosBogota",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#PYMESColombia",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#EmprendimientoBogota",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#StartupColombia",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#NegociosBogota",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#EmpresasColombia",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ContratosLegalesColombia",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ProteccionEmpresarial",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoComercialBogota",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DerechoEmpresarialCO",
+          "why": "Prospección legal para Empresarios / Emprendedores / PYMES con enfoque Bogotá/Colombia"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Entrepreneur",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#BusinessOwner",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Startup",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#SmallBusiness",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Empresarios",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Negocios",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "laboral",
+      "label": "Trabajadores / Abuso Laboral",
+      "hashtags": [
+        {
+          "tag": "#DerechosLaboralesColombia",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DespidoInjusto",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoLaboralBogota",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#PrestacionesSociales",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#LiquidacionLaboral",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AcosoLaboralColombia",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ContratacionColombia",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#TrabajoDigno",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ReclamoLaboral",
+          "why": "Prospección legal para Trabajadores / Abuso Laboral con enfoque Bogotá/Colombia"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Trabajo",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Empleo",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Laboral",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#JobSearch",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Hiring",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Renuncia",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "penal",
+      "label": "Imputados / Víctimas / Familiares",
+      "hashtags": [
+        {
+          "tag": "#AbogadoPenalBogota",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DefensaPenal",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DerechosPenalesColombia",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoPenalista",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ProcesoPenal",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DefensorBogota",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#InocenciaColombia",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#JuicioPenal",
+          "why": "Prospección legal para Imputados / Víctimas / Familiares con enfoque Bogotá/Colombia"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Crime",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Justice",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Law",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Court",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Trial",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Fiscalia",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "familia",
+      "label": "Divorcios / Custodia / Familia",
+      "hashtags": [
+        {
+          "tag": "#DivorcioEnColombia",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#CustodiaDeMenores",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AbogadoFamiliaBogota",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#PensionAlimenticia",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DerechoDeFamilia",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#SeparacionLegalColombia",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#MatrimonioColombia",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#GuardaYCustodia",
+          "why": "Prospección legal para Divorcios / Custodia / Familia con enfoque Bogotá/Colombia"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Divorce",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#FamilyLaw",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Custody",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Separation",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Familia",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "contadores",
+      "label": "Contadores / Asesores Financieros",
+      "hashtags": [
+        {
+          "tag": "#ContadoresColombia",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ContadorBogota",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#AsesorFiscalColombia",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#TributariaColombia",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#DIAN",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#ContabilidadBogota",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#GerenciaFiscal",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        },
+        {
+          "tag": "#PlanificacionTributaria",
+          "why": "Prospección legal para Contadores / Asesores Financieros con enfoque Bogotá/Colombia"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Accounting",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Taxes",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Bookkeeping",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Contabilidad",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Finanzas",
+          "reason": "Global, demasiado amplio o no confirma intención legal local en Bogotá/Colombia"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "specific business insight or genuine reaction to their post",
+    "second_sentence": "optional natural bridge to free SEO audit or free strategy call only if supported by the actual post content",
+    "template_usage_rule": "Templates are style references only. Do not reuse their concrete nouns, metrics, or sample examples unless those details are present in the current post.",
+    "tone": "knowledgeable_peer_marketing_consultant_not_sales_rep",
+    "forbidden_phrases": [
+      "We offer marketing services...",
+      "Contact us today",
+      "Grow your business now",
+      "professional digital marketing services",
+      "we specialize in everything",
+      "book now",
+      "guaranteed first page rankings",
+      "we can double your leads overnight",
+      "cheap SEO services"
+    ],
+    "allow_signature": false,
+    "emoji_max": 1,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false
+  },
+  "categories": [
+    {
+      "id": "homeservices",
+      "label": "Home Services",
+      "icon": "🏠",
+      "color": "#1877F2",
+      "context": "Home service business owner posts about slow leads, Google visibility, new service area, contractor growth, or losing jobs to competitors.",
+      "rule": "Lead with an industry-specific visibility insight. Bridge to local SEO or website audit as a diagnostic, not a pitch.",
+      "templates": [
+        {
+          "id": "HS1",
+          "trigger": "They complain about lack of online leads",
+          "template": "Home service businesses in Chicago lose a lot of leads when they don't show up for service + city searches. A free SEO audit would show exactly where your competitors are outranking you 🔍",
+          "why": [
+            "Names their real pain point: Google visibility",
+            "Audit is diagnostic, not aggressive sales",
+            "Fits contractors, cleaning, HVAC, roofing, fencing and similar services"
+          ]
+        },
+        {
+          "id": "HS2",
+          "trigger": "They announce a new service or expanded coverage area",
+          "template": "Expanding your service area is a big move — the part most businesses miss is building local SEO for every city or suburb they now serve. Boxmark does free audits if you want to see what Google is currently picking up.",
+          "why": [
+            "Acknowledges growth first",
+            "Connects expansion to local SEO naturally",
+            "Keeps CTA soft"
+          ]
+        },
+        {
+          "id": "HS3",
+          "trigger": "They mention Angi, HomeAdvisor, Yelp, or paying for leads",
+          "template": "Paid lead platforms can help, but owning your Google presence usually gives contractors a better long-term asset. A quick audit can show whether your website is doing any real lead work right now.",
+          "why": [
+            "Educates before pitching",
+            "Avoids attacking their current strategy",
+            "Frames SEO as owned asset"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medical",
+      "label": "Medical & Healthcare",
+      "icon": "🏥",
+      "color": "#1abc9c",
+      "context": "Medical, dental, wellness, therapy, chiropractic, or healthcare practice posts about opening, new services, patient growth, ads, or educational health content.",
+      "rule": "Be professional and careful. Focus on patient discovery, local search, bilingual SEO, and website authority; never make medical claims.",
+      "templates": [
+        {
+          "id": "M1",
+          "trigger": "New clinic or practice opening",
+          "template": "Congrats on the new practice — most patients in Chicago check Google before choosing a provider. Local SEO from the start can make a huge difference, especially for specialty + neighborhood searches 🔍",
+          "why": [
+            "Congratulates first",
+            "Patient search behavior is relevant",
+            "Good fit for launch posts"
+          ]
+        },
+        {
+          "id": "M2",
+          "trigger": "They complain about Google Ads or directory costs",
+          "template": "Healthcare clicks in Chicago get expensive fast, which is why organic SEO can be a strong long-term channel for practices. A free audit would show which patient searches your site could realistically compete for.",
+          "why": [
+            "Acknowledges cost pain",
+            "No unrealistic promise",
+            "Keeps audit framed as opportunity analysis"
+          ]
+        },
+        {
+          "id": "M3",
+          "trigger": "They share educational health content",
+          "template": "This kind of educational content is exactly what helps healthcare practices build local authority online. With the right SEO structure, posts like this can keep bringing patients long after social engagement fades.",
+          "why": [
+            "Compliments their content",
+            "Connects content to search",
+            "No hard CTA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Real Estate",
+      "icon": "🏢",
+      "color": "#f5a623",
+      "context": "Realtor, property manager, investor, flipper, or mortgage professional posts about lead costs, listings, expansion, online visibility, or marketing frustrations.",
+      "rule": "Frame SEO as owned lead generation, not a replacement for their entire marketing stack. Avoid sounding like a generic agency ad.",
+      "templates": [
+        {
+          "id": "RE1",
+          "trigger": "They complain about Zillow/Realtor.com lead costs",
+          "template": "The agents winning long-term usually stop renting every lead and start building their own Google presence. Local SEO for neighborhood searches can become a real owned lead channel over time 🔍",
+          "why": [
+            "Targets the Zillow pain point",
+            "Says 'over time' to avoid hype",
+            "Educates first"
+          ]
+        },
+        {
+          "id": "RE2",
+          "trigger": "They announce a new market or neighborhood focus",
+          "template": "New area focus is the perfect time to build neighborhood-specific pages and content. Google needs clear local signals before it starts treating you as relevant in that market.",
+          "why": [
+            "Specific to expansion",
+            "Actionable without giving a full plan",
+            "No pushy CTA"
+          ]
+        },
+        {
+          "id": "RE3",
+          "trigger": "They post an open house or listing",
+          "template": "Nice listing — agents often get social engagement from posts like this, but the bigger win is making sure people searching that neighborhood can find you later too. That's where local SEO starts compounding.",
+          "why": [
+            "Acknowledges their listing",
+            "Bridges social to search",
+            "Consultative tone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beauty",
+      "label": "Beauty & Wellness",
+      "icon": "💅",
+      "color": "#E91E8C",
+      "context": "Salon, spa, medspa, barber, tattoo studio, nail salon, or wellness business posts about slow bookings, new services, opening, or relying only on Instagram.",
+      "rule": "Lead with bookings and Google Maps visibility. Mention SEO/web only after tying it to local discovery.",
+      "templates": [
+        {
+          "id": "B1",
+          "trigger": "They mention slow bookings or slow season",
+          "template": "Instagram shows your work, but Google is where new clients search when they don't already know you. A quick local SEO audit can show whether people searching 'salon near me' or your service in Chicago are even finding you 🔍",
+          "why": [
+            "Compares Instagram vs Google clearly",
+            "Focuses on bookings",
+            "Soft audit CTA"
+          ]
+        },
+        {
+          "id": "B2",
+          "trigger": "They announce a new salon/spa location",
+          "template": "Congrats on the new space — make sure Google Maps and your website are ready before the local searches start. New locations can lose a lot of easy bookings when that setup is rushed.",
+          "why": [
+            "Relevant to opening",
+            "Practical insight",
+            "No hard sales language"
+          ]
+        },
+        {
+          "id": "B3",
+          "trigger": "They show a new service or transformation",
+          "template": "Your work is already giving people a reason to book — the next step is making sure strangers can actually find it on Google. That's where local SEO can quietly change the booking flow.",
+          "why": [
+            "Compliments their work",
+            "Bridges to discoverability",
+            "No generic pitch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legal",
+      "label": "Legal & Financial",
+      "icon": "⚖️",
+      "color": "#1abc9c",
+      "context": "Law firm, accountant, financial advisor, tax preparer, insurance agent, or professional service business posts about ads, new practice areas, education, or client acquisition.",
+      "rule": "Focus on high-cost keywords, authority, and organic visibility. Never imply guaranteed case/client outcomes.",
+      "templates": [
+        {
+          "id": "LF1",
+          "trigger": "They complain about Google Ads cost",
+          "template": "Legal and financial clicks in Chicago are expensive for a reason — the intent is high. That's also why a well-built organic SEO strategy can become a serious asset instead of paying for every click forever.",
+          "why": [
+            "Uses CPC pain point",
+            "No guarantee",
+            "Positions SEO as asset"
+          ]
+        },
+        {
+          "id": "LF2",
+          "trigger": "They announce a new service or practice area",
+          "template": "New service area means new search intent, and Google usually needs dedicated pages before it understands what you want to rank for. A free audit can show whether your site is already set up for that.",
+          "why": [
+            "Specific to expansion",
+            "No legal advice",
+            "Audit is relevant"
+          ]
+        },
+        {
+          "id": "LF3",
+          "trigger": "They share educational content",
+          "template": "Educational content is one of the best trust builders for professional services. With the right SEO structure, that same post can also become a long-term search asset instead of disappearing in the feed.",
+          "why": [
+            "Compliments content",
+            "Explains SEO value",
+            "Good for lawyers/accountants/financial advisors"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hispanic",
+      "label": "Negocios Latinos / Hispanic Business",
+      "icon": "🌎",
+      "color": "#e74c3c",
+      "context": "Latino-owned or Spanish-speaking business in Chicago posts about growth, services, opening, customer acquisition, or marketing in Spanish.",
+      "rule": "Prioritize Spanish SEO as Boxmark's strongest differentiator. Respond in Spanish when the post is Spanish or mixed-language.",
+      "templates": [
+        {
+          "id": "H1",
+          "trigger": "Spanish-language business post",
+          "template": "El SEO en español está súper desaprovechado en Chicago. Muchos negocios aparecen en inglés, pero no cuando clientes buscan en español cosas como tu servicio + 'Chicago' 🔍",
+          "why": [
+            "Uses Boxmark differentiator",
+            "Matches Spanish context",
+            "Educates without overselling"
+          ]
+        },
+        {
+          "id": "H2",
+          "trigger": "Latino business announces growth or new service",
+          "template": "Qué bueno ver crecer un negocio latino en Chicago. Si tu web no está posicionando también en español, probablemente estás dejando clientes hispanohablantes en la mesa.",
+          "why": [
+            "Celebrates growth",
+            "Connects to Spanish SEO",
+            "Natural for Latino groups"
+          ]
+        },
+        {
+          "id": "H3",
+          "trigger": "They ask for marketing help in Spanish",
+          "template": "Para negocios latinos, el error común es hacer marketing solo en inglés. Una auditoría SEO en español te puede mostrar qué búsquedas reales ya están haciendo tus clientes y dónde no estás apareciendo.",
+          "why": [
+            "Directly answers marketing help",
+            "Specific and useful",
+            "CTA remains diagnostic"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "We offer professional digital marketing services in Chicago!",
+      "why": "Sounds like an ad. The comment must educate first."
+    },
+    {
+      "bad": "DM us now for SEO pricing!",
+      "why": "Hard CTA and price push in public comments creates spam signals."
+    },
+    {
+      "bad": "We guarantee first page rankings in 30 days.",
+      "why": "Unethical and unrealistic SEO promise."
+    },
+    {
+      "bad": "Your website is terrible and you're losing money.",
+      "why": "Insulting the prospect damages trust."
+    },
+    {
+      "bad": "Great post! We are a digital marketing agency based in Chicago...",
+      "why": "Generic opener and agency pitch pattern."
+    }
+  ]
+}

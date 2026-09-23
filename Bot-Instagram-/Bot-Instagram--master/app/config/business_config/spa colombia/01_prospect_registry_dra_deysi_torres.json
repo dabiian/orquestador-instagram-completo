@@ -1,0 +1,249 @@
+{
+  "company": {
+    "name": "Dra. Deysi Torres",
+    "location": "Bogotá, Colombia",
+    "website": "dradeysitorres.com",
+    "phone": "302 342 8150",
+    "email": "[DRA DEYSI EMAIL]",
+    "primary_contact": "Dra. Deysi Torres",
+    "vertical": "Medicina Estética y Antiage"
+  },
+  "registry_fields": [
+    {
+      "name": "category",
+      "type": "enum",
+      "required": true,
+      "values": [
+        "mujer_30_55",
+        "dermatologo_referente",
+        "influencer_belleza",
+        "ejecutiva",
+        "novia_quinceanera",
+        "hombre_brotox"
+      ],
+      "description": "Segmento principal detectado para el prospecto."
+    },
+    {
+      "name": "procedure_interest",
+      "type": "enum",
+      "required": false,
+      "values": [
+        "botox",
+        "hialuronico",
+        "hilos_pdo",
+        "endolifting",
+        "blefaroplastia",
+        "foxy_eyes",
+        "rinomodelacion",
+        "alectomia",
+        "otoplastia",
+        "no_se"
+      ],
+      "description": "Procedimiento probable mencionado o inferido."
+    },
+    {
+      "name": "concern",
+      "type": "enum",
+      "required": false,
+      "values": [
+        "ojeras",
+        "arrugas",
+        "flacidez",
+        "nariz",
+        "orejas",
+        "labios",
+        "foxy_eyes",
+        "mirada_cansada",
+        "no_se"
+      ],
+      "description": "Zona o preocupación estética sin hacer diagnóstico."
+    },
+    {
+      "name": "urgency",
+      "type": "enum",
+      "required": false,
+      "values": [
+        "evento_proximo",
+        "sin_fecha",
+        "lo_antes_posible",
+        "explorando"
+      ],
+      "description": "Motivación o timing del prospecto."
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "required": false,
+      "values": null,
+      "description": "Bogotá, barrio o ciudad cercana."
+    },
+    {
+      "name": "medical_escalation_required",
+      "type": "boolean",
+      "required": true,
+      "values": [
+        true,
+        false
+      ],
+      "description": "True si la persona pide diagnóstico, habla de condición médica o muestra angustia sobre imagen corporal."
+    }
+  ],
+  "status_flow": [
+    "discovered",
+    "filtered",
+    "commented",
+    "reply_received",
+    "data_requested",
+    "quote_requested",
+    "human_alerted",
+    "closed"
+  ],
+  "categories": [
+    {
+      "id": "mujeres35",
+      "label": "Mujeres 30–55 / Cuidado Personal",
+      "why": "Mayor volumen. Paciente potencial directa con interés en autocuidado y medicina estética antiage.",
+      "triggers": [
+        "Post de antes/después de aspecto personal",
+        "Cumpleaños o fechas especiales",
+        "Skincare routine o productos",
+        "Comentario sobre ojeras o líneas",
+        "Evento próximo como boda, viaje o grado",
+        "Post sobre ojos caídos o mirada cansada"
+      ]
+    },
+    {
+      "id": "derma",
+      "label": "Dermatólogos / Médicos Referentes",
+      "why": "Aliado estratégico. Puede referir pacientes cuando no realiza ciertos procedimientos estéticos.",
+      "triggers": [
+        "Contenido educativo sobre piel o envejecimiento",
+        "Nuevo consultorio o clínica",
+        "Casos de pacientes satisfechos",
+        "Post sobre bienestar 360°"
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "label": "Influencers / Creadoras de Belleza",
+      "why": "Amplificación de marca. Una experiencia documentada puede llegar a muchas pacientes potenciales.",
+      "triggers": [
+        "Reviews de tratamientos o clínicas estéticas",
+        "Haul de skincare o beauty",
+        "Colaboraciones con marcas de belleza",
+        "Contenido glow up o transformación"
+      ]
+    },
+    {
+      "id": "ejecutivas",
+      "label": "Mujeres Ejecutivas / Profesionales",
+      "why": "Alto poder adquisitivo. Busca verse descansada, natural y segura sin perder tiempo.",
+      "triggers": [
+        "Logros profesionales o ascensos",
+        "Viajes de negocios o conferencias",
+        "Contenido 'yo me cuido'",
+        "Fotos profesionales o headshots"
+      ]
+    },
+    {
+      "id": "novias",
+      "label": "Novias y Quinceañeras",
+      "why": "Alta motivación y fecha fija. Suele buscar resultados antes de un evento importante.",
+      "triggers": [
+        "Anuncio de compromiso",
+        "Planeación de boda",
+        "Preparativos de quinceañera",
+        "Countdown al evento"
+      ]
+    },
+    {
+      "id": "hombres",
+      "label": "Hombres / Brotox",
+      "why": "Mercado en crecimiento. Hombres buscan verse descansados y naturales sin lenguaje demasiado beauty.",
+      "triggers": [
+        "Contenido de autocuidado masculino",
+        "Cumpleaños o hito de edad",
+        "Evento o foto profesional",
+        "Post de confianza o lifestyle"
+      ]
+    }
+  ],
+  "runtime_rules": {
+    "never_give_medical_advice": true,
+    "never_diagnose_publicly": true,
+    "never_comment_on_negative_body_image_posts": true,
+    "free_valuation_first": true,
+    "skip_if_health_distress_or_eating_disorder_signals": true,
+    "human_escalation_if_medical_question_requested": true
+  },
+  "clean_exports": {
+    "categories": [
+      "mujer_30_55",
+      "dermatologo_referente",
+      "influencer_belleza",
+      "ejecutiva",
+      "novia_quinceanera",
+      "hombre_brotox"
+    ],
+    "procedure_interest": [
+      "botox",
+      "hialuronico",
+      "hilos_pdo",
+      "endolifting",
+      "blefaroplastia",
+      "foxy_eyes",
+      "rinomodelacion",
+      "alectomia",
+      "otoplastia",
+      "no_se"
+    ],
+    "concern": [
+      "ojeras",
+      "arrugas",
+      "flacidez",
+      "nariz",
+      "orejas",
+      "labios",
+      "foxy_eyes",
+      "mirada_cansada",
+      "no_se"
+    ],
+    "urgency": [
+      "evento_proximo",
+      "sin_fecha",
+      "lo_antes_posible",
+      "explorando"
+    ],
+    "contact_channels": [
+      "whatsapp",
+      "website",
+      "dm"
+    ]
+  },
+  "examples": [
+    {
+      "input": "Cumplo 40 y quiero verme más fresca",
+      "category": "mujer_30_55",
+      "procedure_interest": "no_se",
+      "concern": "arrugas",
+      "urgency": "explorando",
+      "action": "comment_soft_valuation"
+    },
+    {
+      "input": "Tengo boda en 2 meses y quiero preparar mi piel",
+      "category": "novia_quinceanera",
+      "procedure_interest": "no_se",
+      "concern": "no_se",
+      "urgency": "evento_proximo",
+      "action": "comment_then_alert_if_replies"
+    },
+    {
+      "input": "¿Qué me recomiendas para mi condición médica?",
+      "category": "mujer_30_55",
+      "procedure_interest": "no_se",
+      "concern": "no_se",
+      "urgency": "explorando",
+      "action": "no_public_medical_advice_escalate_human"
+    }
+  ]
+}

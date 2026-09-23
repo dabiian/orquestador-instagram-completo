@@ -1,0 +1,250 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "genuine empathetic reaction to the legal or business situation in the post",
+    "second_sentence": "optional natural bridge to free legal consultation only if supported by the actual post content",
+    "template_usage_rule": "Templates are style references only. Do not reuse their concrete legal situation, nouns, or sample wording unless those details are present in the current post.",
+    "tone": "serious_empathethic_recommendation_not_legal_advice",
+    "forbidden_phrases": [
+      "You should sue",
+      "You will win",
+      "Guaranteed result",
+      "I know exactly what you should do",
+      "Do this legally",
+      "file this action now",
+      "legal strategy",
+      "we guarantee",
+      "cheap lawyer",
+      "book now"
+    ],
+    "allow_signature": false,
+    "emoji_max": 1,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false
+  },
+  "categories": [
+    {
+      "id": "personas",
+      "label": "Personas Naturales / Casos Urgentes",
+      "icon": "👤",
+      "color": "#1a3c6e",
+      "context": "Persona publica sobre denuncia, citación, despido, conflicto familiar, deuda, demanda o problema legal urgente en Colombia.",
+      "rule": "Lead with empathy or professional recognition. Never give specific legal advice, never interpret the case publicly, and bridge only to a free consultation.",
+      "templates": [
+        {
+          "id": "P1",
+          "trigger": "Problema legal urgente / denuncia",
+          "template": "Eso es muy complicado 😔 En estos casos lo más importante es actuar rápido con asesoría legal. López & López Abogados en Bogotá ofrece primera consulta sin costo para revisar el caso.",
+          "why": [
+            "No da consejo jurídico concreto",
+            "Reconoce la urgencia",
+            "Remite a consulta"
+          ]
+        },
+        {
+          "id": "P2",
+          "trigger": "Conflicto con empresa o empleador",
+          "template": "Eso no debería quedarse sin revisar ⚖️ Si hay un tema laboral, civil o comercial de por medio, López & López Abogados puede orientarte en una consulta inicial gratuita.",
+          "why": [
+            "No asume hechos",
+            "Abre ruta de consulta",
+            "Mantiene tono serio"
+          ]
+        },
+        {
+          "id": "P3",
+          "trigger": "Citación, demanda o proceso activo",
+          "template": "Si ya hay citación o proceso activo, conviene hablar con un abogado cuanto antes ⚠️ López & López Abogados en Bogotá puede revisar la situación en una primera consulta gratuita.",
+          "why": [
+            "Prioriza urgencia",
+            "No prescribe estrategia",
+            "Evita asesoría jurídica pública"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empresas",
+      "label": "Empresarios / Emprendedores / PYMES",
+      "icon": "🏢",
+      "color": "#c8a84b",
+      "context": "Empresario publica sobre crear empresa, contratos, proveedores, clientes, nómina, DIAN, impuestos, expansión o disputas comerciales.",
+      "rule": "Lead with empathy or professional recognition. Never give specific legal advice, never interpret the case publicly, and bridge only to a free consultation.",
+      "templates": [
+        {
+          "id": "E1",
+          "trigger": "Creación de empresa / formalización",
+          "template": "¡Felicitaciones por ese paso! 🎉 Arrancar con contratos y estructura legal clara evita problemas después. López & López Abogados en Bogotá puede darte una primera consulta sin costo.",
+          "why": [
+            "Celebra primero",
+            "Conecta con necesidad empresarial",
+            "No suena agresivo"
+          ]
+        },
+        {
+          "id": "E2",
+          "trigger": "Problema con proveedor / deuda comercial",
+          "template": "Ese tipo de situaciones conviene documentarlas y revisarlas con abogado ⚖️ López & López Abogados maneja asuntos comerciales y puede orientarte en una consulta inicial gratuita.",
+          "why": [
+            "No da estrategia",
+            "Habla de revisión legal",
+            "Dirige al humano"
+          ]
+        },
+        {
+          "id": "E3",
+          "trigger": "Problema tributario / DIAN",
+          "template": "Un requerimiento de la DIAN es mejor revisarlo con calma y soporte legal ⚠️ López & López Abogados tiene área tributaria en Bogotá y ofrece primera consulta sin costo.",
+          "why": [
+            "Señala seriedad",
+            "No interpreta impuestos",
+            "Dirige a consulta"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "laboral",
+      "label": "Trabajadores / Abuso Laboral",
+      "icon": "👷",
+      "color": "#c0392b",
+      "context": "Trabajador publica sobre despido, liquidación, prestaciones, acoso laboral, no pago, accidente laboral o vulneración de derechos.",
+      "rule": "Lead with empathy or professional recognition. Never give specific legal advice, never interpret the case publicly, and bridge only to a free consultation.",
+      "templates": [
+        {
+          "id": "L1",
+          "trigger": "Despido / no pago de prestaciones",
+          "template": "Eso merece una revisión legal seria ⚖️ Para despidos, liquidaciones o prestaciones, López & López Abogados en Bogotá puede orientarte en una consulta inicial gratuita.",
+          "why": [
+            "No promete resultado",
+            "Menciona áreas relevantes",
+            "Lleva a consulta"
+          ]
+        },
+        {
+          "id": "L2",
+          "trigger": "Acoso laboral",
+          "template": "Lamento que estés pasando por eso 🚫 En temas de acoso laboral es mejor recibir orientación profesional. López & López Abogados puede revisar tu caso en consulta gratuita.",
+          "why": [
+            "Empático",
+            "No da consejo de denuncia público",
+            "Escala a humano"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "penal",
+      "label": "Imputados / Víctimas / Familiares",
+      "icon": "⚖️",
+      "color": "#6c3483",
+      "context": "Persona o familiar publica sobre detención, proceso penal, denuncia, fiscalía, audiencia, condena, citación o búsqueda de justicia.",
+      "rule": "Lead with empathy or professional recognition. Never give specific legal advice, never interpret the case publicly, and bridge only to a free consultation.",
+      "templates": [
+        {
+          "id": "PN1",
+          "trigger": "Proceso penal / detención / citación",
+          "template": "En temas penales el tiempo importa mucho ⚠️ López & López Abogados en Bogotá maneja defensa penal y puede orientarte en una primera consulta sin costo.",
+          "why": [
+            "Urgencia sin pánico",
+            "No ofrece estrategia penal",
+            "Deriva a consulta"
+          ]
+        },
+        {
+          "id": "PN2",
+          "trigger": "Víctima de delito",
+          "template": "Mereces que tus derechos sean revisados con seriedad ⚖️ López & López Abogados puede orientarte como víctima dentro del proceso en una consulta inicial gratuita.",
+          "why": [
+            "Empatía",
+            "No promete justicia",
+            "Mantiene límite legal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "familia",
+      "label": "Divorcios / Custodia / Familia",
+      "icon": "👨‍👩‍👧",
+      "color": "#d4679e",
+      "context": "Persona publica sobre separación, divorcio, custodia, pensión alimenticia, visitas, incumplimientos o conflicto familiar.",
+      "rule": "Lead with empathy or professional recognition. Never give specific legal advice, never interpret the case publicly, and bridge only to a free consultation.",
+      "templates": [
+        {
+          "id": "F1",
+          "trigger": "Separación / divorcio",
+          "template": "Qué situación tan sensible 💙 Para divorcios, custodia o pensión alimenticia, López & López Abogados en Bogotá puede orientarte con discreción en una consulta gratuita.",
+          "why": [
+            "Discreto",
+            "No juzga",
+            "Menciona áreas correctas"
+          ]
+        },
+        {
+          "id": "F2",
+          "trigger": "Pensión / custodia",
+          "template": "Ese tipo de temas familiares conviene revisarlos con apoyo legal ⚖️ López & López Abogados puede ayudarte a entender las opciones en una primera consulta sin costo.",
+          "why": [
+            "No da pasos legales",
+            "Ofrece orientación",
+            "Tono prudente"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contadores",
+      "label": "Contadores / Asesores Financieros",
+      "icon": "🧾",
+      "color": "#1abc9c",
+      "context": "Contador, asesor fiscal o firma contable publica sobre DIAN, impuestos, obligaciones fiscales, sanciones, empresas o planeación tributaria.",
+      "rule": "Lead with empathy or professional recognition. Never give specific legal advice, never interpret the case publicly, and bridge only to a free consultation.",
+      "templates": [
+        {
+          "id": "C1",
+          "trigger": "Contenido tributario / DIAN",
+          "template": "Muy útil el contenido 🧾 Si tus clientes necesitan representación legal ante la DIAN o apoyo en litigios tributarios, López & López Abogados en Bogotá puede ser un buen aliado.",
+          "why": [
+            "B2B referral",
+            "No compite con contador",
+            "Propone alianza"
+          ]
+        },
+        {
+          "id": "C2",
+          "trigger": "Firma contable / clientes empresariales",
+          "template": "Excelente enfoque para empresarios 👏 Cuando el tema pasa de contable a legal, López & López Abogados puede apoyar en tributario, comercial y laboral. Podría valer la pena conectar.",
+          "why": [
+            "Complementario",
+            "Habla de referidos",
+            "Baja presión"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "Demanda ya y vas a ganar.",
+      "why": "Da consejo jurídico concreto y promete resultado."
+    },
+    {
+      "bad": "Eso es ilegal, debes hacer una tutela inmediatamente.",
+      "why": "Interpreta la ley y prescribe acción pública."
+    },
+    {
+      "bad": "Somos los mejores abogados, llámanos ya.",
+      "why": "Suena agresivo y poco humano."
+    },
+    {
+      "bad": "Te cobramos barato y resolvemos rápido.",
+      "why": "Habla de precio y garantiza solución."
+    },
+    {
+      "bad": "Cuéntame todo el caso por aquí.",
+      "why": "Puede exponer información sensible públicamente."
+    }
+  ]
+}

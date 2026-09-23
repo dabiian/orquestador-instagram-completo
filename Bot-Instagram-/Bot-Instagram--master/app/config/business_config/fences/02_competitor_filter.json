@@ -1,0 +1,634 @@
+{
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#e74c3c",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Primera línea de defensa. Si el nombre contiene estas palabras → competencia de cercas confirmada al instante.",
+      "logic": "BLOQUEO AUTOMÁTICO — no se analiza nada más",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "fence",
+          "example": "Chicago Fence Co., Fence Masters"
+        },
+        {
+          "word": "fences",
+          "example": "All Pro Fences Chicago"
+        },
+        {
+          "word": "fencing",
+          "example": "Chicago Fencing Pros"
+        },
+        {
+          "word": "fencer",
+          "example": "Local Fencer Chicago"
+        },
+        {
+          "word": "gate",
+          "example": "Security Gate Experts"
+        },
+        {
+          "word": "gates",
+          "example": "Chicago Gates & Fence"
+        },
+        {
+          "word": "chain link",
+          "example": "Chain Link Fence Installer"
+        },
+        {
+          "word": "chainlink",
+          "example": "Chicago Chainlink Pros"
+        },
+        {
+          "word": "wood fence",
+          "example": "Wood Fence Chicago"
+        },
+        {
+          "word": "vinyl fence",
+          "example": "Vinyl Fence Installers"
+        },
+        {
+          "word": "cedar fence",
+          "example": "Cedar Fence Company"
+        },
+        {
+          "word": "iron fence",
+          "example": "Iron Fence Chicago"
+        },
+        {
+          "word": "aluminum fence",
+          "example": "Aluminum Fence & Rail"
+        },
+        {
+          "word": "ornamental",
+          "example": "Ornamental Iron Fence Co."
+        },
+        {
+          "word": "privacy fence",
+          "example": "Privacy Fence Installers"
+        },
+        {
+          "word": "pool fence",
+          "example": "Pool Fence Chicago"
+        },
+        {
+          "word": "perimeter security",
+          "example": "Perimeter Security Fencing"
+        },
+        {
+          "word": "security fence",
+          "example": "Security Fence Contractors"
+        },
+        {
+          "word": "fence company",
+          "example": "Best Fence Company Chicago"
+        },
+        {
+          "word": "fence contractor",
+          "example": "Licensed Fence Contractor"
+        }
+      ],
+      "note": "Buscar estas palabras en el nombre de cuenta sin importar mayúsculas/minúsculas. 'FENCE', 'Fence', 'fence' → todas se detectan igual."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#e67e22",
+      "points": 50,
+      "speed": "Inmediato",
+      "description": "Facebook asigna una categoría oficial a cada página de negocio. Si la categoría es de cercas o gates → bloqueo automático.",
+      "logic": "BLOQUEO AUTOMÁTICO",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "Fence Contractor",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Fence Installation",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Fence & Gate Contractor",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Gate Installer",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Gate Contractor",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Security Fencing",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Deck & Fence Contractor",
+          "example": "Categoría oficial FB"
+        },
+        {
+          "word": "Iron Works",
+          "example": "Puede competir si instala ornamental iron fences"
+        },
+        {
+          "word": "Wrought Iron Fence",
+          "example": "Categoría o descripción comercial de cercas de hierro"
+        },
+        {
+          "word": "Ornamental Iron",
+          "example": "Puede competir en iron/ornamental fence"
+        }
+      ],
+      "note": "La categoría de página es un campo estructurado de la API de Facebook. Si indica fence/gate contractor, se considera competencia directa."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#f5a623",
+      "points": 40,
+      "speed": "2–3 segundos",
+      "description": "Analizar el texto de la bio o descripción de la página. Buscar frases que describan instalación, reparación o venta de cercas.",
+      "logic": "2+ coincidencias → BLOQUEO | 1 coincidencia → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "we install fences",
+          "example": "'We install fences across Chicago'"
+        },
+        {
+          "word": "fence installation",
+          "example": "'Fence installation and repair'"
+        },
+        {
+          "word": "fence repair",
+          "example": "'Fence repair specialists'"
+        },
+        {
+          "word": "fence replacement",
+          "example": "'Old fence replacement'"
+        },
+        {
+          "word": "free fence estimate",
+          "example": "'Free fence estimates'"
+        },
+        {
+          "word": "fence company",
+          "example": "'Trusted fence company in Chicago'"
+        },
+        {
+          "word": "fence contractor",
+          "example": "'Licensed fence contractor'"
+        },
+        {
+          "word": "licensed fence",
+          "example": "'Licensed fence installation'"
+        },
+        {
+          "word": "wood fencing",
+          "example": "'Wood fencing for homes'"
+        },
+        {
+          "word": "vinyl fencing",
+          "example": "'Vinyl fencing services'"
+        },
+        {
+          "word": "chain link fencing",
+          "example": "'Chain link fencing installation'"
+        },
+        {
+          "word": "iron fencing",
+          "example": "'Iron fencing and gates'"
+        },
+        {
+          "word": "ornamental iron",
+          "example": "'Ornamental iron fence and rail'"
+        },
+        {
+          "word": "privacy fence",
+          "example": "'Privacy fence installation'"
+        },
+        {
+          "word": "pool fence",
+          "example": "'Code compliant pool fence'"
+        },
+        {
+          "word": "gate installation",
+          "example": "'Gate installation and repair'"
+        }
+      ],
+      "note": "Analizar con IA para detectar variaciones: 'cercas', 'vallas', 'rejas', 'portones' también aplican para perfiles en español."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#9b59b6",
+      "points": 35,
+      "speed": "5–10 segundos",
+      "description": "Revisar los últimos 5 posts de la cuenta. Si el contenido visual/textual muestra instalaciones de cercas, gates o paneles → competencia.",
+      "logic": "3+ posts sobre cercas → BLOQUEO | 1–2 posts → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "before & after fence",
+          "example": "Foto de antes/después de una cerca"
+        },
+        {
+          "word": "fence install",
+          "example": "'Finished this fence install today'"
+        },
+        {
+          "word": "fence installation",
+          "example": "Post de instalación de cerca"
+        },
+        {
+          "word": "fence repair",
+          "example": "Reparación de cerca dañada"
+        },
+        {
+          "word": "fence replacement",
+          "example": "Reemplazo de cerca vieja"
+        },
+        {
+          "word": "post-hole digging",
+          "example": "Fotos excavando huecos para postes"
+        },
+        {
+          "word": "fence panels",
+          "example": "Paneles de madera/vinilo instalados"
+        },
+        {
+          "word": "gate installation",
+          "example": "Instalación de puerta o gate"
+        },
+        {
+          "word": "chain link fence",
+          "example": "Fotos de chain link instalado"
+        },
+        {
+          "word": "wood privacy fence",
+          "example": "Cerca de privacidad en madera"
+        },
+        {
+          "word": "vinyl privacy fence",
+          "example": "Cerca de privacidad en vinilo"
+        },
+        {
+          "word": "iron fence",
+          "example": "Cerca de hierro ornamental"
+        },
+        {
+          "word": "perimeter fence",
+          "example": "Cerca perimetral comercial"
+        },
+        {
+          "word": "security gate",
+          "example": "Gate de seguridad comercial"
+        },
+        {
+          "word": "free estimate",
+          "example": "'Free fence estimate this week'"
+        }
+      ],
+      "note": "El análisis visual con IA puede detectar postes, paneles, puertas, chain link, hierro ornamental y cercas perimetrales aunque el texto no lo mencione."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#1877F2",
+      "points": 25,
+      "speed": "Inmediato",
+      "description": "Revisar los hashtags en sus propias publicaciones. Si usan hashtags comerciales de cercas → señal fuerte.",
+      "logic": "2+ hashtags de cercas → BLOQUEO | 1 hashtag → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#FenceInstallation",
+          "example": "Hashtag propio de instaladores de cercas"
+        },
+        {
+          "word": "#FenceContractor",
+          "example": "Contratista de cercas"
+        },
+        {
+          "word": "#ChicagoFence",
+          "example": "Cercas en Chicago"
+        },
+        {
+          "word": "#FencingChicago",
+          "example": "Fencing local"
+        },
+        {
+          "word": "#FenceCompany",
+          "example": "Empresa de cercas"
+        },
+        {
+          "word": "#FenceRepair",
+          "example": "Reparación de cercas"
+        },
+        {
+          "word": "#FenceReplacement",
+          "example": "Reemplazo de cercas"
+        },
+        {
+          "word": "#WoodFence",
+          "example": "Cerca de madera"
+        },
+        {
+          "word": "#VinylFence",
+          "example": "Cerca de vinilo"
+        },
+        {
+          "word": "#ChainLinkFence",
+          "example": "Chain link"
+        },
+        {
+          "word": "#IronFence",
+          "example": "Cerca de hierro"
+        },
+        {
+          "word": "#PrivacyFence",
+          "example": "Cerca de privacidad"
+        },
+        {
+          "word": "#GateInstallation",
+          "example": "Instalación de gate"
+        },
+        {
+          "word": "#SecurityFence",
+          "example": "Cerca de seguridad"
+        },
+        {
+          "word": "#CommercialFence",
+          "example": "Cercas comerciales"
+        }
+      ],
+      "note": "Diferenciar: '#BackyardChicago' usado por un homeowner ≠ '#FenceInstallation' usado por una empresa de cercas."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "layer_L3_block_if_keyword_hits_gte": 2,
+    "layer_L4_block_if_keyword_hits_gte": 3,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "block_if_score_gte": 60
+  },
+  "clean_exports": {
+    "account_name_keywords": [
+      "fence",
+      "fences",
+      "fencing",
+      "fencer",
+      "gate",
+      "gates",
+      "chain link",
+      "chainlink",
+      "wood fence",
+      "vinyl fence",
+      "cedar fence",
+      "iron fence",
+      "aluminum fence",
+      "ornamental",
+      "privacy fence",
+      "pool fence",
+      "perimeter security",
+      "security fence",
+      "fence company",
+      "fence contractor"
+    ],
+    "blocked_fb_categories": [
+      "Fence Contractor",
+      "Fence Installation",
+      "Fence & Gate Contractor",
+      "Gate Installer",
+      "Gate Contractor",
+      "Security Fencing",
+      "Deck & Fence Contractor",
+      "Iron Works",
+      "Wrought Iron Fence",
+      "Ornamental Iron"
+    ],
+    "bio_keywords": [
+      "we install fences",
+      "fence installation",
+      "fence repair",
+      "fence replacement",
+      "free fence estimate",
+      "fence company",
+      "fence contractor",
+      "licensed fence",
+      "wood fencing",
+      "vinyl fencing",
+      "chain link fencing",
+      "iron fencing",
+      "ornamental iron",
+      "privacy fence",
+      "pool fence",
+      "gate installation"
+    ],
+    "post_keywords": [
+      "before & after fence",
+      "fence install",
+      "fence installation",
+      "fence repair",
+      "fence replacement",
+      "post-hole digging",
+      "fence panels",
+      "gate installation",
+      "chain link fence",
+      "wood privacy fence",
+      "vinyl privacy fence",
+      "iron fence",
+      "perimeter fence",
+      "security gate",
+      "free estimate"
+    ],
+    "competitor_hashtags": [
+      "#FenceInstallation",
+      "#FenceContractor",
+      "#ChicagoFence",
+      "#FencingChicago",
+      "#FenceCompany",
+      "#FenceRepair",
+      "#FenceReplacement",
+      "#WoodFence",
+      "#VinylFence",
+      "#ChainLinkFence",
+      "#IronFence",
+      "#PrivacyFence",
+      "#GateInstallation",
+      "#SecurityFence",
+      "#CommercialFence"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Chicago Fence Masters",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'fence' encontrado en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría: Fence Contractor",
+          "points": 50
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "No analizada — ya bloqueada en L1",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Oak Park Backyard Living",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Ninguna palabra comercial de cercas en nombre",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Home Improvement — genérica, no fence contractor",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "Bio: 'Outdoor living ideas and backyard projects'",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts: patios, landscaping, outdoor decor — no instalación de cercas",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Hashtags: #ChicagoBackyard #OakParkHome — ninguno comercial de cercas",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Iron Gate Solutions",
+      "type": "ambiguous",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'gate' encontrado en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Contractor — genérica",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "'gate installation' encontrado en bio",
+          "points": 40
+        },
+        {
+          "id": "L4",
+          "hit": true,
+          "detail": "Posts con gates y perimeter security",
+          "points": 35
+        },
+        {
+          "id": "L5",
+          "hit": true,
+          "detail": "#SecurityFence encontrado en 1 post",
+          "points": 25
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

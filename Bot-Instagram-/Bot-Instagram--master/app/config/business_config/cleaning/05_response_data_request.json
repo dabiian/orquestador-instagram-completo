@@ -1,0 +1,148 @@
+{
+  "trigger_keywords": [
+    "send info",
+    "send your info",
+    "information",
+    "more info",
+    "contact",
+    "reach you",
+    "get in touch",
+    "website",
+    "details",
+    "phone",
+    "number",
+    "email",
+    "how to book",
+    "interested",
+    "tell me more",
+    "DM me",
+    "message me",
+    "call me"
+  ],
+  "trigger_examples": [
+    {
+      "word": "send info",
+      "example": "'Can you send info?'"
+    },
+    {
+      "word": "send your info",
+      "example": "'Send your info!'"
+    },
+    {
+      "word": "information",
+      "example": "'Send us information'"
+    },
+    {
+      "word": "more info",
+      "example": "'Can we get more info?'"
+    },
+    {
+      "word": "contact",
+      "example": "'How can we contact you?'"
+    },
+    {
+      "word": "reach you",
+      "example": "'How do we reach you?'"
+    },
+    {
+      "word": "get in touch",
+      "example": "'How do we get in touch?'"
+    },
+    {
+      "word": "website",
+      "example": "'Do you have a website?'"
+    },
+    {
+      "word": "details",
+      "example": "'Send us details'"
+    },
+    {
+      "word": "phone",
+      "example": "'What's your phone number?'"
+    },
+    {
+      "word": "number",
+      "example": "'Can I get your number?'"
+    },
+    {
+      "word": "email",
+      "example": "'What's your email?'"
+    },
+    {
+      "word": "how to book",
+      "example": "'How do we book?'"
+    },
+    {
+      "word": "interested",
+      "example": "'We're interested!'"
+    },
+    {
+      "word": "tell me more",
+      "example": "'Tell me more about your service'"
+    },
+    {
+      "word": "DM me",
+      "example": "'DM me your info'"
+    },
+    {
+      "word": "message me",
+      "example": "'Message me'"
+    },
+    {
+      "word": "call me",
+      "example": "'Give us a call'"
+    }
+  ],
+  "public_reply_templates": [
+    {
+      "id": "D1",
+      "label": "Standard — most common",
+      "trigger": "They ask for info, contact, or how to reach us",
+      "recommended": true,
+      "template": "Of course! Here's everything you need 🧹\n\n📞 Office (call): [CAMPAIGN PHONE NUMBER]\n📱 Cell (call or text): 773-349-7935\n🌐 [CAMPAIGN URL]\n📘 Follow us on Facebook: [CAMPAIGN URL]\n\nFeel free to call or text the cell — we're local to Chicago and happy to work something out!",
+      "notes": [
+        "'Of course!' = warm, not robotic",
+        "Emoji used as visual separators — easy to scan on mobile",
+        "Office labeled 'call only' — prevents lost leads from SMS to wrong number",
+        "Cell labeled 'call or text' = lowers the barrier (texting feels easier than calling)",
+        "'Work something out' = flexible, collaborative tone — not 'book now'",
+        "Facebook link at end = encourages follow naturally"
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "Short version — when they just say 'interested!'",
+      "trigger": "Short positive reply — 'We're interested!', 'Love this!', 'Need this!'",
+      "recommended": false,
+      "template": "Awesome — glad to hear it! Give us a call at [CAMPAIGN PHONE NUMBER] and we'll get something set up. You can also check us out at [CAMPAIGN URL] 🧹",
+      "notes": [
+        "Matches their energy — short and enthusiastic",
+        "Office number only — cell stays private unless they ask for a number to text",
+        "Website as secondary option for those who prefer browsing first",
+        "No info dump — keeps it conversational"
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "When they say 'DM me' or 'Message me'",
+      "trigger": "They explicitly ask to be contacted privately",
+      "recommended": false,
+      "template": "Will do! Sending you a message now — you can also reach us at [CAMPAIGN PHONE NUMBER] or [CAMPAIGN URL] if it's easier 🧹",
+      "notes": [
+        "Acknowledges their request immediately",
+        "Leaves public comment short — details go in the DM",
+        "Gives them direct contact as backup",
+        "Bot then sends DM with full D1 template content"
+      ]
+    }
+  ],
+  "rules": {
+    "reply_in_same_comment_thread": true,
+    "alert_event_id": "DATA",
+    "office_phone_sms_allowed": false,
+    "cell_reveal_policy": "reveal_cell_only_if_prospect_explicitly_requests_text_or_sms",
+    "dm_follow_up_only_for_template_ids": [
+      "D3"
+    ]
+  }
+}

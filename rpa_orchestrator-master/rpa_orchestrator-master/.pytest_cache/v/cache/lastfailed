@@ -1,0 +1,5 @@
+{
+  "tests/unit/test_instagram_local_smoke.py": true,
+  "tests/unit/test_standalone_instagram.py": true,
+  "tests/unit/test_instagram_config.py::test_instagram_integration_settings_are_loaded_from_environment": true
+}

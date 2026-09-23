@@ -1,0 +1,385 @@
+{
+  "policy": {
+    "geo_only": true,
+    "must_contain_chicago_or_suburb_or_il": false,
+    "exclude_global_hashtags": true,
+    "double_validation_rule": [
+      "hashtag used by a real woman, patient-like profile, bride, executive, beauty creator, doctor/referrer, or Bogotá community member",
+      "hashtag points specifically to Bogotá, Colombia, CO, or a Bogotá neighborhood/service area"
+    ]
+  },
+  "categories": [
+    {
+      "id": "mujeres35",
+      "label": "Mujeres 30–55 / Cuidado Personal",
+      "hashtags": [
+        {
+          "tag": "#BogotaFemenina",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#CuidadoPersonalBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#MujerBogotana",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#BienestarBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#SkincareBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#RejuvenecimientoBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#GlowBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#MujerConEstilo",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#TransformacionBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#BellezaBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#SkincareColombia",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        },
+        {
+          "tag": "#MujerColombia",
+          "why": "Prospección medicina estética Bogotá para Mujeres 30–55 / Cuidado Personal"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Beauty",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Skincare",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#GlowUp",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#AntiAging",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#SelfCare",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Mujeres",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "derma",
+      "label": "Dermatólogos / Médicos Referentes",
+      "hashtags": [
+        {
+          "tag": "#DermatologoBogota",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        },
+        {
+          "tag": "#MedicosBogota",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        },
+        {
+          "tag": "#DermatologiaColombia",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        },
+        {
+          "tag": "#MedicinaEsteticaColombia",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        },
+        {
+          "tag": "#SkinSpecialistBogota",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        },
+        {
+          "tag": "#DoctoresBogota",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        },
+        {
+          "tag": "#ClinicaEsteticaBogota",
+          "why": "Prospección medicina estética Bogotá para Dermatólogos / Médicos Referentes"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Doctor",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Medicina",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Dermatologia",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Healthcare",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#SkinDoctor",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "label": "Influencers / Creadoras de Belleza",
+      "hashtags": [
+        {
+          "tag": "#BeautyBloggerColombia",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#InfluencerBellezaBogota",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#CreadoraContenidoCO",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#SkincareInfluencerColombia",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#BellezaColombia",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#GlowUpColombia",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#MakeupBogota",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        },
+        {
+          "tag": "#EstiloDeVidaBogota",
+          "why": "Prospección medicina estética Bogotá para Influencers / Creadoras de Belleza"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Influencer",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#BeautyBlogger",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Makeup",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Lifestyle",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#ContentCreator",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "ejecutivas",
+      "label": "Mujeres Ejecutivas / Profesionales",
+      "hashtags": [
+        {
+          "tag": "#EjecutivaBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#MujerEmpresaria",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#LideresBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#WomenInBizColombia",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#EmprendedoraBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#DirectivaBogota",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#MujerExitosa",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        },
+        {
+          "tag": "#CEOColombia",
+          "why": "Prospección medicina estética Bogotá para Mujeres Ejecutivas / Profesionales"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#BusinessWoman",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#CEO",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#WomenInBusiness",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Empresaria",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Leadership",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "novias",
+      "label": "Novias y Quinceañeras",
+      "hashtags": [
+        {
+          "tag": "#NoviaBogota",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#BodaBogota",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#WeddingBogota",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#QuinceañeraBogota",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#BodaColombia",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#NoviaColombia",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#WeddingPlannerBogota",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        },
+        {
+          "tag": "#BeautyNovia",
+          "why": "Prospección medicina estética Bogotá para Novias y Quinceañeras"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Bride",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Wedding",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#BrideToBe",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Quinceañera",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#WeddingPlanning",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        }
+      ]
+    },
+    {
+      "id": "hombres",
+      "label": "Hombres / Brotox",
+      "hashtags": [
+        {
+          "tag": "#BrotoxBogota",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        },
+        {
+          "tag": "#HombresBogota",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        },
+        {
+          "tag": "#CuidadoMasculinoColombia",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        },
+        {
+          "tag": "#MenGroomingBogota",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        },
+        {
+          "tag": "#EsteticaMasculina",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        },
+        {
+          "tag": "#SkincareMasculino",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        },
+        {
+          "tag": "#HombresBienCuidados",
+          "why": "Prospección medicina estética Bogotá para Hombres / Brotox"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#MenGrooming",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#MensCare",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#SkincareMen",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Brotox",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        },
+        {
+          "tag": "#Grooming",
+          "reason": "Global, demasiado amplio o no confirma intención estética local en Bogotá/Colombia"
+        }
+      ]
+    }
+  ]
+}

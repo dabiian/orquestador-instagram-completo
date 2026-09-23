@@ -1,0 +1,213 @@
+{
+  "trigger_keywords": [
+    "send info",
+    "send your info",
+    "information",
+    "more info",
+    "contact",
+    "reach you",
+    "get in touch",
+    "website",
+    "details",
+    "phone",
+    "number",
+    "email",
+    "how to book",
+    "interested",
+    "tell me more",
+    "DM me",
+    "message me",
+    "call me",
+    "consulta",
+    "consulta gratis",
+    "información",
+    "más información",
+    "contacto",
+    "cita",
+    "agendar",
+    "whatsapp",
+    "valoración",
+    "valoracion",
+    "tratamiento",
+    "procedimiento",
+    "botox",
+    "hilos",
+    "rellenos",
+    "whatsapp",
+    "teléfono",
+    "telefono"
+  ],
+  "trigger_examples": [
+    {
+      "word": "send info",
+      "example": "'Can you send info?'"
+    },
+    {
+      "word": "send your info",
+      "example": "'Send your info!'"
+    },
+    {
+      "word": "information",
+      "example": "'Send me information'"
+    },
+    {
+      "word": "more info",
+      "example": "'Can I get more info?'"
+    },
+    {
+      "word": "contact",
+      "example": "'How can I contact you?'"
+    },
+    {
+      "word": "reach you",
+      "example": "'How do I reach you?'"
+    },
+    {
+      "word": "get in touch",
+      "example": "'How do I get in touch?'"
+    },
+    {
+      "word": "website",
+      "example": "'Do you have a website?'"
+    },
+    {
+      "word": "details",
+      "example": "'Send me details'"
+    },
+    {
+      "word": "phone",
+      "example": "'What's your phone number?'"
+    },
+    {
+      "word": "number",
+      "example": "'Can I get your number?'"
+    },
+    {
+      "word": "email",
+      "example": "'What's your email?'"
+    },
+    {
+      "word": "how to book",
+      "example": "'How do I book?'"
+    },
+    {
+      "word": "interested",
+      "example": "'I'm interested!'"
+    },
+    {
+      "word": "tell me more",
+      "example": "'Tell me more about this'"
+    },
+    {
+      "word": "DM me",
+      "example": "'DM me your info'"
+    },
+    {
+      "word": "message me",
+      "example": "'Message me please'"
+    },
+    {
+      "word": "call me",
+      "example": "'Give me a call'"
+    },
+    {
+      "word": "consulta",
+      "example": "'¿Tienen consulta?'"
+    },
+    {
+      "word": "consulta gratis",
+      "example": "'¿La consulta es gratis?'"
+    },
+    {
+      "word": "información",
+      "example": "'¿Me puedes enviar información?'"
+    },
+    {
+      "word": "más información",
+      "example": "'Quiero más información'"
+    },
+    {
+      "word": "contacto",
+      "example": "'¿Cómo los contacto?'"
+    },
+    {
+      "word": "cita",
+      "example": "'Quiero una cita'"
+    },
+    {
+      "word": "agendar",
+      "example": "'¿Cómo puedo agendar?'"
+    },
+    {
+      "word": "whatsapp",
+      "example": "'¿Tienen WhatsApp?'"
+    },
+    {
+      "word": "valoración",
+      "example": "'¿Cómo agendo una valoración?'"
+    },
+    {
+      "word": "botox",
+      "example": "'Quiero info de Botox'"
+    },
+    {
+      "word": "hilos",
+      "example": "'¿Tienen hilos PDO?'"
+    },
+    {
+      "word": "whatsapp",
+      "example": "'¿Cuál es el WhatsApp?'"
+    }
+  ],
+  "public_reply_templates": [
+    {
+      "id": "D1",
+      "label": "Standard — most common",
+      "trigger": "They ask for info, contact, valuation, procedure, website, or how to reach Dra. Deysi Torres",
+      "recommended": true,
+      "template": "¡Claro! Te comparto los datos de la Dra. Deysi Torres ✨\n\n📞 WhatsApp: 302 342 8150\n🌐 dradeysitorres.com\n📍 Bogotá, Colombia\n💬 Valoración gratuita disponible\n\nPregunta rápida: ¿te interesa rostro, mirada, nariz, labios o solo quieres una valoración general?",
+      "notes": [
+        "Contacto completo",
+        "Valoración gratuita como gancho principal",
+        "Una pregunta suave de clasificación",
+        "No da precios públicamente",
+        "No hace diagnóstico"
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "Short version — when they just say 'interested!'",
+      "trigger": "Short positive reply — 'me interesa', 'info', 'quiero saber'",
+      "recommended": false,
+      "template": "¡Qué bueno! ✨ La Dra. Deysi Torres ofrece valoración gratuita en Bogotá para revisar qué tratamiento se ajusta mejor a tu objetivo. ¿Te interesa rostro, mirada o una valoración general?",
+      "notes": [
+        "Respuesta corta",
+        "No info dump",
+        "Consulta/valoración primero",
+        "No presión"
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "When they say 'DM me' or 'Message me'",
+      "trigger": "They explicitly ask to be contacted privately",
+      "recommended": false,
+      "template": "Claro, te escribimos por privado ✨ También puedes contactar por WhatsApp al 302 342 8150 para agendar tu valoración gratuita con la Dra. Deysi Torres.",
+      "notes": [
+        "Acknowledges DM",
+        "Gives direct WhatsApp",
+        "Bot then sends DM with full D1 content",
+        "Keeps details private"
+      ]
+    }
+  ],
+  "rules": {
+    "reply_in_same_comment_thread": true,
+    "alert_event_id": "DATA",
+    "office_phone_sms_allowed": true,
+    "cell_reveal_policy": "business_whatsapp_can_be_shared_publicly",
+    "dm_follow_up_only_for_template_ids": [
+      "D3"
+    ]
+  }
+}

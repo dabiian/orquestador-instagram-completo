@@ -1,0 +1,202 @@
+{
+  "trigger_keywords": [
+    "how much",
+    "quote",
+    "quotation",
+    "estimate",
+    "price",
+    "pricing",
+    "cost",
+    "rates",
+    "rate",
+    "charge",
+    "fee",
+    "affordable",
+    "budget",
+    "precio",
+    "cuanto cuesta",
+    "cuánto cuesta",
+    "cotización",
+    "estimado",
+    "tarifa",
+    "costo",
+    "paquete",
+    "consulta gratis",
+    "botox price",
+    "filler price",
+    "laser package"
+  ],
+  "trigger_examples": [
+    {
+      "word": "how much",
+      "example": "'How much is Botox?'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can I get a quote for body contouring?'"
+    },
+    {
+      "word": "quotation",
+      "example": "'Send me a quotation'"
+    },
+    {
+      "word": "estimate",
+      "example": "'Can you give me an estimate?'"
+    },
+    {
+      "word": "price",
+      "example": "'What's your price for fillers?'"
+    },
+    {
+      "word": "pricing",
+      "example": "'What's your pricing?'"
+    },
+    {
+      "word": "cost",
+      "example": "'What does laser cost?'"
+    },
+    {
+      "word": "rates",
+      "example": "'What are your rates?'"
+    },
+    {
+      "word": "rate",
+      "example": "'What's your Botox rate?'"
+    },
+    {
+      "word": "charge",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "fee",
+      "example": "'Is there a consultation fee?'"
+    },
+    {
+      "word": "affordable",
+      "example": "'Are your treatments affordable?'"
+    },
+    {
+      "word": "budget",
+      "example": "'Do you work with my budget?'"
+    },
+    {
+      "word": "precio",
+      "example": "'¿Precio del Botox?'"
+    },
+    {
+      "word": "cuánto cuesta",
+      "example": "'¿Cuánto cuesta el relleno de labios?'"
+    },
+    {
+      "word": "paquete",
+      "example": "'¿Tienen paquetes para novias?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#E91E8C",
+      "topic": "Area of interest",
+      "question": "Are you looking to address your face, body, or both?",
+      "options": [
+        "Face",
+        "Body",
+        "Both",
+        "Not sure — I'd love a consultation"
+      ],
+      "why": "SPA 312 should not collect technical quote details publicly. This single question routes the lead to the right consultation path."
+    },
+    {
+      "number": "Q2",
+      "color": "#9b59b6",
+      "topic": "Specific treatment interest — optional only",
+      "question": "Only ask if they already mentioned a treatment: Are you interested in Botox, fillers, facials, laser hair removal, skin tightening, or body contouring?",
+      "options": [
+        "Botox",
+        "Fillers",
+        "Facials",
+        "Laser Hair Removal",
+        "Skin Tightening",
+        "Body Contouring",
+        "Not sure"
+      ],
+      "why": "Optional routing detail. Do not ask by default; Q1 is enough to alert the human."
+    },
+    {
+      "number": "Q3",
+      "color": "#f5a623",
+      "topic": "Event timeline — only if relevant",
+      "question": "Only ask if they mention a wedding, quinceañera, trip, photoshoot, or event: Do you have a specific date you're preparing for?",
+      "options": null,
+      "why": "Date matters for brides, quinces, events, and treatment timing. Skip for normal inquiries."
+    },
+    {
+      "number": "Q4",
+      "color": "#1abc9c",
+      "topic": "Consultation handoff",
+      "question": "Would you prefer to continue by DM, call/text, or through the website?",
+      "options": [
+        "DM",
+        "Call/Text",
+        "Website",
+        "Not sure"
+      ],
+      "why": "Optional handoff question. The conversion happens in the free consultation, not in a public quote thread."
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard consultation request",
+      "trigger": "They ask for price, quote, estimate, packages, or how much",
+      "recommended": true,
+      "comment": "Happy to help ✨ Pricing depends on your goals and the right treatment plan, so we start with a FREE consultation at SPA 312 Chicago. Quick question — are you thinking face, body, or both?",
+      "notes": [
+        "Does not send public prices",
+        "Explains why pricing depends on consultation",
+        "Asks only Q1",
+        "Keeps the tone warm and non-clinical",
+        "Routes lead to free consultation"
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "When they just say 'how much?' with no context",
+      "trigger": "Very short reply — 'how much?', 'price?', 'precio?', 'cuánto?'",
+      "recommended": false,
+      "comment": "It depends on the treatment and your goals ✨ We offer a FREE consultation first — are you looking for face, body, or both?",
+      "notes": [
+        "Matches their short message",
+        "No pricing publicly",
+        "One question only",
+        "Works for Botox/fillers/facials/laser/body contouring when context is missing",
+        "Use Spanish equivalent if prospect wrote in Spanish"
+      ]
+    },
+    {
+      "id": "Q-URGENT",
+      "label": "When they signal an event or deadline",
+      "trigger": "Reply contains wedding, quinceañera, event, photoshoot, trip, ASAP, today, tomorrow, urgent",
+      "recommended": false,
+      "comment": "We can help you plan around your date ✨ What event are you preparing for, and are you focused on face, body, or both? We can start with a FREE consultation at SPA 312 Chicago.",
+      "notes": [
+        "Uses event timeline only when relevant",
+        "Still avoids public pricing",
+        "Good for brides, quinces, trips, photoshoots, and last-minute beauty prep",
+        "Triggers higher-priority consultation alert",
+        "Human should confirm treatment safety/timing privately"
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "CONSULTATION",
+    "quote_alert_after_min_answers": [
+      "Q1"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_via_dm": true,
+    "dm_quote_template_manual": true
+  }
+}

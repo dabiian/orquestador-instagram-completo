@@ -1,0 +1,282 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "reacción genuina y respetuosa al post",
+    "second_sentence": "puente natural hacia orientación espiritual solo si el post lo permite",
+    "template_usage_rule": "Las plantillas son referencias de tono. No copiar textualmente ni inventar detalles del caso.",
+    "tone": "cercano_mistico_respetuoso_no_vendedor",
+    "language_policy": "Responder en account_language si existe; si no, usar español.",
+    "forbidden_phrases": [
+      "resultado garantizado",
+      "100% efectivo",
+      "regresa en 24 horas",
+      "si no haces esto te irá mal",
+      "te están haciendo daño seguro",
+      "amarre garantizado",
+      "cura cualquier problema",
+      "no fallamos",
+      "paga ahora",
+      "contáctanos hoy mismo"
+    ],
+    "allow_signature": false,
+    "emoji_max": 1,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false,
+    "privacy_rule": "No pedir detalles íntimos en comentarios públicos.",
+    "no_guarantees_rule": "No prometer resultados concretos ni tiempos exactos."
+  },
+  "categories": [
+    {
+      "id": "tarot_cartas",
+      "label": "Lectura de Cartas / Tarot",
+      "icon": "🃏",
+      "color": "#9b59b6",
+      "context": "Persona publica dudas, reflexión, energía, amor, decisiones o interés en tarot.",
+      "rule": "Validar emocionalmente y presentar la lectura como orientación, no como predicción absoluta.",
+      "templates": [
+        {
+          "id": "T1",
+          "trigger": "Post sobre dudas o decisiones",
+          "template": "A veces una lectura ayuda a mirar la situación con más calma. Si necesitas orientación, podemos atenderte por mensaje 🔮",
+          "why": [
+            "No promete",
+            "Ofrece orientación",
+            "Cierra suave"
+          ]
+        },
+        {
+          "id": "T2",
+          "trigger": "Post sobre energía o intuición",
+          "template": "Se siente como un momento de mucha intuición. Una lectura puede ayudarte a ordenar lo que ya vienes sintiendo.",
+          "why": [
+            "Conecta con el post",
+            "No diagnostica",
+            "Tono humano"
+          ]
+        },
+        {
+          "id": "T3",
+          "trigger": "Post sobre amor/incertidumbre",
+          "template": "Cuando el corazón está confundido, mirar la energía con calma puede ayudar. Tenemos lecturas privadas si deseas orientación.",
+          "why": [
+            "Empático",
+            "Privacidad",
+            "No presiona"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amor_pareja",
+      "label": "Amarres de Amor / Unión de Pareja",
+      "icon": "❤️",
+      "color": "#e74c3c",
+      "context": "Post sobre separación, distancia, conflicto de pareja, retorno o dudas amorosas.",
+      "rule": "Hablar de orientación y trabajo espiritual sin prometer regreso ni manipular dolor.",
+      "templates": [
+        {
+          "id": "A1",
+          "trigger": "Post sobre ruptura o distancia",
+          "template": "Los temas de pareja pesan mucho cuando no hay claridad. Podemos orientarte de forma privada si necesitas mirar tu caso con calma.",
+          "why": [
+            "No vende agresivo",
+            "Privacidad",
+            "Empatía"
+          ]
+        },
+        {
+          "id": "A2",
+          "trigger": "Post sobre reconciliación",
+          "template": "Cuando aún hay sentimientos, una guía espiritual puede ayudarte a entender mejor el camino. Escríbenos si deseas una consulta privada.",
+          "why": [
+            "Evita prometer retorno",
+            "Invitación suave"
+          ]
+        },
+        {
+          "id": "A3",
+          "trigger": "Post de desamor",
+          "template": "El desamor mueve muchas energías. Si buscas orientación espiritual, podemos escucharte con respeto y privacidad.",
+          "why": [
+            "Tono místico",
+            "Seguro",
+            "No coercitivo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limpieza_espiritual",
+      "label": "Limpieza Espiritual / Protección",
+      "icon": "🕯️",
+      "color": "#42b883",
+      "context": "Post sobre cansancio energético, mala racha, envidia, bloqueo, ambiente pesado o protección.",
+      "rule": "No afirmar que tiene daño espiritual. Sugerir limpieza como opción de armonización.",
+      "templates": [
+        {
+          "id": "L1",
+          "trigger": "Post sobre mala energía",
+          "template": "A veces uno siente el ambiente pesado y necesita recuperar calma. Una limpieza espiritual puede ayudarte a armonizar tu energía.",
+          "why": [
+            "No diagnostica daño",
+            "Lenguaje suave"
+          ]
+        },
+        {
+          "id": "L2",
+          "trigger": "Post sobre protección",
+          "template": "La protección espiritual se trabaja con mucha seriedad y respeto. Si buscas guía, podemos orientarte por privado 🕯️",
+          "why": [
+            "Serio",
+            "Privado",
+            "No vende"
+          ]
+        },
+        {
+          "id": "L3",
+          "trigger": "Post sobre bloqueo",
+          "template": "Cuando todo se siente estancado, conviene revisar la energía con calma. Podemos ayudarte con una consulta espiritual privada.",
+          "why": [
+            "No promete desbloqueo",
+            "Orientación"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brujeria_hechizos",
+      "label": "Brujería / Hechizos / Trabajos Espirituales",
+      "icon": "🌙",
+      "color": "#111827",
+      "context": "Post menciona brujería, hechizos, magia, trabajos, dudas espirituales o protección.",
+      "rule": "Mantener tono respetuoso, no oscuro/agresivo, no asegurar ataques espirituales.",
+      "templates": [
+        {
+          "id": "B1",
+          "trigger": "Post sobre brujería o trabajo espiritual",
+          "template": "Estos temas se deben tratar con respeto y privacidad. Si necesitas orientación espiritual, podemos revisar tu caso con calma.",
+          "why": [
+            "No asusta",
+            "Privacidad",
+            "Controla riesgo"
+          ]
+        },
+        {
+          "id": "B2",
+          "trigger": "Post sobre hechizos",
+          "template": "Cada caso espiritual es diferente y no conviene hablarlo en público. Podemos orientarte por mensaje si deseas una consulta.",
+          "why": [
+            "Evita detalles públicos",
+            "No promete"
+          ]
+        },
+        {
+          "id": "B3",
+          "trigger": "Post sobre magia/protección",
+          "template": "La energía y la protección se trabajan mejor con una guía seria. Si quieres, puedes escribirnos por privado.",
+          "why": [
+            "Tono serio",
+            "Suave"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santeria_rituales",
+      "label": "Santería / Rituales",
+      "icon": "🐚",
+      "color": "#f5a623",
+      "context": "Post sobre santería, veladoras, rituales, santos/orishas, fe o caminos espirituales.",
+      "rule": "Mostrar respeto religioso/cultural. No apropiarse ni inventar diagnósticos.",
+      "templates": [
+        {
+          "id": "S1",
+          "trigger": "Post de fe o ritual",
+          "template": "La fe y los caminos espirituales se respetan mucho. Si necesitas orientación, podemos atenderte de forma privada.",
+          "why": [
+            "Respeto",
+            "No comercial agresivo"
+          ]
+        },
+        {
+          "id": "S2",
+          "trigger": "Post sobre velas o rituales",
+          "template": "Las velas y rituales deben trabajarse con intención clara. Podemos orientarte sobre opciones espirituales si lo necesitas 🕯️",
+          "why": [
+            "Educativo",
+            "Místico suave"
+          ]
+        },
+        {
+          "id": "S3",
+          "trigger": "Post sobre caminos abiertos",
+          "template": "Cuando uno busca abrir caminos, primero conviene entender bien la situación. Podemos guiarte por mensaje con respeto.",
+          "why": [
+            "No promete abrir caminos",
+            "Consulta privada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "productos_esotericos",
+      "label": "Productos Esotéricos / Velas / Baños",
+      "icon": "🛍️",
+      "color": "#1abc9c",
+      "context": "Post sobre velas, baños, amuletos, inciensos, protección, suerte o productos espirituales.",
+      "rule": "Recomendar orientación sobre productos sin asegurar efectos garantizados.",
+      "templates": [
+        {
+          "id": "P1",
+          "trigger": "Post sobre velas",
+          "template": "Las velas trabajan mejor cuando se eligen con una intención clara. Podemos orientarte sobre cuál usar según tu situación.",
+          "why": [
+            "Producto + guía",
+            "Sin garantía"
+          ]
+        },
+        {
+          "id": "P2",
+          "trigger": "Post sobre baños o limpias",
+          "template": "Un baño espiritual se elige según lo que la persona necesita armonizar. Si quieres, te orientamos por privado.",
+          "why": [
+            "Educativo",
+            "Privado"
+          ]
+        },
+        {
+          "id": "P3",
+          "trigger": "Post sobre amuletos/protección",
+          "template": "La protección espiritual debe sentirse personal y bien guiada. Tenemos opciones y podemos ayudarte a escoger con calma.",
+          "why": [
+            "Tono de tienda",
+            "No hard sell"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "Te garantizamos que vuelve en 24 horas.",
+      "why": "Promesa absoluta y riesgosa."
+    },
+    {
+      "bad": "Seguro te hicieron brujería, escríbenos urgente.",
+      "why": "Manipula con miedo y diagnostica sin base."
+    },
+    {
+      "bad": "Amarres 100% efectivos, paga ahora.",
+      "why": "Spam + garantía falsa."
+    },
+    {
+      "bad": "Curamos cualquier problema de amor, salud o dinero.",
+      "why": "Afirmación exagerada y potencialmente peligrosa."
+    },
+    {
+      "bad": "DM ya para que no sea tarde.",
+      "why": "Presión emocional innecesaria."
+    }
+  ]
+}

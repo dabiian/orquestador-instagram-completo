@@ -1,0 +1,564 @@
+{
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#e74c3c",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Si el nombre contiene señales claras de medicina estética, clínica estética, médico estético, spa médico o procedimientos antiage → competencia confirmada.",
+      "logic": "BLOQUEO AUTOMÁTICO — no se analiza nada más",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "medicina estetica",
+          "example": "Señal relacionada con medicina estetica"
+        },
+        {
+          "word": "medicina estética",
+          "example": "Señal relacionada con medicina estética"
+        },
+        {
+          "word": "medico estetico",
+          "example": "Señal relacionada con medico estetico"
+        },
+        {
+          "word": "médico estético",
+          "example": "Señal relacionada con médico estético"
+        },
+        {
+          "word": "dra.",
+          "example": "Señal relacionada con dra."
+        },
+        {
+          "word": "dr.",
+          "example": "Señal relacionada con dr."
+        },
+        {
+          "word": "cirugia plastica",
+          "example": "Señal relacionada con cirugia plastica"
+        },
+        {
+          "word": "cirugía plástica",
+          "example": "Señal relacionada con cirugía plástica"
+        },
+        {
+          "word": "clinica estetica",
+          "example": "Señal relacionada con clinica estetica"
+        },
+        {
+          "word": "clínica estética",
+          "example": "Señal relacionada con clínica estética"
+        },
+        {
+          "word": "botox",
+          "example": "Señal relacionada con botox"
+        },
+        {
+          "word": "rellenos faciales",
+          "example": "Señal relacionada con rellenos faciales"
+        },
+        {
+          "word": "hilos pdo",
+          "example": "Señal relacionada con hilos pdo"
+        },
+        {
+          "word": "foxy eyes",
+          "example": "Señal relacionada con foxy eyes"
+        },
+        {
+          "word": "antiage",
+          "example": "Señal relacionada con antiage"
+        },
+        {
+          "word": "antienvejecimiento",
+          "example": "Señal relacionada con antienvejecimiento"
+        },
+        {
+          "word": "endolifting",
+          "example": "Señal relacionada con endolifting"
+        },
+        {
+          "word": "blefaroplastia",
+          "example": "Señal relacionada con blefaroplastia"
+        },
+        {
+          "word": "dermatologo",
+          "example": "Señal relacionada con dermatologo"
+        },
+        {
+          "word": "dermatólogo",
+          "example": "Señal relacionada con dermatólogo"
+        }
+      ],
+      "note": "Normalizar tildes y mayúsculas. No bloquear perfiles personales solo por 'belleza' si no venden tratamientos."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#f5a623",
+      "points": 50,
+      "speed": "Inmediato",
+      "description": "Si la categoría oficial corresponde a médico, clínica estética, dermatología, spa médico o centro de estética → bloqueo automático.",
+      "logic": "BLOQUEO AUTOMÁTICO",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "Médico/a",
+          "example": "Señal relacionada con Médico/a"
+        },
+        {
+          "word": "Clínica Estética",
+          "example": "Señal relacionada con Clínica Estética"
+        },
+        {
+          "word": "Cirujano Plástico",
+          "example": "Señal relacionada con Cirujano Plástico"
+        },
+        {
+          "word": "Dermatólogo/a",
+          "example": "Señal relacionada con Dermatólogo/a"
+        },
+        {
+          "word": "Centro de Estética",
+          "example": "Señal relacionada con Centro de Estética"
+        },
+        {
+          "word": "Spa Médico",
+          "example": "Señal relacionada con Spa Médico"
+        },
+        {
+          "word": "Medical Spa",
+          "example": "Señal relacionada con Medical Spa"
+        },
+        {
+          "word": "Beauty Salon",
+          "example": "Señal relacionada con Beauty Salon"
+        },
+        {
+          "word": "Skin Care Service",
+          "example": "Señal relacionada con Skin Care Service"
+        }
+      ],
+      "note": "Categoría estructurada de Facebook. Bloquear si corresponde a proveedor estético."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#9b59b6",
+      "points": 40,
+      "speed": "2–3 segundos",
+      "description": "Analizar la bio para detectar oferta de medicina estética, tratamientos antiage, Botox, rellenos, hilos PDO o valoración estética.",
+      "logic": "2+ coincidencias → BLOQUEO | 1 coincidencia → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "medicina estética",
+          "example": "Señal relacionada con medicina estética"
+        },
+        {
+          "word": "tratamientos antiage",
+          "example": "Señal relacionada con tratamientos antiage"
+        },
+        {
+          "word": "botox bogotá",
+          "example": "Señal relacionada con botox bogotá"
+        },
+        {
+          "word": "rellenos faciales",
+          "example": "Señal relacionada con rellenos faciales"
+        },
+        {
+          "word": "hilos pdo",
+          "example": "Señal relacionada con hilos pdo"
+        },
+        {
+          "word": "valoración gratuita",
+          "example": "Señal relacionada con valoración gratuita"
+        },
+        {
+          "word": "agenda tu cita",
+          "example": "Señal relacionada con agenda tu cita"
+        },
+        {
+          "word": "resultados naturales",
+          "example": "Señal relacionada con resultados naturales"
+        },
+        {
+          "word": "endolifting",
+          "example": "Señal relacionada con endolifting"
+        },
+        {
+          "word": "blefaroplastia",
+          "example": "Señal relacionada con blefaroplastia"
+        },
+        {
+          "word": "foxy eyes",
+          "example": "Señal relacionada con foxy eyes"
+        },
+        {
+          "word": "rinomodelación",
+          "example": "Señal relacionada con rinomodelación"
+        }
+      ],
+      "note": "Diferenciar pacientes que mencionan un tratamiento de proveedores que los ofrecen."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#4a9eca",
+      "points": 35,
+      "speed": "5–10 segundos",
+      "description": "Revisar posts recientes. Si muestra antes/después propios, jeringas, consultorio, pacientes en camilla o publicidad de procedimientos → competencia.",
+      "logic": "3+ posts estéticos comerciales → BLOQUEO | 1–2 posts → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "antes/después facial",
+          "example": "Señal relacionada con antes/después facial"
+        },
+        {
+          "word": "jeringas",
+          "example": "Señal relacionada con jeringas"
+        },
+        {
+          "word": "cánulas",
+          "example": "Señal relacionada con cánulas"
+        },
+        {
+          "word": "paciente en camilla",
+          "example": "Señal relacionada con paciente en camilla"
+        },
+        {
+          "word": "consultorio estético",
+          "example": "Señal relacionada con consultorio estético"
+        },
+        {
+          "word": "botox",
+          "example": "Señal relacionada con botox"
+        },
+        {
+          "word": "hilos pdo",
+          "example": "Señal relacionada con hilos pdo"
+        },
+        {
+          "word": "endolifting",
+          "example": "Señal relacionada con endolifting"
+        },
+        {
+          "word": "blefaroplastia",
+          "example": "Señal relacionada con blefaroplastia"
+        },
+        {
+          "word": "valoración gratis",
+          "example": "Señal relacionada con valoración gratis"
+        },
+        {
+          "word": "agenda tu cita",
+          "example": "Señal relacionada con agenda tu cita"
+        },
+        {
+          "word": "resultados naturales",
+          "example": "Señal relacionada con resultados naturales"
+        }
+      ],
+      "note": "El análisis visual debe separar contenido de paciente/influencer vs clínica/proveedor."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#42b883",
+      "points": 25,
+      "speed": "Inmediato",
+      "description": "Revisar hashtags propios. Si usa hashtags de medicina estética como proveedor → señal fuerte de competencia.",
+      "logic": "2+ hashtags de proveedor estético → BLOQUEO | 1 hashtag → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#MedicinaEstetica",
+          "example": "Señal relacionada con #MedicinaEstetica"
+        },
+        {
+          "word": "#BotoxBogota",
+          "example": "Señal relacionada con #BotoxBogota"
+        },
+        {
+          "word": "#HilosPDO",
+          "example": "Señal relacionada con #HilosPDO"
+        },
+        {
+          "word": "#Endolifting",
+          "example": "Señal relacionada con #Endolifting"
+        },
+        {
+          "word": "#AntienvejecimientoBogota",
+          "example": "Señal relacionada con #AntienvejecimientoBogota"
+        },
+        {
+          "word": "#CirugiaEstetica",
+          "example": "Señal relacionada con #CirugiaEstetica"
+        },
+        {
+          "word": "#DermatologiaBogota",
+          "example": "Señal relacionada con #DermatologiaBogota"
+        },
+        {
+          "word": "#ClinicaEsteticaBogota",
+          "example": "Señal relacionada con #ClinicaEsteticaBogota"
+        },
+        {
+          "word": "#FoxyEyesBogota",
+          "example": "Señal relacionada con #FoxyEyesBogota"
+        }
+      ],
+      "note": "No bloquear a una paciente que usa hashtag de experiencia; bloquear perfiles que venden procedimientos."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "layer_L3_block_if_keyword_hits_gte": 2,
+    "layer_L4_block_if_keyword_hits_gte": 3,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "block_if_score_gte": 60
+  },
+  "clean_exports": {
+    "account_name_keywords": [
+      "medicina estetica",
+      "medicina estética",
+      "medico estetico",
+      "médico estético",
+      "dra.",
+      "dr.",
+      "cirugia plastica",
+      "cirugía plástica",
+      "clinica estetica",
+      "clínica estética",
+      "botox",
+      "rellenos faciales",
+      "hilos pdo",
+      "foxy eyes",
+      "antiage",
+      "antienvejecimiento",
+      "endolifting",
+      "blefaroplastia",
+      "dermatologo",
+      "dermatólogo"
+    ],
+    "blocked_fb_categories": [
+      "Médico/a",
+      "Clínica Estética",
+      "Cirujano Plástico",
+      "Dermatólogo/a",
+      "Centro de Estética",
+      "Spa Médico",
+      "Medical Spa",
+      "Beauty Salon",
+      "Skin Care Service"
+    ],
+    "bio_keywords": [
+      "medicina estética",
+      "tratamientos antiage",
+      "botox bogotá",
+      "rellenos faciales",
+      "hilos pdo",
+      "valoración gratuita",
+      "agenda tu cita",
+      "resultados naturales",
+      "endolifting",
+      "blefaroplastia",
+      "foxy eyes",
+      "rinomodelación"
+    ],
+    "post_keywords": [
+      "antes/después facial",
+      "jeringas",
+      "cánulas",
+      "paciente en camilla",
+      "consultorio estético",
+      "botox",
+      "hilos pdo",
+      "endolifting",
+      "blefaroplastia",
+      "valoración gratis",
+      "agenda tu cita",
+      "resultados naturales"
+    ],
+    "competitor_hashtags": [
+      "#MedicinaEstetica",
+      "#BotoxBogota",
+      "#HilosPDO",
+      "#Endolifting",
+      "#AntienvejecimientoBogota",
+      "#CirugiaEstetica",
+      "#DermatologiaBogota",
+      "#ClinicaEsteticaBogota",
+      "#FoxyEyesBogota"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Clínica Estética Rosales",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'clínica estética' detectado en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "No analizada — ya bloqueada en L1",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Laura Fit Bogotá",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Perfil personal/lifestyle, no proveedor estético",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: creadora/lifestyle",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "Bio de fitness y autocuidado",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts de rutina y eventos personales",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Hashtags lifestyle",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Glow Beauty Bogotá",
+      "type": "ambiguous",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre beauty ambiguo",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": true,
+          "detail": "Categoría: Centro de Estética",
+          "points": 50
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "'agenda tu cita' y 'botox' en bio",
+          "points": 40
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada por bloqueo",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 90,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

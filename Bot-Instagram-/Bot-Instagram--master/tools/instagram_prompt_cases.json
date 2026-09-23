@@ -1,0 +1,474 @@
+[
+  {
+    "id": "cleaning_property_manager",
+    "title": "Cleaning + Property Manager",
+    "campaign": {
+      "name": "Commercial Cleaning",
+      "services": [
+        "Commercial Cleaning",
+        "Janitorial Services",
+        "Deep Cleaning"
+      ],
+      "strategy": {
+        "industry": "commercial cleaning",
+        "target": [
+          "property managers",
+          "commercial property owners",
+          "businesses"
+        ],
+        "avoid": [
+          "direct competitors"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@abc_property_management",
+      "display_name": "ABC Property Management",
+      "industry": "Property Management",
+      "bio": "Managing commercial properties and preparing spaces for tenants."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Another commercial property successfully prepared for our new tenant. Keeping everything ready for move-in day.",
+      "source_hashtag": "#propertymanagement"
+    },
+    "recent_posts": [
+      {
+        "caption": "Preparing another commercial property for a new tenant."
+      },
+      {
+        "caption": "Property maintenance completed before move-in."
+      }
+    ],
+    "expected": {
+      "mode": "b2b_referral",
+      "selected_service": "Commercial Cleaning"
+    }
+  },
+  {
+    "id": "fencing_contractor",
+    "title": "Fencing + Contractor",
+    "campaign": {
+      "name": "Fence Installation",
+      "services": [
+        "Fence Installation",
+        "Fence Repair",
+        "Gate Installation"
+      ],
+      "strategy": {
+        "industry": "fence installation",
+        "target": [
+          "general contractors",
+          "remodelers",
+          "builders",
+          "landscapers",
+          "property professionals"
+        ],
+        "avoid": [
+          "direct fence competitors"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@greatbuild_contracting",
+      "display_name": "GreatBuild Contracting",
+      "industry": "General Contractor",
+      "bio": "General contractor specializing in home remodeling and outdoor living projects."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Finished this backyard renovation with a completely new outdoor living area.",
+      "source_hashtag": "#generalcontractor"
+    },
+    "recent_posts": [
+      {
+        "caption": "Another backyard renovation completed."
+      },
+      {
+        "caption": "Outdoor living project finished for a local homeowner."
+      }
+    ],
+    "expected": {
+      "mode": "b2b_referral",
+      "selected_service": "Fence Installation"
+    }
+  },
+  {
+    "id": "realtor",
+    "title": "Real Estate + Direct Prospect",
+    "campaign": {
+      "name": "Digital Marketing Agency",
+      "services": [
+        "Social Media Management",
+        "Lead Generation",
+        "Digital Advertising"
+      ],
+      "strategy": {
+        "industry": "digital marketing",
+        "target": [
+          "local businesses",
+          "realtors",
+          "service businesses",
+          "professional services"
+        ],
+        "avoid": [
+          "marketing agencies"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@jane_realtor",
+      "display_name": "Jane Realtor",
+      "industry": "Real Estate",
+      "bio": "Realtor helping buyers and sellers find their next home."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Just listed! This beautiful home is now available and ready for its next owner.",
+      "source_hashtag": "#realtor"
+    },
+    "recent_posts": [
+      {
+        "caption": "Open house this weekend."
+      },
+      {
+        "caption": "New property listing available now."
+      }
+    ],
+    "expected": {
+      "mode": "normal_prospecting",
+      "selected_service": [
+        "Lead Generation",
+        "Social Media Management",
+        "Digital Advertising"
+      ]
+    }
+  },
+  {
+    "id": "restaurant",
+    "title": "Restaurant",
+    "campaign": {
+      "name": "Digital Marketing Agency",
+      "services": [
+        "Social Media Management",
+        "Lead Generation",
+        "Digital Advertising"
+      ],
+      "strategy": {
+        "industry": "digital marketing",
+        "target": [
+          "local businesses",
+          "restaurants",
+          "service businesses"
+        ],
+        "avoid": [
+          "marketing agencies"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@local_bistro",
+      "display_name": "Local Bistro",
+      "industry": "Restaurant",
+      "bio": "Neighborhood restaurant serving seasonal food."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Our new seasonal menu is finally here. Come try our new dishes this week!",
+      "source_hashtag": "#restaurant"
+    },
+    "recent_posts": [
+      {
+        "caption": "Weekend specials are now available."
+      },
+      {
+        "caption": "New dishes coming to the menu."
+      }
+    ],
+    "expected": {
+      "mode": "normal_prospecting",
+      "selected_service": "Social Media Management"
+    }
+  },
+  {
+    "id": "beauty",
+    "title": "Beauty Professional",
+    "campaign": {
+      "name": "Digital Marketing Agency",
+      "services": [
+        "Social Media Management",
+        "Lead Generation",
+        "Digital Advertising"
+      ],
+      "strategy": {
+        "industry": "digital marketing",
+        "target": [
+          "beauty professionals",
+          "salons",
+          "local businesses"
+        ],
+        "avoid": [
+          "marketing agencies"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@glow_studio",
+      "display_name": "Glow Studio",
+      "industry": "Beauty",
+      "bio": "Beauty studio specializing in brows, lashes and skincare."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "A fresh set of brows for our beautiful client today!",
+      "source_hashtag": "#brows"
+    },
+    "recent_posts": [
+      {
+        "caption": "Another beautiful brow transformation."
+      },
+      {
+        "caption": "New beauty appointments available."
+      }
+    ],
+    "expected": {
+      "mode": "normal_prospecting",
+      "selected_service": "Social Media Management"
+    }
+  },
+  {
+    "id": "irrelevant_personal",
+    "title": "Irrelevant Personal Profile",
+    "campaign": {
+      "name": "Commercial Cleaning",
+      "services": [
+        "Commercial Cleaning",
+        "Janitorial Services",
+        "Deep Cleaning"
+      ],
+      "strategy": {
+        "industry": "commercial cleaning",
+        "target": [
+          "commercial businesses",
+          "property managers"
+        ],
+        "avoid": [
+          "personal profiles",
+          "direct competitors"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@john_random",
+      "display_name": "John",
+      "industry": "Personal",
+      "bio": "Travel, family and everyday life."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Beautiful sunset from our family vacation.",
+      "source_hashtag": "#sunset"
+    },
+    "recent_posts": [
+      {
+        "caption": "Family vacation photos."
+      },
+      {
+        "caption": "Weekend with friends."
+      }
+    ],
+    "expected": {
+      "mode": "skip",
+      "selected_service": ""
+    }
+  },
+  {
+    "id": "competitor",
+    "title": "Direct Competitor",
+    "campaign": {
+      "name": "Commercial Cleaning",
+      "services": [
+        "Commercial Cleaning",
+        "Janitorial Services",
+        "Deep Cleaning"
+      ],
+      "strategy": {
+        "industry": "commercial cleaning",
+        "target": [
+          "commercial businesses",
+          "property managers"
+        ],
+        "avoid": [
+          "direct competitors"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@another_cleaning_company",
+      "display_name": "Another Cleaning Company",
+      "industry": "Commercial Cleaning",
+      "bio": "Commercial cleaning and janitorial services for local businesses."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Another successful commercial cleaning project completed.",
+      "source_hashtag": "#commercialcleaning"
+    },
+    "recent_posts": [
+      {
+        "caption": "Commercial janitorial contract completed."
+      },
+      {
+        "caption": "Deep cleaning project finished."
+      }
+    ],
+    "expected": {
+      "mode": "skip",
+      "selected_service": ""
+    }
+  },
+  {
+    "id": "landscaping",
+    "title": "Landscaping Business",
+    "campaign": {
+      "name": "Fence Installation",
+      "services": [
+        "Fence Installation",
+        "Fence Repair",
+        "Gate Installation"
+      ],
+      "strategy": {
+        "industry": "fence installation",
+        "target": [
+          "landscaping companies",
+          "general contractors",
+          "remodelers",
+          "builders"
+        ],
+        "avoid": [
+          "direct fence competitors"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@greenlandscaping",
+      "display_name": "Green Landscaping",
+      "industry": "Landscaping",
+      "bio": "Landscaping and backyard transformations for local homeowners."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Completed this backyard transformation with a new patio and landscaped garden.",
+      "source_hashtag": "#landscaping"
+    },
+    "recent_posts": [
+      {
+        "caption": "Another backyard garden transformation completed."
+      },
+      {
+        "caption": "Outdoor living project finished for a local homeowner."
+      }
+    ],
+    "expected": {
+      "mode": "b2b_referral",
+      "selected_service": "Fence Installation"
+    }
+  },
+  {
+    "id": "automotive",
+    "title": "Automotive Business",
+    "campaign": {
+      "name": "Digital Marketing Agency",
+      "services": [
+        "Social Media Management",
+        "Lead Generation",
+        "Digital Advertising"
+      ],
+      "strategy": {
+        "industry": "digital marketing",
+        "target": [
+          "local businesses",
+          "automotive businesses",
+          "service businesses"
+        ],
+        "avoid": [
+          "marketing agencies"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@local_auto_shop",
+      "display_name": "Local Auto Shop",
+      "industry": "Automotive",
+      "bio": "Local auto repair shop providing brake, maintenance and repair services."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Keeping another customer safely on the road with today's brake service.",
+      "source_hashtag": "#autorepair"
+    },
+    "recent_posts": [
+      {
+        "caption": "Brake service completed for another local driver."
+      },
+      {
+        "caption": "Routine vehicle maintenance available this week."
+      }
+    ],
+    "expected": {
+      "mode": "normal_prospecting",
+      "selected_service": [
+        "Social Media Management",
+        "Lead Generation",
+        "Digital Advertising"
+      ]
+    }
+  },
+  {
+    "id": "photographer",
+    "title": "Photography Business",
+    "campaign": {
+      "name": "Digital Marketing Agency",
+      "services": [
+        "Social Media Management",
+        "Lead Generation",
+        "Digital Advertising"
+      ],
+      "strategy": {
+        "industry": "digital marketing",
+        "target": [
+          "local businesses",
+          "professional services",
+          "wedding professionals",
+          "creative businesses"
+        ],
+        "avoid": [
+          "marketing agencies"
+        ]
+      }
+    },
+    "profile": {
+      "username": "@local_wedding_photo",
+      "display_name": "Local Wedding Photo",
+      "industry": "Photography",
+      "bio": "Wedding photographer capturing ceremonies and celebrations."
+    },
+    "post": {
+      "post_type": "post",
+      "caption": "Loved capturing this beautiful wedding ceremony yesterday.",
+      "source_hashtag": "#weddingphotographer"
+    },
+    "recent_posts": [
+      {
+        "caption": "Another beautiful wedding gallery delivered."
+      },
+      {
+        "caption": "Wedding photography session completed."
+      }
+    ],
+    "expected": {
+      "mode": "b2b_referral",
+      "selected_service": "Social Media Management"
+    }
+  }
+]

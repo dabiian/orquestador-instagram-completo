@@ -1,0 +1,525 @@
+{
+  "policy": {
+    "geo_only": true,
+    "must_contain_chicago_or_suburb_or_il": true,
+    "exclude_global_hashtags": true,
+    "double_validation_rule": [
+      "hashtag used by business owner/operator",
+      "hashtag points specifically to Chicago or suburbs"
+    ]
+  },
+  "categories": [
+    {
+      "id": "homeowners",
+      "label": "Homeowners / Residential",
+      "hashtags": [
+        {
+          "tag": "#ChicagoHomeowner",
+          "why": "Homeowner local; decisión directa para privacy fence, pet fence o decorative fence"
+        },
+        {
+          "tag": "#ChicagoHome",
+          "why": "Propietarios o compradores mostrando vivienda en Chicago"
+        },
+        {
+          "tag": "#ChicagoBackyard",
+          "why": "Posts de patio/backyard; señal fuerte para fencing residencial"
+        },
+        {
+          "tag": "#ChicagoLandscaping",
+          "why": "Backyards y outdoor projects que pueden necesitar cerca"
+        },
+        {
+          "tag": "#ChicagoRealEstate",
+          "why": "Propiedades locales donde puede surgir necesidad de curb appeal o backyard fence"
+        },
+        {
+          "tag": "#ChicagoHomeImprovement",
+          "why": "Mejoras del hogar en Chicago; buen contexto para fencing"
+        },
+        {
+          "tag": "#ChicagoYard",
+          "why": "Contenido de patio local; señal para privacidad o contención de mascotas"
+        },
+        {
+          "tag": "#OakParkHome",
+          "why": "Homeowners en Oak Park"
+        },
+        {
+          "tag": "#EvanstonHome",
+          "why": "Homeowners en Evanston"
+        },
+        {
+          "tag": "#BerwynIL",
+          "why": "Área suburbana cercana; homeowners y propiedades locales"
+        },
+        {
+          "tag": "#CiceroIL",
+          "why": "Área suburbana cercana; propietarios locales"
+        },
+        {
+          "tag": "#ChicagoSuburbs",
+          "why": "Cobertura suburbana local para fencing residencial"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Homeowner",
+          "reason": "Global — no filtra por Chicago ni suburbios"
+        },
+        {
+          "tag": "#Backyard",
+          "reason": "Global — trae patios de cualquier país"
+        },
+        {
+          "tag": "#HomeImprovement",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#DIYFence",
+          "reason": "Puede atraer DIYers, no necesariamente compradores"
+        },
+        {
+          "tag": "#FenceIdeas",
+          "reason": "Más inspiración que intención local"
+        },
+        {
+          "tag": "#PrivacyFence",
+          "reason": "Global y además puede atraer competidores de cercas"
+        },
+        {
+          "tag": "#PoolFence",
+          "reason": "Global — solo usar si incluye ciudad o suburbio"
+        },
+        {
+          "tag": "#YardGoals",
+          "reason": "Lifestyle global, poca intención comercial local"
+        },
+        {
+          "tag": "#Landscaping",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#NewHome",
+          "reason": "Global — no filtra zona de servicio"
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Real Estate Investors / Flippers",
+      "hashtags": [
+        {
+          "tag": "#ChicagoRealEstateInvestor",
+          "why": "Inversor local; puede necesitar fence replacement antes de listar o rentar"
+        },
+        {
+          "tag": "#HouseFlippingChicago",
+          "why": "Flippers locales; buena señal para exterior upgrades"
+        },
+        {
+          "tag": "#ChicagoFlip",
+          "why": "Proyecto de flip local con oportunidad de curb appeal fencing"
+        },
+        {
+          "tag": "#ChicagoFlipper",
+          "why": "Perfil de flipper local"
+        },
+        {
+          "tag": "#ChicagoPropertyInvestor",
+          "why": "Inversor con propiedades en Chicago"
+        },
+        {
+          "tag": "#ChicagoREI",
+          "why": "Comunidad local de real estate investing"
+        },
+        {
+          "tag": "#BRRRRChicago",
+          "why": "Inversores de renta; posibles necesidades de fence repair o replacement"
+        },
+        {
+          "tag": "#ChicagoWholesaler",
+          "why": "Mayoristas inmobiliarios locales; potencial referral"
+        },
+        {
+          "tag": "#FixAndFlipChicago",
+          "why": "Rehab local; cercas antes de venta o fotos"
+        },
+        {
+          "tag": "#ChicagoInvestmentProperty",
+          "why": "Propiedad de inversión local; útil para fence repair/replacement"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#RealEstateInvestor",
+          "reason": "Global — no localizable a Chicago"
+        },
+        {
+          "tag": "#HouseFlipping",
+          "reason": "Global — trae proyectos de cualquier ciudad"
+        },
+        {
+          "tag": "#FixAndFlip",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#BRRRR",
+          "reason": "Global — comunidad nacional/internacional"
+        },
+        {
+          "tag": "#WholesalingHouses",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#InvestmentProperty",
+          "reason": "Global — necesita ciudad para servir como prospecto"
+        },
+        {
+          "tag": "#CurbAppeal",
+          "reason": "Global — puede ser inspiración, no prospecto local"
+        },
+        {
+          "tag": "#JustListed",
+          "reason": "Global — no filtra zona"
+        },
+        {
+          "tag": "#RealEstateLife",
+          "reason": "Global — bajo valor comercial directo"
+        },
+        {
+          "tag": "#FlipperLife",
+          "reason": "Global — comunidad, no ubicación"
+        }
+      ]
+    },
+    {
+      "id": "contractors",
+      "label": "General Contractors / Builders",
+      "hashtags": [
+        {
+          "tag": "#ChicagoContractor",
+          "why": "Contratista local; posible partner/subcontratista para fencing"
+        },
+        {
+          "tag": "#ChicagoGC",
+          "why": "General contractor local; puede requerir fence sub"
+        },
+        {
+          "tag": "#ChicagoBuilder",
+          "why": "Builder local; fencing en fase exterior"
+        },
+        {
+          "tag": "#NewConstructionChicago",
+          "why": "Obra nueva local; oportunidad de instalación nueva"
+        },
+        {
+          "tag": "#ChicagoConstruction",
+          "why": "Proyecto de construcción local"
+        },
+        {
+          "tag": "#ChicagoSubcontractor",
+          "why": "Red de subs locales; posible vendor/referral"
+        },
+        {
+          "tag": "#OakParkContractor",
+          "why": "Contratista en Oak Park"
+        },
+        {
+          "tag": "#EvanstonContractor",
+          "why": "Contratista en Evanston"
+        },
+        {
+          "tag": "#ChicagoResidentialContractor",
+          "why": "Contratista residencial local; encaja con cercas residenciales"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#ContractorLife",
+          "reason": "Global — comunidad de contratistas de todo el mundo"
+        },
+        {
+          "tag": "#GeneralContractor",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#Builder",
+          "reason": "Global y ambiguo"
+        },
+        {
+          "tag": "#Construction",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#Subcontractor",
+          "reason": "Global — no filtra ciudad"
+        },
+        {
+          "tag": "#NewConstruction",
+          "reason": "Global — falta ubicación"
+        },
+        {
+          "tag": "#ResidentialContractor",
+          "reason": "Global — necesita Chicago o suburbio"
+        },
+        {
+          "tag": "#ConstructionProject",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#HomeBuilder",
+          "reason": "Global — no localizable"
+        },
+        {
+          "tag": "#RemodelingContractor",
+          "reason": "Global — no geo-específico"
+        }
+      ]
+    },
+    {
+      "id": "landscapers",
+      "label": "Landscapers / Lawn Companies",
+      "hashtags": [
+        {
+          "tag": "#ChicagoLandscaping",
+          "why": "Landscaping local; fencing complementa patios y outdoor projects"
+        },
+        {
+          "tag": "#ChicagoLandscaper",
+          "why": "Empresa o profesional local de landscaping"
+        },
+        {
+          "tag": "#LawnCareChicago",
+          "why": "Lawn care local; puede referir fencing residencial"
+        },
+        {
+          "tag": "#ChicagoLawnService",
+          "why": "Servicio local de lawn care con clientes homeowners"
+        },
+        {
+          "tag": "#ChicagoOutdoorDesign",
+          "why": "Diseño exterior local; cercas completan el proyecto"
+        },
+        {
+          "tag": "#BackyardChicago",
+          "why": "Backyard local; señal directa para fencing"
+        },
+        {
+          "tag": "#ChicagoHardscape",
+          "why": "Hardscape local; fencing como complemento"
+        },
+        {
+          "tag": "#OakParkLandscaping",
+          "why": "Landscaping en Oak Park"
+        },
+        {
+          "tag": "#EvanstonLawnCare",
+          "why": "Lawn care en Evanston"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Landscaping",
+          "reason": "Global — no filtra por ubicación"
+        },
+        {
+          "tag": "#Landscaper",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#LawnCare",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#OutdoorDesign",
+          "reason": "Global — puede traer diseñadores fuera de Chicago"
+        },
+        {
+          "tag": "#Hardscape",
+          "reason": "Global — no localizable"
+        },
+        {
+          "tag": "#GardenDesign",
+          "reason": "Global — bajo control geográfico"
+        },
+        {
+          "tag": "#BackyardDesign",
+          "reason": "Global — no apunta a servicio local"
+        },
+        {
+          "tag": "#YardWork",
+          "reason": "Global y poco comercial"
+        },
+        {
+          "tag": "#LandscapeDesign",
+          "reason": "Global — necesita ciudad"
+        },
+        {
+          "tag": "#PatioDesign",
+          "reason": "Global — demasiado amplio"
+        }
+      ]
+    },
+    {
+      "id": "hoa",
+      "label": "HOA / Property Managers",
+      "hashtags": [
+        {
+          "tag": "#ChicagoHOA",
+          "why": "HOA local; posible fencing comunitario o perimetral"
+        },
+        {
+          "tag": "#ChicagoPropertyManagement",
+          "why": "Property managers locales; múltiples propiedades con fence repair/replacement"
+        },
+        {
+          "tag": "#ChicagoPropertyManager",
+          "why": "Variante directa para property managers"
+        },
+        {
+          "tag": "#ChicagoApartmentOwner",
+          "why": "Dueños de apartamentos en Chicago"
+        },
+        {
+          "tag": "#ChicagoLandlord",
+          "why": "Landlord local; puede necesitar reparación o reemplazo"
+        },
+        {
+          "tag": "#ChicagoRentalProperty",
+          "why": "Propiedades de renta locales; fencing entre tenants"
+        },
+        {
+          "tag": "#ChicagoMultifamily",
+          "why": "Multifamily local; cercas perimetrales/comunes"
+        },
+        {
+          "tag": "#ChicagoCondoAssociation",
+          "why": "Asociaciones de condo; proyectos comunitarios"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#HOA",
+          "reason": "Global — no filtra Chicago"
+        },
+        {
+          "tag": "#PropertyManagement",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#PropertyManager",
+          "reason": "Global — no localizable"
+        },
+        {
+          "tag": "#Landlord",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#RentalProperty",
+          "reason": "Global — no necesariamente Chicago"
+        },
+        {
+          "tag": "#Multifamily",
+          "reason": "Global — necesita ubicación"
+        },
+        {
+          "tag": "#CondoAssociation",
+          "reason": "Global — no filtra zona"
+        },
+        {
+          "tag": "#ApartmentOwner",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#TenantTurnover",
+          "reason": "Global — no específico para fencing"
+        },
+        {
+          "tag": "#PropertyMaintenance",
+          "reason": "Global — puede atraer proveedores no locales"
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "label": "Commercial / Industrial Properties",
+      "hashtags": [
+        {
+          "tag": "#ChicagoCommercialRealEstate",
+          "why": "Propiedad comercial local; oportunidad para security/perimeter fencing"
+        },
+        {
+          "tag": "#ChicagoWarehouse",
+          "why": "Warehouse local; necesita perimeter fencing o gates"
+        },
+        {
+          "tag": "#ChicagoIndustrialProperty",
+          "why": "Propiedad industrial local; encaja con chain link/security fencing"
+        },
+        {
+          "tag": "#ChicagoBusinessOwner",
+          "why": "Dueños de negocio locales; posible fencing comercial"
+        },
+        {
+          "tag": "#ChicagoCommercialProperty",
+          "why": "Propiedad comercial en Chicago"
+        },
+        {
+          "tag": "#ChicagoManufacturing",
+          "why": "Manufactura local; seguridad perimetral"
+        },
+        {
+          "tag": "#ChicagoDistribution",
+          "why": "Centros de distribución locales; fencing/gates"
+        },
+        {
+          "tag": "#ChicagoLogistics",
+          "why": "Logística local; perímetro, yardas y seguridad"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#CommercialRealEstate",
+          "reason": "Global — no localizable"
+        },
+        {
+          "tag": "#Warehouse",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#IndustrialProperty",
+          "reason": "Global — falta ciudad"
+        },
+        {
+          "tag": "#BusinessOwner",
+          "reason": "Global — sin ubicación"
+        },
+        {
+          "tag": "#CommercialProperty",
+          "reason": "Global — necesita Chicago"
+        },
+        {
+          "tag": "#Manufacturing",
+          "reason": "Global — no filtra zona"
+        },
+        {
+          "tag": "#DistributionCenter",
+          "reason": "Global — no localizable"
+        },
+        {
+          "tag": "#Logistics",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#SecurityFence",
+          "reason": "Global y además puede atraer competidores"
+        },
+        {
+          "tag": "#PerimeterSecurity",
+          "reason": "Global — usar solo con ciudad o contexto local claro"
+        }
+      ]
+    }
+  ]
+}

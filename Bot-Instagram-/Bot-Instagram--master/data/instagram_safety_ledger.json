@@ -1,0 +1,27 @@
+{
+  "2026-09-18": {
+    "like": 1,
+    "follow": 6
+  },
+  "_weekly_likes_by_account": {
+    "unison.coffee": {
+      "2026-W38": 2
+    },
+    "gbzmmanagement": {
+      "2026-W38": 1
+    },
+    "nutellacafechicago": {
+      "2026-W38": 1
+    }
+  },
+  "2026-09-20": {
+    "follow": 3,
+    "comment": 3,
+    "like": 3
+  },
+  "_lifetime_comments": {
+    "unison.coffee": 1,
+    "gbzmmanagement": 1,
+    "nutellacafechicago": 1
+  }
+}

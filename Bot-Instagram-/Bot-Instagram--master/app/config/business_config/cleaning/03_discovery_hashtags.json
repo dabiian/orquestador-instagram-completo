@@ -1,0 +1,793 @@
+{
+  "policy": {
+    "geo_only": true,
+    "must_contain_chicago_or_suburb_or_il": true,
+    "exclude_global_hashtags": true,
+    "double_validation_rule": [
+      "hashtag used by business owner/operator",
+      "hashtag points specifically to Chicago or suburbs"
+    ]
+  },
+  "categories": [
+    {
+      "id": "airbnb",
+      "label": "Airbnb / Short-Term Rental",
+      "hashtags": [
+        {
+          "tag": "#AirbnbChicago",
+          "why": "Host publica su propiedad — geo específico"
+        },
+        {
+          "tag": "#ChicagoAirbnb",
+          "why": "Variante local — geo específico"
+        },
+        {
+          "tag": "#ShortTermRentalChicago",
+          "why": "Operador STR en Chicago"
+        },
+        {
+          "tag": "#ChicagoSTR",
+          "why": "Shortcode local de Short Term Rental"
+        },
+        {
+          "tag": "#VacationRentalChicago",
+          "why": "Operador vacation rental en Chicago"
+        },
+        {
+          "tag": "#AirbnbHostChicago",
+          "why": "Host con ciudad explícita en hashtag"
+        },
+        {
+          "tag": "#EvanstonAirbnb",
+          "why": "Host en Evanston"
+        },
+        {
+          "tag": "#OakParkAirbnb",
+          "why": "Host en Oak Park"
+        },
+        {
+          "tag": "#ChicagoShortTermRental",
+          "why": "Operador STR local; conecta con Airbnb cleaning y turnover recurrente"
+        },
+        {
+          "tag": "#ChicagoShortTermRentalHost",
+          "why": "Host STR en Chicago; buen candidato para referral y limpieza entre huéspedes"
+        },
+        {
+          "tag": "#ChicagoSTRHost",
+          "why": "Host de short-term rental local; útil para detectar necesidad de turnover cleaning"
+        },
+        {
+          "tag": "#ChicagoVacationRentalHost",
+          "why": "Operador vacation rental local; puede requerir limpieza recurrente"
+        },
+        {
+          "tag": "#ChicagoRentalHost",
+          "why": "Host/propietario de renta local; conecta con Airbnb cleaning o rental turnover cleaning"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#AirbnbHost",
+          "reason": "Global — aparece un host en París, Tokyo, Miami, no solo Chicago"
+        },
+        {
+          "tag": "#AirbnbSuperhost",
+          "reason": "Global — no filtra por ciudad"
+        },
+        {
+          "tag": "#ShortTermRental",
+          "reason": "Global — miles de posts de todo el mundo"
+        },
+        {
+          "tag": "#STROwner",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#STRHost",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#VacationRentalHost",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#AirbnbProperty",
+          "reason": "Global — posts de todo el mundo"
+        },
+        {
+          "tag": "#AirbnbInvestor",
+          "reason": "Global — inversor puede estar en cualquier ciudad"
+        },
+        {
+          "tag": "#RentalProperty",
+          "reason": "Global — demasiado amplio y genérico"
+        },
+        {
+          "tag": "#RentalPropertyInvestor",
+          "reason": "Global — no localizable a Chicago"
+        },
+        {
+          "tag": "#PassiveIncomeProperty",
+          "reason": "Global — comunidad de inversores, no Chicago específico"
+        },
+        {
+          "tag": "#HostingTips",
+          "reason": "Global — bloggers y creadores de contenido de todo el mundo"
+        },
+        {
+          "tag": "#ChicagoHost",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#SuperhostChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoSuperhost",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoRentalProperty",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#BerwynRental",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#CiceroILRental",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoGuestReady",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Real Estate Agents & Investors",
+      "hashtags": [
+        {
+          "tag": "#ChicagoRealtor",
+          "why": "Agente en Chicago — geo específico"
+        },
+        {
+          "tag": "#RealtorChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#ChicagoRealEstateAgent",
+          "why": "Agente con ciudad explícita"
+        },
+        {
+          "tag": "#JustListedChicago",
+          "why": "Agente anunciando nuevo listing en Chicago"
+        },
+        {
+          "tag": "#OpenHouseChicago",
+          "why": "Agente con open house en Chicago"
+        },
+        {
+          "tag": "#ListingAgentChicago",
+          "why": "Listing agent en Chicago"
+        },
+        {
+          "tag": "#ChicagoRealEstateInvestor",
+          "why": "Inversor en Chicago"
+        },
+        {
+          "tag": "#HouseFlippingChicago",
+          "why": "Flipper con proyecto en Chicago"
+        },
+        {
+          "tag": "#ChicagoFlip",
+          "why": "Shortcode local de flipping"
+        },
+        {
+          "tag": "#ChicagoPropertyManagement",
+          "why": "Property manager en Chicago"
+        },
+        {
+          "tag": "#PropertyManagerChicago",
+          "why": "Variante del anterior"
+        },
+        {
+          "tag": "#ChicagoLandlord",
+          "why": "Landlord operando en Chicago"
+        },
+        {
+          "tag": "#ChicagoBroker",
+          "why": "Broker local; buen perfil para referrals de property cleaning antes de showings"
+        },
+        {
+          "tag": "#RealEstateBrokerChicago",
+          "why": "Broker inmobiliario en Chicago; conecta con listings, clientes y referidos"
+        },
+        {
+          "tag": "#ChicagoRealEstateBroker",
+          "why": "Variante local para broker de real estate"
+        },
+        {
+          "tag": "#ChicagoListingAgent",
+          "why": "Listing agent local; puede referir limpieza antes de fotos, open house o showings"
+        },
+        {
+          "tag": "#ChicagoOpenHouse",
+          "why": "Post de open house local; muy útil para property cleaning antes de showings"
+        },
+        {
+          "tag": "#InvestmentPropertyChicago",
+          "why": "Inversor o agente publicando propiedad de inversión en Chicago"
+        },
+        {
+          "tag": "#ChicagoInvestmentProperty",
+          "why": "Variante local de inversión inmobiliaria; conecta con value-add y property cleanup"
+        },
+        {
+          "tag": "#RentalPropertyChicago",
+          "why": "Propiedad en renta en Chicago; útil para rental turnover cleaning"
+        },
+        {
+          "tag": "#ChicagoRentalProperties",
+          "why": "Propiedades en renta locales; buen target para property managers y landlords"
+        },
+        {
+          "tag": "#MoveInReadyChicago",
+          "why": "Propiedad lista para mudanza; conecta con move-in cleaning o property cleaning"
+        },
+        {
+          "tag": "#ChicagoMoveInReady",
+          "why": "Variante local de move-in ready; buena señal para listings y rentals"
+        },
+        {
+          "tag": "#ChicagoBuyersAgent",
+          "why": "Buyer agent local; puede referir clientes antes/después de mudanza"
+        },
+        {
+          "tag": "#ChicagoSellerAgent",
+          "why": "Seller agent local; puede referir property cleaning antes de listar o mostrar"
+        },
+        {
+          "tag": "#CommercialRealtorChicago",
+          "why": "Realtor comercial; buen perfil para office/commercial cleaning referrals"
+        },
+        {
+          "tag": "#ChicagoCommercialRealEstate",
+          "why": "Real estate comercial local; conecta con limpiezas comerciales y property cleaning"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#RealtorLife",
+          "reason": "Global — lo usa cualquier agente en cualquier país"
+        },
+        {
+          "tag": "#MoveOutCleaning",
+          "reason": "Global y además lo usaría una empresa de limpieza — doble problema"
+        },
+        {
+          "tag": "#ChicagoRealEstate",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#RealEstateChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#JustSoldChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoHomeSeller",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoInvestor",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoMLS",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#OakParkRealEstate",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#EvanstonRealEstate",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#BerwynRealEstate",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#CiceroILRealEstate",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    },
+    {
+      "id": "movers",
+      "label": "Moving Companies",
+      "hashtags": [
+        {
+          "tag": "#ChicagoMovers",
+          "why": "Empresa de mudanza en Chicago"
+        },
+        {
+          "tag": "#MoversChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#ChicagoMovingCompany",
+          "why": "Empresa con ciudad explícita"
+        },
+        {
+          "tag": "#MovingCompanyChicago",
+          "why": "Variante del anterior"
+        },
+        {
+          "tag": "#ChicagoMovingServices",
+          "why": "Servicios de mudanza en Chicago"
+        },
+        {
+          "tag": "#ChicagoResidentialMovers",
+          "why": "Empresa de mudanza residencial en Chicago; conecta con move-in y move-out cleaning"
+        },
+        {
+          "tag": "#ResidentialMoversChicago",
+          "why": "Variante local para mudanzas residenciales"
+        },
+        {
+          "tag": "#ChicagoApartmentMovers",
+          "why": "Mudanzas de apartamentos; buen partner para referir move-out cleaning"
+        },
+        {
+          "tag": "#ApartmentMoversChicago",
+          "why": "Variante local de apartment movers"
+        },
+        {
+          "tag": "#ChicagoLocalMovers",
+          "why": "Empresa local de mudanzas; buen candidato para intercambio de referrals"
+        },
+        {
+          "tag": "#ChicagoCommercialMovers",
+          "why": "Mudanzas comerciales; conecta con office cleaning y commercial cleaning"
+        },
+        {
+          "tag": "#CommercialMoversChicago",
+          "why": "Variante local para mudanzas comerciales"
+        },
+        {
+          "tag": "#ChicagoMovingAndStorage",
+          "why": "Moving/storage local; puede referir clientes en transición de mudanza"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#RelocationServices",
+          "reason": "Global — empresa de relocation puede estar en cualquier ciudad"
+        },
+        {
+          "tag": "#MovingDay",
+          "reason": "Global — lo usa cualquiera que SE muda, no la empresa"
+        },
+        {
+          "tag": "#ResidentialMovers",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#CommercialMovers",
+          "reason": "Global — no geo-específico"
+        },
+        {
+          "tag": "#MovingAndStorage",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#ProMovers",
+          "reason": "Global — cualquier empresa de mudanza en el mundo"
+        },
+        {
+          "tag": "#MovingCrew",
+          "reason": "Global — no localizable a Chicago"
+        },
+        {
+          "tag": "#ChicagoRelocation",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoPackingServices",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#MovingChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#OakParkMovers",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#EvanstonMovers",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoSuburbsMoving",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    },
+    {
+      "id": "construction",
+      "label": "Construction Companies",
+      "hashtags": [
+        {
+          "tag": "#ChicagoContractor",
+          "why": "Contratista en Chicago"
+        },
+        {
+          "tag": "#ContractorChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#GeneralContractorChicago",
+          "why": "GC con ciudad explícita"
+        },
+        {
+          "tag": "#ChicagoGC",
+          "why": "Shortcode local de General Contractor"
+        },
+        {
+          "tag": "#ChicagoConstruction",
+          "why": "Empresa de construcción en Chicago"
+        },
+        {
+          "tag": "#ConstructionChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#NewConstructionChicago",
+          "why": "Obra nueva en Chicago"
+        },
+        {
+          "tag": "#ChicagoFlipHouse",
+          "why": "Contratista/flipper en rehab Chicago"
+        },
+        {
+          "tag": "#ConstructionCompanyChicago",
+          "why": "Empresa de construcción en Chicago; conecta directo con post-construction cleaning"
+        },
+        {
+          "tag": "#ChicagoConstructionCompany",
+          "why": "Variante local de construction company"
+        },
+        {
+          "tag": "#ChicagoCommercialConstruction",
+          "why": "Construcción comercial local; buen target para limpieza post-obra"
+        },
+        {
+          "tag": "#CommercialConstructionChicago",
+          "why": "Variante local de construcción comercial"
+        },
+        {
+          "tag": "#ChicagoTenantImprovement",
+          "why": "Proyecto tenant improvement; conecta con limpieza final comercial"
+        },
+        {
+          "tag": "#TenantImprovementChicago",
+          "why": "Variante local para buildouts y espacios comerciales"
+        },
+        {
+          "tag": "#ChicagoBuildOut",
+          "why": "Buildout local; señal fuerte de cleanup antes de apertura/entrega"
+        },
+        {
+          "tag": "#CommercialBuildOutChicago",
+          "why": "Buildout comercial local; conecta con post-construction cleaning"
+        },
+        {
+          "tag": "#ChicagoConstructionProject",
+          "why": "Proyecto de construcción local; útil para detectar necesidad de cleanup"
+        },
+        {
+          "tag": "#ChicagoContractors",
+          "why": "Contratistas locales; buenos perfiles para referral de limpieza post-obra"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#PostConstruction",
+          "reason": "Global — no geo-específico, aparece en todo el mundo"
+        },
+        {
+          "tag": "#ConstructionCleanup",
+          "reason": "Global — además lo usaría una empresa de limpieza"
+        },
+        {
+          "tag": "#ContractorLife",
+          "reason": "Global — comunidad de contratistas de todo el mundo"
+        },
+        {
+          "tag": "#ChicagoBuilder",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoRemodeling",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#RemodelingChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#HomeRenovationChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoRenovation",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#KitchenRemodelChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#BathroomRemodelChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoDevelopment",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#OakParkContractor",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#EvanstonRemodeling",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoSuburbsContractor",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    },
+    {
+      "id": "remodeling",
+      "label": "Remodeling / Renovation",
+      "hashtags": [
+        {
+          "tag": "#ChicagoRemodel",
+          "why": "Contratista de remodelación en Chicago"
+        },
+        {
+          "tag": "#RemodelChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#ChicagoRenovation",
+          "why": "Empresa de renovación en Chicago"
+        },
+        {
+          "tag": "#RenovationChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#ChicagoKitchenRemodel",
+          "why": "Cocinas — proyecto residencial Chicago"
+        },
+        {
+          "tag": "#KitchenRemodelChicago",
+          "why": "Variante — cocinas Chicago"
+        },
+        {
+          "tag": "#ChicagoBathroomRemodel",
+          "why": "Baños — proyecto residencial Chicago"
+        },
+        {
+          "tag": "#BathroomRemodelChicago",
+          "why": "Variante — baños Chicago"
+        },
+        {
+          "tag": "#ChicagoRemodelingCompany",
+          "why": "Empresa de remodelación local; conecta con post-construction cleaning"
+        },
+        {
+          "tag": "#RemodelingCompanyChicago",
+          "why": "Variante local de remodeling company"
+        },
+        {
+          "tag": "#ChicagoRenovationCompany",
+          "why": "Empresa de renovación en Chicago; buen partner para cleanup referrals"
+        },
+        {
+          "tag": "#RenovationCompanyChicago",
+          "why": "Variante local de renovation company"
+        },
+        {
+          "tag": "#ChicagoHomeRemodeling",
+          "why": "Remodelación residencial local; conecta con deep/post-construction cleaning"
+        },
+        {
+          "tag": "#ChicagoBeforeAndAfter",
+          "why": "Antes/después local; suele venir de remodeladores o real estate investors"
+        },
+        {
+          "tag": "#BeforeAndAfterChicago",
+          "why": "Variante local de before/after; útil para detectar proyectos terminados"
+        },
+        {
+          "tag": "#ChicagoCommercialRenovation",
+          "why": "Renovación comercial local; buen target para post-construction cleaning"
+        },
+        {
+          "tag": "#CommercialRenovationChicago",
+          "why": "Variante local de commercial renovation"
+        },
+        {
+          "tag": "#ChicagoRestaurantRenovation",
+          "why": "Renovación de restaurante; conecta con commercial/post-construction cleaning"
+        },
+        {
+          "tag": "#RestaurantRenovationChicago",
+          "why": "Variante local de renovación de restaurante"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#HomeRemodel",
+          "reason": "Global — remodelación en cualquier ciudad del mundo"
+        },
+        {
+          "tag": "#KitchenRemodel",
+          "reason": "Global — sin geo, trae resultados de todo el país"
+        },
+        {
+          "tag": "#BathroomRemodel",
+          "reason": "Global — mismo problema"
+        },
+        {
+          "tag": "#HomeRenovation",
+          "reason": "Global — demasiado amplio"
+        },
+        {
+          "tag": "#RemodelLife",
+          "reason": "Global — comunidad de contratistas sin ubicación"
+        },
+        {
+          "tag": "#BeforeAndAfterRemodel",
+          "reason": "Global — lo usan DIYers y contratistas de todo el mundo"
+        },
+        {
+          "tag": "#HomeRenovationChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoBasementRemodel",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#BasementFinishingChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoHomeImprovement",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#HomeImprovementChicago",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoInteriorRemodel",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoFlipRenovation",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#OakParkRemodel",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#EvanstonRenovation",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#BerwynRemodel",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoSuburbsRemodel",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    },
+    {
+      "id": "events/post_event_cleaning",
+      "label": "Event Planners / Venues",
+      "hashtags": [
+        {
+          "tag": "#ChicagoEventPlanner",
+          "why": "Planner local; puede referir limpieza antes o después de eventos"
+        },
+        {
+          "tag": "#EventPlannerChicago",
+          "why": "Variante local para event planners"
+        },
+        {
+          "tag": "#ChicagoEventVenue",
+          "why": "Venue local; buen target para post-event cleaning recurrente"
+        },
+        {
+          "tag": "#EventVenueChicago",
+          "why": "Variante local de event venue"
+        },
+        {
+          "tag": "#ChicagoWeddingVenue",
+          "why": "Wedding venue local; puede requerir cleanup después de eventos"
+        },
+        {
+          "tag": "#WeddingVenueChicago",
+          "why": "Variante local para venues de boda"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#ChicagoEventVendors",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoCorporateEvents",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    },
+    {
+      "id": "commercial/office_cleaning",
+      "label": "Commercial Offices / Facility Management",
+      "hashtags": [
+        {
+          "tag": "#ChicagoOfficeSpace",
+          "why": "Espacios de oficina locales; buen target para office cleaning"
+        },
+        {
+          "tag": "#OfficeSpaceChicago",
+          "why": "Variante local de office space"
+        },
+        {
+          "tag": "#ChicagoCoworking",
+          "why": "Coworking local; puede requerir limpieza comercial frecuente"
+        },
+        {
+          "tag": "#CoworkingChicago",
+          "why": "Variante local de coworking"
+        },
+        {
+          "tag": "#ChicagoCommercialProperty",
+          "why": "Propiedad comercial local; conecta con limpieza comercial y property cleaning"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#ChicagoOffice",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoWorkspace",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        },
+        {
+          "tag": "#ChicagoBusinessOwners",
+          "reason": "Menos relevante para B2B referral: es demasiado amplio, más directo a cliente final o menos fuerte como partner de referidos."
+        }
+      ]
+    }
+  ]
+}

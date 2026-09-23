@@ -1,0 +1,441 @@
+{
+  "policy": {
+    "geo_only": true,
+    "must_contain_chicago_or_suburb_or_il": true,
+    "exclude_global_hashtags": true,
+    "double_validation_rule": [
+      "hashtag used by business owner/operator or local professional",
+      "hashtag points specifically to Chicago, suburbs, Illinois, or a Chicago Latino business context"
+    ]
+  },
+  "categories": [
+    {
+      "id": "grand_opening_new_business",
+      "label": "Grand Opening / New Business",
+      "hashtags": [
+        {
+          "tag": "#GrandOpeningChicago",
+          "why": "Nuevo negocio local con alta necesidad de web, GBP y SEO desde el lanzamiento"
+        },
+        {
+          "tag": "#NewBusinessChicago",
+          "why": "Dueño de negocio nuevo en Chicago; oportunidad fuerte para web design y SEO inicial"
+        },
+        {
+          "tag": "#ChicagoGrandOpening",
+          "why": "Apertura local; momento ideal para auditoría SEO y presencia online"
+        },
+        {
+          "tag": "#NowOpenChicago",
+          "why": "Negocio recién abierto buscando visibilidad y primeros clientes"
+        },
+        {
+          "tag": "#ChicagoNowOpen",
+          "why": "Variante local de apertura; útil para detectar negocios en fase de crecimiento"
+        },
+        {
+          "tag": "#OpeningDayChicago",
+          "why": "Día de apertura; necesidad clara de website, Google Maps y tráfico local"
+        },
+        {
+          "tag": "#ChicagoStartup",
+          "why": "Startup o negocio local nuevo con necesidad de estrategia digital"
+        },
+        {
+          "tag": "#SmallBusinessLaunch",
+          "why": "Lanzamiento de pequeño negocio; validar ubicación Chicago en perfil/post"
+        },
+        {
+          "tag": "#AbrioChicago",
+          "why": "Post en español de apertura local; ideal para oferta de Spanish SEO"
+        },
+        {
+          "tag": "#NuevoNegocioChicago",
+          "why": "Nuevo negocio latino o hispano en Chicago; excelente para SEO bilingüe"
+        },
+        {
+          "tag": "#GranAperturaChicago",
+          "why": "Apertura en español; alto potencial para web y SEO en español"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#GrandOpening",
+          "reason": "Global — trae aperturas de cualquier ciudad"
+        },
+        {
+          "tag": "#NewBusiness",
+          "reason": "Global — no filtra Chicago"
+        },
+        {
+          "tag": "#OpeningDay",
+          "reason": "Global y también usado en eventos/deportes"
+        },
+        {
+          "tag": "#Startup",
+          "reason": "Demasiado amplio; puede traer startups no locales o no B2B"
+        },
+        {
+          "tag": "#SmallBusinessLaunch",
+          "reason": "Usar solo con validación de Chicago porque no es geo-específico"
+        }
+      ]
+    },
+    {
+      "id": "business_growth_expansion",
+      "label": "Business Growth / Expansion",
+      "hashtags": [
+        {
+          "tag": "#ChicagoBusinessGrowth",
+          "why": "Negocios locales hablando de crecimiento; buen momento para SEO y estrategia"
+        },
+        {
+          "tag": "#GrowingBusinessChicago",
+          "why": "Dueños expandiendo negocio en Chicago; alta intención"
+        },
+        {
+          "tag": "#BusinessExpansionChicago",
+          "why": "Expansión local; ideal para SEO por zonas y nuevas landing pages"
+        },
+        {
+          "tag": "#ChicagoExpansion",
+          "why": "Señal de expansión territorial dentro de Chicago"
+        },
+        {
+          "tag": "#NewLocationChicago",
+          "why": "Nueva ubicación; requiere GBP, SEO local y web actualizada"
+        },
+        {
+          "tag": "#CrecimientoEmpresarial",
+          "why": "Validar Chicago/IL; útil para negocios latinos"
+        },
+        {
+          "tag": "#ExpansionChicago",
+          "why": "Crecimiento o nueva sede local"
+        },
+        {
+          "tag": "#NuevaUbicacionChicago",
+          "why": "Post en español; fuerte para SEO local bilingüe"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#BusinessGrowth",
+          "reason": "Global — no filtra por ciudad"
+        },
+        {
+          "tag": "#ScalingMyBusiness",
+          "reason": "Global; usar solo si hay señal local clara"
+        },
+        {
+          "tag": "#Expansion",
+          "reason": "Demasiado amplio"
+        },
+        {
+          "tag": "#NewLocation",
+          "reason": "Sin ciudad trae negocios de cualquier mercado"
+        }
+      ]
+    },
+    {
+      "id": "chicago_business_owners",
+      "label": "Chicago Business Owners",
+      "hashtags": [
+        {
+          "tag": "#ChicagoSmallBusiness",
+          "why": "Pequeños negocios locales; audiencia principal de Boxmark"
+        },
+        {
+          "tag": "#ChicagoBusinessOwner",
+          "why": "Dueño de negocio local explícito"
+        },
+        {
+          "tag": "#SmallBusinessChicago",
+          "why": "Variante local de small business"
+        },
+        {
+          "tag": "#ChicagoEntrepreneur",
+          "why": "Emprendedores locales con necesidad de presencia digital"
+        },
+        {
+          "tag": "#ChicagoBusiness",
+          "why": "Negocios de Chicago; validar que sea owner/operator"
+        },
+        {
+          "tag": "#BusinessOwnerChicago",
+          "why": "Dueño de negocio local; útil para outreach B2B"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#SmallBusiness",
+          "reason": "Global — no filtra ubicación"
+        },
+        {
+          "tag": "#BusinessOwner",
+          "reason": "Global y demasiado amplio"
+        },
+        {
+          "tag": "#Entrepreneur",
+          "reason": "Global y con mucho contenido motivacional"
+        },
+        {
+          "tag": "#BusinessTips",
+          "reason": "Trae creadores de contenido, no necesariamente prospectos"
+        }
+      ]
+    },
+    {
+      "id": "home_services_contractors",
+      "label": "Home Services / Contractors",
+      "hashtags": [
+        {
+          "tag": "#ChicagoContractor",
+          "why": "Contratistas locales con necesidad de SEO local y leads propios"
+        },
+        {
+          "tag": "#ChicagoHomeServices",
+          "why": "Empresas de servicios del hogar en Chicago"
+        },
+        {
+          "tag": "#ChicagoGC",
+          "why": "General contractors locales; alto ticket para SEO y web"
+        },
+        {
+          "tag": "#HomeServicesChicago",
+          "why": "Servicios del hogar con ciudad explícita"
+        },
+        {
+          "tag": "#ChicagoTrades",
+          "why": "Oficios y contratistas locales"
+        },
+        {
+          "tag": "#ContractorChicago",
+          "why": "Variante local para contratistas"
+        },
+        {
+          "tag": "#NewContractorChicago",
+          "why": "Contratista nuevo; oportunidad de web/GBP/SEO desde cero"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Contractor",
+          "reason": "Global — no geolocaliza"
+        },
+        {
+          "tag": "#HomeServices",
+          "reason": "Global y muy amplio"
+        },
+        {
+          "tag": "#Trades",
+          "reason": "Global"
+        },
+        {
+          "tag": "#ContractorLife",
+          "reason": "Más comunidad/entretenimiento que intención comercial"
+        }
+      ]
+    },
+    {
+      "id": "medical_healthcare",
+      "label": "Medical & Healthcare",
+      "hashtags": [
+        {
+          "tag": "#ChicagoDentist",
+          "why": "Dentistas locales; alto valor para SEO y web"
+        },
+        {
+          "tag": "#ChicagoChiropractor",
+          "why": "Quiroprácticos locales; búsquedas de alta intención"
+        },
+        {
+          "tag": "#ChicagoWellness",
+          "why": "Wellness centers; validar que sea negocio/profesional"
+        },
+        {
+          "tag": "#MedicalPracticeChicago",
+          "why": "Prácticas médicas locales"
+        },
+        {
+          "tag": "#ChicagoTherapy",
+          "why": "Terapia/salud mental; alto valor local SEO"
+        },
+        {
+          "tag": "#ChicagoHealthcare",
+          "why": "Salud local; validar owner/operator"
+        },
+        {
+          "tag": "#DentalChicago",
+          "why": "Variante dental local"
+        },
+        {
+          "tag": "#NewDentalPracticeChicago",
+          "why": "Nueva práctica dental; muy alta intención"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#Dentist",
+          "reason": "Global — no filtra Chicago"
+        },
+        {
+          "tag": "#Healthcare",
+          "reason": "Global y puede traer noticias"
+        },
+        {
+          "tag": "#Wellness",
+          "reason": "Demasiado amplio"
+        },
+        {
+          "tag": "#Therapy",
+          "reason": "Global; usar solo con ubicación"
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Real Estate",
+      "hashtags": [
+        {
+          "tag": "#ChicagoRealtor",
+          "why": "Realtors locales; mercado competitivo de SEO"
+        },
+        {
+          "tag": "#ChicagoRealEstate",
+          "why": "Real estate local; validar agente/inversor/PM"
+        },
+        {
+          "tag": "#ChicagoPropertyManager",
+          "why": "Property managers locales; necesitan web, SEO y lead funnels"
+        },
+        {
+          "tag": "#RealEstateChicago",
+          "why": "Variante local"
+        },
+        {
+          "tag": "#ChicagoAgent",
+          "why": "Agentes locales; validar que sea real estate o mortgage"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#RealEstate",
+          "reason": "Global — no filtra ciudad"
+        },
+        {
+          "tag": "#RealtorLife",
+          "reason": "Comunidad de agentes, muy amplio"
+        },
+        {
+          "tag": "#PropertyManagement",
+          "reason": "Global"
+        },
+        {
+          "tag": "#Zillow",
+          "reason": "Demasiado amplio; usar solo con contexto de queja/costo de leads"
+        }
+      ]
+    },
+    {
+      "id": "beauty_wellness",
+      "label": "Beauty / Wellness",
+      "hashtags": [
+        {
+          "tag": "#ChicagoBeautyBusiness",
+          "why": "Dueños de negocios beauty; SEO local y bookings"
+        },
+        {
+          "tag": "#ChicagoSalon",
+          "why": "Salones locales; necesidad de Google Maps y booking"
+        },
+        {
+          "tag": "#ChicagoSpa",
+          "why": "Spas locales; alto potencial de SEO y web"
+        },
+        {
+          "tag": "#BeautyBusinessChicago",
+          "why": "Negocio de belleza local"
+        },
+        {
+          "tag": "#ChicagoMedspa",
+          "why": "Medspas locales; competencia fuerte en Google"
+        },
+        {
+          "tag": "#NewSalonChicago",
+          "why": "Nuevo salón; oportunidad de website y local SEO"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#BeautyBusiness",
+          "reason": "Global"
+        },
+        {
+          "tag": "#Salon",
+          "reason": "Global y muy amplio"
+        },
+        {
+          "tag": "#Spa",
+          "reason": "Global"
+        },
+        {
+          "tag": "#Medspa",
+          "reason": "Global; además puede traer competidores de SPA312"
+        }
+      ]
+    },
+    {
+      "id": "hispanic_business",
+      "label": "Negocios Latinos / Hispanic Business",
+      "hashtags": [
+        {
+          "tag": "#NegociosLatinosChicago",
+          "why": "Negocios latinos locales; mejor ángulo de Spanish SEO"
+        },
+        {
+          "tag": "#EmpresariosChicago",
+          "why": "Dueños hispanos/latinos en Chicago"
+        },
+        {
+          "tag": "#LatinoBusinessChicago",
+          "why": "Negocios latinos locales"
+        },
+        {
+          "tag": "#NegocioChicago",
+          "why": "Post en español de negocio en Chicago"
+        },
+        {
+          "tag": "#EmprendedoresChicago",
+          "why": "Emprendedores locales en español"
+        },
+        {
+          "tag": "#NuevoNegocioLatino",
+          "why": "Validar Chicago/IL; fuerte para oferta SEO en español"
+        }
+      ],
+      "removed": [
+        {
+          "tag": "#NegociosLatinos",
+          "reason": "No siempre es Chicago; validar ubicación"
+        },
+        {
+          "tag": "#Empresarios",
+          "reason": "Global en español"
+        },
+        {
+          "tag": "#HispanicBusiness",
+          "reason": "Global"
+        },
+        {
+          "tag": "#LatinoBusiness",
+          "reason": "Global"
+        },
+        {
+          "tag": "#Emprendedores",
+          "reason": "Demasiado amplio y puede traer contenido no local"
+        }
+      ]
+    }
+  ]
+}

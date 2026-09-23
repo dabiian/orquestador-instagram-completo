@@ -1,0 +1,31 @@
+VALIDACION FINAL - BOT INSTAGRAM / CONFIG
+Fecha: 2026-09-17
+
+1) CONFIG FUENTE
+- Archivos fuente: 41
+- Archivos runtime: 41
+- Faltantes: 0
+- Extras: 0
+- Diferencias SHA-256: 0
+- Fuente de verdad de runtime: app/config/business_config
+
+2) PRUEBAS AUTOMATICAS
+- tests/: 76 passed (Selenium-only test excluded because this environment does not have selenium/browser)
+- top-level Instagram tests: 5 passed
+- compileall app/: OK
+- pruebas nuevas de equivalencia: incluidas en tests/test_config_equivalence_final.py
+
+3) REGLAS CORREGIDAS
+- Botánica L2: categorías amplias -> REVIEW (35) cuando no hay señales fuertes.
+- Botánica L4: publicación mística aislada + CTA comercial -> BLOCK.
+- Botánica L5: 2+ hashtags místicos requieren contexto temático para BLOCK.
+- F4/D2: respuestas positivas cortas como “quiero saber” entran en data_request.
+- D3: queda marcado explícitamente como requiring DM follow-up y genera el texto D1 para el DM.
+- Competitor detection: ya no consume la segunda copia utils/config/response_rules como fuente de reglas; usa business_config.
+- Marketing fast-path: preservado desde clean_exports, sin bloquear solicitudes de servicio.
+
+4) LIMITACION DEL ENTORNO DE PRUEBA
+La suite completa con Selenium no puede ejecutarse aquí porque el entorno no tiene el paquete selenium ni un navegador/display disponible. No se afirma una prueba E2E de navegador que no se haya ejecutado.
+
+5) CONCLUSION
+La configuración JSON está 1:1 en runtime y las reglas deterministas auditadas están ejecutándose desde esa fuente. Las pruebas disponibles en este entorno pasan: 81 tests (76 + 5). La validación E2E de Instagram/Selenium debe ejecutarse en el entorno operativo con sus dependencias y sesión real.

@@ -1,0 +1,211 @@
+{
+  "trigger_keywords": [
+    "send info",
+    "send your info",
+    "information",
+    "more info",
+    "contact",
+    "reach you",
+    "get in touch",
+    "website",
+    "details",
+    "phone",
+    "number",
+    "email",
+    "how to book",
+    "interested",
+    "tell me more",
+    "DM me",
+    "message me",
+    "call me",
+    "consulta",
+    "consulta gratis",
+    "información",
+    "más información",
+    "contacto",
+    "cita",
+    "agendar",
+    "whatsapp",
+    "asesoría",
+    "asesoria",
+    "orientación",
+    "orientacion",
+    "abogado",
+    "consulta legal",
+    "whatsapp",
+    "teléfono",
+    "telefono"
+  ],
+  "trigger_examples": [
+    {
+      "word": "send info",
+      "example": "'Can you send info?'"
+    },
+    {
+      "word": "send your info",
+      "example": "'Send your info!'"
+    },
+    {
+      "word": "information",
+      "example": "'Send me information'"
+    },
+    {
+      "word": "more info",
+      "example": "'Can I get more info?'"
+    },
+    {
+      "word": "contact",
+      "example": "'How can I contact you?'"
+    },
+    {
+      "word": "reach you",
+      "example": "'How do I reach you?'"
+    },
+    {
+      "word": "get in touch",
+      "example": "'How do I get in touch?'"
+    },
+    {
+      "word": "website",
+      "example": "'Do you have a website?'"
+    },
+    {
+      "word": "details",
+      "example": "'Send me details'"
+    },
+    {
+      "word": "phone",
+      "example": "'What's your phone number?'"
+    },
+    {
+      "word": "number",
+      "example": "'Can I get your number?'"
+    },
+    {
+      "word": "email",
+      "example": "'What's your email?'"
+    },
+    {
+      "word": "how to book",
+      "example": "'How do I book?'"
+    },
+    {
+      "word": "interested",
+      "example": "'I'm interested!'"
+    },
+    {
+      "word": "tell me more",
+      "example": "'Tell me more about this'"
+    },
+    {
+      "word": "DM me",
+      "example": "'DM me your info'"
+    },
+    {
+      "word": "message me",
+      "example": "'Message me please'"
+    },
+    {
+      "word": "call me",
+      "example": "'Give me a call'"
+    },
+    {
+      "word": "consulta",
+      "example": "'¿Tienen consulta?'"
+    },
+    {
+      "word": "consulta gratis",
+      "example": "'¿La consulta es gratis?'"
+    },
+    {
+      "word": "información",
+      "example": "'¿Me puedes enviar información?'"
+    },
+    {
+      "word": "más información",
+      "example": "'Quiero más información'"
+    },
+    {
+      "word": "contacto",
+      "example": "'¿Cómo los contacto?'"
+    },
+    {
+      "word": "cita",
+      "example": "'Quiero una cita'"
+    },
+    {
+      "word": "agendar",
+      "example": "'¿Cómo puedo agendar?'"
+    },
+    {
+      "word": "whatsapp",
+      "example": "'¿Tienen WhatsApp?'"
+    },
+    {
+      "word": "asesoría",
+      "example": "'Necesito asesoría legal'"
+    },
+    {
+      "word": "orientación",
+      "example": "'¿Me pueden orientar?'"
+    },
+    {
+      "word": "consulta legal",
+      "example": "'¿Cómo agendo una consulta legal?'"
+    },
+    {
+      "word": "whatsapp",
+      "example": "'¿Cuál es el WhatsApp?'"
+    }
+  ],
+  "public_reply_templates": [
+    {
+      "id": "D1",
+      "label": "Standard — most common",
+      "trigger": "They ask for info, contact, legal consultation, website, or how to reach the firm",
+      "recommended": true,
+      "template": "Claro, te comparto los datos de López & López Abogados ⚖️\n\n📞 Tel/WhatsApp: 321 424 3885\n✉️ info@lopezmoralesabogados.com\n🌐 lopezmoralesabogados.com\n📍 Bogotá, Colombia\n\nLa primera consulta es sin costo. Por seguridad, lo mejor es revisar los detalles del caso por llamada o WhatsApp.",
+      "notes": [
+        "Contacto completo y claro",
+        "No pide datos sensibles en público",
+        "Refuerza primera consulta sin costo",
+        "Evita asesoría jurídica en comentario público"
+      ]
+    },
+    {
+      "id": "D2",
+      "label": "Short version — when they just say 'interested!'",
+      "trigger": "Short positive reply — 'me interesa', 'info', 'necesito ayuda'",
+      "recommended": false,
+      "template": "Claro ⚖️ Puedes escribir a López & López Abogados por WhatsApp al 321 424 3885. La primera consulta es sin costo y revisan qué área legal aplica a tu caso.",
+      "notes": [
+        "Respuesta corta",
+        "No abruma",
+        "Dirige a WhatsApp",
+        "No da consejo legal"
+      ]
+    },
+    {
+      "id": "D3",
+      "label": "When they say 'DM me' or 'Message me'",
+      "trigger": "They explicitly ask to be contacted privately",
+      "recommended": false,
+      "template": "Claro, te escribimos por privado ⚖️ También puedes contactar directamente por WhatsApp al 321 424 3885 para agendar tu primera consulta sin costo.",
+      "notes": [
+        "Acknowledges DM",
+        "Gives direct contact as backup",
+        "Bot then sends DM with full D1 content",
+        "Keeps legal details private"
+      ]
+    }
+  ],
+  "rules": {
+    "reply_in_same_comment_thread": true,
+    "alert_event_id": "DATA",
+    "office_phone_sms_allowed": true,
+    "cell_reveal_policy": "business_whatsapp_can_be_shared_publicly",
+    "dm_follow_up_only_for_template_ids": [
+      "D3"
+    ]
+  }
+}

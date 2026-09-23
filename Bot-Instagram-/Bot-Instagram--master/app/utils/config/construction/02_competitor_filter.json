@@ -1,0 +1,57 @@
+{
+  "industry": "construction",
+  "core_services": [
+    "general contracting",
+    "construction",
+    "remodeling",
+    "renovation",
+    "building"
+  ],
+  "direct_competitor_signals": [
+    "general contractor",
+    "construction company",
+    "general contracting",
+    "remodeling company",
+    "renovation company",
+    "builder"
+  ],
+  "possible_competitor_signals": [
+    "handyman",
+    "home improvement",
+    "design build"
+  ],
+  "adjacent_businesses": [
+    "architect",
+    "interior design",
+    "real estate",
+    "cleaning",
+    "landscaping",
+    "plumbing",
+    "roofing",
+    "hvac"
+  ],
+  "referral_opportunities": [
+    "real estate",
+    "architect",
+    "interior designer",
+    "cleaning company",
+    "plumber",
+    "roofer",
+    "hvac company"
+  ],
+  "exclude_as_competitor": [
+    "architect",
+    "real estate",
+    "cleaning company",
+    "landscaping company",
+    "plumber",
+    "roofer",
+    "hvac company"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

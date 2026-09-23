@@ -1,0 +1,21 @@
+VALIDACION HARDENED 2026-09-18
+
+Cambios:
+- Resolver de búsqueda basado en DOM accesible + fallbacks, sin depender exclusivamente del SVG.
+- Re-resolución del control en cada intento.
+- Verificación de cobertura/interacción antes de click.
+- Espera de hidratación del buscador.
+- Si Search no abre, recuperación determinista y aborto del discovery; no se encadenan los 10 hashtags sobre un estado de UI roto.
+- Se mantienen las barreras de identidad perfil/post/autor y cuenta/campaña.
+- Tests específicos ampliados.
+
+Pruebas ejecutadas:
+- tests/: 126 passed
+- tests/test_instagram_integrity_hardening.py: 16 passed
+- compileall app tests: OK
+- Sintaxis del SEARCH_NAV_JS validada con Node.js: OK
+- ZIP integrity: se valida al generar la entrega.
+
+Limitación:
+- No se puede garantizar una ejecución real contra Instagram desde este entorno. La validación final del DOM real requiere ejecutar el ZIP en el entorno del usuario con su sesión de Instagram.
+- La suite independiente de self_healer no se ejecuta aquí porque este entorno no tiene Selenium instalado.

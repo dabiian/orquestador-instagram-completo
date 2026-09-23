@@ -1,0 +1,60 @@
+name: Deploy Windows 10
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-maduracion-instagram-windows
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy en ${{ matrix.runner_label }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        runner_label:
+          - maduracion-pc-1
+          - maduracion-pc-2
+          - maduracion-pc-3
+          - maduracion-pc-4
+          - maduracion-pc-5
+          - maduracion-pc-6
+          - maduracion-pc-7
+          - maduracion-pc-8
+          - maduracion-pc-9
+          - maduracion-pc-10
+          - maduracion-pc-11
+
+    runs-on: [self-hosted, Windows, X64, "${{ matrix.runner_label }}"]
+
+    steps:
+      - name: Ejecutar deploy del bot 2 en sesión instagram
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $TaskName = "\BotDeploy\Deploy Instagram Bot 2"
+          $LogFile = "C:\Users\instagram\Desktop\instagram\logs\deploy-from-task.log"
+
+          Write-Host "Ejecutando tarea programada: $TaskName"
+
+          schtasks /Run /TN $TaskName
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "No se pudo ejecutar la tarea programada $TaskName"
+          }
+
+          Start-Sleep -Seconds 8
+
+          if (Test-Path $LogFile) {
+            Write-Host "Últimas líneas del log:"
+            Get-Content $LogFile -Tail 120
+          } else {
+            Write-Host "Todavía no existe el log: $LogFile"
+          }

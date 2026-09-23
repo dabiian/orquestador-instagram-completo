@@ -1,0 +1,59 @@
+{
+  "industry": "real_estate",
+  "core_services": [
+    "real estate brokerage",
+    "residential real estate",
+    "property sales",
+    "property management",
+    "leasing"
+  ],
+  "direct_competitor_signals": [
+    "real estate agency",
+    "real estate brokerage",
+    "real estate company",
+    "realtor",
+    "realtors",
+    "real estate agent",
+    "property management company",
+    "property management services"
+  ],
+  "possible_competitor_signals": [
+    "mortgage lender",
+    "mortgage broker",
+    "home inspector",
+    "title company"
+  ],
+  "adjacent_businesses": [
+    "mortgage",
+    "insurance",
+    "home inspection",
+    "appraisal",
+    "construction",
+    "cleaning",
+    "moving"
+  ],
+  "referral_opportunities": [
+    "mortgage lender",
+    "home inspector",
+    "title company",
+    "insurance agency",
+    "general contractor",
+    "cleaning company",
+    "moving company"
+  ],
+  "exclude_as_competitor": [
+    "mortgage lender",
+    "home inspector",
+    "title company",
+    "insurance agency",
+    "general contractor",
+    "cleaning company",
+    "moving company"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

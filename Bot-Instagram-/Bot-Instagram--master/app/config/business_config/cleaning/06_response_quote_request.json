@@ -1,0 +1,167 @@
+{
+  "trigger_keywords": [
+    "how much",
+    "quote",
+    "quotation",
+    "estimate",
+    "price",
+    "pricing",
+    "cost",
+    "rates",
+    "rate",
+    "charge",
+    "fee",
+    "affordable",
+    "budget"
+  ],
+  "trigger_examples": [
+    {
+      "word": "how much",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can we get a quote?'"
+    },
+    {
+      "word": "quotation",
+      "example": "'Send us a quotation'"
+    },
+    {
+      "word": "estimate",
+      "example": "'Can you give us an estimate?'"
+    },
+    {
+      "word": "price",
+      "example": "'What's your price?'"
+    },
+    {
+      "word": "pricing",
+      "example": "'What's your pricing?'"
+    },
+    {
+      "word": "cost",
+      "example": "'What does it cost?'"
+    },
+    {
+      "word": "rates",
+      "example": "'What are your rates?'"
+    },
+    {
+      "word": "rate",
+      "example": "'What's your rate per hour?'"
+    },
+    {
+      "word": "charge",
+      "example": "'How much do you charge?'"
+    },
+    {
+      "word": "fee",
+      "example": "'What's your fee?'"
+    },
+    {
+      "word": "affordable",
+      "example": "'Are you affordable?'"
+    },
+    {
+      "word": "budget",
+      "example": "'Do you work with our budget?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#1877F2",
+      "topic": "Type of cleaning",
+      "question": "What type of cleaning do you need?",
+      "options": [
+        "Move-out / Move-in",
+        "Post-construction / Post-renovation",
+        "Regular / Recurring",
+        "Deep clean (one time)"
+      ],
+      "why": "Determines base price range — post-construction is always higher than regular"
+    },
+    {
+      "number": "Q2",
+      "color": "#42b883",
+      "topic": "Size of the space",
+      "question": "How many bedrooms and bathrooms does the space have? (or approximate sq ft if commercial)",
+      "options": null,
+      "why": "Primary pricing factor — determines time and crew size needed"
+    },
+    {
+      "number": "Q3",
+      "color": "#f5a623",
+      "topic": "Date & urgency",
+      "question": "When do you need it done? Do you have a specific date or is it flexible?",
+      "options": null,
+      "why": "Same-day or next-day adds urgency fee. Flexible = standard rate"
+    },
+    {
+      "number": "Q4",
+      "color": "#9b59b6",
+      "topic": "Current condition",
+      "question": "How would you describe the current condition of the space — move-in ready condition, average, or pretty rough?",
+      "options": [
+        "Move-in ready — just needs a refresh",
+        "Average — normal use and dust",
+        "Pretty rough — heavy cleaning needed"
+      ],
+      "why": "Rough condition means more hours. This prevents underquoting"
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard quote request",
+      "trigger": "They ask for price, quote, estimate, or how much",
+      "recommended": true,
+      "comment": "Happy to get you a quote! Just need a few quick details:\n\n1️⃣ What type of cleaning? (move-out, post-construction, regular deep clean)\n2️⃣ How many bedrooms/bathrooms? (or sq ft if it's a commercial space)\n3️⃣ When do you need it — any specific date?\n4️⃣ How's the current condition — average, or has it seen better days? 😄\n\nOnce we have that, we'll send you the exact number right away!",
+      "notes": [
+        "Casual opener — 'Happy to' not 'We would be pleased to'",
+        "4 questions in one comment — numbered for easy reading on mobile",
+        "Question 4 uses light humor ('seen better days') to keep it human",
+        "'Exact number right away' = sets expectation that María responds fast via DM",
+        "No price ranges given publicly — avoids competitors seeing your rates"
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "When they just say 'how much?' with no context",
+      "trigger": "Very short reply — just 'how much?' or 'what's your price?'",
+      "recommended": false,
+      "comment": "Depends on the job! Quick question — what type of cleaning and roughly how big is the space? We'll get you a number fast 🧹",
+      "notes": [
+        "Matches their brevity — they were short, bot is short",
+        "Two questions only — size and type are the minimum to give any range",
+        "'We'll get you a number fast' = manages expectation without promising a specific time"
+      ]
+    },
+    {
+      "id": "Q-URGENT",
+      "label": "When they signal urgency",
+      "trigger": "Reply contains 'ASAP', 'urgent', 'today', 'tomorrow', 'last minute'",
+      "recommended": false,
+      "comment": "We got you — we do last minute jobs in Chicago. What type of cleaning and how big is the space? We'll get you a quote in minutes and let you know our availability 🧹",
+      "notes": [
+        "'We got you' = matches their urgency energy immediately",
+        "Only asks 2 questions — urgency means less time to answer 4",
+        "'Quote in minutes' = realistic if María is available",
+        "Triggers URGENT flag in alert to María"
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "QUOTE",
+    "quote_alert_after_min_answers": [
+      "Q1",
+      "Q2"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_via_dm": true,
+    "dm_quote_template_manual": true
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "genuine warm reaction to their personal, beauty, professional, or self-care post",
+    "second_sentence": "optional natural bridge to free aesthetic assessment only if supported by the actual post content",
+    "template_usage_rule": "Templates are style references only. Do not reuse their concrete body/face concern, event, or sample compliment unless those details are present in the current post.",
+    "tone": "warm_elegant_aspirational_friend_not_medical_advice",
+    "forbidden_phrases": [
+      "You need...",
+      "Fix your...",
+      "Guaranteed results",
+      "cheap botox",
+      "book now",
+      "needles",
+      "injections",
+      "you look old",
+      "your face needs",
+      "your body needs work",
+      "medical diagnosis",
+      "this will cure"
+    ],
+    "allow_signature": false,
+    "emoji_max": 1,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false
+  },
+  "categories": [
+    {
+      "id": "mujeres35",
+      "label": "Mujeres 30–55 / Cuidado Personal",
+      "icon": "✨",
+      "color": "#c8965a",
+      "context": "Mujer publica sobre bienestar, autocuidado, look, skincare, cumpleaños, cambios de imagen, mirada cansada, ojeras o evento próximo.",
+      "rule": "Lead with a positive, respectful reaction. Never diagnose, never criticize appearance, never guarantee results. Bridge to valoración gratuita only when relevant.",
+      "templates": [
+        {
+          "id": "M1",
+          "trigger": "Antes/después o cuidado personal",
+          "template": "¡Qué bien te ves! ✨ Si algún día quieres potenciarlo con resultados naturales, la Dra. Deysi Torres en Bogotá hace valoración gratuita para tratamientos antiage y medicina estética.",
+          "why": [
+            "Halago positivo",
+            "No critica el cuerpo",
+            "Puente a valoración"
+          ]
+        },
+        {
+          "id": "M2",
+          "trigger": "Cumpleaños / renovación",
+          "template": "¡Feliz cumpleaños! 🎂 Una valoración estética personalizada con la Dra. Deysi Torres puede ser un gran regalo para verte fresca y natural este año.",
+          "why": [
+            "Contexto de renovación",
+            "Tono aspiracional",
+            "No menciona precios"
+          ]
+        },
+        {
+          "id": "M3",
+          "trigger": "Ojeras / líneas de expresión",
+          "template": "Te entiendo 😅 La Dra. Deysi Torres en Bogotá revisa opciones antiage como botox, hilos PDO o tratamientos para mirada cansada en valoración gratuita.",
+          "why": [
+            "Empático",
+            "No promete resultados",
+            "Deriva a valoración"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "derma",
+      "label": "Dermatólogos / Médicos Referentes",
+      "icon": "🩺",
+      "color": "#4a9eca",
+      "context": "Dermatólogo, médico o clínica publica contenido sobre piel, envejecimiento, bienestar o pacientes que podrían requerir medicina estética complementaria.",
+      "rule": "Lead with a positive, respectful reaction. Never diagnose, never criticize appearance, never guarantee results. Bridge to valoración gratuita only when relevant.",
+      "templates": [
+        {
+          "id": "D1",
+          "trigger": "Contenido dermatológico / piel",
+          "template": "Excelente contenido 🩺 Si tus pacientes preguntan por medicina estética antiage, la Dra. Deysi Torres en Bogotá puede ser una referencia complementaria para valoración y procedimientos.",
+          "why": [
+            "Aliado referente",
+            "No compite directamente",
+            "Tono profesional"
+          ]
+        },
+        {
+          "id": "D2",
+          "trigger": "Nuevo consultorio / clínica",
+          "template": "¡Felicitaciones por el nuevo espacio! 🎉 Si algún paciente necesita medicina estética especializada en Bogotá, podría valer la pena conectar con la Dra. Deysi Torres.",
+          "why": [
+            "Reconoce logro",
+            "Propone alianza",
+            "Baja presión"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "label": "Influencers / Creadoras de Belleza",
+      "icon": "💄",
+      "color": "#d4679e",
+      "context": "Creadora publica reviews beauty, skincare, glow up, transformaciones, colaboraciones o contenido aspiracional de belleza.",
+      "rule": "Lead with a positive, respectful reaction. Never diagnose, never criticize appearance, never guarantee results. Bridge to valoración gratuita only when relevant.",
+      "templates": [
+        {
+          "id": "I1",
+          "trigger": "Review estética / beauty content",
+          "template": "Me encanta este contenido 💄 Si algún día quieres probar medicina estética con resultados naturales, la Dra. Deysi Torres en Bogotá hace valoración gratuita y planes personalizados.",
+          "why": [
+            "Tono creadora",
+            "No forzado",
+            "Puente a experiencia"
+          ]
+        },
+        {
+          "id": "I2",
+          "trigger": "Glow up / transformación personal",
+          "template": "Ese glow up está increíble ✨ La Dra. Deysi Torres trabaja tratamientos antiage y faciales en Bogotá con enfoque natural, perfecto para contenido de transformación cuidado.",
+          "why": [
+            "Se conecta al contenido",
+            "No promete resultado",
+            "Aspiracional"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ejecutivas",
+      "label": "Mujeres Ejecutivas / Profesionales",
+      "icon": "👩‍💼",
+      "color": "#9b59b6",
+      "context": "Mujer profesional publica sobre logros, imagen, conferencias, viajes de trabajo, marca personal o cuidado personal.",
+      "rule": "Lead with a positive, respectful reaction. Never diagnose, never criticize appearance, never guarantee results. Bridge to valoración gratuita only when relevant.",
+      "templates": [
+        {
+          "id": "EJ1",
+          "trigger": "Logro profesional / imagen",
+          "template": "¡Felicitaciones por ese logro! 🎯 Para mujeres que cuidan su imagen profesional, la Dra. Deysi Torres en Bogotá ofrece valoración antiage con resultados naturales.",
+          "why": [
+            "Celebra primero",
+            "Conecta imagen profesional",
+            "No presiona"
+          ]
+        },
+        {
+          "id": "EJ2",
+          "trigger": "Headshot / evento profesional",
+          "template": "Te ves muy profesional ✨ Si quieres mantener una imagen fresca y natural para eventos o fotos, la Dra. Deysi Torres puede orientarte en una valoración gratuita.",
+          "why": [
+            "Comentario respetuoso",
+            "No critica",
+            "Valoración como CTA suave"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "novias",
+      "label": "Novias y Quinceañeras",
+      "icon": "💍",
+      "color": "#e74c3c",
+      "context": "Novia, quinceañera o familia publica sobre compromiso, boda, quince, cuenta regresiva, preparativos o proveedores de belleza.",
+      "rule": "Lead with a positive, respectful reaction. Never diagnose, never criticize appearance, never guarantee results. Bridge to valoración gratuita only when relevant.",
+      "templates": [
+        {
+          "id": "N1",
+          "trigger": "Compromiso / boda",
+          "template": "¡Felicitaciones! 💍 Si quieres preparar tu piel y verte natural para ese día, la Dra. Deysi Torres en Bogotá hace valoración gratuita para plan antiage personalizado.",
+          "why": [
+            "Celebra",
+            "Habla de piel/evento",
+            "No menciona precios"
+          ]
+        },
+        {
+          "id": "N2",
+          "trigger": "Countdown boda / preparativos",
+          "template": "Qué emoción esa cuenta regresiva 👰 La Dra. Deysi Torres puede ayudarte a planear tratamientos con tiempo para llegar fresca y natural al gran día.",
+          "why": [
+            "Toma en cuenta tiempos",
+            "Aspiracional",
+            "No agresivo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hombres",
+      "label": "Hombres / Brotox",
+      "icon": "🧔",
+      "color": "#1abc9c",
+      "context": "Hombre publica sobre autocuidado, gimnasio, grooming, cumpleaños, fotos profesionales o marca personal.",
+      "rule": "Lead with a positive, respectful reaction. Never diagnose, never criticize appearance, never guarantee results. Bridge to valoración gratuita only when relevant.",
+      "templates": [
+        {
+          "id": "H1",
+          "trigger": "Autocuidado masculino / cumpleaños",
+          "template": "Qué buen enfoque de autocuidado 💪 La Dra. Deysi Torres en Bogotá también atiende hombres que buscan verse más descansados y naturales con valoración personalizada.",
+          "why": [
+            "No feminiza el tono",
+            "Natural",
+            "Baja presión"
+          ]
+        },
+        {
+          "id": "H2",
+          "trigger": "Foto profesional / marca personal",
+          "template": "Muy buena foto profesional 👏 Para mantener una imagen fresca sin cambios exagerados, la Dra. Deysi Torres ofrece valoración estética para hombres en Bogotá.",
+          "why": [
+            "Contexto marca personal",
+            "No vende de más",
+            "Tono sobrio"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "Necesitas Botox urgente.",
+      "why": "Critica apariencia y suena invasivo."
+    },
+    {
+      "bad": "Te quitamos años garantizado.",
+      "why": "Promete resultados garantizados."
+    },
+    {
+      "bad": "Tus ojeras se ven muy mal, agenda ya.",
+      "why": "Ataca inseguridad y es spam."
+    },
+    {
+      "bad": "Precio especial de Botox barato.",
+      "why": "Habla de precio y baja percepción médica."
+    },
+    {
+      "bad": "Este procedimiento corrige tu problema médico.",
+      "why": "Da consejo/afirmación médica no permitida."
+    }
+  ]
+}

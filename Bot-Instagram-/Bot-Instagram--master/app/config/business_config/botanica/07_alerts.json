@@ -1,0 +1,87 @@
+{
+  "delivery": {
+    "simultaneous_channels": [
+      "email",
+      "whatsapp"
+    ],
+    "response_target": "under 1 hour",
+    "business_email": "[CAMPAIGN_EMAIL]",
+    "whatsapp": "[OWNER_ALERT_WHATSAPP]"
+  },
+  "events": [
+    {
+      "id": "DATA",
+      "icon": "📋",
+      "label": "Data Request",
+      "urgency": "MEDIUM",
+      "urgencyColor": "#f5a623",
+      "triggerDesc": "Prospecto pidió datos, teléfono, WhatsApp, web, dirección u horario.",
+      "responseAction": "El bot ya respondió con datos básicos. Dar seguimiento si no escribe.",
+      "sla": "Under 1 hour",
+      "email": {
+        "subject": "📋 Nuevo Lead — [ACCOUNT NAME] pidió datos",
+        "body": "Hola,\n\nUn prospecto pidió información de la botánica en Facebook. El bot ya respondió con los datos básicos.\n\n━━━━━━━━━━━━━━━━━━━━━━\nDETALLES DEL LEAD\n━━━━━━━━━━━━━━━━━━━━━━\n👤 Cuenta:      [Account Name]\n📂 Categoría:   [Category]\n📅 Fecha/Hora:  [Timestamp]\n🔗 Perfil:      [Profile URL]\n━━━━━━━━━━━━━━━━━━━━━━\nMENSAJE DEL PROSPECTO\n━━━━━━━━━━━━━━━━━━━━━━\n\"[Exact reply text]\"\n\n━━━━━━━━━━━━━━━━━━━━━━\nSIGUIENTE PASO\n━━━━━━━━━━━━━━━━━━━━━━\n→ Ver conversación: [Direct link to Facebook post]\n→ Dar seguimiento por DM o WhatsApp si no escribe.\n\n— Botánica Outreach Bot"
+      },
+      "whatsapp": "📋 *NUEVO LEAD — Pidió datos*\n\n👤 *[Account Name]*\n📂 [Category]\n🕐 [Time]\n\nMensaje:\n_\"[Exact reply text]\"_\n\n✅ El bot ya respondió con datos.\n🔗 [Facebook post link]",
+      "priority": 2
+    },
+    {
+      "id": "SERVICE",
+      "icon": "🔮",
+      "label": "Service / Consultation Request",
+      "urgency": "HIGH",
+      "urgencyColor": "#9b59b6",
+      "triggerDesc": "Prospecto pidió lectura, consulta, amarre, limpia, ritual, protección o producto.",
+      "responseAction": "Tomar control humano por DM o WhatsApp. No dejar al bot manejar detalles sensibles.",
+      "sla": "Under 1 hour",
+      "email": {
+        "subject": "🔮 Lead caliente — [ACCOUNT NAME] pidió consulta espiritual",
+        "body": "Hola,\n\nUn prospecto pidió una consulta o servicio espiritual.\n\n━━━━━━━━━━━━━━━━━━━━━━\nDETALLES DEL LEAD\n━━━━━━━━━━━━━━━━━━━━━━\n👤 Cuenta:      [Account Name]\n📂 Categoría:   [Category]\n📅 Fecha/Hora:  [Timestamp]\n🔗 Perfil:      [Profile URL]\n━━━━━━━━━━━━━━━━━━━━━━\nMENSAJE DEL PROSPECTO\n━━━━━━━━━━━━━━━━━━━━━━\n\"[Exact reply text]\"\n\n━━━━━━━━━━━━━━━━━━━━━━\nCLASIFICACIÓN IA\n━━━━━━━━━━━━━━━━━━━━━━\nIntent: [Intent]\nKeywords: [Matched keywords]\nConfianza: [Confidence]\n\n━━━━━━━━━━━━━━━━━━━━━━\nSIGUIENTE PASO\n━━━━━━━━━━━━━━━━━━━━━━\n→ Ver conversación: [Facebook post link]\n→ Responder por DM o WhatsApp.\n→ No prometer resultados garantizados.\n\n— Botánica Outreach Bot"
+      },
+      "whatsapp": "🔮 *LEAD CALIENTE — Consulta espiritual*\n\n👤 *[Account Name]*\n📂 [Category]\n🕐 [Time]\n\nMensaje:\n_\"[Exact reply text]\"_\n\n👉 Tomar control por DM/WhatsApp.\n🔗 [Facebook post link]",
+      "priority": 1
+    },
+    {
+      "id": "QUOTE",
+      "icon": "🚨",
+      "label": "Price / Quote Request",
+      "urgency": "HIGH — RESPOND UNDER 1 HOUR",
+      "urgencyColor": "#e74c3c",
+      "triggerDesc": "Prospecto preguntó precio, costo, tarifa o cotización.",
+      "responseAction": "Responder manualmente por DM o WhatsApp. El bot no da precios públicamente.",
+      "sla": "Under 1 hour",
+      "email": {
+        "subject": "🚨 PRECIO / COTIZACIÓN — [ACCOUNT NAME] preguntó costo",
+        "body": "Hola,\n\nUn prospecto preguntó precio o cotización de un servicio espiritual.\n\n━━━━━━━━━━━━━━━━━━━━━━\nDETALLES DEL LEAD\n━━━━━━━━━━━━━━━━━━━━━━\n👤 Cuenta:      [Account Name]\n📂 Categoría:   [Category]\n📅 Fecha/Hora:  [Timestamp]\n🔗 Perfil:      [Profile URL]\n━━━━━━━━━━━━━━━━━━━━━━\nRESPUESTAS CAPTURADAS\n━━━━━━━━━━━━━━━━━━━━━━\n1️⃣ Tipo de servicio: [Q1 answer or Not answered]\n2️⃣ Canal privado:    [Q2 answer or Not answered]\n3️⃣ Contexto general: [Q3 answer or Not answered]\n4️⃣ Disponibilidad:   [Q4 answer or Not answered]\n\n━━━━━━━━━━━━━━━━━━━━━━\nSIGUIENTE PASO\n━━━━━━━━━━━━━━━━━━━━━━\n→ Ver conversación: [Facebook post link]\n→ Responder por DM o WhatsApp.\n→ No publicar precios ni promesas en comentarios.\n\n— Botánica Outreach Bot"
+      },
+      "whatsapp": "🚨 *PRECIO / COTIZACIÓN*\n\n👤 *[Account Name]*\n📂 [Category]\n🕐 [Time]\n\n1️⃣ Servicio: [Q1]\n2️⃣ Canal: [Q2]\n3️⃣ Contexto: [Q3]\n4️⃣ Disponibilidad: [Q4]\n\n👉 Responder manualmente por privado.\n🔗 [Facebook post link]",
+      "priority": 1
+    }
+  ],
+  "dev_notes": [
+    {
+      "title": "Entrega simultánea",
+      "detail": "Email y WhatsApp deben enviarse al mismo tiempo. Si uno falla, el otro debe intentar continuar."
+    },
+    {
+      "title": "Prioridad de precio/servicio",
+      "detail": "QUOTE y SERVICE tienen prioridad sobre DATA."
+    },
+    {
+      "title": "Campos dinámicos",
+      "detail": "Los placeholders entre corchetes se llenan con datos reales del prospecto y conversación."
+    },
+    {
+      "title": "Links directos",
+      "detail": "El post y el perfil deben ser URLs directas."
+    },
+    {
+      "title": "Privacidad",
+      "detail": "No enviar detalles íntimos del caso en alertas si el prospecto no los escribió explícitamente."
+    },
+    {
+      "title": "No garantías",
+      "detail": "Alertar al humano que no debe prometer resultados garantizados ni tiempos exactos."
+    }
+  ]
+}

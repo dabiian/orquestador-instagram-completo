@@ -1,0 +1,188 @@
+{
+  "trigger_keywords": [
+    "cuanto",
+    "cuánto",
+    "precio",
+    "precios",
+    "costo",
+    "costos",
+    "vale",
+    "valor",
+    "tarifa",
+    "cobran",
+    "cotizacion",
+    "cotización",
+    "consulta",
+    "lectura",
+    "tarot",
+    "cartas",
+    "amarre",
+    "amarres",
+    "limpia",
+    "limpieza espiritual",
+    "brujeria",
+    "brujería",
+    "hechizo",
+    "hechizos",
+    "ritual",
+    "endulzamiento",
+    "trabajo espiritual",
+    "how much",
+    "price",
+    "cost",
+    "quote",
+    "estimate",
+    "rate",
+    "reading",
+    "love spell",
+    "spiritual cleansing"
+  ],
+  "trigger_examples": [
+    {
+      "word": "cuánto",
+      "example": "'¿Cuánto cuesta una lectura?'"
+    },
+    {
+      "word": "precio",
+      "example": "'Precio de un amarre?'"
+    },
+    {
+      "word": "consulta",
+      "example": "'Quiero una consulta espiritual'"
+    },
+    {
+      "word": "lectura",
+      "example": "'Necesito lectura de cartas'"
+    },
+    {
+      "word": "limpia",
+      "example": "'Hacen limpias espirituales?'"
+    },
+    {
+      "word": "amarre",
+      "example": "'Quiero saber de un amarre'"
+    },
+    {
+      "word": "quote",
+      "example": "'Can I get a quote?'"
+    }
+  ],
+  "bot_question_flow": [
+    {
+      "number": "Q1",
+      "color": "#1877F2",
+      "topic": "Tipo de servicio",
+      "question": "¿Qué necesitas: lectura de cartas/tarot, orientación de amor, limpieza espiritual, protección, ritual o producto esotérico?",
+      "options": [
+        "Lectura / Tarot",
+        "Amor / Pareja",
+        "Limpieza espiritual",
+        "Protección",
+        "Ritual / Trabajo espiritual",
+        "Producto esotérico"
+      ],
+      "why": "Define el tipo de atención y evita dar precio sin contexto."
+    },
+    {
+      "number": "Q2",
+      "color": "#42b883",
+      "topic": "Canal privado",
+      "question": "¿Prefieres que te atiendan por WhatsApp o por DM?",
+      "options": [
+        "WhatsApp",
+        "DM / Inbox"
+      ],
+      "why": "Los casos personales no deben tratarse en público."
+    },
+    {
+      "number": "Q3",
+      "color": "#f5a623",
+      "topic": "Contexto general",
+      "question": "Sin dar detalles íntimos aquí: ¿es por amor, protección, energía, suerte, familia o trabajo?",
+      "options": [
+        "Amor",
+        "Protección",
+        "Energía",
+        "Suerte",
+        "Familia",
+        "Trabajo",
+        "Otro"
+      ],
+      "why": "Ayuda al asesor a preparar la conversación sin exponer privacidad."
+    },
+    {
+      "number": "Q4",
+      "color": "#9b59b6",
+      "topic": "Disponibilidad",
+      "question": "¿Buscas atención hoy o puede ser en otro momento?",
+      "options": [
+        "Hoy",
+        "Esta semana",
+        "Flexible"
+      ],
+      "why": "Permite priorizar alertas sin prometer tiempos exactos."
+    }
+  ],
+  "bot_reply_templates": [
+    {
+      "id": "Q-MAIN",
+      "label": "Standard service/price request",
+      "trigger": "Piden precio, consulta, lectura, amarre, limpia o ritual",
+      "recommended": true,
+      "comment": "Con gusto te orientamos. Para cuidar tu privacidad, dinos solo lo básico:\n\n1️⃣ ¿Qué necesitas? lectura, amor, limpieza, protección o ritual\n2️⃣ ¿Prefieres WhatsApp o DM?\n3️⃣ ¿Es por amor, energía, suerte, familia o trabajo?\n\nUn asesor te responde por privado.",
+      "notes": [
+        "No da precio público.",
+        "Pide datos mínimos.",
+        "Protege privacidad.",
+        "No promete resultados."
+      ]
+    },
+    {
+      "id": "Q-SHORT",
+      "label": "Respuesta corta",
+      "trigger": "Solo dice 'precio', 'cuánto', 'info'",
+      "recommended": false,
+      "comment": "Depende del tipo de consulta. Escríbenos por WhatsApp al [CAMPAIGN WHATSAPP] y te orientamos con privacidad 🔮",
+      "notes": [
+        "Corto y directo.",
+        "Evita preguntar demasiado en público."
+      ]
+    },
+    {
+      "id": "Q-LOVE",
+      "label": "Caso de amor / pareja",
+      "trigger": "Pregunta por amarre, endulzamiento, regreso de pareja o amor",
+      "recommended": false,
+      "comment": "Los casos de amor se revisan mejor en privado y con calma. Escríbenos por WhatsApp o DM y te orientamos según tu situación.",
+      "notes": [
+        "No promete regreso.",
+        "No usa presión emocional."
+      ]
+    },
+    {
+      "id": "Q-CLEANSE",
+      "label": "Limpieza espiritual / protección",
+      "trigger": "Pregunta por limpia, protección, malas energías o bloqueo",
+      "recommended": false,
+      "comment": "Sí, podemos orientarte. Para no hablar tu caso en público, escríbenos por WhatsApp o DM y revisamos qué tipo de limpieza necesitas.",
+      "notes": [
+        "No afirma daño espiritual.",
+        "Privacidad primero."
+      ]
+    }
+  ],
+  "rules": {
+    "bot_never_sends_price_publicly": true,
+    "bot_never_guarantees_results": true,
+    "bot_collects_details_before_alert": true,
+    "alert_priority": "QUOTE",
+    "service_alert_after_min_answers": [
+      "Q1",
+      "Q2"
+    ],
+    "wait_for_all_4_answers_required": false,
+    "human_sends_final_quote_or_guidance_via_dm_or_whatsapp": true,
+    "dm_quote_template_manual": true,
+    "do_not_collect_sensitive_details_publicly": true
+  }
+}

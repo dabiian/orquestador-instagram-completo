@@ -1,0 +1,554 @@
+{
+  "thresholds": [
+    {
+      "min": 0,
+      "max": 29,
+      "label": "SEGURO",
+      "color": "#42b883",
+      "bg": "#0a2a1a",
+      "action": "✅ Proceder — dejar comentario",
+      "icon": "✅"
+    },
+    {
+      "min": 30,
+      "max": 59,
+      "label": "REVISAR",
+      "color": "#f5a623",
+      "bg": "#1a1200",
+      "action": "⚠️ Análisis adicional con IA antes de comentar",
+      "icon": "⚠️"
+    },
+    {
+      "min": 60,
+      "max": 200,
+      "label": "BLOQUEAR",
+      "color": "#e74c3c",
+      "bg": "#1a0808",
+      "action": "🚫 Saltar — no comentar — agregar a lista negra",
+      "icon": "🚫"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L1",
+      "number": "01",
+      "title": "Nombre de la Cuenta",
+      "icon": "🏷️",
+      "color": "#c0392b",
+      "points": 60,
+      "speed": "Inmediato",
+      "description": "Primera línea de defensa. Si el nombre contiene señales claras de abogado, firma legal, bufete o consultoría jurídica → competencia confirmada al instante.",
+      "logic": "BLOQUEO AUTOMÁTICO — no se analiza nada más",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "abogado",
+          "example": "Abogado Juan Pérez, Abogado Penal Bogotá"
+        },
+        {
+          "word": "abogados",
+          "example": "López Abogados, Morales Abogados"
+        },
+        {
+          "word": "firma de abogados",
+          "example": "Firma de Abogados Colombia"
+        },
+        {
+          "word": "bufete",
+          "example": "Señal relacionada con bufete"
+        },
+        {
+          "word": "asesor juridico",
+          "example": "Señal relacionada con asesor juridico"
+        },
+        {
+          "word": "asesor jurídico",
+          "example": "Señal relacionada con asesor jurídico"
+        },
+        {
+          "word": "consultorio juridico",
+          "example": "Señal relacionada con consultorio juridico"
+        },
+        {
+          "word": "consultorio jurídico",
+          "example": "Señal relacionada con consultorio jurídico"
+        },
+        {
+          "word": "penalista",
+          "example": "Señal relacionada con penalista"
+        },
+        {
+          "word": "litigante",
+          "example": "Señal relacionada con litigante"
+        },
+        {
+          "word": "juridico",
+          "example": "Señal relacionada con juridico"
+        },
+        {
+          "word": "jurídico",
+          "example": "Señal relacionada con jurídico"
+        },
+        {
+          "word": "abg.",
+          "example": "Señal relacionada con abg."
+        },
+        {
+          "word": "derecho penal",
+          "example": "Señal relacionada con derecho penal"
+        },
+        {
+          "word": "derecho laboral",
+          "example": "Señal relacionada con derecho laboral"
+        }
+      ],
+      "note": "Buscar estas palabras sin importar mayúsculas/minúsculas ni tildes. 'juridico' y 'jurídico' deben normalizarse."
+    },
+    {
+      "id": "L2",
+      "number": "02",
+      "title": "Categoría de Página Facebook",
+      "icon": "📂",
+      "color": "#c8a84b",
+      "points": 50,
+      "speed": "Inmediato",
+      "description": "Si la categoría oficial corresponde a servicios legales, abogado, bufete o consultor jurídico → bloqueo automático.",
+      "logic": "BLOQUEO AUTOMÁTICO",
+      "action": "block",
+      "keywords": [
+        {
+          "word": "Abogado/a",
+          "example": "Señal relacionada con Abogado/a"
+        },
+        {
+          "word": "Firma de Abogados",
+          "example": "Señal relacionada con Firma de Abogados"
+        },
+        {
+          "word": "Bufete Jurídico",
+          "example": "Señal relacionada con Bufete Jurídico"
+        },
+        {
+          "word": "Consultor Legal",
+          "example": "Señal relacionada con Consultor Legal"
+        },
+        {
+          "word": "Asesor Jurídico",
+          "example": "Señal relacionada con Asesor Jurídico"
+        },
+        {
+          "word": "Servicios Legales",
+          "example": "Señal relacionada con Servicios Legales"
+        },
+        {
+          "word": "Legal Service",
+          "example": "Señal relacionada con Legal Service"
+        },
+        {
+          "word": "Law Firm",
+          "example": "Señal relacionada con Law Firm"
+        }
+      ],
+      "note": "Categoría estructurada de Facebook. Si coincide con servicios legales, no comentar."
+    },
+    {
+      "id": "L3",
+      "number": "03",
+      "title": "Bio / Descripción del Perfil",
+      "icon": "📝",
+      "color": "#6c3483",
+      "points": 40,
+      "speed": "2–3 segundos",
+      "description": "Analizar la bio para detectar oferta de asesoría jurídica, defensa penal, litigios, consulta legal o representación propia.",
+      "logic": "2+ coincidencias → BLOQUEO | 1 coincidencia → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "abogados en bogotá",
+          "example": "Señal relacionada con abogados en bogotá"
+        },
+        {
+          "word": "defensa penal",
+          "example": "Señal relacionada con defensa penal"
+        },
+        {
+          "word": "asesoría jurídica",
+          "example": "Señal relacionada con asesoría jurídica"
+        },
+        {
+          "word": "asesoria juridica",
+          "example": "Señal relacionada con asesoria juridica"
+        },
+        {
+          "word": "consulta gratis",
+          "example": "Señal relacionada con consulta gratis"
+        },
+        {
+          "word": "representación legal",
+          "example": "Señal relacionada con representación legal"
+        },
+        {
+          "word": "representacion legal",
+          "example": "Señal relacionada con representacion legal"
+        },
+        {
+          "word": "litigios colombia",
+          "example": "Señal relacionada con litigios colombia"
+        },
+        {
+          "word": "derecho penal bogotá",
+          "example": "Señal relacionada con derecho penal bogotá"
+        },
+        {
+          "word": "abogado familia",
+          "example": "Señal relacionada con abogado familia"
+        },
+        {
+          "word": "derecho laboral",
+          "example": "Señal relacionada con derecho laboral"
+        },
+        {
+          "word": "derecho tributario",
+          "example": "Señal relacionada con derecho tributario"
+        },
+        {
+          "word": "firma legal",
+          "example": "Señal relacionada con firma legal"
+        }
+      ],
+      "note": "Normalizar español con y sin tildes. Si el perfil parece abogado/firma, bloquear."
+    },
+    {
+      "id": "L4",
+      "number": "04",
+      "title": "Contenido de Publicaciones Recientes",
+      "icon": "📸",
+      "color": "#1a3c6e",
+      "points": 35,
+      "speed": "5–10 segundos",
+      "description": "Revisar posts recientes. Si vende servicios legales, muestra casos ganados, tribunales con branding propio o publicidad legal → competencia.",
+      "logic": "3+ posts legales con branding propio → BLOQUEO | 1–2 posts → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "caso ganado",
+          "example": "Señal relacionada con caso ganado"
+        },
+        {
+          "word": "consulta legal",
+          "example": "Señal relacionada con consulta legal"
+        },
+        {
+          "word": "asesoría legal",
+          "example": "Señal relacionada con asesoría legal"
+        },
+        {
+          "word": "representación legal",
+          "example": "Señal relacionada con representación legal"
+        },
+        {
+          "word": "defensa penal",
+          "example": "Señal relacionada con defensa penal"
+        },
+        {
+          "word": "abogado laboral",
+          "example": "Señal relacionada con abogado laboral"
+        },
+        {
+          "word": "abogado de familia",
+          "example": "Señal relacionada con abogado de familia"
+        },
+        {
+          "word": "litigio",
+          "example": "Señal relacionada con litigio"
+        },
+        {
+          "word": "juzgado",
+          "example": "Señal relacionada con juzgado"
+        },
+        {
+          "word": "tribunal",
+          "example": "Señal relacionada con tribunal"
+        },
+        {
+          "word": "fiscalía",
+          "example": "Señal relacionada con fiscalía"
+        },
+        {
+          "word": "demanda",
+          "example": "Señal relacionada con demanda"
+        },
+        {
+          "word": "derecho comercial",
+          "example": "Señal relacionada con derecho comercial"
+        },
+        {
+          "word": "derecho tributario",
+          "example": "Señal relacionada con derecho tributario"
+        }
+      ],
+      "note": "Diferenciar usuario hablando de su caso personal vs firma vendiendo servicios legales."
+    },
+    {
+      "id": "L5",
+      "number": "05",
+      "title": "Hashtags que Ellos Usan",
+      "icon": "#️⃣",
+      "color": "#42b883",
+      "points": 25,
+      "speed": "Inmediato",
+      "description": "Revisar hashtags propios. Si usa hashtags de firma legal o abogado como proveedor → señal fuerte de competencia.",
+      "logic": "2+ hashtags legales de proveedor → BLOQUEO | 1 hashtag → sumar puntos de riesgo",
+      "action": "score",
+      "keywords": [
+        {
+          "word": "#AbogadoBogota",
+          "example": "Señal relacionada con #AbogadoBogota"
+        },
+        {
+          "word": "#FirmaDeAbogados",
+          "example": "Señal relacionada con #FirmaDeAbogados"
+        },
+        {
+          "word": "#DerechoPenal",
+          "example": "Señal relacionada con #DerechoPenal"
+        },
+        {
+          "word": "#AbogadoPenalista",
+          "example": "Señal relacionada con #AbogadoPenalista"
+        },
+        {
+          "word": "#AsesoriaJuridica",
+          "example": "Señal relacionada con #AsesoriaJuridica"
+        },
+        {
+          "word": "#BufeteJuridico",
+          "example": "Señal relacionada con #BufeteJuridico"
+        },
+        {
+          "word": "#AbogadoColombia",
+          "example": "Señal relacionada con #AbogadoColombia"
+        },
+        {
+          "word": "#DerechoLaboral",
+          "example": "Señal relacionada con #DerechoLaboral"
+        },
+        {
+          "word": "#DerechoDeFamilia",
+          "example": "Señal relacionada con #DerechoDeFamilia"
+        },
+        {
+          "word": "#AbogadoLaboralBogota",
+          "example": "Señal relacionada con #AbogadoLaboralBogota"
+        }
+      ],
+      "note": "No bloquear a una persona que usa #JusticiaColombia para hablar de su problema; bloquear cuando el perfil vende servicios legales."
+    }
+  ],
+  "fast_path_order": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "runtime_rules": {
+    "block_immediately_if_layer_action_is_block": true,
+    "layer_L3_block_if_keyword_hits_gte": 2,
+    "layer_L4_block_if_keyword_hits_gte": 3,
+    "layer_L5_block_if_keyword_hits_gte": 2,
+    "review_if_score_between": [
+      30,
+      59
+    ],
+    "block_if_score_gte": 60
+  },
+  "clean_exports": {
+    "account_name_keywords": [
+      "abogado",
+      "abogados",
+      "firma de abogados",
+      "bufete",
+      "asesor juridico",
+      "asesor jurídico",
+      "consultorio juridico",
+      "consultorio jurídico",
+      "penalista",
+      "litigante",
+      "juridico",
+      "jurídico",
+      "abg.",
+      "derecho penal",
+      "derecho laboral"
+    ],
+    "blocked_fb_categories": [
+      "Abogado/a",
+      "Firma de Abogados",
+      "Bufete Jurídico",
+      "Consultor Legal",
+      "Asesor Jurídico",
+      "Servicios Legales",
+      "Legal Service",
+      "Law Firm"
+    ],
+    "bio_keywords": [
+      "abogados en bogotá",
+      "defensa penal",
+      "asesoría jurídica",
+      "asesoria juridica",
+      "consulta gratis",
+      "representación legal",
+      "representacion legal",
+      "litigios colombia",
+      "derecho penal bogotá",
+      "abogado familia",
+      "derecho laboral",
+      "derecho tributario",
+      "firma legal"
+    ],
+    "post_keywords": [
+      "caso ganado",
+      "consulta legal",
+      "asesoría legal",
+      "representación legal",
+      "defensa penal",
+      "abogado laboral",
+      "abogado de familia",
+      "litigio",
+      "juzgado",
+      "tribunal",
+      "fiscalía",
+      "demanda",
+      "derecho comercial",
+      "derecho tributario"
+    ],
+    "competitor_hashtags": [
+      "#AbogadoBogota",
+      "#FirmaDeAbogados",
+      "#DerechoPenal",
+      "#AbogadoPenalista",
+      "#AsesoriaJuridica",
+      "#BufeteJuridico",
+      "#AbogadoColombia",
+      "#DerechoLaboral",
+      "#DerechoDeFamilia",
+      "#AbogadoLaboralBogota"
+    ]
+  },
+  "examples": [
+    {
+      "account": "Gómez Penalistas Bogotá",
+      "type": "competitor",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": true,
+          "detail": "'penalistas' detectado en nombre",
+          "points": 60
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "No analizada — ya bloqueada en L1",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "No analizada",
+          "points": 0
+        }
+      ],
+      "total": 60,
+      "result": "BLOQUEAR"
+    },
+    {
+      "account": "Emprendimiento Bogotá SAS",
+      "type": "prospect",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre empresarial, no legal",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría: Empresa / Emprendimiento",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": false,
+          "detail": "Bio sobre emprendimiento",
+          "points": 0
+        },
+        {
+          "id": "L4",
+          "hit": false,
+          "detail": "Posts de negocio y proveedores",
+          "points": 0
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Hashtags empresariales",
+          "points": 0
+        }
+      ],
+      "total": 0,
+      "result": "SEGURO"
+    },
+    {
+      "account": "Consultores Empresariales CO",
+      "type": "ambiguous",
+      "layers": [
+        {
+          "id": "L1",
+          "hit": false,
+          "detail": "Nombre ambiguo",
+          "points": 0
+        },
+        {
+          "id": "L2",
+          "hit": false,
+          "detail": "Categoría genérica",
+          "points": 0
+        },
+        {
+          "id": "L3",
+          "hit": true,
+          "detail": "'asesoría jurídica' en bio",
+          "points": 40
+        },
+        {
+          "id": "L4",
+          "hit": true,
+          "detail": "1 post ofrece contratos legales",
+          "points": 35
+        },
+        {
+          "id": "L5",
+          "hit": false,
+          "detail": "Sin hashtags legales",
+          "points": 0
+        }
+      ],
+      "total": 75,
+      "result": "BLOQUEAR"
+    }
+  ]
+}

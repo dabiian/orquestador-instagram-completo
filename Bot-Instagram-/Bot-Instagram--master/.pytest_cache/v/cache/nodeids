@@ -1,0 +1,4 @@
+[
+  "tests/test_orchestrator_claim_fallback.py::test_claim_auth_failure_does_not_fall_back_to_legacy_queue",
+  "tests/test_orchestrator_claim_fallback.py::test_only_missing_claim_endpoint_uses_legacy_queue"
+]

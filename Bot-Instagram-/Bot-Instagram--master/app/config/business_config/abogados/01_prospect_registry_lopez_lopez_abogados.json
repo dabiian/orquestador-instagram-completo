@@ -1,0 +1,231 @@
+{
+  "company": {
+    "name": "López & López Abogados",
+    "location": "Bogotá, Colombia",
+    "website": "lopezmoralesabogados.com",
+    "phone": "321 424 3885",
+    "email": "info@lopezmoralesabogados.com",
+    "primary_contact": "Dr. Héctor López",
+    "experience": "+20 años"
+  },
+  "registry_fields": [
+    {
+      "name": "category",
+      "type": "enum",
+      "required": true,
+      "values": [
+        "persona_natural",
+        "empresario_pyme",
+        "trabajador",
+        "penal",
+        "familia_divorcio",
+        "contador_referente"
+      ],
+      "description": "Segmento principal detectado para el prospecto."
+    },
+    {
+      "name": "area_derecho",
+      "type": "enum",
+      "required": false,
+      "values": [
+        "penal",
+        "laboral",
+        "tributario",
+        "civil",
+        "familia",
+        "administrativo",
+        "comercial",
+        "no_se"
+      ],
+      "description": "Área legal probable según post, comentario o respuesta."
+    },
+    {
+      "name": "urgency_level",
+      "type": "enum",
+      "required": false,
+      "values": [
+        "urgente_24h",
+        "esta_semana",
+        "explorando"
+      ],
+      "description": "Prioridad operativa para escalar al abogado."
+    },
+    {
+      "name": "is_company",
+      "type": "boolean",
+      "required": false,
+      "values": [
+        true,
+        false
+      ],
+      "description": "Distingue persona natural de empresa/PYME."
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "required": false,
+      "values": null,
+      "description": "Bogotá u otra ciudad de Colombia."
+    },
+    {
+      "name": "ethical_escalation_required",
+      "type": "boolean",
+      "required": true,
+      "values": [
+        true,
+        false
+      ],
+      "description": "True si el usuario pide estrategia legal concreta o expone datos sensibles."
+    }
+  ],
+  "status_flow": [
+    "discovered",
+    "filtered",
+    "commented",
+    "reply_received",
+    "data_requested",
+    "quote_requested",
+    "human_alerted",
+    "closed"
+  ],
+  "categories": [
+    {
+      "id": "personas",
+      "label": "Personas Naturales / Casos Urgentes",
+      "why": "Mayor volumen. Persona que enfrenta un problema legal urgente y necesita orientación inmediata.",
+      "triggers": [
+        "Post sobre problema legal o injusticia personal",
+        "Conflicto con empresa o empleador",
+        "Separación, divorcio o custodia",
+        "Denuncia penal o citación fiscal",
+        "Problema con entidad pública, banco o aseguradora"
+      ]
+    },
+    {
+      "id": "empresas",
+      "label": "Empresarios / Emprendedores / PYMES",
+      "why": "Alto ticket y relación recurrente. Una PYME puede necesitar contratos, laboral, tributario, comercial y representación.",
+      "triggers": [
+        "Creación o lanzamiento de empresa",
+        "Problema con proveedor o cliente",
+        "Contratación de personal o crecimiento de equipo",
+        "Problemas con DIAN o impuestos",
+        "Expansión, inversión o nueva sede"
+      ]
+    },
+    {
+      "id": "laboral",
+      "label": "Trabajadores / Abuso Laboral",
+      "why": "Alta urgencia emocional. La persona necesita saber si tiene derechos reclamables y actuar antes de que pasen plazos.",
+      "triggers": [
+        "Anuncio de despido o fin de contrato",
+        "Queja pública sobre empleador",
+        "Acoso laboral o mal trato en empresa",
+        "Accidente laboral o incapacidad sin respaldo"
+      ]
+    },
+    {
+      "id": "penal",
+      "label": "Imputados / Víctimas / Familiares",
+      "why": "Urgencia máxima. Penal requiere contacto rápido y manejo profesional sin asesoría pública.",
+      "triggers": [
+        "Proceso penal en curso o detención",
+        "Condena o sentencia percibida como injusta",
+        "Citación a declarar o audiencia próxima",
+        "Víctima de delito buscando justicia"
+      ]
+    },
+    {
+      "id": "familia",
+      "label": "Divorcios / Custodia / Familia",
+      "why": "Alta carga emocional y necesidad de discreción. El comentario debe ser prudente, humano y cero invasivo.",
+      "triggers": [
+        "Anuncio de separación o divorcio",
+        "Disputa de custodia de hijos",
+        "No pago de pensión alimenticia",
+        "Conflicto familiar que necesita orientación"
+      ]
+    },
+    {
+      "id": "contadores",
+      "label": "Contadores / Asesores Financieros",
+      "why": "Aliado referente. Un contador puede remitir clientes que requieren defensa tributaria o asesoría legal empresarial.",
+      "triggers": [
+        "Contenido sobre DIAN u obligaciones fiscales",
+        "Caso de cliente con problema fiscal",
+        "Apertura de nueva firma contable",
+        "Contenido para empresarios sobre impuestos"
+      ]
+    }
+  ],
+  "runtime_rules": {
+    "never_give_legal_advice": true,
+    "never_request_sensitive_case_details_publicly": true,
+    "free_consultation_first": true,
+    "urgent_terms": [
+      "citación",
+      "audiencia",
+      "fiscalía",
+      "captura",
+      "detención",
+      "proceso activo",
+      "plazo",
+      "embargo"
+    ],
+    "human_escalation_if_specific_strategy_requested": true
+  },
+  "clean_exports": {
+    "categories": [
+      "persona_natural",
+      "empresario_pyme",
+      "trabajador",
+      "penal",
+      "familia_divorcio",
+      "contador_referente"
+    ],
+    "area_derecho": [
+      "penal",
+      "laboral",
+      "tributario",
+      "civil",
+      "familia",
+      "administrativo",
+      "comercial",
+      "no_se"
+    ],
+    "urgency_level": [
+      "urgente_24h",
+      "esta_semana",
+      "explorando"
+    ],
+    "contact_channels": [
+      "whatsapp",
+      "phone",
+      "email",
+      "website"
+    ]
+  },
+  "examples": [
+    {
+      "input": "Me despidieron y no me pagaron liquidación",
+      "category": "trabajador",
+      "area_derecho": "laboral",
+      "urgency_level": "esta_semana",
+      "action": "comment_then_alert_if_replies"
+    },
+    {
+      "input": "Tengo audiencia en fiscalía mañana",
+      "category": "penal",
+      "area_derecho": "penal",
+      "urgency_level": "urgente_24h",
+      "action": "skip_public_advice_and_alert_human"
+    },
+    {
+      "input": "Lanzamos nueva empresa en Bogotá",
+      "category": "empresario_pyme",
+      "area_derecho": "comercial",
+      "urgency_level": "explorando",
+      "action": "comment_soft_referral"
+    }
+  ]
+}

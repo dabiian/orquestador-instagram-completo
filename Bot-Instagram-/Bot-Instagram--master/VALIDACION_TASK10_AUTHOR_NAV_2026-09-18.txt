@@ -1,0 +1,32 @@
+VALIDACION TASK 10 - AUTHOR EXTRACTION + GRID NAVIGATION
+Fecha: 2026-09-18
+
+CAMBIOS
+1. Author username:
+   - Mantiene extracción DOM cuando Instagram expone el anchor del autor.
+   - Añade fallback determinista sobre text_context para el patrón <autor> el/on <fecha>.
+   - Valida username con [a-z0-9._]{1,30}.
+   - No usa usernames posteriores de comentaristas como autor.
+2. Grid navigation:
+   - Solo acepta rutas canónicas /p/<shortcode>/ y /reel/<shortcode>/.
+   - Rechaza rutas anidadas como /liked_by/ y /comments/ antes de navegar.
+   - Mantiene navegación directa por href para evitar bloqueos de WebElement.click().
+
+PRUEBAS
+- Tests nuevos Task 10 author/href: PASS
+- Suite hardening Task 10/11/12 + integrity: PASS
+- Suite principal (excluyendo self_healer por Selenium ausente): 155 passed
+- compileall app + tests: PASS
+
+LIMITACION DE ENTORNO
+La ejecución pytest de todo el repositorio no puede completar la colección porque este entorno Linux no tiene instalado Selenium.
+Fallan por importación únicamente:
+- self_healer/test_harness.py
+- self_healer/tests/test_api_server.py
+- self_healer/tests/test_locator_mapper.py
+- test_self_healer_instagram.py
+
+Esto no representa un fallo de las 155 pruebas de la aplicación ejecutadas.
+
+PRUEBA REAL PENDIENTE
+No se ejecutó una nueva sesión contra Instagram desde este entorno. Por tanto, esta entrega valida el código y la regresión con los logs reales proporcionados, pero no afirma que Instagram real publique/likee correctamente sin una nueva ejecución del bot.

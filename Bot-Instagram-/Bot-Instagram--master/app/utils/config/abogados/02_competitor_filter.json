@@ -1,0 +1,71 @@
+{
+  "industry": "abogados",
+  "core_services": [
+    "legal services",
+    "law firm",
+    "attorney services",
+    "legal representation",
+    "legal consultation",
+    "lawyer services"
+  ],
+  "direct_competitor_signals": [
+    "law firm",
+    "law office",
+    "attorney",
+    "attorneys",
+    "lawyer",
+    "lawyers",
+    "legal services",
+    "legal representation",
+    "legal consultation",
+    "personal injury attorney",
+    "immigration attorney",
+    "criminal defense attorney",
+    "family law attorney",
+    "business attorney",
+    "employment attorney",
+    "real estate attorney"
+  ],
+  "possible_competitor_signals": [
+    "legal consultant",
+    "legal advisor",
+    "paralegal services",
+    "legal support",
+    "legal professional"
+  ],
+  "adjacent_businesses": [
+    "accounting",
+    "tax services",
+    "insurance",
+    "real estate",
+    "financial services",
+    "notary",
+    "business consulting"
+  ],
+  "referral_opportunities": [
+    "accountant",
+    "tax professional",
+    "realtor",
+    "real estate company",
+    "insurance agency",
+    "financial advisor",
+    "business consultant",
+    "notary",
+    "mortgage broker"
+  ],
+  "exclude_as_competitor": [
+    "accounting",
+    "tax services",
+    "insurance",
+    "real estate",
+    "financial advisor",
+    "business consultant",
+    "notary"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

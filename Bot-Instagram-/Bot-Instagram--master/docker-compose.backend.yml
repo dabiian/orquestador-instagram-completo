@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: instagram_postgres
+    environment:
+      POSTGRES_DB: aztecaSocial
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: instagram_backend
+    env_file:
+      - .env.docker
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    command: daphne -b 0.0.0.0 -p 8000 back_redes_sociales.asgi:application
+
+  selenium_chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: instagram_selenium_chrome
+    shm_size: "2gb"
+    environment:
+      SE_NODE_MAX_SESSIONS: "1"
+      SE_NODE_OVERRIDE_MAX_SESSIONS: "true"
+      SE_SCREEN_WIDTH: "1365"
+      SE_SCREEN_HEIGHT: "900"
+      SE_VNC_NO_PASSWORD: "1"
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    restart: unless-stopped
+
+  bot_instagram:
+    build:
+      context: "../Maduración - bot instagram"
+      dockerfile: Dockerfile
+    container_name: instagram_bot
+    env_file:
+      - "../Maduración - bot instagram/.env.docker"
+    depends_on:
+      - backend
+      - selenium_chrome
+    volumes:
+      - "../Maduración - bot instagram:/app"
+      - bot_generated_media:/app/app/utilities/images/posts/generated
+      - bot_logs:/app/logs
+    restart: unless-stopped
+    command: python main.py
+
+volumes:
+  postgres_data:
+  bot_generated_media:
+  bot_logs:

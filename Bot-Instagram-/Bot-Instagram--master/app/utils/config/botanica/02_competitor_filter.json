@@ -1,0 +1,67 @@
+{
+  "industry": "botanica",
+  "core_services": [
+    "botanica",
+    "spiritual products",
+    "spiritual supplies",
+    "herbal products",
+    "ritual products",
+    "religious supplies",
+    "spiritual consultations"
+  ],
+  "direct_competitor_signals": [
+    "botanica",
+    "botánica",
+    "spiritual shop",
+    "spiritual store",
+    "spiritual supplies",
+    "spiritual products",
+    "ritual supplies",
+    "ritual products",
+    "herbal spiritual products",
+    "religious supplies",
+    "esoteric shop",
+    "metaphysical shop"
+  ],
+  "possible_competitor_signals": [
+    "herbal store",
+    "natural products store",
+    "crystal shop",
+    "holistic shop",
+    "wellness store",
+    "spiritual practitioner"
+  ],
+  "adjacent_businesses": [
+    "wellness",
+    "holistic health",
+    "herbalist",
+    "crystal shop",
+    "metaphysical store",
+    "massage",
+    "meditation",
+    "yoga"
+  ],
+  "referral_opportunities": [
+    "holistic practitioner",
+    "wellness business",
+    "yoga studio",
+    "meditation center",
+    "massage therapist",
+    "herbalist",
+    "spiritual practitioner",
+    "metaphysical business"
+  ],
+  "exclude_as_competitor": [
+    "yoga",
+    "massage",
+    "meditation",
+    "wellness",
+    "holistic health"
+  ],
+  "classification_priority": [
+    "direct_competitor",
+    "possible_competitor",
+    "adjacent_local_service",
+    "unrelated_business"
+  ]
+}

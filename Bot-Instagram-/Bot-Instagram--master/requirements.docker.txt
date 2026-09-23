@@ -1,0 +1,11 @@
+selenium==4.15.2
+PyAutoGUI==0.9.54
+pyperclip==1.8.2
+Pillow>=11.0.0
+requests==2.31.0
+websockets
+python-dotenv
+trio==0.23.1
+trio-websocket==0.11.1
+# Self-Healer LLM provider (OpenAI-compatible / DeepSeek)
+openai==2.33.0

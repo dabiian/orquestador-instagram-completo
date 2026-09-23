@@ -1,0 +1,266 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "genuine reaction to their post",
+    "second_sentence": "optional natural bridge only if supported by the actual post content",
+    "template_usage_rule": "Templates are style references only. Do not reuse their concrete nouns, scenes, or sample compliments unless those details are present in the current post.",
+    "tone": "casual_direct_neighbor_not_sales_rep",
+    "forbidden_phrases": [
+      "We offer...",
+      "Our services include...",
+      "Contact us today",
+      "professional cleaning services",
+      "we specialize",
+      "book now"
+    ],
+    "allow_signature": false,
+    "emoji_max": 1,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false
+  },
+  "categories": [
+    {
+      "id": "homeowners",
+      "label": "Homeowners / Residential",
+      "icon": "🏠",
+      "color": "#1877F2",
+      "context": "Homeowner posts a backyard renovation, new home, pet in the yard, pool installation, or outdoor improvement.",
+      "rule": "Lead with a genuine reaction to their home or yard. Bridge to fencing only when the post shows a real reason: privacy, pets, pool safety, curb appeal, or finishing the outdoor space.",
+      "templates": [
+        {
+          "id": "H1",
+          "trigger": "Backyard renovation or landscaping post",
+          "template": "The yard is coming together really nicely — that kind of space makes a home feel completely different. If fencing ends up being part of the plan, we install wood, vinyl, chain link, and iron around Chicago and the suburbs.",
+          "why": [
+            "Starts with a specific reaction to their outdoor project",
+            "Positions fencing as a natural final piece, not a forced sales pitch",
+            "Mentions materials because homeowners often compare options"
+          ]
+        },
+        {
+          "id": "H2",
+          "trigger": "New home announcement or just moved in",
+          "template": "Congrats on the new place — always a big step. If fencing lands on the to-do list, we handle residential installs around Chicago and can help compare options for the yard.",
+          "why": [
+            "Celebrates their milestone first",
+            "Connects to the realistic new-home to-do list",
+            "Keeps the offer helpful instead of pushy"
+          ]
+        },
+        {
+          "id": "H3",
+          "trigger": "Dog or pet shown in the yard",
+          "template": "That pup looks like they already own the yard 🐾. A good fence makes a huge difference for keeping pets safe outside, especially in Chicago neighborhoods with shared alleys and close lots.",
+          "why": [
+            "Reacts directly to the pet content",
+            "Frames fencing around safety, not selling",
+            "Adds local context without overexplaining"
+          ]
+        },
+        {
+          "id": "H4",
+          "trigger": "Pool installation or pool upgrade",
+          "template": "That pool is going to be a great setup for summer. If you still need the safety fence handled, we install code-conscious pool fencing around Chicago and nearby suburbs.",
+          "why": [
+            "Acknowledges the pool first",
+            "Connects fencing to safety and compliance",
+            "Avoids legal overclaiming while staying relevant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Real Estate Investors / Flippers",
+      "icon": "🏚️",
+      "color": "#e74c3c",
+      "context": "Investor or flipper posts a before/after, rehab progress, new acquisition, listing prep, or rental property update.",
+      "rule": "Lead with recognition of the transformation or investment. Bridge to fencing as curb appeal, rental readiness, privacy, or exterior repair before listing.",
+      "templates": [
+        {
+          "id": "R1",
+          "trigger": "Flip before/after",
+          "template": "That transformation is strong — the exterior details can really finish the whole project. A new fence or fence repair can add a lot of curb appeal before photos or listing.",
+          "why": [
+            "Recognizes the flip's visible progress",
+            "Frames fencing as a listing asset",
+            "No direct hard CTA"
+          ]
+        },
+        {
+          "id": "R2",
+          "trigger": "New acquisition or rehab plan",
+          "template": "Nice pickup — looks like there is real potential there. If fencing is on the rehab list, we work with Chicago investors on wood, vinyl, chain link, iron, and gate installs.",
+          "why": [
+            "Matches investor language",
+            "Connects to the rehab checklist",
+            "Mentions relevant fence types without making a long service list"
+          ]
+        },
+        {
+          "id": "R3",
+          "trigger": "Rental property or tenant-ready post",
+          "template": "Getting a rental cleaned up between tenants is always a project. Fence repair or replacement can be one of those details that makes the property feel more secure and ready.",
+          "why": [
+            "Shows understanding of investor/property manager pain points",
+            "Connects fencing to tenant readiness",
+            "Sounds like practical advice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contractors",
+      "label": "General Contractors / Builders",
+      "icon": "🏗️",
+      "color": "#f5a623",
+      "context": "GC or builder posts progress on a build, exterior phase, renovation, crew work, or asks for subcontractors.",
+      "rule": "Lead with respect for the build. Bridge to fencing as a reliable exterior-phase subcontractor or final site/security component.",
+      "templates": [
+        {
+          "id": "C1",
+          "trigger": "New build or project progress",
+          "template": "Coming along nicely — looks like a solid project. If you need a fence sub for the exterior phase, we handle residential and commercial fencing around Chicago.",
+          "why": [
+            "Acknowledges project progress first",
+            "Uses contractor language: sub, exterior phase",
+            "Positions fencing as complementary"
+          ]
+        },
+        {
+          "id": "C2",
+          "trigger": "GC looking for subs or vendors",
+          "template": "We handle fencing in Chicago — wood, vinyl, chain link, iron, gates, residential and commercial. Happy to be considered for the vendor list if it lines up.",
+          "why": [
+            "Responds directly to vendor/subcontractor intent",
+            "Clear capability statement without overexplaining",
+            "Soft CTA, not aggressive"
+          ]
+        },
+        {
+          "id": "C3",
+          "trigger": "Completed build or final walkthrough",
+          "template": "That finished up clean — exterior details always make the handoff feel more complete. We work with GCs on fence installs and replacements when the site is ready for final touches.",
+          "why": [
+            "Compliments delivery quality",
+            "Connects fencing to handoff/final touches",
+            "Keeps it relevant to contractor workflow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "landscapers",
+      "label": "Landscapers / Lawn Companies",
+      "icon": "🌿",
+      "color": "#42b883",
+      "context": "Landscaper posts backyard transformation, lawn project, hardscape, outdoor design, patio, or client yard improvement.",
+      "rule": "Lead with a compliment on the outdoor transformation. Bridge to fencing as a complementary service for clients who want privacy, pet safety, or a finished yard.",
+      "templates": [
+        {
+          "id": "L1",
+          "trigger": "Backyard transformation or landscaping project",
+          "template": "That yard looks sharp — the whole space feels much more finished. If your clients ever ask about fencing to complete the backyard, we install all major fence types around Chicago.",
+          "why": [
+            "Compliments their actual work",
+            "Frames fencing as a client add-on",
+            "Creates referral angle naturally"
+          ]
+        },
+        {
+          "id": "L2",
+          "trigger": "Hardscape or outdoor design project",
+          "template": "The layout looks really well planned — hardscape plus fencing can completely change how a yard feels. We handle the fence side around Chicago if a project ever needs that final boundary.",
+          "why": [
+            "Recognizes design/planning work",
+            "Connects fencing to outdoor design",
+            "Keeps the partnership angle subtle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hoa",
+      "label": "HOA / Property Managers",
+      "icon": "🏘️",
+      "color": "#9b59b6",
+      "context": "HOA, property manager, landlord, multifamily owner, or condo association posts about property improvements, maintenance, security, tenant turnover, or community upgrades.",
+      "rule": "Lead with acknowledgement of the property/community improvement. Bridge to fencing as security, perimeter control, shared-area improvement, or large-scale residential install.",
+      "templates": [
+        {
+          "id": "P1",
+          "trigger": "Community improvement or property upgrade",
+          "template": "Nice improvement — those details matter a lot for how a property feels day to day. If fencing ever comes up for the community or shared areas, we handle larger residential installs around Chicago.",
+          "why": [
+            "Acknowledges property value/community context",
+            "Frames fencing as HOA/property scale",
+            "Avoids sounding like a homeowner-only pitch"
+          ]
+        },
+        {
+          "id": "P2",
+          "trigger": "Maintenance or repair post",
+          "template": "Property maintenance always turns into a list fast. We handle fence repair, replacement, and gate work around Chicago when managers need the exterior secured again.",
+          "why": [
+            "Shows understanding of property manager workload",
+            "Mentions repair/replacement/gates clearly",
+            "Connects to security and maintenance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "label": "Commercial / Industrial Properties",
+      "icon": "🏭",
+      "color": "#1abc9c",
+      "context": "Commercial owner, industrial property, warehouse, logistics business, manufacturing site, or commercial real estate account posts a facility, yard, opening, expansion, or property update.",
+      "rule": "Lead with recognition of the business/property update. Bridge to fencing as perimeter security, access control, gates, chain link, or ornamental/commercial install.",
+      "templates": [
+        {
+          "id": "COM1",
+          "trigger": "New facility or commercial property",
+          "template": "Congrats on the new space — that is a big move. If perimeter fencing or gates end up on the security list, we handle commercial installs around Chicago.",
+          "why": [
+            "Acknowledges the business milestone",
+            "Connects fencing to perimeter/security",
+            "Keeps it concise and business-focused"
+          ]
+        },
+        {
+          "id": "COM2",
+          "trigger": "Warehouse, industrial yard, or logistics site",
+          "template": "That kind of facility needs the exterior dialed in. We install chain link, security fencing, and gates around Chicago for commercial and industrial properties.",
+          "why": [
+            "Uses commercial/industrial context",
+            "Mentions the most relevant fence types",
+            "No unnecessary homeowner language"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "We offer professional fencing services in Chicago!",
+      "why": "Sounds like an ad. No human talks like this in a comment."
+    },
+    {
+      "bad": "Contact us today for the best fence installation prices!",
+      "why": "Hard CTA in a comment = spam pattern."
+    },
+    {
+      "bad": "We specialize in wood fence, vinyl fence, chain link fence, iron fence, gates, repairs, replacements...",
+      "why": "Long lists kill the human feel. One context, one bridge."
+    },
+    {
+      "bad": "DM us for a free quote! 🏡🔨🚧",
+      "why": "Overuse of emoji + DM push = classic spam pattern."
+    },
+    {
+      "bad": "Great post! We are a local fence company based in Chicago IL serving...",
+      "why": "'Great post!' is robotic and generic."
+    }
+  ]
+}

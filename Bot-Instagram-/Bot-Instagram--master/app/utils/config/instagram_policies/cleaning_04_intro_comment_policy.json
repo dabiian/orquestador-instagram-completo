@@ -1,0 +1,326 @@
+{
+  "global_rules": {
+    "max_sentences": 2,
+    "first_sentence": "genuine reaction to their post",
+    "second_sentence": "optional natural bridge only if supported by the actual post content",
+    "template_usage_rule": "Templates are style references only. Do not reuse their concrete nouns, scenes, or sample compliments unless those details are present in the current post.",
+    "tone": "casual_direct_neighbor_not_sales_rep",
+    "forbidden_phrases": [
+      "We offer...",
+      "Our services include...",
+      "Contact us today",
+      "professional cleaning services",
+      "we specialize",
+      "book now"
+    ],
+    "allow_signature": false,
+    "emoji_max": 1,
+    "hard_cta_allowed": false,
+    "same_template_twice_in_row_allowed": false,
+    "copy_paste_mode_allowed": false
+  },
+  "categories": [
+    {
+      "id": "airbnb",
+      "label": "Airbnb / Short-Term Rental",
+      "icon": "🏠",
+      "color": "#FF5A5F",
+      "context": "Host posts a photo of their property, a new listing, a guest review, or an update to their space.",
+      "rule": "Lead with a genuine compliment on the space. Bridge to cleaning as the thing that keeps guests happy — not as a service pitch.",
+      "templates": [
+        {
+          "id": "A1",
+          "trigger": "Host posts a property photo or new listing",
+          "template": "This place looks great — guests are going to love it. If you ever need a reliable turnover clean between bookings, we're local to Chicago and always available last minute.",
+          "why": [
+            "'Guests are going to love it' = compliment directed at THEIR success, not the space",
+            "'Turnover clean' = Airbnb-specific language the host uses themselves",
+            "'Last minute' = addresses their real pain point without saying it directly"
+          ]
+        },
+        {
+          "id": "A2",
+          "trigger": "Host shares a 5-star guest review",
+          "template": "That's a great review — clean space is always the first thing guests mention. We do turnover cleans for a few hosts in the area if you ever need backup.",
+          "why": [
+            "Connects their win (review) to cleaning naturally",
+            "'Backup' makes it sound low-pressure, not like a pitch",
+            "'A few hosts in the area' = social proof without being salesy"
+          ]
+        },
+        {
+          "id": "A3",
+          "trigger": "Host shows a renovation or upgrade to their space",
+          "template": "Love the update — that's going to photograph so well. We do move-in and staging cleans in Chicago if you need it fresh before the next guest.",
+          "why": [
+            "Compliments the upgrade on a specific benefit (photography)",
+            "'Fresh before the next guest' = their real concern",
+            "Casual enough to feel like a tip, not a promotion"
+          ]
+        },
+        {
+          "id": "A4",
+          "trigger": "Host posts about a busy booking season or high occupancy",
+          "template": "Back to back bookings — that's the dream! Turnover days can get crazy, we help a few Chicago hosts keep up when things get busy.",
+          "why": [
+            "Mirrors their excitement first",
+            "'Turnover days can get crazy' = empathy before solution",
+            "'Keep up when things get busy' = addresses workload without overselling"
+          ]
+        },
+        {
+          "id": "A5",
+          "trigger": "Host posts about a difficult guest or checkout issue",
+          "template": "Checkout days are no joke — some guests really do leave a mess. We cover the Chicago area if you ever need someone in there quick.",
+          "why": [
+            "Validates their frustration before offering anything",
+            "'Someone in there quick' = speed, which is their actual need",
+            "Casual phrasing makes it feel like advice from someone who gets it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Real Estate Agents & Investors",
+      "icon": "🏢",
+      "color": "#1877F2",
+      "context": "Agent posts a new listing, just sold, open house, or property photo. Investor posts a flip or new acquisition.",
+      "rule": "Lead with genuine recognition of their work. Bridge to cleaning as something that helps THEIR listing look better — never pitch directly.",
+      "templates": [
+        {
+          "id": "R1",
+          "trigger": "Agent posts a new listing",
+          "template": "Nice listing — that kitchen is going to sell itself. We do showing-ready cleans in Chicago if you ever need the place spotless before an open house.",
+          "why": [
+            "Specific compliment on an element of the listing (kitchen)",
+            "'Showing-ready' = realtor language they already use",
+            "Open house = specific moment they need cleaning"
+          ]
+        },
+        {
+          "id": "R2",
+          "trigger": "Agent posts a Just Sold",
+          "template": "Congrats on the close! Move-out cleans always seem to come up last minute — we're in Chicago and usually can get in same week.",
+          "why": [
+            "Celebrates their win first, no segue awkwardness",
+            "'Always seem to come up last minute' = true pain point, said casually",
+            "Same week availability = immediate value without hard sell"
+          ]
+        },
+        {
+          "id": "R3",
+          "trigger": "Agent posts an open house announcement",
+          "template": "Open houses this weekend — good luck! First impressions really do make a difference. We help a few Chicago agents get listings showing-ready if you ever need it.",
+          "why": [
+            "Wishes them luck genuinely before bridging",
+            "'First impressions make a difference' = obvious truth, not a pitch",
+            "'A few Chicago agents' = subtle social proof"
+          ]
+        },
+        {
+          "id": "R4",
+          "trigger": "Investor posts a flip in progress or before/after",
+          "template": "That rehab is coming along nicely — the before/after difference is always crazy. We do post-construction cleans in Chicago when you're ready to list.",
+          "why": [
+            "Acknowledges the progress they're proud of",
+            "'Before/after is always crazy' = relatable comment flippers love",
+            "'When you're ready to list' = plants the seed at the exact right moment"
+          ]
+        },
+        {
+          "id": "R5",
+          "trigger": "Property manager posts about a tenant turnover",
+          "template": "Turnovers are always a production — especially when the previous tenant wasn't exactly careful. We cover Chicago and suburbs if you need a reliable crew between tenants.",
+          "why": [
+            "Empathy for the workload without being dramatic",
+            "'Wasn't exactly careful' = light humor that resonates",
+            "'Reliable crew' = what property managers actually look for"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "movers",
+      "label": "Moving Companies",
+      "icon": "🚚",
+      "color": "#42b883",
+      "context": "Moving company posts a completed job, their crew working, a truck on the road, or a happy customer.",
+      "rule": "Lead with respect for their work. Bridge to cleaning as a natural add-on that benefits THEIR clients — position as a potential partner, not a competitor.",
+      "templates": [
+        {
+          "id": "M1",
+          "trigger": "Movers post a completed move or happy client",
+          "template": "That's a clean move — you guys make it look easy. We do move-out and move-in cleans in Chicago if your clients ever need the place cleaned before or after.",
+          "why": [
+            "'Clean move / make it look easy' = genuine compliment on their craft",
+            "Positions cleaning as complementary to their service",
+            "'Before or after' covers both move-out and move-in needs"
+          ]
+        },
+        {
+          "id": "M2",
+          "trigger": "Movers post crew working or team photo",
+          "template": "Love seeing local crews doing good work in Chicago. We do the cleaning side of moves if you ever want to refer clients who need the place cleaned out.",
+          "why": [
+            "'Local crews' = Chicago pride, builds connection",
+            "'Refer clients' = frames it as a partnership opportunity",
+            "No pressure — 'if you ever want to' keeps it light"
+          ]
+        },
+        {
+          "id": "M3",
+          "trigger": "Movers post about a big or challenging job",
+          "template": "Big moves always have a story — looks like your team handled it well. If the client needs a move-out clean on the old place, we're local and quick.",
+          "why": [
+            "Acknowledges the challenge with curiosity",
+            "'Old place' = specific moment the cleaning happens",
+            "'Local and quick' = their client's real need after a move"
+          ]
+        },
+        {
+          "id": "M4",
+          "trigger": "Movers post a before/after of packing or loading",
+          "template": "The difference between before and after a good move is wild. We handle the cleaning side if clients need the old place cleaned up for their landlord or sale.",
+          "why": [
+            "Compliments the transformation they create",
+            "'Landlord or sale' = real reasons people need move-out cleans",
+            "Sounds like useful information, not a sales pitch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "construction",
+      "label": "Construction Companies",
+      "icon": "🏗️",
+      "color": "#f5a623",
+      "context": "Construction company posts progress on a build, a completed project, crew working, or new development.",
+      "rule": "Lead with genuine admiration for the build. Bridge to post-construction cleanup as the final step before handoff — position as the last piece of their process.",
+      "templates": [
+        {
+          "id": "C1",
+          "trigger": "Construction company posts a completed project",
+          "template": "That turned out really well — must feel good to see it finished. We do post-construction cleans in Chicago if you need the space spotless before handoff.",
+          "why": [
+            "'Must feel good to see it finished' = human empathy for their work",
+            "'Before handoff' = contractor language for delivery to client",
+            "Feels like a logical next step, not a pitch"
+          ]
+        },
+        {
+          "id": "C2",
+          "trigger": "Construction company posts progress photos mid-project",
+          "template": "Coming along nicely — that's a solid build. When you're wrapping up, we do final cleans in Chicago so the space is ready for whoever's moving in.",
+          "why": [
+            "'Solid build' = direct, genuine compliment",
+            "'When you're wrapping up' = plants the seed at the right future moment",
+            "'Whoever's moving in' = client-focused framing"
+          ]
+        },
+        {
+          "id": "C3",
+          "trigger": "Construction company posts crew or equipment",
+          "template": "Big project — looks like a lot of moving parts. We work with a few Chicago contractors on the cleanup side when they're ready to hand the space over.",
+          "why": [
+            "Acknowledges the complexity of their work",
+            "'Moving parts' = casual phrase that resonates with contractors",
+            "'A few Chicago contractors' = social proof without exaggerating"
+          ]
+        },
+        {
+          "id": "C4",
+          "trigger": "Construction company posts a new development or groundbreaking",
+          "template": "Exciting to see something new going up in Chicago — that area needed it. We do post-construction cleans when you're ready for final touches before opening.",
+          "why": [
+            "Connects with local Chicago pride genuinely",
+            "'That area needed it' = shows you know the city",
+            "'Final touches' = positions cleaning as part of their process"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "remodeling",
+      "label": "Remodeling / Renovation",
+      "icon": "🔨",
+      "color": "#1abc9c",
+      "context": "Remodeler posts a kitchen, bathroom, or basement before/after, a project in progress, or a happy homeowner.",
+      "rule": "Before/afters are their pride — lead with a specific compliment on the transformation. Bridge to cleaning as the thing that makes their work truly shine for the reveal.",
+      "templates": [
+        {
+          "id": "REM1",
+          "trigger": "Remodeler posts a before/after of any room",
+          "template": "That transformation is unreal — the before makes the after look even better. We do post-reno cleans in Chicago so the space is dust-free and photo-ready for the reveal.",
+          "why": [
+            "Before/after compliment is specific and genuine",
+            "'Dust-free and photo-ready' = real concern after any remodel",
+            "'Reveal' = language remodelers use themselves"
+          ]
+        },
+        {
+          "id": "REM2",
+          "trigger": "Remodeler posts a kitchen remodel",
+          "template": "That kitchen is stunning — the new layout completely opens it up. We do final cleans after renos in Chicago if you need everything dust-free before the homeowner walks in.",
+          "why": [
+            "Specific compliment on layout, not just 'looks nice'",
+            "'Before the homeowner walks in' = the exact moment they need it",
+            "Casual framing makes it feel helpful, not promotional"
+          ]
+        },
+        {
+          "id": "REM3",
+          "trigger": "Remodeler posts a bathroom remodel",
+          "template": "That tile work is really clean — new bathroom always makes the whole house feel different. We handle post-reno cleaning in Chicago when you're ready for the client walkthrough.",
+          "why": [
+            "'Really clean' works as both a pun and a genuine compliment",
+            "'Client walkthrough' = contractor language for final delivery",
+            "Short, specific, no oversell"
+          ]
+        },
+        {
+          "id": "REM4",
+          "trigger": "Remodeler posts a basement finish",
+          "template": "Basement finish looks great — those always add so much usable space. Happy to do the post-construction clean in Chicago so it's move-in ready.",
+          "why": [
+            "Acknowledges the practical value of the project",
+            "'Move-in ready' = what the homeowner actually wants",
+            "'Happy to' = casual offer, not a sales push"
+          ]
+        },
+        {
+          "id": "REM5",
+          "trigger": "Remodeler posts mid-project progress",
+          "template": "Looking good already — can already see where this is heading. When you're wrapping up, we do final cleans in Chicago to get the dust and debris out before the reveal.",
+          "why": [
+            "'Can already see where this is heading' = genuine interest in their work",
+            "Plants the seed without interrupting their current process",
+            "'Dust and debris' = specific post-reno pain point every contractor knows"
+          ]
+        }
+      ]
+    }
+  ],
+  "banned_patterns": [
+    {
+      "bad": "We offer professional cleaning services in Chicago!",
+      "why": "Sounds like an ad. No human talks like this in a comment."
+    },
+    {
+      "bad": "Check out our website for pricing!",
+      "why": "Hard CTA in a comment = instant ignore or hide."
+    },
+    {
+      "bad": "We specialize in move-out cleaning, post-construction cleaning, and...",
+      "why": "Lists kill the human feel. One thing, one sentence."
+    },
+    {
+      "bad": "DM us for a free quote! 🧹🧹🧹",
+      "why": "Overuse of emoji + DM push = classic spam pattern."
+    },
+    {
+      "bad": "Great post! We are a local cleaning company based in Chicago IL serving...",
+      "why": "'Great post!' is the most robotic opener on social media."
+    }
+  ]
+}
