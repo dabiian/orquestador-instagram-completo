@@ -1,3 +1,15 @@
+
+## Clasificación oficial de tareas Instagram
+
+La operación es una categoría funcional; los `task_types` siguen siendo las tareas concretas ejecutadas por el bot.
+
+- **Prospección:** IDs `1, 7, 10, 11, 12, 15, 16`.
+- **Maduración:** IDs `2, 3, 4, 5, 6, 8, 9, 13, 14`.
+
+La migración `0021_tasktype_operation` clasifica únicamente los `TaskType` de plataforma Instagram con esos IDs. El adaptador rechaza tareas Instagram sin categoría y también rechaza mezclar una tarea de otra operación. La pestaña del Orquestador muestra únicamente las tareas de la operación seleccionada.
+
+> Importante: no crear TaskTypes artificiales llamados `Prospecting` o `Maduracion`. Esos nombres representan operaciones/categorías, no tareas ejecutables.
+
 # Pruebas manuales — Instagram en el Orquestador
 
 ## Objetivo
