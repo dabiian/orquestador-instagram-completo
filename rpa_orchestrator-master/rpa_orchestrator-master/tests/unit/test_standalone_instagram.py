@@ -438,3 +438,15 @@ def test_accounts_mode_without_account_ids_returns_422() -> None:
         response = client.post("/api/v1/executions/standalone/instagram", json=invalid_payload)
 
     assert response.status_code == 422
+
+
+def test_prospecting_contract_is_supported() -> None:
+    payload = {
+        **INSTAGRAM_PAYLOAD,
+        "schema_version": "instagram.prospecting.input.v1",
+        "stage": "instagram_prospecting",
+        "capability": "instagram.prospecting",
+    }
+    model = StandaloneInstagramRequest.model_validate(payload)
+    assert model.capability == "instagram.prospecting"
+    assert model.stage == "instagram_prospecting"
