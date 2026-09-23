@@ -108,3 +108,19 @@ def test_page_flow_log_and_artifact_writes_are_identified() -> None:
     )
     assert _is_bot_write_path("PUT", "/api/v1/page-executions/302/log")
     assert not _is_bot_write_path("GET", "/api/v1/page-executions/302/log")
+
+
+def test_instagram_dashboard_contract_is_present() -> None:
+    root = Path(__file__).resolve().parents[2]
+    source = (root / "frontend" / "instagram.js").read_text(encoding="utf-8")
+
+    assert 'api("/instagram/catalog")' in source
+    assert 'api("/executions/standalone/instagram"' in source
+    assert '/events?after_sequence=' in source
+    assert '/result' in source
+    assert '/cancel' in source
+    assert 'credentials: "same-origin"' in source
+    assert 'Opciones avanzadas' in source
+    assert 'task.operation===operation' in source
+    assert '/input' not in source
+    assert 'BOT_TOKENS' not in source
