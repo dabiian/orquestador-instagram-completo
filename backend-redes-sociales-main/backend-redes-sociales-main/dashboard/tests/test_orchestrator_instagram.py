@@ -104,7 +104,7 @@ class InstagramTaskTypeOperationTests(SimpleTestCase):
             adapter._resolve_task_types([7], "instagram.prospecting")
 
     @patch("dashboard.orchestrator.adapter.TaskType.objects.select_related")
-    def test_legacy_uncategorized_task_type_remains_compatible(self, select_related):
+    def test_uncategorized_instagram_task_type_is_rejected(self, select_related):
         task = type("Task", (), {
             "id": 8,
             "operation": None,
@@ -112,7 +112,22 @@ class InstagramTaskTypeOperationTests(SimpleTestCase):
         })()
         select_related.return_value.filter.return_value = [task]
         adapter = InstagramOrchestratorAdapter()
+        with self.assertRaisesMessage(
+            ValueError,
+            "Instagram task types are missing an operation category: [8]",
+        ):
+            adapter._resolve_task_types([8], "instagram.prospecting")
+
+    @patch("dashboard.orchestrator.adapter.TaskType.objects.select_related")
+    def test_accepts_task_type_from_selected_operation(self, select_related):
+        task = type("Task", (), {
+            "id": 10,
+            "operation": "prospecting",
+            "platform": type("Platform", (), {"platform_name": "instagram"})(),
+        })()
+        select_related.return_value.filter.return_value = [task]
+        adapter = InstagramOrchestratorAdapter()
         self.assertEqual(
-            adapter._resolve_task_types([8], "instagram.prospecting"),
-            [8],
+            adapter._resolve_task_types([10], "instagram.prospecting"),
+            [10],
         )
