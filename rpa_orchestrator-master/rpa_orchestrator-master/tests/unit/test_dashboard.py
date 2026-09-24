@@ -132,6 +132,11 @@ def test_instagram_dashboard_contract_is_present() -> None:
     assert '/instagram/admin/campaigns' in source
     assert '/instagram/admin/assignments' in source
     assert '/verify' in source
+    assert '/expanded' in source
+    assert 'Administración avanzada de recursos' in source
+    assert 'manageInstagramResource' in source
+    for resource in ("personalities", "owners", "proxies", "accounts", "campaigns", "assignments"):
+        assert f'<option value="{resource}">' in source
     assert 'WebSocket' not in source
     assert 'setTimeout(' in source
     assert 'setInterval(' not in source
