@@ -127,6 +127,12 @@ async def delete_instagram_resource(resource: str, item_id: int) -> JSONResponse
     return await _proxy("DELETE", f"{backend_path}/{item_id}/")
 
 
+@router.get("/admin/accounts/{item_id}/expanded", dependencies=[Depends(require_dashboard_operator)])
+async def get_instagram_account_expanded(item_id: int) -> JSONResponse:
+    """Return the backend's expanded account representation (owner/proxy/personality)."""
+    return await _proxy("GET", f"social_medias/{item_id}/")
+
+
 @router.patch("/admin/accounts/{item_id}/cookie", dependencies=[Depends(require_dashboard_operator)])
 async def update_instagram_cookie(
     item_id: int,
