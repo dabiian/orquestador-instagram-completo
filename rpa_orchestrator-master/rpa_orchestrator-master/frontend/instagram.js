@@ -12,6 +12,8 @@ const state = {
     selectedAccountIds: new Set(),
     adminAccounts: [],
     provisioning: false,
+    historyCursor: null,
+    currentExecution: null,
 };
 
 const esc = (value) =>
@@ -722,6 +724,7 @@ function mount() {
                     <button
                         id="ig-cancel"
                         class="button danger"
+                        hidden
                         disabled
                     >
                         Cancelar
@@ -732,6 +735,7 @@ function mount() {
                 <div
                     id="ig-current"
                     class="ig-muted"
+                    aria-live="polite"
                 >
                     No hay ejecución seleccionada.
                 </div>
@@ -909,6 +913,9 @@ function mount() {
                 </table>
 
             </div>
+            <div class="ig-row">
+                <button id="ig-history-more" class="button secondary" type="button" hidden>Cargar más</button>
+            </div>
 
         </section>
     `;
@@ -951,7 +958,11 @@ function mount() {
 
     document
         .getElementById("ig-refresh-history")
-        .addEventListener("click", loadHistory);
+        .addEventListener("click", () => loadHistory(false));
+
+    document
+        .getElementById("ig-history-more")
+        .addEventListener("click", () => loadHistory(true));
 
     document
         .getElementById("ig-provision")
@@ -2312,15 +2323,10 @@ function startPolling(id) {
                 execution
             );
 
-            document.getElementById(
-                "ig-cancel"
-            ).disabled =
-                ![
-                    "queued",
-                    "running",
-                ].includes(
-                    execution.status
-                );
+            const cancelButton = document.getElementById("ig-cancel");
+            const canCancel = ["queued", "running"].includes(execution.status);
+            cancelButton.hidden = !canCancel;
+            cancelButton.disabled = !canCancel;
 
             await loadEvents(
                 id,
@@ -2387,30 +2393,53 @@ function startPolling(id) {
    EJECUCIÓN
    ========================================================= */
 
+function formatInstagramDate(value) {
+    if (!value) return "—";
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? String(value) : date.toLocaleString();
+}
+
+function instagramElapsed(execution) {
+    const start = execution.started_at || execution.created_at;
+    if (!start) return "—";
+    const startMs = new Date(start).getTime();
+    const endMs = execution.completed_at ? new Date(execution.completed_at).getTime() : Date.now();
+    if (!Number.isFinite(startMs) || !Number.isFinite(endMs)) return "—";
+    const seconds = Math.max(0, Math.floor((endMs - startMs) / 1000));
+    const minutes = Math.floor(seconds / 60);
+    return minutes ? `${minutes}m ${seconds % 60}s` : `${seconds}s`;
+}
+
+const INSTAGRAM_STATUS_TEXT = {
+    pending: "Esperando capacidad del bot",
+    queued: "Trabajo enviado al adaptador",
+    running: "Procesando cuentas de Instagram",
+    succeeded: "Ejecución finalizada",
+    failed: "Ejecución fallida",
+    cancelled: "Ejecución cancelada",
+    cancelling: "Cancelación solicitada",
+};
+
 function renderExecution(execution) {
-    const id =
-        execution.id ||
-        execution.execution_id ||
-        state.executionId;
+    state.currentExecution = execution;
+    const id = execution.id || execution.execution_id || state.executionId;
+    const cancel = document.getElementById("ig-cancel");
+    const cancellable = ["queued", "running"].includes(execution.status);
+    cancel.hidden = !cancellable;
+    cancel.disabled = !cancellable;
 
-    document.getElementById(
-        "ig-current"
-    ).innerHTML = `
-        <div class="ig-status">
-            ${esc(execution.status)}
-        </div>
-
-        <div>
-            ${esc(id)}
-        </div>
-
-        <div class="ig-muted">
-            ${esc(
-                execution.requested_capability ||
-                execution.capability ||
-                "Instagram"
-            )}
-        </div>
+    document.getElementById("ig-current").innerHTML = `
+        <div class="ig-status">${esc(INSTAGRAM_STATUS_TEXT[execution.status] || execution.status)}</div>
+        <dl class="ig-execution-detail">
+            <dt>UUID</dt><dd><code>${esc(id)}</code></dd>
+            <dt>Capability</dt><dd>${esc(execution.requested_capability || execution.capability || "Instagram")}</dd>
+            <dt>Bot asignado</dt><dd>${esc(execution.bot_id || "—")}</dd>
+            <dt>Creación</dt><dd>${esc(formatInstagramDate(execution.created_at))}</dd>
+            <dt>Inicio</dt><dd>${esc(formatInstagramDate(execution.started_at))}</dd>
+            <dt>Finalización</dt><dd>${esc(formatInstagramDate(execution.completed_at))}</dd>
+            <dt>Tiempo transcurrido</dt><dd>${esc(instagramElapsed(execution))}</dd>
+        </dl>
+        ${execution.error_message ? `<div class="ig-error"><strong>Error terminal:</strong> ${esc(execution.error_message)}</div>` : ""}
     `;
 }
 
@@ -2675,7 +2704,7 @@ async function cancelExecution() {
 
     if (
         !window.confirm(
-            "¿Cancelar la ejecución de Instagram?"
+            "La cancelación puede tardar mientras el bot termina una operación atómica. ¿Deseas continuar?"
         )
     ) {
         document.getElementById(
@@ -2716,114 +2745,44 @@ async function cancelExecution() {
    HISTORIAL
    ========================================================= */
 
-async function loadHistory() {
-    const body =
-        document.getElementById(
-            "ig-history"
-        );
-
-    if (!body) {
-        return;
-    }
+async function loadHistory(append = false) {
+    const body = document.getElementById("ig-history");
+    const more = document.getElementById("ig-history-more");
+    if (!body) return;
 
     try {
-        const data =
-            await api(
-                "/executions?bot_type=instagram&limit=50"
-            );
+        const cursor = append ? state.historyCursor : null;
+        const query = new URLSearchParams({ bot_type: "instagram", limit: "50" });
+        if (cursor) query.set("cursor", cursor);
+        const data = await api(`/executions?${query}`);
+        const items = data.items || [];
+        state.historyCursor = data.next_cursor || null;
 
-        const items =
-            data.items || [];
-
-        body.innerHTML =
-            items
-                .map((item) => {
-                    const id =
-                        item.id ||
-                        item.execution_id;
-
-                    return `
-                        <tr>
-
-                            <td>
-                                <code>
-                                    ${esc(id)}
-                                </code>
-                            </td>
-
-                            <td>
-                                ${esc(
-                                    item.requested_capability ||
-                                    item.capability
-                                )}
-                            </td>
-
-                            <td>
-                                ${esc(
-                                    item.status
-                                )}
-                            </td>
-
-                            <td>
-                                ${esc(
-                                    item.created_at
-                                )}
-                            </td>
-
-                            <td>
-                                <button
-                                    class="button ghost ig-open"
-                                    data-id="${esc(id)}"
-                                >
-                                    Abrir
-                                </button>
-                            </td>
-
-                        </tr>
-                    `;
-                })
-                .join("") ||
-            `
+        const rows = items.map((item) => {
+            const id = item.id || item.execution_id;
+            return `
                 <tr>
-                    <td
-                        colspan="5"
-                        class="ig-muted"
-                    >
-                        Sin ejecuciones Instagram.
-                    </td>
-                </tr>
-            `;
+                    <td><code>${esc(id)}</code></td>
+                    <td>${esc(item.requested_capability || item.capability)}</td>
+                    <td>${esc(INSTAGRAM_STATUS_TEXT[item.status] || item.status)}</td>
+                    <td>${esc(formatInstagramDate(item.created_at))}</td>
+                    <td><button class="button ghost ig-open" data-id="${esc(id)}">Abrir</button></td>
+                </tr>`;
+        }).join("");
 
-        body
-            .querySelectorAll(
-                ".ig-open"
-            )
-            .forEach(
-                (button) =>
-                    button.addEventListener(
-                        "click",
-                        () => {
-                            state.executionId =
-                                button.dataset.id;
+        if (append) body.insertAdjacentHTML("beforeend", rows);
+        else body.innerHTML = rows || '<tr><td colspan="5" class="ig-muted">Sin ejecuciones Instagram.</td></tr>';
 
-                            startPolling(
-                                state.executionId
-                            );
-                        }
-                    )
-            );
-
+        more.hidden = !state.historyCursor;
+        body.querySelectorAll(".ig-open").forEach((button) => {
+            if (button.dataset.bound) return;
+            button.dataset.bound = "1";
+            button.addEventListener("click", () => startPolling(button.dataset.id));
+        });
     } catch (error) {
-        body.innerHTML = `
-            <tr>
-                <td colspan="5">
-                    ${esc(error.message)}
-                </td>
-            </tr>
-        `;
+        if (!append) body.innerHTML = `<tr><td colspan="5">${esc(error.message)}</td></tr>`;
     }
 }
-
 
 /* =========================================================
    INICIALIZACIÓN
