@@ -7,6 +7,7 @@ class AccountOwner(models.Model):
     owner_email = models.EmailField()
     owner_phone = models.CharField(max_length=20)
     owner_urls = models.JSONField(null=True, blank=True)
+    services = models.JSONField(default=list, blank=True)
 
     def __str__(self):
         return self.owner_name

@@ -14,6 +14,8 @@ class SocialMediaAccount(models.Model):
     groups_to_search = ArrayField(models.CharField(max_length=255), default=list, blank=True)
     professional_mode = models.BooleanField(null=False, default=False)
     account_name = models.CharField(max_length=255)
+    group = models.JSONField(default=list)
+    account_kind = models.CharField(max_length=20, choices=(("business", "business"), ("personal", "personal")), default="business")
     access_token = models.CharField(max_length=255, null=True, blank=True)
     access_secret = models.CharField(max_length=255, null=True, blank=True)
     other_credentials = models.JSONField(null=True, blank=True)

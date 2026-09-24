@@ -16,6 +16,7 @@ from django.utils.dateparse import parse_datetime
 
 from dashboard.models import (
     ActiveWebSocketConnection,
+    InstagramProspectingCampaignAccount,
     OrchestratorInstagramExecution,
     OrchestratorInstagramTask,
     SocialMediaAccount,
@@ -226,7 +227,7 @@ class InstagramOrchestratorAdapter:
 
             targets = payload.get("targets") or {}
             accounts = self._resolve_accounts(targets)
-            task_types = self._resolve_task_types(payload.get("task_types") or [])
+            task_types = self._resolve_task_types(payload.get("task_types") or [], capability)
             options = payload.get("options") or {}
             max_accounts = options.get("max_accounts")
             if max_accounts is not None:
@@ -256,7 +257,7 @@ class InstagramOrchestratorAdapter:
                 task_ids.append(task.id)
             return task_ids, False
 
-    def _resolve_task_types(self, task_type_ids: list[Any]) -> list[int]:
+    def _resolve_task_types(self, task_type_ids: list[Any], capability: str) -> list[int]:
         ids = [int(value) for value in task_type_ids]
         rows = list(TaskType.objects.select_related("platform").filter(id__in=ids))
         found = {row.id: row for row in rows}
@@ -266,11 +267,30 @@ class InstagramOrchestratorAdapter:
         invalid = [row.id for row in rows if (row.platform.platform_name or "").strip().lower() != "instagram"]
         if invalid:
             raise ValueError(f"Task types are not Instagram tasks: {invalid}")
+
+        operation = capability.rsplit(".", 1)[-1]
+        uncategorized = [row.id for row in rows if not row.operation]
+        if uncategorized:
+            raise ValueError(
+                f"Instagram task types are missing an operation category: {uncategorized}"
+            )
+        mismatched = [row.id for row in rows if row.operation != operation]
+        if mismatched:
+            raise ValueError(
+                f"Task types do not belong to Instagram operation {operation}: {mismatched}"
+            )
         return ids
 
     def _resolve_accounts(self, targets: dict[str, Any]) -> list[SocialMediaAccount]:
         mode = targets.get("mode")
-        base = SocialMediaAccount.objects.select_related("owner").filter(account_type__iexact="instagram")
+        # Instagram membership is defined by the active campaign-account assignment,
+        # not by the legacy SocialMediaAccount.account_type field.
+        instagram_ids = InstagramProspectingCampaignAccount.objects.filter(
+            platform__iexact="instagram",
+            role="prospecting",
+            is_active=True,
+        ).values_list("social_media_account_id", flat=True)
+        base = SocialMediaAccount.objects.select_related("owner").filter(id__in=instagram_ids).distinct()
         if mode == "accounts":
             ids = [int(value) for value in targets.get("account_ids") or []]
             return list(base.filter(id__in=ids).order_by("id"))

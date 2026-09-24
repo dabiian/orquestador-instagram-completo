@@ -1,0 +1,138 @@
+﻿from rest_framework import serializers
+
+from .models.instagram_prospecting import (
+    InstagramProspectingCampaign,
+    InstagramProspectingCampaignAccount,
+    InstagramProspect,
+    InstagramProspectPost,
+    InstagramProspectInteraction,
+    InstagramFollowUpAlert,
+)
+
+
+class InstagramProspectingCampaignSerializer(serializers.ModelSerializer):
+    campaign_name = serializers.CharField(source="name", read_only=True)
+    platform = serializers.ChoiceField(choices=("instagram", "facebook"), required=True)
+
+    class Meta:
+        model = InstagramProspectingCampaign
+        fields = "__all__"
+
+    def validate_platform(self, value):
+        if value not in {"instagram", "facebook"}:
+            raise serializers.ValidationError("platform debe ser instagram o facebook.")
+        return value
+
+    def validate_status(self, value):
+        allowed = {"draft", "active", "paused", "completed", "cancelled"}
+        if value not in allowed:
+            raise serializers.ValidationError("Estado de campaña inválido.")
+        return value
+
+    def validate_services_snapshot(self, value):
+        if not isinstance(value, list):
+            raise serializers.ValidationError("services_snapshot debe ser una lista JSON.")
+        return value
+
+    def validate_strategy_snapshot(self, value):
+        if not isinstance(value, dict):
+            raise serializers.ValidationError("strategy_snapshot debe ser un objeto JSON.")
+        return value
+
+
+class InstagramProspectingCampaignAccountSerializer(serializers.ModelSerializer):
+    campaign_name = serializers.CharField(source="campaign.name", read_only=True)
+    account_name = serializers.CharField(source="social_media_account.account_name", read_only=True)
+
+    class Meta:
+        model = InstagramProspectingCampaignAccount
+        fields = "__all__"
+
+    def validate_platform(self, value):
+        if value not in {"instagram", "facebook"}:
+            raise serializers.ValidationError("platform debe ser instagram o facebook.")
+        return value
+
+    def validate_role(self, value):
+        if value != "prospecting":
+            raise serializers.ValidationError("role solo puede ser prospecting.")
+        return value
+
+    def validate(self, attrs):
+        for field_name in ("daily_limit", "total_limit"):
+            value = attrs.get(field_name)
+            if value is not None and value <= 0:
+                raise serializers.ValidationError({field_name: "Debe ser un entero positivo o null."})
+        return attrs
+
+
+class InstagramProspectSerializer(serializers.ModelSerializer):
+    industry_target = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    location_match = serializers.BooleanField(required=False, allow_null=True, write_only=True)
+    location_confidence = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    location_evidence = serializers.JSONField(required=False, write_only=True)
+    profile_classification = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    business_role = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    business_vertical = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    competitor_relation = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    commercial_intent_score = serializers.FloatField(required=False, allow_null=True, write_only=True)
+    classification_confidence = serializers.FloatField(required=False, allow_null=True, write_only=True)
+    qualification_decision = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    engageable = serializers.BooleanField(required=False, allow_null=True, write_only=True)
+
+    EXTENDED_METADATA_FIELDS = (
+        "industry_target",
+        "location_match",
+        "location_confidence",
+        "location_evidence",
+        "profile_classification",
+        "business_role",
+        "business_vertical",
+        "competitor_relation",
+        "commercial_intent_score",
+        "classification_confidence",
+        "qualification_decision",
+        "engageable",
+    )
+
+    class Meta:
+        model = InstagramProspect
+        fields = "__all__"
+
+    def _merge_extended_metadata(self, validated_data, instance=None):
+        metadata = dict(getattr(instance, "metadata_json", None) or {})
+        metadata.update(validated_data.get("metadata_json") or {})
+
+        for field_name in self.EXTENDED_METADATA_FIELDS:
+            if field_name in validated_data:
+                metadata[field_name] = validated_data.pop(field_name)
+
+        validated_data["metadata_json"] = metadata
+        return validated_data
+
+    def create(self, validated_data):
+        validated_data = self._merge_extended_metadata(validated_data)
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        validated_data = self._merge_extended_metadata(validated_data, instance)
+        return super().update(instance, validated_data)
+
+
+class InstagramProspectPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InstagramProspectPost
+        fields = "__all__"
+
+
+class InstagramProspectInteractionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InstagramProspectInteraction
+        fields = "__all__"
+
+
+class InstagramFollowUpAlertSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InstagramFollowUpAlert
+        fields = "__all__"
+

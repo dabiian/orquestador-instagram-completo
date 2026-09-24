@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Proxy(models.Model):
     ip_address = models.GenericIPAddressField(unique=True)
-    port = models.PositiveIntegerField(unique=True)
+    port = models.PositiveIntegerField()
     username = models.CharField(max_length=255, null=True, blank=True)
     password = models.CharField(max_length=255, null=True, blank=True)
 

@@ -438,3 +438,57 @@ def test_accounts_mode_without_account_ids_returns_422() -> None:
         response = client.post("/api/v1/executions/standalone/instagram", json=invalid_payload)
 
     assert response.status_code == 422
+
+
+def test_prospecting_contract_is_supported() -> None:
+    payload = {
+        **INSTAGRAM_PAYLOAD,
+        "schema_version": "instagram.prospecting.input.v1",
+        "stage": "instagram_prospecting",
+        "capability": "instagram.prospecting",
+    }
+    model = StandaloneInstagramRequest.model_validate(payload)
+    assert model.capability == "instagram.prospecting"
+    assert model.stage == "instagram_prospecting"
+
+
+def test_owner_mode_requires_positive_owner_id() -> None:
+    payload = {**INSTAGRAM_PAYLOAD, "targets": {"mode": "owner", "owner_id": 0}}
+    with pytest.raises(ValueError):
+        StandaloneInstagramRequest.model_validate(payload)
+
+
+def test_all_mode_discards_residual_target_ids() -> None:
+    payload = {
+        **INSTAGRAM_PAYLOAD,
+        "targets": {"mode": "all", "account_ids": [1, 2], "owner_id": 9},
+    }
+    model = StandaloneInstagramRequest.model_validate(payload)
+    assert model.targets.account_ids is None
+    assert model.targets.owner_id is None
+
+
+def test_account_ids_are_positive_strict_and_deduplicated() -> None:
+    payload = {**INSTAGRAM_PAYLOAD, "targets": {"mode": "accounts", "account_ids": [12, 12, 45]}}
+    model = StandaloneInstagramRequest.model_validate(payload)
+    assert model.targets.account_ids == [12, 45]
+    for invalid in ([0], [-1], [True], ["12"]):
+        with pytest.raises(ValueError):
+            StandaloneInstagramRequest.model_validate(
+                {**INSTAGRAM_PAYLOAD, "targets": {"mode": "accounts", "account_ids": invalid}}
+            )
+
+
+def test_task_types_are_positive_strict_and_deduplicated() -> None:
+    model = StandaloneInstagramRequest.model_validate({**INSTAGRAM_PAYLOAD, "task_types": [1, 1, 4]})
+    assert model.task_types == [1, 4]
+    for invalid in ([0], [-1], [True], ["1"]):
+        with pytest.raises(ValueError):
+            StandaloneInstagramRequest.model_validate({**INSTAGRAM_PAYLOAD, "task_types": invalid})
+
+
+def test_schema_stage_capability_cannot_be_mixed() -> None:
+    with pytest.raises(ValueError):
+        StandaloneInstagramRequest.model_validate(
+            {**INSTAGRAM_PAYLOAD, "capability": "instagram.prospecting"}
+        )

@@ -207,6 +207,18 @@
         </div>
 
         <div class="form-field">
+          <label>Propietario</label>
+          <Dropdown
+            v-model="form.owner"
+            :options="owners"
+            optionLabel="label"
+            optionValue="id"
+            placeholder="Selecciona propietario"
+            filter
+            class="w-full"
+          />
+        </div>
+        <div class="form-field">
           <label>Plataforma</label>
           <Dropdown
             v-model="form.platform"
@@ -435,6 +447,7 @@ const saving = ref(false);
 const savingCookie = ref(false);
 
 const accounts = ref([]);
+const owners = ref([]);
 const proxies = ref([]);
 const platforms = ref([]);
 const personalities = ref([]);
@@ -511,16 +524,30 @@ async function loadCampaignAssignments() {
 
 async function loadLookups() {
   const [
+    ownersResponse,
     proxiesResponse,
     platformsResponse,
     personalitiesResponse,
     campaignsResponse,
   ] = await Promise.allSettled([
+    lookupsApi.owners(),
     lookupsApi.proxies(),
     lookupsApi.platforms(),
     lookupsApi.botPersonalities(),
     lookupsApi.prospectingCampaigns({ platform: DEFAULT_ASSIGNMENT_PLATFORM }),
   ]);
+
+  if (ownersResponse.status === "fulfilled") {
+    owners.value = normalizeList(ownersResponse.value.data).map((item) => ({
+      ...item,
+      label: buildLookupLabel(item, [
+        "name",
+        "full_name",
+        "owner_name",
+        "email",
+      ]),
+    }));
+  }
 
   if (proxiesResponse.status === "fulfilled") {
     proxies.value = normalizeList(proxiesResponse.value.data).map((item) => ({
@@ -577,7 +604,8 @@ function openEdit(row) {
 
   form.value = {
     account_name: row.account_name || "",
-    account_kind: normalizeAccountKind(row.account_kind),
+    account_kind: normalizeAccountKind(row.account_kind || row.account_type),
+    owner: normalizeId(row.owner),
     platform: normalizeId(row.platform),
     proxy: normalizeId(row.proxy),
     bot_personality: normalizeId(row.bot_personality),
@@ -800,21 +828,27 @@ function buildAccountPayload() {
     "other_credentials debe ser un objeto JSON válido."
   );
 
+  if (!form.value.owner) {
+    throw new Error("El propietario es obligatorio.");
+  }
+
+  if (!form.value.bot_personality) {
+    throw new Error("La personalidad es obligatoria.");
+  }
+
   const payload = {
     account_name: form.value.account_name.trim(),
-    account_kind: form.value.account_kind || "personal",
-    owner: DEFAULT_OWNER_ID,
-    group: DEFAULT_GROUP_ID,
+    group: selectedAccount.value?.group ?? [],
+    owner: Number(form.value.owner),
+    bot_personality: Number(form.value.bot_personality),
+    account_kind: normalizeAccountKind(form.value.account_kind),
     other_credentials: normalizeCredentials(otherCredentials),
   };
 
-  addNullableId(payload, "platform", form.value.platform);
   addNullableId(payload, "proxy", form.value.proxy);
-  addNullableId(payload, "bot_personality", form.value.bot_personality);
 
   return payload;
 }
-
 function addNullableId(payload, key, value) {
   if (value !== null && value !== undefined && value !== "") {
     payload[key] = Number(value);
@@ -841,6 +875,7 @@ function getEmptyForm() {
   return {
     account_name: "",
     account_kind: "personal",
+    owner: null,
     platform: null,
     proxy: null,
     bot_personality: null,

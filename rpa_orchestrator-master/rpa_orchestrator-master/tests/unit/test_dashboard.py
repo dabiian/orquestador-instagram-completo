@@ -108,3 +108,71 @@ def test_page_flow_log_and_artifact_writes_are_identified() -> None:
     )
     assert _is_bot_write_path("PUT", "/api/v1/page-executions/302/log")
     assert not _is_bot_write_path("GET", "/api/v1/page-executions/302/log")
+
+
+def test_instagram_dashboard_contract_is_present() -> None:
+    root = Path(__file__).resolve().parents[2]
+    source = (root / "frontend" / "instagram.js").read_text(encoding="utf-8")
+
+    assert 'api("/instagram/catalog")' in source
+    assert 'api("/executions/standalone/instagram"' in source
+    assert '/events?after_sequence=' in source
+    assert '/result' in source
+    assert '/cancel' in source
+    assert 'credentials: "same-origin"' in source
+    assert 'Opciones avanzadas' in source
+    assert 'task.operation===operation' in source
+    assert '/input' not in source
+    assert 'BOT_TOKENS' not in source
+    assert 'Administración de cuentas Instagram' in source
+    assert '/instagram/admin/personalities' in source
+    assert '/instagram/admin/owners' in source
+    assert '/instagram/admin/proxies' in source
+    assert '/instagram/admin/accounts' in source
+    assert '/instagram/admin/campaigns' in source
+    assert '/instagram/admin/assignments' in source
+    assert '/verify' in source
+    assert '/expanded' in source
+    assert 'Administración avanzada de recursos' in source
+    assert 'manageInstagramResource' in source
+    for resource in ("personalities", "owners", "proxies", "accounts", "campaigns", "assignments"):
+        assert f'<option value="{resource}">' in source
+    assert 'WebSocket' not in source
+    assert 'setTimeout(' in source
+    assert 'setInterval(' not in source
+    assert 'AbortController' in source
+    assert 'toISOString()' in source
+    assert 'aria-live="polite"' in source
+    assert 'La cancelación puede tardar mientras el bot termina una operación atómica.' in source
+    assert 'Bot asignado' in source
+    assert 'Tiempo transcurrido' in source
+    assert 'error_message' in source
+    assert 'next_cursor' in source
+    assert 'Cargar más' in source
+    assert 'window.confirm(' in source
+    assert 'innerHTML = payload' not in source
+    assert 'textContent =' in source
+
+
+def test_instagram_provisioning_defaults_campaign_to_draft_and_labels_are_associated() -> None:
+    root = Path(__file__).resolve().parents[2]
+    source = (root / "frontend" / "instagram.js").read_text(encoding="utf-8")
+
+    assert '<option value="draft">Draft</option><option value="active">Active</option>' in source
+    assert 'status: adminValue("ig-c-status") || "draft"' in source
+
+    provisioning_control_ids = (
+        "ig-p-name", "ig-p-location", "ig-p-language", "ig-p-style", "ig-p-bio",
+        "ig-p-values", "ig-p-preferences", "ig-p-dislikes", "ig-p-examples",
+        "ig-p-knowledge", "ig-p-cultural", "ig-p-phraseology", "ig-p-past",
+        "ig-p-emotional", "ig-p-objectives", "ig-p-behavior",
+        "ig-o-name", "ig-o-email", "ig-o-phone", "ig-o-urls", "ig-o-services",
+        "ig-x-ip", "ig-x-port", "ig-x-user", "ig-x-password",
+        "ig-a-name", "ig-a-kind", "ig-a-group", "ig-a-user", "ig-a-password",
+        "ig-a-cookie", "ig-c-name", "ig-c-status", "ig-c-services",
+        "ig-c-strategy", "ig-c-description", "ig-c-hours", "ig-c-phone",
+        "ig-c-email", "ig-c-owner-url", "ig-as-daily", "ig-as-total",
+        "ig-as-active", "ig-resource-kind", "ig-resource-id", "ig-resource-json",
+    )
+    for control_id in provisioning_control_ids:
+        assert f'<label for="{control_id}">' in source

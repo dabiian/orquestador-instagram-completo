@@ -235,6 +235,11 @@ class AccountOwnersSerializer(serializers.ModelSerializer):
         model = AccountOwner
         fields = "__all__"
 
+    def validate_services(self, value):
+        if not isinstance(value, list) or any(not isinstance(item, str) for item in value):
+            raise serializers.ValidationError("services debe ser una lista de textos.")
+        return value
+
 
 class otherCredentialsField(serializers.JSONField):
     class Meta:
@@ -291,6 +296,8 @@ class SocialMediaAccountsSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "bot_personality",
+            "group",
+            "account_kind",
             "groups_to_search",
             "professional_mode",
             "account_name",
@@ -308,14 +315,19 @@ class SocialMediaAccountsSerializer(serializers.ModelSerializer):
 
 
 class SocialMediaAccountCreateSerializer(serializers.ModelSerializer):
+    # Contract documented in guia_creacion_cuenta_instagram_2026-09-24.md.
+    # Legacy *_id aliases remain accepted so existing clients do not break.
     bot_personality_id = serializers.PrimaryKeyRelatedField(
         source="bot_personality",
         queryset=BotPersonality.objects.all(),
+        required=False,
+        allow_null=True,
         write_only=True,
     )
     owner_id = serializers.PrimaryKeyRelatedField(
         source="owner",
         queryset=AccountOwner.objects.all(),
+        required=False,
         write_only=True,
     )
     proxy_id = serializers.PrimaryKeyRelatedField(
@@ -332,71 +344,83 @@ class SocialMediaAccountCreateSerializer(serializers.ModelSerializer):
         allow_null=True,
         write_only=True,
     )
-    groups_to_search = serializers.ListField(
-        child=serializers.CharField(),
+    group = serializers.JSONField(required=True, allow_null=False)
+    account_kind = serializers.ChoiceField(
+        choices=("business", "personal"),
         required=False,
-        allow_empty=True,
-        default=list,
+        default="business",
     )
-    other_credentials = otherCredentialsField()
+    other_credentials = serializers.JSONField(required=True, allow_null=False)
 
     class Meta:
         model = SocialMediaAccount
         fields = [
             "id",
             "account_name",
+            "group",
+            "owner",
+            "bot_personality",
+            "proxy",
+            "account_kind",
+            "other_credentials",
+            "access_token",
+            "access_secret",
+            # Backwards-compatible fields.
             "bot_personality_id",
             "owner_id",
             "proxy_id",
             "campaign_info_id",
             "groups_to_search",
             "professional_mode",
-            "access_token",
-            "access_secret",
-            "other_credentials",
             "account_type",
         ]
         read_only_fields = ["id"]
+        extra_kwargs = {
+            "owner": {"required": False},
+            "bot_personality": {"required": False, "allow_null": True},
+            "proxy": {"required": False, "allow_null": True},
+            "groups_to_search": {"required": False},
+            "professional_mode": {"required": False},
+            "account_type": {"required": False},
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         proxy_queryset = Proxy.objects.filter(socialmediaaccount__isnull=True)
         if getattr(self, "instance", None) is not None and getattr(self.instance, "proxy_id", None):
             proxy_queryset = Proxy.objects.filter(
                 Q(socialmediaaccount__isnull=True) | Q(socialmediaaccount=self.instance)
             )
+        for field_name in ("proxy", "proxy_id"):
+            if field_name in self.fields:
+                self.fields[field_name].queryset = proxy_queryset.distinct()
 
-        self.fields["proxy_id"].queryset = proxy_queryset.distinct()
+    def validate(self, attrs):
+        if not attrs.get("owner") and not getattr(self.instance, "owner_id", None):
+            raise serializers.ValidationError({"owner": "This field is required."})
+        return attrs
 
     def validate_other_credentials(self, value):
         if not isinstance(value, dict):
-            raise serializers.ValidationError(
-                "other_credentials debe ser un objeto JSON con las llaves User y password."
-            )
+            raise serializers.ValidationError("other_credentials debe ser un objeto JSON.")
 
-        user = value.get("User")
-        password = value.get("password")
+        normalized = dict(value)
+        user = normalized.get("user", normalized.get("User"))
+        password = normalized.get("password")
+        cookie = normalized.get("cookie", [])
 
         if not isinstance(user, str) or not user.strip():
-            raise serializers.ValidationError({"User": "User debe ser una cadena no vacía."})
-
+            raise serializers.ValidationError({"user": "user debe ser una cadena no vacía."})
         if not isinstance(password, str) or not password.strip():
-            raise serializers.ValidationError(
-                {"password": "password debe ser una cadena no vacía."}
-            )
+            raise serializers.ValidationError({"password": "password debe ser una cadena no vacía."})
+        if not isinstance(cookie, list):
+            raise serializers.ValidationError({"cookie": "cookie debe ser una lista."})
 
-        return value
-
-    def validate_groups_to_search(self, value):
-        cleaned_values = []
-        for item in value:
-            if not isinstance(item, str) or not item.strip():
-                raise serializers.ValidationError(
-                    "groups_to_search solo puede contener cadenas no vacías."
-                )
-            cleaned_values.append(item.strip())
-        return cleaned_values
+        normalized["user"] = user.strip()
+        normalized["User"] = user.strip()  # compatibility with the existing bot
+        normalized["password"] = password
+        normalized["cookie"] = cookie
+        return normalized
 
 
 class TaskTypeSerializer(serializers.ModelSerializer):
@@ -416,6 +440,11 @@ class ProxySerializer(serializers.ModelSerializer):
         model = Proxy
         fields = "__all__"
 
+    def validate_port(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("port debe ser un entero positivo.")
+        return value
+
 
 class SocialMediaAccountsSerializer2(serializers.ModelSerializer):
     bot_personality = BotPersonalitiesSerializer()
@@ -429,6 +458,8 @@ class SocialMediaAccountsSerializer2(serializers.ModelSerializer):
         fields = [
             "id",
             "bot_personality",
+            "group",
+            "account_kind",
             "groups_to_search",
             "professional_mode",
             "account_name",
@@ -478,6 +509,8 @@ class PendingSocialMediaAccountSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "bot_personality",
+            "group",
+            "account_kind",
             "groups_to_search",
             "professional_mode",
             "account_name",

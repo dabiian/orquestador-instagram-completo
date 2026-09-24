@@ -191,15 +191,26 @@ class StandalonePageSpeedRequest(BaseModel):
 
 class InstagramTargets(BaseModel):
     mode: Literal["accounts", "owner", "all"]
-    account_ids: list[int] | None = None
-    owner_id: int | None = None
+    account_ids: list[StrictInt] | None = None
+    owner_id: StrictInt | None = None
 
     @model_validator(mode="after")
     def validate_target_selection(self) -> InstagramTargets:
-        if self.mode == "accounts" and not self.account_ids:
-            raise ValueError("targets.account_ids is required when targets.mode is accounts")
-        if self.mode == "owner" and self.owner_id is None:
-            raise ValueError("targets.owner_id is required when targets.mode is owner")
+        if self.mode == "accounts":
+            if not self.account_ids:
+                raise ValueError("targets.account_ids is required when targets.mode is accounts")
+            normalized = list(dict.fromkeys(self.account_ids))
+            if any(value <= 0 for value in normalized):
+                raise ValueError("targets.account_ids must contain positive integers")
+            self.account_ids = normalized
+            self.owner_id = None
+        elif self.mode == "owner":
+            if self.owner_id is None or self.owner_id <= 0:
+                raise ValueError("targets.owner_id is required and must be positive when targets.mode is owner")
+            self.account_ids = None
+        else:
+            self.account_ids = None
+            self.owner_id = None
         return self
 
 
@@ -215,6 +226,9 @@ class StandaloneInstagramRequest(BaseModel):
 
     @model_validator(mode="after")
     def validate_operation_contract(self) -> StandaloneInstagramRequest:
+        if any(value <= 0 for value in self.task_types):
+            raise ValueError("task_types must contain positive integers")
+        self.task_types = list(dict.fromkeys(self.task_types))
         operation = self.capability.rsplit(".", 1)[-1]
         if self.schema_version != f"instagram.{operation}.input.v1":
             raise ValueError("schema_version does not match Instagram capability")
