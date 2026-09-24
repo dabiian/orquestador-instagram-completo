@@ -12,6 +12,7 @@ from .models.instagram_prospecting import (
 
 class InstagramProspectingCampaignSerializer(serializers.ModelSerializer):
     campaign_name = serializers.CharField(source="name", read_only=True)
+    platform = serializers.ChoiceField(choices=("instagram", "facebook"), required=True)
 
     class Meta:
         model = InstagramProspectingCampaign
