@@ -584,6 +584,31 @@ function mount() {
                 </div>
             </details>
 
+            <details class="ig-step">
+                <summary>Administración avanzada de recursos</summary>
+                <div class="ig-muted">CRUD directo sobre personalidad, owner, proxy, cuenta, campaña y asignación. Para crear o editar, usa JSON válido.</div>
+                <div class="ig-admin-grid">
+                    <div class="ig-field"><label for="ig-resource-kind">Recurso</label><select id="ig-resource-kind">
+                        <option value="personalities">Personalidades</option>
+                        <option value="owners">Owners</option>
+                        <option value="proxies">Proxies</option>
+                        <option value="accounts">Cuentas</option>
+                        <option value="campaigns">Campañas</option>
+                        <option value="assignments">Asignaciones</option>
+                    </select></div>
+                    <div class="ig-field"><label for="ig-resource-id">ID (obligatorio para obtener, editar o eliminar)</label><input id="ig-resource-id" type="number" min="1"></div>
+                    <div class="ig-field full"><label for="ig-resource-json">JSON para crear / PATCH</label><textarea id="ig-resource-json" rows="8">{}</textarea></div>
+                </div>
+                <div class="ig-row">
+                    <button id="ig-resource-list" class="button secondary" type="button">Listar</button>
+                    <button id="ig-resource-get" class="button secondary" type="button">Obtener</button>
+                    <button id="ig-resource-create" class="button primary" type="button">Crear</button>
+                    <button id="ig-resource-patch" class="button secondary" type="button">Editar (PATCH)</button>
+                    <button id="ig-resource-delete" class="button danger" type="button">Eliminar</button>
+                </div>
+                <pre id="ig-resource-output" class="ig-result" aria-live="polite">Sin operación.</pre>
+            </details>
+
             <div class="panel-head"><h2>Cuentas registradas</h2></div>
             <div class="table-wrap">
                 <table class="ig-table">
@@ -716,6 +741,12 @@ function mount() {
         .getElementById("ig-admin-refresh")
         .addEventListener("click", loadAdminAccounts);
 
+    document.getElementById("ig-resource-list").addEventListener("click", () => manageInstagramResource("list"));
+    document.getElementById("ig-resource-get").addEventListener("click", () => manageInstagramResource("get"));
+    document.getElementById("ig-resource-create").addEventListener("click", () => manageInstagramResource("create"));
+    document.getElementById("ig-resource-patch").addEventListener("click", () => manageInstagramResource("patch"));
+    document.getElementById("ig-resource-delete").addEventListener("click", () => manageInstagramResource("delete"));
+
     document.addEventListener("click", handleOutsideTaskDropdown);
     document.addEventListener("click", handleOutsideAccountDropdown);
     document.addEventListener("click", (event) => {
@@ -844,6 +875,44 @@ function normalizeAdminList(payload) {
     return [];
 }
 
+async function manageInstagramResource(action) {
+    const resource = document.getElementById("ig-resource-kind").value;
+    const idRaw = document.getElementById("ig-resource-id").value.trim();
+    const id = idRaw ? Number(idRaw) : null;
+    const output = document.getElementById("ig-resource-output");
+    if (["get", "patch", "delete"].includes(action) && (!Number.isSafeInteger(id) || id <= 0)) {
+        output.textContent = "Indica un ID entero positivo.";
+        return;
+    }
+
+    let path = `/instagram/admin/${resource}`;
+    if (id) path += `/${id}`;
+    const options = {};
+    if (action === "create" || action === "patch") {
+        let payload;
+        try {
+            payload = JSON.parse(document.getElementById("ig-resource-json").value || "{}");
+            if (!payload || Array.isArray(payload) || typeof payload !== "object") throw new Error();
+        } catch {
+            output.textContent = "El JSON debe ser un objeto válido.";
+            return;
+        }
+        options.method = action === "create" ? "POST" : "PATCH";
+        options.body = JSON.stringify(payload);
+    } else if (action === "delete") {
+        if (!window.confirm(`¿Eliminar ${resource} #${id}? Esta operación puede tener efectos en cascada.`)) return;
+        options.method = "DELETE";
+    }
+
+    try {
+        const result = await api(path, options);
+        output.textContent = result == null ? "Operación completada." : safeInstagramJson(result);
+        if (resource === "accounts") await Promise.all([loadAdminAccounts(), loadCatalog()]);
+    } catch (error) {
+        output.textContent = `Error: ${error.message}`;
+    }
+}
+
 async function loadAdminAccounts() {
     const body = document.getElementById("ig-admin-accounts");
     if (!body) return;
@@ -862,6 +931,7 @@ async function loadAdminAccounts() {
                 <td>${esc(account.owner || "")}</td>
                 <td>
                     <div class="ig-row">
+                        <button class="button secondary ig-admin-detail" data-id="${esc(account.id)}" type="button">Detalle</button>
                         <button class="button secondary ig-admin-verify" data-id="${esc(account.id)}" type="button">Verificar</button>
                         <button class="button secondary ig-admin-cookie" data-id="${esc(account.id)}" type="button">Cookies</button>
                         <button class="button danger ig-admin-delete" data-id="${esc(account.id)}" data-name="${esc(account.account_name || account.id)}" type="button">Eliminar</button>
@@ -870,6 +940,9 @@ async function loadAdminAccounts() {
             </tr>
         `).join("");
 
+        body.querySelectorAll(".ig-admin-detail").forEach((button) =>
+            button.addEventListener("click", () => showExpandedAdminAccount(Number(button.dataset.id)))
+        );
         body.querySelectorAll(".ig-admin-verify").forEach((button) =>
             button.addEventListener("click", () => verifyAdminAccount(Number(button.dataset.id)))
         );
