@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="socialmediaaccount",
             name="account_kind",
-            field=models.CharField(default="business", max_length=20),
+            field=models.CharField(choices=[("business", "business"), ("personal", "personal")], default="business", max_length=20),
         ),
         migrations.AlterField(
             model_name="proxy",
