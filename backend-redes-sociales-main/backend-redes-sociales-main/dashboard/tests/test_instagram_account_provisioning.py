@@ -161,3 +161,90 @@ class InstagramAccountProvisioningTests(TestCase):
         }
         self.assertEqual(self.client.post("/api/prospecting/campaign-accounts/", payload, format="json").status_code, 201)
         self.assertEqual(self.client.post("/api/prospecting/campaign-accounts/", payload, format="json").status_code, 400)
+
+
+    def test_campaign_rejects_put_and_defaults_to_draft(self):
+        owner = self.client.post(
+            "/api/account_owners/",
+            {"owner_name": "Owner Draft", "owner_email": "draft@example.com", "owner_phone": "123", "services": []},
+            format="json",
+        ).data
+        account = self.client.post(
+            "/api/social_media_accounts/",
+            {
+                "account_name": "draft_account",
+                "group": [],
+                "owner": owner["id"],
+                "account_kind": "business",
+                "other_credentials": {"user": "draft_account", "password": "secret", "cookie": []},
+            },
+            format="json",
+        ).data
+        created = self.client.post(
+            "/api/prospecting/campaigns/",
+            {"social_media_account": account["id"], "name": "Draft Campaign", "platform": "instagram"},
+            format="json",
+        )
+        self.assertEqual(created.status_code, 201)
+        self.assertEqual(created.data["status"], "draft")
+        detail = f"/api/prospecting/campaigns/{created.data['id']}/"
+        self.assertEqual(self.client.put(detail, created.data, format="json").status_code, 405)
+        self.assertEqual(self.client.patch(detail, {"status": "active"}, format="json").status_code, 200)
+
+    def test_proxy_can_only_be_assigned_to_one_account_and_cookie_can_be_empty(self):
+        owner = self.client.post(
+            "/api/account_owners/",
+            {"owner_name": "Proxy Owner", "owner_email": "proxy@example.com", "owner_phone": "123", "services": []},
+            format="json",
+        ).data
+        proxy = self.client.post(
+            "/api/proxy/",
+            {"ip_address": "192.168.10.25", "port": 8080, "username": None, "password": None},
+            format="json",
+        )
+        self.assertEqual(proxy.status_code, 201)
+
+        def create_account(name):
+            return self.client.post(
+                "/api/social_media_accounts/",
+                {
+                    "account_name": name,
+                    "group": ["grupo_1"],
+                    "owner": owner["id"],
+                    "proxy": proxy.data["id"],
+                    "account_kind": "business",
+                    "other_credentials": {"user": name, "password": "secret", "cookie": []},
+                },
+                format="json",
+            )
+
+        first = create_account("proxy_first")
+        self.assertEqual(first.status_code, 201)
+        self.assertEqual(create_account("proxy_second").status_code, 400)
+        cookie_url = f"/api/social_media_accounts/{first.data['id']}/update_cookie/"
+        self.assertEqual(self.client.patch(cookie_url, [], format="json").status_code, 200)
+
+    def test_expanded_social_media_detail_exposes_relations(self):
+        personality = self.client.post("/api/bot_personalities/", {"name": "Expanded"}, format="json").data
+        owner = self.client.post(
+            "/api/account_owners/",
+            {"owner_name": "Expanded Owner", "owner_email": "expanded@example.com", "owner_phone": "123", "services": []},
+            format="json",
+        ).data
+        account = self.client.post(
+            "/api/social_media_accounts/",
+            {
+                "account_name": "expanded_account",
+                "group": [],
+                "owner": owner["id"],
+                "bot_personality": personality["id"],
+                "account_kind": "personal",
+                "other_credentials": {"user": "expanded_account", "password": "secret", "cookie": []},
+            },
+            format="json",
+        ).data
+        response = self.client.get(f"/api/social_medias/{account['id']}/")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("owner", response.data)
+        self.assertIn("bot_personality", response.data)
+        self.assertIn("proxy", response.data)
