@@ -16,6 +16,7 @@ from django.utils.dateparse import parse_datetime
 
 from dashboard.models import (
     ActiveWebSocketConnection,
+    InstagramProspectingCampaignAccount,
     OrchestratorInstagramExecution,
     OrchestratorInstagramTask,
     SocialMediaAccount,
