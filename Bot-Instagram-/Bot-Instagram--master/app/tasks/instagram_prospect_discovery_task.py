@@ -111,15 +111,23 @@ class InstagramProspectDiscoveryTask(
 
     @staticmethod
     def _campaign_account_matches(campaign: dict, execution_account_id) -> bool:
-        """Validate the account invariant before any browser work begins."""
+        """Validate the account selected by the active campaign-account assignment.
+
+        A campaign has a required primary social_media_account, but the documented
+        contract explicitly allows several accounts to share that campaign.  When
+        /campaigns/active/ returns an assignment, that assignment is therefore the
+        source of truth.  The campaign field is only a legacy fallback.
+        """
         try:
+            assignment = (campaign or {}).get("_assignment") or {}
+            if isinstance(assignment, dict) and assignment.get("social_media_account") is not None:
+                assigned = assignment.get("social_media_account")
+                assigned_id = assigned.get("id") if isinstance(assigned, dict) else assigned
+                return int(assigned_id) == int(execution_account_id)
+
             configured = (campaign or {}).get("social_media_account")
-            configured_id = (
-                configured.get("id") if isinstance(configured, dict) else configured
-            )
+            configured_id = configured.get("id") if isinstance(configured, dict) else configured
             if configured_id is None:
-                # Legacy campaigns may not carry the denormalized account field.
-                # The API lookup remains the source of truth in that case.
                 return True
             return int(configured_id) == int(execution_account_id)
         except (TypeError, ValueError):
@@ -1673,11 +1681,21 @@ class InstagramProspectDiscoveryTask(
 
         ok, usage = self.prospecting_api.get_assignment_usage(assignment_id)
         if not ok or not isinstance(usage, dict):
-            # Limits are optional. A usage lookup failure must not invent a
-            # finite quota; keep legacy behavior and log the condition.
-            self.log.warning("[prospecting-limit] no se pudo consultar usage | assignment_id=%s | response=%s", assignment_id, self._shorten_for_log(usage))
+            # Empty/null limits mean "not configured".  If a finite anti-spam
+            # limit *is* configured, failing to read its usage must fail closed
+            # so discovery cannot silently exceed it.
+            finite_limit_configured = (
+                assignment.get("daily_limit") is not None
+                or assignment.get("total_limit") is not None
+            )
+            self.log.warning(
+                "[prospecting-limit] no se pudo consultar usage | assignment_id=%s | finite_limit=%s | response=%s",
+                assignment_id,
+                finite_limit_configured,
+                self._shorten_for_log(usage),
+            )
             self._prospect_limit_usage = None
-            self._prospect_quota_exhausted = False
+            self._prospect_quota_exhausted = finite_limit_configured
             return
 
         self._prospect_limit_usage = usage
