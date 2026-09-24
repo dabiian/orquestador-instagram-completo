@@ -119,6 +119,10 @@ function ensureStyles() {
             flex-wrap: wrap;
         }
 
+        #view-instagram [hidden] {
+            display: none !important;
+        }
+
         #view-instagram .ig-field {
             display: flex;
             flex-direction: column;
