@@ -10,6 +10,8 @@ const state = {
     creating: false,
     selectedTaskTypes: new Set(),
     selectedAccountIds: new Set(),
+    adminAccounts: [],
+    provisioning: false,
 };
 
 const esc = (value) =>
@@ -45,7 +47,8 @@ const api = async (path, options = {}) => {
     }
 
     if (!response.ok) {
-        throw new Error(data?.detail || `HTTP ${response.status}`);
+        const detail = data?.detail || data?.error || (data && typeof data === "object" ? JSON.stringify(data) : null);
+        throw new Error(detail || `HTTP ${response.status}`);
     }
 
     return data;
@@ -338,6 +341,33 @@ function ensureStyles() {
             white-space: pre-wrap;
         }
 
+        #view-instagram .ig-admin-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        #view-instagram .ig-admin-grid .full {
+            grid-column: 1 / -1;
+        }
+
+        #view-instagram .ig-step {
+            border: 1px solid var(--border, #ddd);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 10px 0;
+        }
+
+        #view-instagram .ig-step > summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        #view-instagram .ig-admin-message {
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+
         #view-instagram .ig-result {
             max-height: 340px;
             overflow: auto;
@@ -347,8 +377,13 @@ function ensureStyles() {
         }
 
         @media (max-width: 900px) {
-            #view-instagram .ig-grid {
+            #view-instagram .ig-grid,
+            #view-instagram .ig-admin-grid {
                 grid-template-columns: 1fr;
+            }
+
+            #view-instagram .ig-admin-grid .full {
+                grid-column: auto;
             }
         }
     `;
@@ -723,6 +758,115 @@ function mount() {
         </div>
 
 
+        <!-- ADMINISTRACIÓN DE CUENTAS -->
+
+        <section class="card ig-card" id="ig-admin-card">
+            <div class="panel-head">
+                <div>
+                    <h2>Administración de cuentas Instagram</h2>
+                    <div class="ig-muted">Provisionamiento completo: personalidad → owner → proxy opcional → cuenta → campaña → asignación.</div>
+                </div>
+                <button id="ig-admin-refresh" class="button secondary" type="button">Recargar</button>
+            </div>
+
+            <details class="ig-step" open>
+                <summary>Crear cuenta lista para prospectar</summary>
+
+                <details class="ig-step" open>
+                    <summary>1. Personalidad</summary>
+                    <div class="ig-admin-grid">
+                        <div class="ig-field"><label>Nombre</label><input id="ig-p-name"></div>
+                        <div class="ig-field"><label>Ubicación</label><input id="ig-p-location"></div>
+                        <div class="ig-field"><label>Idioma</label><input id="ig-p-language" value="ESPAÑOL"></div>
+                        <div class="ig-field"><label>Estilo de comunicación</label><input id="ig-p-style"></div>
+                        <div class="ig-field full"><label>Bio</label><textarea id="ig-p-bio" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Valores</label><textarea id="ig-p-values" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Preferencias</label><textarea id="ig-p-preferences" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Dislikes</label><textarea id="ig-p-dislikes" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Respuestas de ejemplo</label><textarea id="ig-p-examples" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Conocimiento especial</label><textarea id="ig-p-knowledge" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Referencias culturales</label><textarea id="ig-p-cultural" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Fraseología</label><textarea id="ig-p-phraseology" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Interacciones pasadas</label><textarea id="ig-p-past" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Reacciones emocionales</label><textarea id="ig-p-emotional" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Objetivos</label><textarea id="ig-p-objectives" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Tendencias de comportamiento</label><textarea id="ig-p-behavior" rows="2"></textarea></div>
+                    </div>
+                </details>
+
+                <details class="ig-step" open>
+                    <summary>2. Owner</summary>
+                    <div class="ig-admin-grid">
+                        <div class="ig-field"><label>Nombre *</label><input id="ig-o-name" required></div>
+                        <div class="ig-field"><label>Email *</label><input id="ig-o-email" type="email" required></div>
+                        <div class="ig-field"><label>Teléfono *</label><input id="ig-o-phone" required></div>
+                        <div class="ig-field"><label>URLs (JSON)</label><textarea id="ig-o-urls" rows="2">[]</textarea></div>
+                        <div class="ig-field full"><label>Servicios (JSON)</label><textarea id="ig-o-services" rows="2">[]</textarea></div>
+                    </div>
+                </details>
+
+                <details class="ig-step">
+                    <summary>3. Proxy (opcional)</summary>
+                    <div class="ig-admin-grid">
+                        <div class="ig-field"><label>IP</label><input id="ig-x-ip"></div>
+                        <div class="ig-field"><label>Puerto</label><input id="ig-x-port" type="number" min="1"></div>
+                        <div class="ig-field"><label>Usuario</label><input id="ig-x-user"></div>
+                        <div class="ig-field"><label>Contraseña</label><input id="ig-x-password" type="password"></div>
+                    </div>
+                </details>
+
+                <details class="ig-step" open>
+                    <summary>4. Cuenta Instagram</summary>
+                    <div class="ig-admin-grid">
+                        <div class="ig-field"><label>Usuario / account_name *</label><input id="ig-a-name" required></div>
+                        <div class="ig-field"><label>Tipo</label><select id="ig-a-kind"><option value="business">Business</option><option value="personal">Personal</option></select></div>
+                        <div class="ig-field full"><label>Group (JSON) *</label><textarea id="ig-a-group" rows="2">["grupo_1"]</textarea></div>
+                        <div class="ig-field"><label>Usuario credencial *</label><input id="ig-a-user" required></div>
+                        <div class="ig-field"><label>Contraseña *</label><input id="ig-a-password" type="password" required></div>
+                        <div class="ig-field full"><label>Cookies (JSON array)</label><textarea id="ig-a-cookie" rows="3">[]</textarea></div>
+                    </div>
+                </details>
+
+                <details class="ig-step" open>
+                    <summary>5. Campaña de prospección</summary>
+                    <div class="ig-admin-grid">
+                        <div class="ig-field"><label>Nombre *</label><input id="ig-c-name" required></div>
+                        <div class="ig-field"><label>Estado</label><select id="ig-c-status"><option value="active">Active</option><option value="draft">Draft</option><option value="paused">Paused</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></div>
+                        <div class="ig-field full"><label>Servicios snapshot (JSON)</label><textarea id="ig-c-services" rows="2">[]</textarea></div>
+                        <div class="ig-field full"><label>Estrategia snapshot (JSON)</label><textarea id="ig-c-strategy" rows="3">{}</textarea></div>
+                        <div class="ig-field full"><label>Descripción del negocio</label><textarea id="ig-c-description" rows="2"></textarea></div>
+                        <div class="ig-field"><label>Horario</label><input id="ig-c-hours"></div>
+                        <div class="ig-field"><label>Teléfono seguimiento</label><input id="ig-c-phone"></div>
+                        <div class="ig-field"><label>Email seguimiento</label><input id="ig-c-email" type="email"></div>
+                        <div class="ig-field"><label>Instagram del owner</label><input id="ig-c-owner-url"></div>
+                    </div>
+                </details>
+
+                <details class="ig-step" open>
+                    <summary>6. Asignación cuenta ↔ campaña</summary>
+                    <div class="ig-admin-grid">
+                        <div class="ig-field"><label>Límite diario</label><input id="ig-as-daily" type="number" min="1"></div>
+                        <div class="ig-field"><label>Límite total</label><input id="ig-as-total" type="number" min="1"></div>
+                        <div class="ig-field"><label>Activa</label><select id="ig-as-active"><option value="true">Sí</option><option value="false">No</option></select></div>
+                    </div>
+                </details>
+
+                <div class="ig-row">
+                    <button id="ig-provision" class="button primary" type="button">Crear y verificar cuenta</button>
+                    <span id="ig-admin-message" class="ig-admin-message ig-muted" aria-live="polite"></span>
+                </div>
+            </details>
+
+            <div class="panel-head"><h2>Cuentas registradas</h2></div>
+            <div class="table-wrap">
+                <table class="ig-table">
+                    <thead><tr><th>ID</th><th>Cuenta</th><th>Tipo</th><th>Owner</th><th>Acciones</th></tr></thead>
+                    <tbody id="ig-admin-accounts"><tr><td colspan="5">Cargando…</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+
         <!-- HISTORIAL -->
 
         <section class="card ig-card">
@@ -805,11 +949,20 @@ function mount() {
         .getElementById("ig-refresh-history")
         .addEventListener("click", loadHistory);
 
+    document
+        .getElementById("ig-provision")
+        .addEventListener("click", provisionInstagramAccount);
+
+    document
+        .getElementById("ig-admin-refresh")
+        .addEventListener("click", loadAdminAccounts);
+
     document.addEventListener("click", handleOutsideTaskDropdown);
     document.addEventListener("click", handleOutsideAccountDropdown);
 
     updateTargetFields();
     loadCatalog();
+    loadAdminAccounts();
 
     const existing =
         new URLSearchParams(location.search).get("execution_id");
@@ -886,6 +1039,260 @@ async function loadCatalog() {
             "ig-create-message"
         ).textContent =
             `Catálogo: ${error.message}`;
+    }
+}
+
+
+/* =========================================================
+   ADMINISTRACIÓN DE CUENTAS INSTAGRAM
+   ========================================================= */
+
+function adminValue(id) {
+    return document.getElementById(id)?.value?.trim() || "";
+}
+
+function parseAdminJson(id, fallback) {
+    const raw = adminValue(id);
+    if (!raw) return fallback;
+    try {
+        return JSON.parse(raw);
+    } catch {
+        throw new Error(`JSON inválido en ${id}.`);
+    }
+}
+
+function normalizeAdminList(payload) {
+    if (Array.isArray(payload)) return payload;
+    if (Array.isArray(payload?.results)) return payload.results;
+    return [];
+}
+
+async function loadAdminAccounts() {
+    const body = document.getElementById("ig-admin-accounts");
+    if (!body) return;
+    try {
+        const payload = await api("/instagram/admin/accounts");
+        state.adminAccounts = normalizeAdminList(payload);
+        if (!state.adminAccounts.length) {
+            body.innerHTML = '<tr><td colspan="5" class="ig-muted">No hay cuentas registradas.</td></tr>';
+            return;
+        }
+        body.innerHTML = state.adminAccounts.map((account) => `
+            <tr>
+                <td>${esc(account.id)}</td>
+                <td>${esc(account.account_name || "")}</td>
+                <td>${esc(account.account_kind || "")}</td>
+                <td>${esc(account.owner || "")}</td>
+                <td>
+                    <div class="ig-row">
+                        <button class="button secondary ig-admin-verify" data-id="${esc(account.id)}" type="button">Verificar</button>
+                        <button class="button secondary ig-admin-cookie" data-id="${esc(account.id)}" type="button">Cookies</button>
+                        <button class="button danger ig-admin-delete" data-id="${esc(account.id)}" data-name="${esc(account.account_name || account.id)}" type="button">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+        `).join("");
+
+        body.querySelectorAll(".ig-admin-verify").forEach((button) =>
+            button.addEventListener("click", () => verifyAdminAccount(Number(button.dataset.id)))
+        );
+        body.querySelectorAll(".ig-admin-cookie").forEach((button) =>
+            button.addEventListener("click", () => updateAdminCookie(Number(button.dataset.id)))
+        );
+        body.querySelectorAll(".ig-admin-delete").forEach((button) =>
+            button.addEventListener("click", () => deleteAdminAccount(Number(button.dataset.id), button.dataset.name))
+        );
+    } catch (error) {
+        body.innerHTML = `<tr><td colspan="5">Error: ${esc(error.message)}</td></tr>`;
+    }
+}
+
+async function verifyAdminAccount(accountId) {
+    const message = document.getElementById("ig-admin-message");
+    try {
+        const result = await api(`/instagram/admin/accounts/${accountId}/verify`);
+        message.textContent = `Cuenta #${accountId} lista para prospectar. Campaña activa #${result?.campaign?.id ?? "?"}.`;
+    } catch (error) {
+        message.textContent = `Cuenta #${accountId} no está lista: ${error.message}`;
+    }
+}
+
+async function updateAdminCookie(accountId) {
+    const raw = window.prompt("Pega el array JSON de cookies:", "[]");
+    if (raw === null) return;
+    const message = document.getElementById("ig-admin-message");
+    try {
+        const cookies = JSON.parse(raw);
+        if (!Array.isArray(cookies)) throw new Error("Las cookies deben ser un array JSON.");
+        await api(`/instagram/admin/accounts/${accountId}/cookie`, {
+            method: "PATCH",
+            body: JSON.stringify(cookies),
+        });
+        message.textContent = `Cookies de la cuenta #${accountId} actualizadas.`;
+    } catch (error) {
+        message.textContent = `No se pudieron actualizar cookies: ${error.message}`;
+    }
+}
+
+async function deleteAdminAccount(accountId, name) {
+    if (!window.confirm(`¿Eliminar la cuenta "${name}"? Esta acción puede eliminar datos relacionados por cascada.`)) return;
+    const message = document.getElementById("ig-admin-message");
+    try {
+        await api(`/instagram/admin/accounts/${accountId}`, { method: "DELETE" });
+        state.selectedAccountIds.delete(accountId);
+        message.textContent = `Cuenta #${accountId} eliminada.`;
+        await Promise.all([loadAdminAccounts(), loadCatalog()]);
+    } catch (error) {
+        message.textContent = `No se pudo eliminar la cuenta: ${error.message}`;
+    }
+}
+
+async function provisionInstagramAccount() {
+    if (state.provisioning) return;
+    const button = document.getElementById("ig-provision");
+    const message = document.getElementById("ig-admin-message");
+    const required = [
+        ["ig-o-name", "Nombre del owner"],
+        ["ig-o-email", "Email del owner"],
+        ["ig-o-phone", "Teléfono del owner"],
+        ["ig-a-name", "account_name"],
+        ["ig-a-user", "Usuario credencial"],
+        ["ig-a-password", "Contraseña"],
+        ["ig-c-name", "Nombre de campaña"],
+    ];
+    for (const [id, label] of required) {
+        if (!adminValue(id)) {
+            message.textContent = `${label} es obligatorio.`;
+            document.getElementById(id)?.focus();
+            return;
+        }
+    }
+
+    state.provisioning = true;
+    button.disabled = true;
+    const created = {};
+    try {
+        message.textContent = "1/7 Creando personalidad…";
+        const personality = await api("/instagram/admin/personalities", {
+            method: "POST",
+            body: JSON.stringify({
+                name: adminValue("ig-p-name") || null,
+                bio: adminValue("ig-p-bio") || null,
+                location: adminValue("ig-p-location") || null,
+                language: adminValue("ig-p-language") || "ESPAÑOL",
+                communication_style: adminValue("ig-p-style") || null,
+                values: adminValue("ig-p-values") || null,
+                preferences: adminValue("ig-p-preferences") || null,
+                dislikes: adminValue("ig-p-dislikes") || null,
+                example_responses: adminValue("ig-p-examples") || null,
+                special_knowledge: adminValue("ig-p-knowledge") || null,
+                cultural_references: adminValue("ig-p-cultural") || null,
+                phraseology: adminValue("ig-p-phraseology") || null,
+                past_interactions: adminValue("ig-p-past") || null,
+                emotional_reactions: adminValue("ig-p-emotional") || null,
+                objectives: adminValue("ig-p-objectives") || null,
+                behavioral_tendencies: adminValue("ig-p-behavior") || null,
+            }),
+        });
+        created.personality = personality.id;
+
+        message.textContent = "2/7 Creando owner…";
+        const owner = await api("/instagram/admin/owners", {
+            method: "POST",
+            body: JSON.stringify({
+                owner_name: adminValue("ig-o-name"),
+                owner_email: adminValue("ig-o-email"),
+                owner_phone: adminValue("ig-o-phone"),
+                owner_urls: parseAdminJson("ig-o-urls", []),
+                services: parseAdminJson("ig-o-services", []),
+            }),
+        });
+        created.owner = owner.id;
+
+        let proxyId = null;
+        if (adminValue("ig-x-ip") || adminValue("ig-x-port")) {
+            if (!adminValue("ig-x-ip") || !adminValue("ig-x-port")) {
+                throw new Error("Para usar proxy debes indicar IP y puerto.");
+            }
+            message.textContent = "3/7 Creando proxy…";
+            const proxy = await api("/instagram/admin/proxies", {
+                method: "POST",
+                body: JSON.stringify({
+                    ip_address: adminValue("ig-x-ip"),
+                    port: Number(adminValue("ig-x-port")),
+                    username: adminValue("ig-x-user") || null,
+                    password: adminValue("ig-x-password") || null,
+                }),
+            });
+            proxyId = proxy.id;
+            created.proxy = proxy.id;
+        }
+
+        message.textContent = "4/7 Creando cuenta…";
+        const accountPayload = {
+            account_name: adminValue("ig-a-name"),
+            group: parseAdminJson("ig-a-group", []),
+            owner: owner.id,
+            bot_personality: personality.id,
+            proxy: proxyId,
+            account_kind: adminValue("ig-a-kind") || "business",
+            other_credentials: {
+                user: adminValue("ig-a-user"),
+                password: adminValue("ig-a-password"),
+                cookie: parseAdminJson("ig-a-cookie", []),
+            },
+        };
+        const account = await api("/instagram/admin/accounts", {
+            method: "POST",
+            body: JSON.stringify(accountPayload),
+        });
+        created.account = account.id;
+
+        message.textContent = "5/7 Creando campaña…";
+        const campaign = await api("/instagram/admin/campaigns", {
+            method: "POST",
+            body: JSON.stringify({
+                social_media_account: account.id,
+                name: adminValue("ig-c-name"),
+                platform: "instagram",
+                status: adminValue("ig-c-status") || "active",
+                services_snapshot: parseAdminJson("ig-c-services", []),
+                strategy_snapshot: parseAdminJson("ig-c-strategy", {}),
+                business_description: adminValue("ig-c-description") || null,
+                business_hours: adminValue("ig-c-hours") || null,
+                follow_up_phone: adminValue("ig-c-phone") || null,
+                follow_up_email: adminValue("ig-c-email") || null,
+                owner_instagram_profile_url: adminValue("ig-c-owner-url") || null,
+            }),
+        });
+        created.campaign = campaign.id;
+
+        message.textContent = "6/7 Creando asignación…";
+        const assignment = await api("/instagram/admin/assignments", {
+            method: "POST",
+            body: JSON.stringify({
+                campaign: campaign.id,
+                social_media_account: account.id,
+                platform: "instagram",
+                role: "prospecting",
+                is_active: adminValue("ig-as-active") !== "false",
+                daily_limit: adminValue("ig-as-daily") ? Number(adminValue("ig-as-daily")) : null,
+                total_limit: adminValue("ig-as-total") ? Number(adminValue("ig-as-total")) : null,
+            }),
+        });
+        created.assignment = assignment.id;
+
+        message.textContent = "7/7 Verificando campaña activa…";
+        const verification = await api(`/instagram/admin/accounts/${account.id}/verify`);
+        document.getElementById("ig-a-password").value = "";
+        document.getElementById("ig-x-password").value = "";
+        message.textContent = `Cuenta creada correctamente. account=${account.id}, campaign=${campaign.id}, assignment=${assignment.id}. Verificación: ${verification?.ok === true ? "OK" : "sin confirmar"}.`;
+        await Promise.all([loadAdminAccounts(), loadCatalog()]);
+    } catch (error) {
+        message.textContent = `Provisionamiento detenido: ${error.message}\nCreados hasta ahora: ${JSON.stringify(created)}`;
+    } finally {
+        state.provisioning = false;
+        button.disabled = false;
     }
 }
 
