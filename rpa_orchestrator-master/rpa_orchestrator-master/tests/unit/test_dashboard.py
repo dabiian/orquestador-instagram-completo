@@ -124,3 +124,12 @@ def test_instagram_dashboard_contract_is_present() -> None:
     assert 'task.operation===operation' in source
     assert '/input' not in source
     assert 'BOT_TOKENS' not in source
+    assert 'Administración de cuentas Instagram' in source
+    assert '/instagram/admin/personalities' in source
+    assert '/instagram/admin/owners' in source
+    assert '/instagram/admin/proxies' in source
+    assert '/instagram/admin/accounts' in source
+    assert '/instagram/admin/campaigns' in source
+    assert '/instagram/admin/assignments' in source
+    assert '/verify' in source
+    assert 'WebSocket' not in source
