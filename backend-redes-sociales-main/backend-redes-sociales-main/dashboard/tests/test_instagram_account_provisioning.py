@@ -308,3 +308,80 @@ class InstagramAccountProvisioningTests(TestCase):
         self.assertTrue(usage.data["allowed"])
         self.assertIsNone(usage.data["daily_remaining"])
         self.assertIsNone(usage.data["total_remaining"])
+
+
+    def test_assignment_usage_enforces_configured_daily_and_historical_limits(self):
+        owner = self.client.post(
+            "/api/account_owners/",
+            {"owner_name": "Limited Owner", "owner_email": "limited@example.com", "owner_phone": "123", "services": []},
+            format="json",
+        ).data
+        account = self.client.post(
+            "/api/social_media_accounts/",
+            {
+                "account_name": "limited_account",
+                "group": [],
+                "owner": owner["id"],
+                "account_kind": "business",
+                "other_credentials": {"user": "limited_account", "password": "secret", "cookie": []},
+            },
+            format="json",
+        ).data
+        campaign = self.client.post(
+            "/api/prospecting/campaigns/",
+            {
+                "social_media_account": account["id"],
+                "name": "Limited Campaign",
+                "platform": "instagram",
+                "status": "active",
+            },
+            format="json",
+        ).data
+        assignment = self.client.post(
+            "/api/prospecting/campaign-accounts/",
+            {
+                "campaign": campaign["id"],
+                "social_media_account": account["id"],
+                "platform": "instagram",
+                "role": "prospecting",
+                "is_active": True,
+                "daily_limit": 1,
+                "total_limit": 1,
+            },
+            format="json",
+        ).data
+        prospect = self.client.post(
+            "/api/prospecting/prospects/",
+            {
+                "campaign": campaign["id"],
+                "platform": "instagram",
+                "username": "quota_prospect",
+                "profile_url": "https://www.instagram.com/quota_prospect/",
+                "source_type": "hashtag",
+                "source_value": "#test",
+                "status": "new",
+                "qualification_score": 5,
+            },
+            format="json",
+        ).data
+        interaction = self.client.post(
+            "/api/prospecting/prospect-interactions/",
+            {
+                "prospect": prospect["id"],
+                "social_media_account": account["id"],
+                "interaction_type": "analyzed",
+                "direction": "outbound",
+                "content_text": "identified",
+                "status": "success",
+            },
+            format="json",
+        )
+        self.assertEqual(interaction.status_code, 201)
+
+        usage = self.client.get(f"/api/prospecting/campaign-accounts/{assignment['id']}/usage/")
+        self.assertEqual(usage.status_code, 200)
+        self.assertEqual(usage.data["daily_used"], 1)
+        self.assertEqual(usage.data["total_used"], 1)
+        self.assertEqual(usage.data["daily_remaining"], 0)
+        self.assertEqual(usage.data["total_remaining"], 0)
+        self.assertFalse(usage.data["allowed"])
