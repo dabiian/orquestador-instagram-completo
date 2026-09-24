@@ -257,3 +257,54 @@ class InstagramAccountProvisioningTests(TestCase):
             format="json",
         )
         self.assertEqual(response.status_code, 400)
+
+
+    def test_assignment_limits_may_be_null_and_usage_remains_allowed(self):
+        owner = self.client.post(
+            "/api/account_owners/",
+            {"owner_name": "Unlimited Owner", "owner_email": "unlimited@example.com", "owner_phone": "123", "services": []},
+            format="json",
+        ).data
+        account = self.client.post(
+            "/api/social_media_accounts/",
+            {
+                "account_name": "unlimited_account",
+                "group": [],
+                "owner": owner["id"],
+                "account_kind": "business",
+                "other_credentials": {"user": "unlimited_account", "password": "secret", "cookie": []},
+            },
+            format="json",
+        ).data
+        campaign = self.client.post(
+            "/api/prospecting/campaigns/",
+            {
+                "social_media_account": account["id"],
+                "name": "Unlimited Campaign",
+                "platform": "instagram",
+                "status": "active",
+            },
+            format="json",
+        ).data
+        assignment = self.client.post(
+            "/api/prospecting/campaign-accounts/",
+            {
+                "campaign": campaign["id"],
+                "social_media_account": account["id"],
+                "platform": "instagram",
+                "role": "prospecting",
+                "is_active": True,
+                "daily_limit": None,
+                "total_limit": None,
+            },
+            format="json",
+        )
+        self.assertEqual(assignment.status_code, 201)
+        self.assertIsNone(assignment.data["daily_limit"])
+        self.assertIsNone(assignment.data["total_limit"])
+
+        usage = self.client.get(f"/api/prospecting/campaign-accounts/{assignment.data['id']}/usage/")
+        self.assertEqual(usage.status_code, 200)
+        self.assertTrue(usage.data["allowed"])
+        self.assertIsNone(usage.data["daily_remaining"])
+        self.assertIsNone(usage.data["total_remaining"])
