@@ -16,6 +16,7 @@ const state = {
     currentExecution: null,
     currentResult: null,
     resultPage: 0,
+    creationUncertain: false,
 };
 
 const esc = (value) =>
@@ -2014,6 +2015,14 @@ async function createExecution() {
             "ig-create-message"
         );
 
+    if (state.creationUncertain) {
+        const retry = window.confirm(
+            "La solicitud anterior terminó con una respuesta incierta y pudo haber creado una ejecución. Reintentar puede duplicarla. ¿Deseas crear otra ejecución?"
+        );
+        if (!retry) return;
+        state.creationUncertain = false;
+    }
+
     const mode =
         document.getElementById(
             "ig-target-mode"
@@ -2339,8 +2348,19 @@ async function createExecution() {
         await loadHistory();
 
     } catch (error) {
-        message.textContent =
-            `Error: ${error.message}`;
+        const status = Number(error.status) || null;
+        state.creationUncertain = status === null || status >= 500;
+        if (status === 401) {
+            message.textContent = "La sesión del operador no es válida. Autentícate nuevamente.";
+        } else if (status === 403) {
+            message.textContent = "El operador no tiene permisos para crear esta ejecución.";
+        } else if (status === 422) {
+            message.textContent = `Revisa los campos del formulario: ${error.message}`;
+        } else if (status === 503) {
+            message.textContent = `Servicio temporalmente no disponible: ${error.message}`;
+        } else {
+            message.textContent = `Error: ${error.message}`;
+        }
 
     } finally {
         state.creating = false;
