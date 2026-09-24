@@ -166,16 +166,32 @@ class ProspectingAPI:
 
         if isinstance(data, dict):
             if data.get("ok") is True and isinstance(data.get("campaign"), dict):
-                return True, data["campaign"]
+                campaign = dict(data["campaign"])
+                if isinstance(data.get("assignment"), dict):
+                    campaign["_assignment"] = dict(data["assignment"])
+                return True, campaign
 
             if isinstance(data.get("campaign"), dict):
-                return True, data["campaign"]
+                campaign = dict(data["campaign"])
+                if isinstance(data.get("assignment"), dict):
+                    campaign["_assignment"] = dict(data["assignment"])
+                return True, campaign
 
         return False, {
             "error": "No active campaign found",
             "response": data,
             "status": status,
         }
+
+    def get_assignment_usage(self, assignment_id):
+        """Read optional per-account prospect limits and current usage.
+
+        daily_limit/total_limit may be null. Null explicitly means that no
+        finite limit was configured for that dimension.
+        """
+        if not assignment_id:
+            return False, {"error": "assignment_id is required"}
+        return self._get(f"prospecting/campaign-accounts/{int(assignment_id)}/usage/")[:2]
 
     # =========================================================
     # PROSPECTS
