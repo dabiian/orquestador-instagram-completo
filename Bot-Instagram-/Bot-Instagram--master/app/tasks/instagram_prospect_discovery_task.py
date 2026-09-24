@@ -101,6 +101,8 @@ class InstagramProspectDiscoveryTask(
         self.current_search_term = ""
         self.current_campaign = None
         self.current_social_media_account_id = None
+        self._prospect_limit_usage = None
+        self._prospect_quota_exhausted = False
         self.safety_gate = InstagramSafetyGate(InstagramConfigRuntimeService.campaign(self.data.get("campaign_type") or "botanica"))
         # Persistent within one task execution: prevent the same post/profile
         # from being classified repeatedly when it appears under multiple hashtags.
@@ -171,6 +173,14 @@ class InstagramProspectDiscoveryTask(
                 return False
 
             self.current_campaign = campaign
+            self._load_prospect_identification_limits(campaign)
+            if self._prospect_quota_exhausted:
+                self.log.info(
+                    "[prospecting-limit] discovery omitido: límite diario o histórico alcanzado | usage=%s",
+                    self._shorten_for_log(self._prospect_limit_usage),
+                )
+                return True
+
             strategy = campaign.get("strategy_snapshot") or {}
             campaign_type = InstagramConfigRuntimeService.campaign(
                 campaign.get("campaign_type")
@@ -398,6 +408,9 @@ class InstagramProspectDiscoveryTask(
         engaged = 0
 
         for attempt in range(1, max_posts + 1):
+            if self._prospect_quota_exhausted:
+                self.log.info("[prospecting-limit] escaneo detenido por cuota de identificación")
+                break
             try:
                 self.log.info(
                     "Abriendo publicación candidata %s/%s para %s",
@@ -1505,6 +1518,9 @@ class InstagramProspectDiscoveryTask(
         qualification: dict,
     ) -> dict:
         try:
+            if not self._prospect_identification_allowed():
+                self._prospect_quota_exhausted = True
+                return {"ok": False, "limit_reached": True, "error": "prospect identification limit reached"}
             campaign_id = self.current_campaign["id"]
 
             social_media_account_id = self.current_social_media_account_id
@@ -1621,6 +1637,9 @@ class InstagramProspectDiscoveryTask(
                 self._shorten_for_log(interaction),
             )
 
+            if ok_interaction:
+                self._refresh_prospect_identification_usage()
+
             self.log.info(
                 "Prospect guardado | username=%s | valid=%s | score=%s | account_id=%s",
                 profile_context["username"],
@@ -1640,6 +1659,53 @@ class InstagramProspectDiscoveryTask(
         except Exception as e:
             self.log.warning("Error guardando candidato descubierto: %r", e)
             return {"ok": False, "error": str(e)}
+
+    # =========================================================
+    # OPTIONAL PROSPECT IDENTIFICATION LIMITS
+    # =========================================================
+    def _load_prospect_identification_limits(self, campaign: dict) -> None:
+        assignment = (campaign or {}).get("_assignment") or {}
+        assignment_id = assignment.get("id") if isinstance(assignment, dict) else None
+        if not assignment_id:
+            self._prospect_limit_usage = None
+            self._prospect_quota_exhausted = False
+            return
+
+        ok, usage = self.prospecting_api.get_assignment_usage(assignment_id)
+        if not ok or not isinstance(usage, dict):
+            # Limits are optional. A usage lookup failure must not invent a
+            # finite quota; keep legacy behavior and log the condition.
+            self.log.warning("[prospecting-limit] no se pudo consultar usage | assignment_id=%s | response=%s", assignment_id, self._shorten_for_log(usage))
+            self._prospect_limit_usage = None
+            self._prospect_quota_exhausted = False
+            return
+
+        self._prospect_limit_usage = usage
+        self._prospect_quota_exhausted = usage.get("allowed") is False
+
+    def _refresh_prospect_identification_usage(self) -> None:
+        assignment = (self.current_campaign or {}).get("_assignment") or {}
+        assignment_id = assignment.get("id") if isinstance(assignment, dict) else None
+        if not assignment_id:
+            return
+        ok, usage = self.prospecting_api.get_assignment_usage(assignment_id)
+        if ok and isinstance(usage, dict):
+            self._prospect_limit_usage = usage
+            self._prospect_quota_exhausted = usage.get("allowed") is False
+
+    def _prospect_identification_allowed(self) -> bool:
+        usage = self._prospect_limit_usage
+        if not isinstance(usage, dict):
+            return True
+        # null limits are intentionally unlimited/not configured.
+        daily_limit = usage.get("daily_limit")
+        total_limit = usage.get("total_limit")
+        daily_used = int(usage.get("daily_used") or 0)
+        total_used = int(usage.get("total_used") or 0)
+        return (
+            (daily_limit is None or daily_used < int(daily_limit))
+            and (total_limit is None or total_used < int(total_limit))
+        )
 
     # =========================================================
     # HELPERS
