@@ -886,7 +886,7 @@ async function manageInstagramResource(action) {
     }
 
     let path = `/instagram/admin/${resource}`;
-    if (id) path += `/${id}`;
+    if (["get", "patch", "delete"].includes(action)) path += `/${id}`;
     const options = {};
     if (action === "create" || action === "patch") {
         let payload;
