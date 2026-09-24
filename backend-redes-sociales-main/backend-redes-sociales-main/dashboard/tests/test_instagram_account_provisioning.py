@@ -248,3 +248,12 @@ class InstagramAccountProvisioningTests(TestCase):
         self.assertIn("owner", response.data)
         self.assertIn("bot_personality", response.data)
         self.assertIn("proxy", response.data)
+
+
+    def test_proxy_port_must_be_strictly_positive(self):
+        response = self.client.post(
+            "/api/proxy/",
+            {"ip_address": "192.168.10.26", "port": 0, "username": None, "password": None},
+            format="json",
+        )
+        self.assertEqual(response.status_code, 400)
