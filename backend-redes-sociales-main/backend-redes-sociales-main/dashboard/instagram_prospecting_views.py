@@ -1,4 +1,6 @@
-﻿from rest_framework import status, viewsets
+﻿from django.utils import timezone
+
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -102,6 +104,46 @@ class InstagramProspectingCampaignAccountViewSet(viewsets.ModelViewSet):
         if is_active is not None:
             queryset = queryset.filter(is_active=str(is_active).lower() in {"1", "true", "yes"})
         return queryset
+
+    @action(detail=True, methods=["get"], url_path="usage")
+    def usage(self, request, pk=None):
+        """Return per-account prospect identification usage for optional anti-spam limits.
+
+        A null daily_limit/total_limit means "not configured" and therefore does
+        not block discovery. Usage is based on distinct prospects that reached
+        the analyzed interaction for this account and campaign.
+        """
+        assignment = self.get_object()
+        interactions = InstagramProspectInteraction.objects.filter(
+            social_media_account_id=assignment.social_media_account_id,
+            prospect__campaign_id=assignment.campaign_id,
+            interaction_type="analyzed",
+            status="success",
+        )
+        total_used = interactions.values("prospect_id").distinct().count()
+        daily_used = (
+            interactions.filter(created_at__date=timezone.localdate())
+            .values("prospect_id")
+            .distinct()
+            .count()
+        )
+
+        def remaining(limit, used):
+            return None if limit is None else max(0, int(limit) - int(used))
+
+        return Response({
+            "assignment_id": assignment.id,
+            "daily_limit": assignment.daily_limit,
+            "total_limit": assignment.total_limit,
+            "daily_used": daily_used,
+            "total_used": total_used,
+            "daily_remaining": remaining(assignment.daily_limit, daily_used),
+            "total_remaining": remaining(assignment.total_limit, total_used),
+            "allowed": (
+                (assignment.daily_limit is None or daily_used < assignment.daily_limit)
+                and (assignment.total_limit is None or total_used < assignment.total_limit)
+            ),
+        })
 
 
 class InstagramProspectViewSet(viewsets.ModelViewSet):
