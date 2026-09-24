@@ -29,6 +29,16 @@ class InstagramProspectingCampaignSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Estado de campaña inválido.")
         return value
 
+    def validate_services_snapshot(self, value):
+        if not isinstance(value, list):
+            raise serializers.ValidationError("services_snapshot debe ser una lista JSON.")
+        return value
+
+    def validate_strategy_snapshot(self, value):
+        if not isinstance(value, dict):
+            raise serializers.ValidationError("strategy_snapshot debe ser un objeto JSON.")
+        return value
+
 
 class InstagramProspectingCampaignAccountSerializer(serializers.ModelSerializer):
     campaign_name = serializers.CharField(source="campaign.name", read_only=True)
