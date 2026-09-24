@@ -838,7 +838,7 @@ function buildAccountPayload() {
 
   const payload = {
     account_name: form.value.account_name.trim(),
-    group: [],
+    group: selectedAccount.value?.group ?? [],
     owner: Number(form.value.owner),
     bot_personality: Number(form.value.bot_personality),
     account_kind: normalizeAccountKind(form.value.account_kind),
