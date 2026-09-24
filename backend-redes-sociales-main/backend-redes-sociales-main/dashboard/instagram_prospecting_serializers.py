@@ -2,6 +2,7 @@
 
 from .models.instagram_prospecting import (
     InstagramProspectingCampaign,
+    InstagramProspectingCampaignAccount,
     InstagramProspect,
     InstagramProspectPost,
     InstagramProspectInteraction,
@@ -15,6 +16,43 @@ class InstagramProspectingCampaignSerializer(serializers.ModelSerializer):
     class Meta:
         model = InstagramProspectingCampaign
         fields = "__all__"
+
+    def validate_platform(self, value):
+        if value not in {"instagram", "facebook"}:
+            raise serializers.ValidationError("platform debe ser instagram o facebook.")
+        return value
+
+    def validate_status(self, value):
+        allowed = {"draft", "active", "paused", "completed", "cancelled"}
+        if value not in allowed:
+            raise serializers.ValidationError("Estado de campaña inválido.")
+        return value
+
+
+class InstagramProspectingCampaignAccountSerializer(serializers.ModelSerializer):
+    campaign_name = serializers.CharField(source="campaign.name", read_only=True)
+    account_name = serializers.CharField(source="social_media_account.account_name", read_only=True)
+
+    class Meta:
+        model = InstagramProspectingCampaignAccount
+        fields = "__all__"
+
+    def validate_platform(self, value):
+        if value not in {"instagram", "facebook"}:
+            raise serializers.ValidationError("platform debe ser instagram o facebook.")
+        return value
+
+    def validate_role(self, value):
+        if value != "prospecting":
+            raise serializers.ValidationError("role solo puede ser prospecting.")
+        return value
+
+    def validate(self, attrs):
+        for field_name in ("daily_limit", "total_limit"):
+            value = attrs.get(field_name)
+            if value is not None and value <= 0:
+                raise serializers.ValidationError({field_name: "Debe ser un entero positivo o null."})
+        return attrs
 
 
 class InstagramProspectSerializer(serializers.ModelSerializer):
