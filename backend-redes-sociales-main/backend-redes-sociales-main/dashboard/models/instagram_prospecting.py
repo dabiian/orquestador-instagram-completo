@@ -4,7 +4,7 @@ from .social_media_account import SocialMediaAccount
 
 
 class InstagramProspectingCampaign(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=150)
     platform = models.CharField(max_length=30, default="instagram", db_index=True)
     status = models.CharField(max_length=30, default="active", db_index=True)
 
@@ -16,6 +16,11 @@ class InstagramProspectingCampaign(models.Model):
 
     services_snapshot = models.JSONField(default=list, blank=True)
     strategy_snapshot = models.JSONField(default=dict, blank=True)
+    business_description = models.TextField(null=True, blank=True)
+    business_hours = models.TextField(null=True, blank=True)
+    follow_up_phone = models.CharField(max_length=50, null=True, blank=True)
+    follow_up_email = models.EmailField(null=True, blank=True)
+    owner_instagram_profile_url = models.CharField(max_length=1000, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -29,6 +34,42 @@ class InstagramProspectingCampaign(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class InstagramProspectingCampaignAccount(models.Model):
+    campaign = models.ForeignKey(
+        InstagramProspectingCampaign,
+        on_delete=models.CASCADE,
+        related_name="account_assignments",
+    )
+    social_media_account = models.ForeignKey(
+        SocialMediaAccount,
+        on_delete=models.CASCADE,
+        related_name="instagram_prospecting_assignments",
+    )
+    platform = models.CharField(max_length=30, default="instagram", db_index=True)
+    role = models.CharField(max_length=30, default="prospecting")
+    is_active = models.BooleanField(default=True, db_index=True)
+    daily_limit = models.PositiveIntegerField(null=True, blank=True)
+    total_limit = models.PositiveIntegerField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "instagram_prospecting_campaign_accounts"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["campaign", "social_media_account"],
+                name="uniq_instagram_campaign_account",
+            )
+        ]
+        indexes = [
+            models.Index(fields=["social_media_account", "platform", "is_active"]),
+            models.Index(fields=["campaign", "is_active"]),
+        ]
+
+    def __str__(self):
+        return f"{self.campaign_id}:{self.social_media_account_id}:{self.platform}"
 
 
 class InstagramProspect(models.Model):
