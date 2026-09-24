@@ -91,3 +91,10 @@ La aclaración del equipo se implementa así:
 - `options.max_accounts` conserva el significado del contrato del Orquestador: cantidad máxima de cuentas a procesar en una ejecución. No se reutiliza como límite histórico de prospectos.
 - `custom_task.post` y `custom_task.links_image` son opcionales. Si el equipo no fija una guía de longitud/cantidad, no se inventa un máximo. Cuando se proporcionan imágenes, la UI valida URLs HTTPS.
 - La generación personal de posts/stories conserva el contexto por cuenta (personalidad, ubicación y contexto de tarea/campaña), de modo que una guía futura de longitud/cantidad puede añadirse sin convertirla en un valor global obligatorio para todas las cuentas.
+
+
+## E. Revisión final adicional
+
+En la última auditoría se detectó y corrigió un caso de borde importante de la guía de creación: una campaña puede compartirse entre varias cuentas. El bot ahora valida la cuenta de ejecución contra `assignment.social_media_account` (fuente de verdad del paso 6) y solo usa `campaign.social_media_account` como fallback legacy. Así una cuenta secundaria correctamente asignada no queda bloqueada por la cuenta principal de la campaña.
+
+También se endureció el comportamiento de los límites opcionales: si `daily_limit` o `total_limit` están configurados y no puede consultarse el consumo, discovery se detiene (fail-closed) para no exceder accidentalmente una cuota anti-spam. Si ambos están vacíos/`null`, la falla de consulta no inventa un límite y se conserva el comportamiento sin máximo configurado.
