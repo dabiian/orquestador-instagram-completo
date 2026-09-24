@@ -2563,11 +2563,13 @@ async function loadResult(id) {
         const totals =
             payload.totals || {};
 
+        const duration = state.currentExecution ? instagramElapsed(state.currentExecution) : "—";
         const summary =
             `Creadas: ${totals.created ?? "-"} | ` +
             `Correctas: ${totals.ok ?? "-"} | ` +
             `Errores: ${totals.error ?? "-"} | ` +
-            `Canceladas: ${totals.cancelled ?? "-"}`;
+            `Canceladas: ${totals.cancelled ?? "-"} | ` +
+            `Duración: ${duration}`;
 
         document.getElementById(
             "ig-result"
@@ -2706,13 +2708,12 @@ async function loadResult(id) {
         }
 
     } catch (error) {
-        if (
-            state.executionId === id
-        ) {
-            document.getElementById(
-                "ig-result"
-            ).textContent =
-                error.message;
+        if (state.executionId === id) {
+            const terminalError = state.currentExecution?.error_message;
+            document.getElementById("ig-result").textContent =
+                [terminalError ? `Error terminal: ${terminalError}` : "", `Resultado: ${error.message}`]
+                    .filter(Boolean)
+                    .join("\n");
         }
     }
 }
