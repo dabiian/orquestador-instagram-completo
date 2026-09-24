@@ -21,6 +21,7 @@ from .instagram_prospecting_serializers import (
 
 
 class InstagramProspectingCampaignViewSet(viewsets.ModelViewSet):
+    http_method_names = ["get", "post", "patch", "delete", "head", "options"]
     queryset = InstagramProspectingCampaign.objects.select_related(
         "social_media_account"
     ).order_by("-created_at")
