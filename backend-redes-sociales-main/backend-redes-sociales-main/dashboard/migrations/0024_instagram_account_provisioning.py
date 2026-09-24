@@ -80,10 +80,10 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name="instagramprospectingcampaignaccount",
-            index=models.Index(fields=["social_media_account", "platform", "is_active"], name="ig_ca_account_platform_active_idx"),
+            index=models.Index(fields=["social_media_account", "platform", "is_active"], name="ig_ca_acct_plat_active"),
         ),
         migrations.AddIndex(
             model_name="instagramprospectingcampaignaccount",
-            index=models.Index(fields=["campaign", "is_active"], name="ig_ca_campaign_active_idx"),
+            index=models.Index(fields=["campaign", "is_active"], name="ig_ca_campaign_active"),
         ),
     ]
