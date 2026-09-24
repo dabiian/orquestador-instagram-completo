@@ -282,7 +282,14 @@ class InstagramOrchestratorAdapter:
 
     def _resolve_accounts(self, targets: dict[str, Any]) -> list[SocialMediaAccount]:
         mode = targets.get("mode")
-        base = SocialMediaAccount.objects.select_related("owner").filter(account_type__iexact="instagram")
+        # Instagram membership is defined by the active campaign-account assignment,
+        # not by the legacy SocialMediaAccount.account_type field.
+        instagram_ids = InstagramProspectingCampaignAccount.objects.filter(
+            platform__iexact="instagram",
+            role="prospecting",
+            is_active=True,
+        ).values_list("social_media_account_id", flat=True)
+        base = SocialMediaAccount.objects.select_related("owner").filter(id__in=instagram_ids).distinct()
         if mode == "accounts":
             ids = [int(value) for value in targets.get("account_ids") or []]
             return list(base.filter(id__in=ids).order_by("id"))
