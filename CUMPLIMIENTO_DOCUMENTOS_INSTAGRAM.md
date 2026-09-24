@@ -29,7 +29,7 @@ Esta matriz separa **implementación** de **validación runtime**. Un requisito 
 | 14 | Resultado tolerante + JSON fallback | Implementado |
 | 15 | Cancelación confirmada; UI espera API | Implementado |
 | 16 | Errores HTTP sin retry automático de POST | Implementado |
-| 17 | Integración dashboard existente | Implementado como extensión `instagram.js` cargada por `app.js`, evitando alterar el core |
+| 17 | Integración dashboard existente | Implementado: pestaña/vista en `index.html`, carga desde `app.js`, estilos en `styles.css` y lógica aislada en `instagram.js` |
 | 18 | labels, aria-describedby, aria-live, escape, sin secretos | Implementado |
 | 19 | Pruebas mínimas | Cobertura contractual ampliada; validar suite completa en Docker |
 | 20 | Criterios de aceptación | Implementados; validar E2E |
@@ -38,12 +38,12 @@ Esta matriz separa **implementación** de **validación runtime**. Un requisito 
 | 21.3 | Historial paginado Instagram | Implementado API + cursor UI |
 | 21.4 | Catálogos | Implementado vía BFF |
 | 21.5 | Contrato prospecting | Confirmado por adaptador: `instagram.prospecting.input.v1` / `instagram_prospecting` y resultado simétrico |
-| 21.6 | custom_task por capability | El adaptador lo trata como objeto opcional transparente para ambas capabilities; no existe una diferencia adicional documentada por los dos documentos |
-| 21.7 | límites máximos | Los documentos no especifican cifras. No se inventan límites. La UI evita congelarse limitando el render inicial de tareas; cualquier límite funcional adicional requiere contrato externo |
+| 21.6 | custom_task por capability | Confirmado por la implementación del adaptador: el mismo objeto `custom_task` se propaga a `TaskBot` para maduración y prospección; no hay variante por capability en el contrato actual |
+| 21.7 | límites máximos | Auditado: el contrato actual no define máximos de cuentas, cantidad de `links_image` ni longitud de `post`. `max_accounts` se acepta como entero positivo y el adaptador lo aplica. No se inventan topes que los documentos no proporcionan; si el equipo exige máximos finitos, debe suministrar esas cifras antes de producción |
 
 ### Nota §17
 
-El documento propone editar `index.html`, `app.js` y `styles.css`. La implementación conserva el mismo resultado funcional mediante una extensión aislada: `app.js` importa `instagram.js`, y este agrega la pestaña/vista y estilos reutilizando las clases visuales existentes. Esto evita modificar módulos SEO existentes y mantiene el límite arquitectónico.
+La integración ya está plasmada en los archivos indicados por la guía: `index.html` contiene la pestaña y la vista hermana; `styles.css` contiene los estilos Instagram reutilizando variables/clases del dashboard; `app.js` carga el módulo aislado `instagram.js`, donde vive el estado y la lógica para no mezclarla con el core SEO.
 
 ## B. guia_creacion_cuenta_instagram_2026-09-24.md
 
@@ -78,4 +78,4 @@ Ejecutar, sobre la rama actual:
 9. Verificar pending → queued → running → terminal, eventos, resultado y cancelación.
 10. Confirmar que el bot Selenium consume los TaskBot y libera capacidad.
 
-Hasta completar C, la afirmación correcta es: **contrato implementado en código; validación runtime pendiente**.
+Hasta completar C, la afirmación correcta es: **todos los requisitos implementables a partir de los dos documentos están plasmados en código; la validación runtime sigue pendiente. El único dato que los propios documentos dejan sin definir son los máximos finitos de §21.7.**
