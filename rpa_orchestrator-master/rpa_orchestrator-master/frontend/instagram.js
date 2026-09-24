@@ -50,7 +50,10 @@ const api = async (path, options = {}) => {
 
     if (!response.ok) {
         const detail = data?.detail || data?.error || (data && typeof data === "object" ? JSON.stringify(data) : null);
-        throw new Error(detail || `HTTP ${response.status}`);
+        const error = new Error(detail || `HTTP ${response.status}`);
+        error.status = response.status;
+        error.payload = data;
+        throw error;
     }
 
     return data;
@@ -697,6 +700,17 @@ function mount() {
                         placeholder="Se resuelve en el backend si se deja vacío"
                     >
 
+                    <label for="ig-max-accounts">
+                        Máximo de cuentas (opcional)
+                    </label>
+                    <input
+                        id="ig-max-accounts"
+                        type="number"
+                        min="1"
+                        step="1"
+                        placeholder="50"
+                    >
+
                 </details>
 
 
@@ -951,6 +965,10 @@ function mount() {
             control.insertAdjacentElement("afterend", hint);
             control.setAttribute("aria-describedby", hint.id);
         }
+        const globalMessageId = control.closest("#ig-admin-card") ? "ig-admin-message" : "ig-create-message";
+        const ids = new Set((control.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean));
+        ids.add(globalMessageId);
+        control.setAttribute("aria-describedby", [...ids].join(" "));
     });
 
     document.getElementById("ig-events").setAttribute("aria-live", "polite");
@@ -1008,6 +1026,12 @@ function mount() {
 
     document.addEventListener("click", handleOutsideTaskDropdown);
     document.addEventListener("click", handleOutsideAccountDropdown);
+    document.addEventListener("click", (event) => {
+        const workspaceTab = event.target.closest?.(".workspace-tab");
+        if (workspaceTab && workspaceTab.dataset.view !== "instagram") {
+            stopInstagramPolling();
+        }
+    });
 
     updateTargetFields();
     loadCatalog();
@@ -1016,10 +1040,11 @@ function mount() {
     const existing =
         new URLSearchParams(location.search).get("execution_id");
 
-    if (
-        existing &&
-        /^[0-9a-f-]{36}$/i.test(existing)
-    ) {
+    const requestedView = new URLSearchParams(location.search).get("view");
+    if (requestedView === "instagram" || (existing && /^[0-9a-f-]{36}$/i.test(existing))) {
+        activate();
+    }
+    if (existing && /^[0-9a-f-]{36}$/i.test(existing)) {
         startPolling(existing);
     }
 }
@@ -1029,7 +1054,18 @@ function mount() {
    ACTIVAR PESTAÑA
    ========================================================= */
 
+function stopInstagramPolling() {
+    clearTimeout(state.timer);
+    state.timer = null;
+    state.controller?.abort();
+    state.controller = null;
+}
+
 function activate() {
+    const url = new URL(location.href);
+    url.searchParams.set("view", "instagram");
+    history.replaceState(null, "", url);
+
     document
         .querySelectorAll(".workspace-tab")
         .forEach((button) =>
@@ -2106,9 +2142,22 @@ async function createExecution() {
                 Array.isArray(customTask) ||
                 typeof customTask !== "object"
             ) {
-                throw new Error(
-                    "object required"
-                );
+                throw new Error("object required");
+            }
+
+            if (customTask.links_image !== undefined) {
+                if (!Array.isArray(customTask.links_image)) {
+                    throw new Error("links_image must be an array");
+                }
+                customTask.links_image = customTask.links_image
+                    .map((value) => String(value).trim())
+                    .filter(Boolean);
+                for (const value of customTask.links_image) {
+                    const parsed = new URL(value);
+                    if (parsed.protocol !== "https:") {
+                        throw new Error("links_image only accepts https URLs");
+                    }
+                }
             }
 
         } catch {
@@ -2130,8 +2179,17 @@ async function createExecution() {
         ).value.trim();
 
     if (executor) {
-        options.bot_executor =
-            executor;
+        options.bot_executor = executor;
+    }
+
+    const maxAccountsRaw = document.getElementById("ig-max-accounts").value.trim();
+    if (maxAccountsRaw) {
+        const maxAccounts = Number(maxAccountsRaw);
+        if (!Number.isSafeInteger(maxAccounts) || maxAccounts <= 0) {
+            message.textContent = "Máximo de cuentas debe ser un entero positivo.";
+            return;
+        }
+        options.max_accounts = maxAccounts;
     }
 
 
@@ -2558,7 +2616,7 @@ async function loadResult(id) {
         const totals =
             payload.totals || {};
 
-        const duration = state.currentExecution ? instagramElapsed(state.currentExecution) : "—";
+        const duration = payload.duration ?? payload.duration_seconds ?? (state.currentExecution ? instagramElapsed(state.currentExecution) : "—");
         const summary =
             `Creadas: ${totals.created ?? "-"} | ` +
             `Correctas: ${totals.ok ?? "-"} | ` +
@@ -2763,10 +2821,11 @@ async function cancelExecution() {
         }
 
     } catch (error) {
-        document.getElementById(
-            "ig-current"
-        ).textContent =
-            `Cancelación: ${error.message}`;
+        document.getElementById("ig-current").textContent = `Cancelación: ${error.message}`;
+        const cancelButton = document.getElementById("ig-cancel");
+        const canRetryCancel = ["queued", "running"].includes(state.currentExecution?.status);
+        cancelButton.hidden = !canRetryCancel;
+        cancelButton.disabled = !canRetryCancel;
     }
 }
 
