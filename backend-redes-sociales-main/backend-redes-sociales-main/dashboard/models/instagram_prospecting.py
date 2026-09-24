@@ -6,7 +6,7 @@ from .social_media_account import SocialMediaAccount
 class InstagramProspectingCampaign(models.Model):
     name = models.CharField(max_length=150)
     platform = models.CharField(max_length=30, default="instagram", db_index=True)
-    status = models.CharField(max_length=30, default="active", db_index=True)
+    status = models.CharField(max_length=30, default="draft", db_index=True)
 
     social_media_account = models.ForeignKey(
         SocialMediaAccount,
