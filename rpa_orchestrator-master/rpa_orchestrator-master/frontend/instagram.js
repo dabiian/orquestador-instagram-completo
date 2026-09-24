@@ -14,6 +14,8 @@ const state = {
     provisioning: false,
     historyCursor: null,
     currentExecution: null,
+    currentResult: null,
+    resultPage: 0,
 };
 
 const esc = (value) =>
@@ -2437,9 +2439,9 @@ function startPolling(id) {
             ) {
                 await loadResult(id);
 
-                document.getElementById(
-                    "ig-cancel"
-                ).disabled = true;
+                const terminalCancel = document.getElementById("ig-cancel");
+                terminalCancel.disabled = true;
+                terminalCancel.hidden = true;
 
                 return;
             }
@@ -2596,170 +2598,114 @@ async function loadEvents(
    RESULTADO
    ========================================================= */
 
+function safeInstagramJson(value) {
+    return JSON.stringify(
+        value,
+        (_key, item) => {
+            if (Array.isArray(item) && item.length > 100) {
+                return [...item.slice(0, 100), `… ${item.length - 100} elementos adicionales omitidos de la vista`];
+            }
+            return item;
+        },
+        2
+    );
+}
+
+function renderInstagramTaskPage(payload) {
+    const container = document.getElementById("ig-task-table");
+    container.replaceChildren();
+    const tasks = Array.isArray(payload?.tasks) ? payload.tasks : [];
+    if (!tasks.length) return;
+
+    const pageSize = 50;
+    const pages = Math.max(1, Math.ceil(tasks.length / pageSize));
+    state.resultPage = Math.min(Math.max(0, state.resultPage), pages - 1);
+    const from = state.resultPage * pageSize;
+    const shown = tasks.slice(from, from + pageSize);
+
+    const table = document.createElement("table");
+    table.className = "ig-table";
+    const head = document.createElement("tr");
+    for (const label of ["TaskBot", "Cuenta", "Estado", "Ejecutor", "Finalizada", "Detalle"]) {
+        const cell = document.createElement("th");
+        cell.textContent = label;
+        head.appendChild(cell);
+    }
+    table.appendChild(head);
+
+    for (const task of shown) {
+        const row = document.createElement("tr");
+        for (const key of ["task_bot_id", "account_id", "status", "bot_executor", "end_date", "comment"]) {
+            const cell = document.createElement("td");
+            const value = task[key];
+            cell.textContent = typeof value === "object" ? safeInstagramJson(value) : String(value ?? "");
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
+    container.appendChild(table);
+
+    if (pages > 1) {
+        const controls = document.createElement("div");
+        controls.className = "ig-row";
+        const previous = document.createElement("button");
+        previous.className = "button secondary";
+        previous.type = "button";
+        previous.textContent = "Anterior";
+        previous.disabled = state.resultPage === 0;
+        previous.addEventListener("click", () => {
+            state.resultPage -= 1;
+            renderInstagramTaskPage(payload);
+        });
+        const label = document.createElement("span");
+        label.className = "ig-muted";
+        label.textContent = `Página ${state.resultPage + 1} de ${pages} · ${tasks.length} tareas`;
+        const next = document.createElement("button");
+        next.className = "button secondary";
+        next.type = "button";
+        next.textContent = "Siguiente";
+        next.disabled = state.resultPage >= pages - 1;
+        next.addEventListener("click", () => {
+            state.resultPage += 1;
+            renderInstagramTaskPage(payload);
+        });
+        controls.append(previous, label, next);
+        container.appendChild(controls);
+    }
+}
+
+function renderInstagramResultEnvelope(result) {
+    const payload = result?.payload || result || {};
+    state.currentResult = payload;
+    state.resultPage = 0;
+
+    const totals = payload.totals || {};
+    const duration = payload.duration ?? payload.duration_seconds ?? (state.currentExecution ? instagramElapsed(state.currentExecution) : "—");
+    const summary =
+        `Creadas: ${totals.created ?? "-"} | ` +
+        `Correctas: ${totals.ok ?? "-"} | ` +
+        `Errores: ${totals.error ?? "-"} | ` +
+        `Canceladas: ${totals.cancelled ?? "-"} | ` +
+        `Duración: ${duration}`;
+
+    const knownSchema = new Set([
+        "instagram.maduracion.result.v1",
+        "instagram.prospecting.result.v1",
+    ]).has(payload.schema_version);
+
+    const preview = knownSchema
+        ? { ...payload, tasks: Array.isArray(payload.tasks) ? `[${payload.tasks.length} tareas; ver tabla paginada]` : payload.tasks }
+        : payload;
+
+    document.getElementById("ig-result").textContent = summary + "\n\n" + safeInstagramJson(preview);
+    renderInstagramTaskPage(payload);
+}
+
 async function loadResult(id) {
     try {
-        const result =
-            await api(
-                `/executions/${encodeURIComponent(id)}/result`
-            );
-
-        if (
-            state.executionId !== id
-        ) {
-            return;
-        }
-
-        const payload =
-            result.payload ||
-            result;
-
-        const totals =
-            payload.totals || {};
-
-        const duration = payload.duration ?? payload.duration_seconds ?? (state.currentExecution ? instagramElapsed(state.currentExecution) : "—");
-        const summary =
-            `Creadas: ${totals.created ?? "-"} | ` +
-            `Correctas: ${totals.ok ?? "-"} | ` +
-            `Errores: ${totals.error ?? "-"} | ` +
-            `Canceladas: ${totals.cancelled ?? "-"} | ` +
-            `Duración: ${duration}`;
-
-        document.getElementById(
-            "ig-result"
-        ).textContent =
-            summary +
-            "\n\n" +
-            JSON.stringify(
-                payload,
-                null,
-                2
-            );
-
-        const container =
-            document.getElementById(
-                "ig-task-table"
-            );
-
-        container.replaceChildren();
-
-        if (
-            Array.isArray(
-                payload.tasks
-            ) &&
-            payload.tasks.length
-        ) {
-            const table =
-                document.createElement(
-                    "table"
-                );
-
-            table.className =
-                "ig-table";
-
-            const head =
-                document.createElement(
-                    "tr"
-                );
-
-            for (
-                const label of [
-                    "TaskBot",
-                    "Cuenta",
-                    "Estado",
-                    "Ejecutor",
-                    "Finalizada",
-                    "Detalle",
-                ]
-            ) {
-                const cell =
-                    document.createElement(
-                        "th"
-                    );
-
-                cell.textContent =
-                    label;
-
-                head.appendChild(
-                    cell
-                );
-            }
-
-            table.appendChild(
-                head
-            );
-
-            for (
-                const task of
-                payload.tasks.slice(
-                    0,
-                    100
-                )
-            ) {
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-                for (
-                    const key of [
-                        "task_bot_id",
-                        "account_id",
-                        "status",
-                        "bot_executor",
-                        "end_date",
-                        "comment",
-                    ]
-                ) {
-                    const cell =
-                        document.createElement(
-                            "td"
-                        );
-
-                    const value =
-                        task[key];
-
-                    cell.textContent =
-                        typeof value ===
-                        "object"
-                            ? JSON.stringify(
-                                  value
-                              )
-                            : String(
-                                  value ?? ""
-                              );
-
-                    row.appendChild(
-                        cell
-                    );
-                }
-
-                table.appendChild(
-                    row
-                );
-            }
-
-            container.appendChild(
-                table
-            );
-
-            if (
-                payload.tasks.length >
-                100
-            ) {
-                const note =
-                    document.createElement(
-                        "p"
-                    );
-
-                note.textContent =
-                    `Mostrando 100 de ${payload.tasks.length} tareas. El JSON conserva el resultado completo.`;
-
-                container.appendChild(
-                    note
-                );
-            }
-        }
-
+        const result = await api(`/executions/${encodeURIComponent(id)}/result`);
+        if (state.executionId !== id) return;
+        renderInstagramResultEnvelope(result);
     } catch (error) {
         if (state.executionId === id) {
             const terminalError = state.currentExecution?.error_message;
@@ -2770,7 +2716,6 @@ async function loadResult(id) {
         }
     }
 }
-
 
 /* =========================================================
    CANCELAR
