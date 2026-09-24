@@ -133,3 +133,17 @@ def test_instagram_dashboard_contract_is_present() -> None:
     assert '/instagram/admin/assignments' in source
     assert '/verify' in source
     assert 'WebSocket' not in source
+    assert 'setTimeout(' in source
+    assert 'setInterval(' not in source
+    assert 'AbortController' in source
+    assert 'toISOString()' in source
+    assert 'aria-live="polite"' in source
+    assert 'La cancelación puede tardar mientras el bot termina una operación atómica.' in source
+    assert 'Bot asignado' in source
+    assert 'Tiempo transcurrido' in source
+    assert 'error_message' in source
+    assert 'next_cursor' in source
+    assert 'Cargar más' in source
+    assert 'window.confirm(' in source
+    assert 'innerHTML = payload' not in source
+    assert 'textContent =' in source
