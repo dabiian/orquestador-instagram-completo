@@ -957,6 +957,16 @@ async function loadAdminAccounts() {
     }
 }
 
+async function showExpandedAdminAccount(accountId) {
+    const message = document.getElementById("ig-admin-message");
+    try {
+        const account = await api(`/instagram/admin/accounts/${accountId}/expanded`);
+        message.textContent = `Detalle expandido cuenta #${accountId}:\n${safeInstagramJson(account)}`;
+    } catch (error) {
+        message.textContent = `No se pudo cargar el detalle expandido: ${error.message}`;
+    }
+}
+
 async function verifyAdminAccount(accountId) {
     const message = document.getElementById("ig-admin-message");
     try {
