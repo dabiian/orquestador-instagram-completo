@@ -13,3 +13,11 @@ from .social_media_platform import SocialMediaPlatform
 from .task_bot import TaskBot
 from .task_type import TaskType
 from .orchestrator_instagram import OrchestratorInstagramExecution, OrchestratorInstagramTask
+
+from .instagram_prospecting import (
+    InstagramProspectingCampaign,
+    InstagramProspect,
+    InstagramProspectPost,
+    InstagramProspectInteraction,
+    InstagramFollowUpAlert,
+)

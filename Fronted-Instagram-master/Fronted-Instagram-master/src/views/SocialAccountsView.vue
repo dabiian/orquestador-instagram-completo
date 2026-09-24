@@ -2,10 +2,10 @@
   <div class="accounts-page">
     <div class="page-header">
       <div>
-        <p class="page-kicker">ConfiguraciÃ³n</p>
+        <p class="page-kicker">Configuración</p>
         <h1 class="page-title">Cuentas Sociales</h1>
         <p class="page-subtitle">
-          Administra cuentas de Instagram, tipo de cuenta y campaÃ±a de prospecciÃ³n relacionada.
+          Administra cuentas de Instagram, tipo de cuenta y campaña de prospección relacionada.
         </p>
       </div>
 
@@ -43,7 +43,7 @@
       </div>
 
       <div class="stat-card">
-        <span>Con campaÃ±a</span>
+        <span>Con campaña</span>
         <strong>{{ accountsWithCampaign }}</strong>
       </div>
 
@@ -90,7 +90,7 @@
             </template>
           </Column>
 
-          <Column header="CampaÃ±a">
+          <Column header="Campaña">
             <template #body="{ data }">
               <div class="main-cell">
                 <strong>{{ getAssignedCampaignName(data.id) }}</strong>
@@ -127,7 +127,7 @@
           <Column header="Cookies" style="width: 110px">
             <template #body="{ data }">
               <Tag
-                :value="hasCookies(data) ? 'SÃ­' : 'No'"
+                :value="hasCookies(data) ? 'Sí' : 'No'"
                 :severity="hasCookies(data) ? 'success' : 'warning'"
               />
             </template>
@@ -261,24 +261,24 @@
         </div>
 
         <div class="form-field full">
-          <label>CampaÃ±a de prospecciÃ³n</label>
+          <label>Campaña de prospección</label>
           <Dropdown
             v-model="form.prospecting_campaign_id"
             :options="campaigns"
             optionLabel="label"
             optionValue="id"
-            placeholder="Selecciona campaÃ±a"
+            placeholder="Selecciona campaña"
             filter
             showClear
             class="w-full"
           />
           <small>
-            Esta relaciÃ³n se guarda en prospecting_campaign_accounts.
+            Esta relación se guarda en prospecting_campaign_accounts.
           </small>
         </div>
 
         <div class="form-field">
-          <label>Rol en campaÃ±a</label>
+          <label>Rol en campaña</label>
           <Dropdown
             v-model="form.campaign_role"
             :options="campaignRoleOptions"
@@ -289,7 +289,7 @@
         </div>
 
         <div class="form-field">
-          <label>Estado en campaÃ±a</label>
+          <label>Estado en campaña</label>
           <Dropdown
             v-model="form.campaign_is_active"
             :options="activeOptions"
@@ -300,7 +300,7 @@
         </div>
 
         <div class="form-field">
-          <label>LÃ­mite diario</label>
+          <label>Límite diario</label>
           <InputNumber
             v-model="form.daily_limit"
             :min="0"
@@ -310,7 +310,7 @@
         </div>
 
         <div class="form-field">
-          <label>LÃ­mite total</label>
+          <label>Límite total</label>
           <InputNumber
             v-model="form.total_limit"
             :min="0"
@@ -329,7 +329,7 @@
           />
 
           <small>
-            JSON vÃ¡lido. Ejemplo: {"User":"usuario","password":"clave","cookie":[]}
+            JSON válido. Ejemplo: {"User":"usuario","password":"clave","cookie":[]}
           </small>
         </div>
       </div>
@@ -367,7 +367,7 @@
       :style="{ width: '760px', maxWidth: '96vw' }"
     >
       <p class="dialog-help">
-        Pega aquÃ­ el array de cookies exportado del navegador.
+        Pega aquí el array de cookies exportado del navegador.
       </p>
 
       <Textarea
@@ -729,7 +729,7 @@ async function saveCampaignAssignment(accountId) {
 }
 
 async function deleteAccount(row) {
-  const ok = window.confirm(`Â¿Eliminar la cuenta "${row.account_name || row.id}"?`);
+  const ok = window.confirm(`¿Eliminar la cuenta "${row.account_name || row.id}"?`);
 
   if (!ok) return;
 
@@ -782,7 +782,7 @@ async function saveCookie() {
   try {
     cookies = JSON.parse(cookieRaw.value || "[]");
   } catch {
-    cookieError.value = "El JSON de cookies no es vÃ¡lido.";
+    cookieError.value = "El JSON de cookies no es válido.";
     return;
   }
 
@@ -968,9 +968,9 @@ function buildLookupLabel(item, keys) {
 }
 
 function buildCampaignLabel(item) {
-  const name = item.name || item.campaign_name || `CampaÃ±a #${item.id}`;
-  const status = item.status ? ` Â· ${item.status}` : "";
-  const platform = item.platform ? ` Â· ${item.platform}` : "";
+  const name = item.name || item.campaign_name || `Campaña #${item.id}`;
+  const status = item.status ? ` · ${item.status}` : "";
+  const platform = item.platform ? ` · ${item.platform}` : "";
 
   return `${name}${platform}${status}`;
 }
@@ -986,7 +986,7 @@ function buildProxyOptionLabel(item) {
   const port = item.port ? `:${item.port}` : "";
   const username = item.username || item.user || "";
 
-  return username ? `${host}${port} Â· ${username}` : `${host}${port}`;
+  return username ? `${host}${port} · ${username}` : `${host}${port}`;
 }
 
 function getPlatformLabel(row) {
@@ -1027,7 +1027,7 @@ function getProxySecondary(row) {
     row.proxy.username || row.proxy.user || "",
   ].filter(Boolean);
 
-  return parts.join(" Â· ");
+  return parts.join(" · ");
 }
 
 function getPersonalityLabel(row) {
@@ -1091,7 +1091,7 @@ function getActiveAssignmentByAccountId(accountId) {
 function getAssignedCampaignName(accountId) {
   const assignment = getActiveAssignmentByAccountId(accountId);
 
-  if (!assignment) return "Sin campaÃ±a";
+  if (!assignment) return "Sin campaña";
 
   if (assignment.campaign_name) return assignment.campaign_name;
 
@@ -1100,7 +1100,7 @@ function getAssignedCampaignName(accountId) {
     (item) => Number(item.id) === Number(campaignId)
   );
 
-  return campaign?.name || campaign?.campaign_name || `CampaÃ±a #${campaignId}`;
+  return campaign?.name || campaign?.campaign_name || `Campaña #${campaignId}`;
 }
 
 function getAssignedCampaignMeta(accountId) {
@@ -1114,7 +1114,7 @@ function getAssignedCampaignMeta(accountId) {
     assignment.total_limit ? `Total: ${assignment.total_limit}` : "",
   ].filter(Boolean);
 
-  return parts.join(" Â· ");
+  return parts.join(" · ");
 }
 </script>
 

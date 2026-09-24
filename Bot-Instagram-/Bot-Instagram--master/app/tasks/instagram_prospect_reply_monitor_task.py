@@ -23,8 +23,8 @@ from app.config.locators.instagram_reply_monitor_locators import (
 
 class InstagramProspectReplyMonitorTask(ITask):
     """
-    Revisa replies en posts ya comentados y, si hay intención,
-    responde automáticamente usando IA + teléfono de la campaña.
+    Revisa replies en posts ya comentados y, si hay intenciÃ³n,
+    responde automÃ¡ticamente usando IA + telÃ©fono de la campaÃ±a.
 
     Flujo:
     - busca prospect_posts con status="commented"
@@ -33,8 +33,8 @@ class InstagramProspectReplyMonitorTask(ITask):
     - detecta respuestas del prospecto
     - clasifica la respuesta con IA
     - da like al comentario/reply del prospecto si no es negativo/irrelevante
-    - responde con IA usando el teléfono si la clasificación es interested/question
-    - guarda interacción inbound/outbound
+    - responde con IA usando el telÃ©fono si la clasificaciÃ³n es interested/question
+    - guarda interacciÃ³n inbound/outbound
     - actualiza prospect y prospect_post
     """
 
@@ -67,7 +67,7 @@ class InstagramProspectReplyMonitorTask(ITask):
             account_id = self._get_social_media_account_id()
 
             if not account_id:
-                self.log.warning("No se encontró social_media_account.id en ReplyMonitorTask")
+                self.log.warning("No se encontrÃ³ social_media_account.id en ReplyMonitorTask")
                 return False
 
             ok_campaign, campaign = self.prospecting_api.get_active_campaign(
@@ -83,7 +83,7 @@ class InstagramProspectReplyMonitorTask(ITask):
             )
 
             if not ok_campaign or not isinstance(campaign, dict):
-                self.log.warning("No se encontró campaña activa para revisar replies.")
+                self.log.warning("No se encontrÃ³ campaÃ±a activa para revisar replies.")
                 return False
 
             campaign_id = campaign["id"]
@@ -103,9 +103,13 @@ class InstagramProspectReplyMonitorTask(ITask):
 
             posts = self._normalize_api_list_payload(posts_payload)
 
-            if not ok_posts or not posts:
-                self.log.warning("No hay posts comentados para revisar replies.")
+            if not ok_posts:
+                self.log.error("No se pudieron obtener los posts comentados para revisar replies.")
                 return False
+
+            if not posts:
+                self.log.info("[prospecting-reply] no hay posts comentados para revisar replies; tarea completada sin acciones")
+                return True
 
             processed_posts = 0
             detected_total = 0
@@ -380,7 +384,7 @@ class InstagramProspectReplyMonitorTask(ITask):
                                     campaign_type, "data_request" if (flow_result and flow_result.get("flow_type") == "data_request") else "quote_request"
                                 ).get("rules") or {}
                                 if rules.get("reply_in_same_comment_thread", True) is False:
-                                    self.log.info("[config-policy] reply_in_same_comment_thread=false; no se publica respuesta pública")
+                                    self.log.info("[config-policy] reply_in_same_comment_thread=false; no se publica respuesta pÃºblica")
                                     continue
                                 clicked_reply = self._click_reply_on_comment(reply)
 
@@ -630,7 +634,7 @@ class InstagramProspectReplyMonitorTask(ITask):
 
         except Exception as e:
             self.log.warning(
-                "[prospecting-reply] no se pudo crear interacción inbound | prospect_post_id=%s | account_id=%s | error=%r",
+                "[prospecting-reply] no se pudo crear interacciÃ³n inbound | prospect_post_id=%s | account_id=%s | error=%r",
                 prospect_post_id,
                 social_media_account_id,
                 e,
@@ -662,7 +666,7 @@ class InstagramProspectReplyMonitorTask(ITask):
 
         except Exception as e:
             self.log.warning(
-                "[prospecting-reply] error verificando si la cuenta comentó el post | post_id=%s | account_id=%s | error=%r",
+                "[prospecting-reply] error verificando si la cuenta comentÃ³ el post | post_id=%s | account_id=%s | error=%r",
                 prospect_post_id,
                 social_media_account_id,
                 e,
@@ -744,7 +748,7 @@ class InstagramProspectReplyMonitorTask(ITask):
 
             if not email_to:
                 self.log.warning(
-                    "[prospecting-reply] no se envió alerta: falta FOLLOW_UP_ALERT_EMAIL o email en campaña."
+                    "[prospecting-reply] no se enviÃ³ alerta: falta FOLLOW_UP_ALERT_EMAIL o email en campaÃ±a."
                 )
                 return False
 
@@ -780,7 +784,7 @@ class InstagramProspectReplyMonitorTask(ITask):
 
             if not sent_ok:
                 self.log.warning(
-                    "[prospecting-reply] falló envío de email | prospect_id=%s | post_id=%s",
+                    "[prospecting-reply] fallÃ³ envÃ­o de email | prospect_id=%s | post_id=%s",
                     prospect_id,
                     prospect_post_id,
                 )
@@ -795,7 +799,7 @@ class InstagramProspectReplyMonitorTask(ITask):
                     status="pending",
                     email_to=email_to,
                     payload_json={
-                        "reason": "Prospecto respondió con interés o pregunta",
+                        "reason": "Prospecto respondiÃ³ con interÃ©s o pregunta",
                         "reply_text": reply_text,
                         "classification": classification,
                         "classification_reason": reason,
@@ -839,7 +843,7 @@ class InstagramProspectReplyMonitorTask(ITask):
 
         except Exception as e:
             self.log.exception(
-                "[prospecting-reply] error enviando alerta de interés por email: %s",
+                "[prospecting-reply] error enviando alerta de interÃ©s por email: %s",
                 e,
             )
             return False
@@ -849,7 +853,7 @@ class InstagramProspectReplyMonitorTask(ITask):
         classification = str(classification or "").strip().lower()
 
         if classification == "question":
-            return f"[Instagram] Prospecto pidió información: {username}"
+            return f"[Instagram] Prospecto pidiÃ³ informaciÃ³n: {username}"
 
         return f"[Instagram] Prospecto interesado: {username}"
 
@@ -881,10 +885,10 @@ class InstagramProspectReplyMonitorTask(ITask):
         classification = str(classification or "").strip()
 
         parts = [
-            "Se detectó un prospecto con interés desde Instagram.",
+            "Se detectÃ³ un prospecto con interÃ©s desde Instagram.",
             "",
-            "DATOS DE CAMPAÑA",
-            f"Campaña: {campaign_name}",
+            "DATOS DE CAMPAÃ‘A",
+            f"CampaÃ±a: {campaign_name}",
             "",
             "DATOS DEL PROSPECTO",
             f"Username: {username}",
@@ -892,9 +896,9 @@ class InstagramProspectReplyMonitorTask(ITask):
             f"Profile URL: {profile_url}",
             f"Bio: {bio}",
             "",
-            "INTERACCIÓN DETECTADA",
-            f"Clasificación: {classification}",
-            f"Razón IA: {reason}",
+            "INTERACCIÃ“N DETECTADA",
+            f"ClasificaciÃ³n: {classification}",
+            f"RazÃ³n IA: {reason}",
             f"Respuesta del prospecto: {reply_text}",
             "",
             "POST",
@@ -1007,7 +1011,7 @@ class InstagramProspectReplyMonitorTask(ITask):
             cleaned = [x for x in data if isinstance(x, dict)]
 
             self.log.info(
-                "[prospecting-reply] replies limpias extraídas=%s | prospect_username=%s | data=%s",
+                "[prospecting-reply] replies limpias extraÃ­das=%s | prospect_username=%s | data=%s",
                 len(cleaned),
                 prospect_username,
                 self._shorten_for_log(cleaned),
@@ -1069,7 +1073,7 @@ class InstagramProspectReplyMonitorTask(ITask):
             return False
 
     # =========================================================
-    # IA - CLASIFICACIÓN
+    # IA - CLASIFICACIÃ“N
     # =========================================================
 
     def _classify_reply_with_ai(
@@ -1203,7 +1207,7 @@ Return ONLY valid JSON:
         }
 
     # =========================================================
-    # IA - RESPUESTA AUTOMÁTICA
+    # IA - RESPUESTA AUTOMÃTICA
     # =========================================================
 
     def _generate_follow_up_reply_with_ai(
@@ -1216,7 +1220,7 @@ Return ONLY valid JSON:
     ) -> str:
         try:
             if not follow_up_phone:
-                self.log.warning("No hay follow_up_phone configurado en la campaña.")
+                self.log.warning("No hay follow_up_phone configurado en la campaÃ±a.")
                 return ""
 
             bot_personality_id = self._get_bot_personality_id()
@@ -1255,7 +1259,7 @@ STYLE:
 Return ONLY valid JSON:
 
 {{
-  "reply_text": "Thanks for reaching out — you can call us at 312-000-0000."
+  "reply_text": "Thanks for reaching out â€” you can call us at 312-000-0000."
 }}
 """.strip()
 
