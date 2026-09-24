@@ -2,10 +2,10 @@
   <div class="accounts-page">
     <div class="page-header">
       <div>
-        <p class="page-kicker">Configuración</p>
+        <p class="page-kicker">ConfiguraciÃ³n</p>
         <h1 class="page-title">Cuentas Sociales</h1>
         <p class="page-subtitle">
-          Administra cuentas de Instagram, tipo de cuenta y campaña de prospección relacionada.
+          Administra cuentas de Instagram, tipo de cuenta y campaÃ±a de prospecciÃ³n relacionada.
         </p>
       </div>
 
@@ -43,7 +43,7 @@
       </div>
 
       <div class="stat-card">
-        <span>Con campaña</span>
+        <span>Con campaÃ±a</span>
         <strong>{{ accountsWithCampaign }}</strong>
       </div>
 
@@ -90,7 +90,7 @@
             </template>
           </Column>
 
-          <Column header="Campaña">
+          <Column header="CampaÃ±a">
             <template #body="{ data }">
               <div class="main-cell">
                 <strong>{{ getAssignedCampaignName(data.id) }}</strong>
@@ -127,7 +127,7 @@
           <Column header="Cookies" style="width: 110px">
             <template #body="{ data }">
               <Tag
-                :value="hasCookies(data) ? 'Sí' : 'No'"
+                :value="hasCookies(data) ? 'SÃ­' : 'No'"
                 :severity="hasCookies(data) ? 'success' : 'warning'"
               />
             </template>
@@ -207,6 +207,18 @@
         </div>
 
         <div class="form-field">
+          <label>Propietario</label>
+          <Dropdown
+            v-model="form.owner"
+            :options="owners"
+            optionLabel="label"
+            optionValue="id"
+            placeholder="Selecciona propietario"
+            filter
+            class="w-full"
+          />
+        </div>
+        <div class="form-field">
           <label>Plataforma</label>
           <Dropdown
             v-model="form.platform"
@@ -249,24 +261,24 @@
         </div>
 
         <div class="form-field full">
-          <label>Campaña de prospección</label>
+          <label>CampaÃ±a de prospecciÃ³n</label>
           <Dropdown
             v-model="form.prospecting_campaign_id"
             :options="campaigns"
             optionLabel="label"
             optionValue="id"
-            placeholder="Selecciona campaña"
+            placeholder="Selecciona campaÃ±a"
             filter
             showClear
             class="w-full"
           />
           <small>
-            Esta relación se guarda en prospecting_campaign_accounts.
+            Esta relaciÃ³n se guarda en prospecting_campaign_accounts.
           </small>
         </div>
 
         <div class="form-field">
-          <label>Rol en campaña</label>
+          <label>Rol en campaÃ±a</label>
           <Dropdown
             v-model="form.campaign_role"
             :options="campaignRoleOptions"
@@ -277,7 +289,7 @@
         </div>
 
         <div class="form-field">
-          <label>Estado en campaña</label>
+          <label>Estado en campaÃ±a</label>
           <Dropdown
             v-model="form.campaign_is_active"
             :options="activeOptions"
@@ -288,7 +300,7 @@
         </div>
 
         <div class="form-field">
-          <label>Límite diario</label>
+          <label>LÃ­mite diario</label>
           <InputNumber
             v-model="form.daily_limit"
             :min="0"
@@ -298,7 +310,7 @@
         </div>
 
         <div class="form-field">
-          <label>Límite total</label>
+          <label>LÃ­mite total</label>
           <InputNumber
             v-model="form.total_limit"
             :min="0"
@@ -317,7 +329,7 @@
           />
 
           <small>
-            JSON válido. Ejemplo: {"User":"usuario","password":"clave","cookie":[]}
+            JSON vÃ¡lido. Ejemplo: {"User":"usuario","password":"clave","cookie":[]}
           </small>
         </div>
       </div>
@@ -355,7 +367,7 @@
       :style="{ width: '760px', maxWidth: '96vw' }"
     >
       <p class="dialog-help">
-        Pega aquí el array de cookies exportado del navegador.
+        Pega aquÃ­ el array de cookies exportado del navegador.
       </p>
 
       <Textarea
@@ -435,6 +447,7 @@ const saving = ref(false);
 const savingCookie = ref(false);
 
 const accounts = ref([]);
+const owners = ref([]);
 const proxies = ref([]);
 const platforms = ref([]);
 const personalities = ref([]);
@@ -511,16 +524,30 @@ async function loadCampaignAssignments() {
 
 async function loadLookups() {
   const [
+    ownersResponse,
     proxiesResponse,
     platformsResponse,
     personalitiesResponse,
     campaignsResponse,
   ] = await Promise.allSettled([
+    lookupsApi.owners(),
     lookupsApi.proxies(),
     lookupsApi.platforms(),
     lookupsApi.botPersonalities(),
     lookupsApi.prospectingCampaigns({ platform: DEFAULT_ASSIGNMENT_PLATFORM }),
   ]);
+
+  if (ownersResponse.status === "fulfilled") {
+    owners.value = normalizeList(ownersResponse.value.data).map((item) => ({
+      ...item,
+      label: buildLookupLabel(item, [
+        "name",
+        "full_name",
+        "owner_name",
+        "email",
+      ]),
+    }));
+  }
 
   if (proxiesResponse.status === "fulfilled") {
     proxies.value = normalizeList(proxiesResponse.value.data).map((item) => ({
@@ -577,7 +604,8 @@ function openEdit(row) {
 
   form.value = {
     account_name: row.account_name || "",
-    account_kind: normalizeAccountKind(row.account_kind),
+    account_kind: normalizeAccountKind(row.account_kind || row.account_type),
+    owner: normalizeId(row.owner),
     platform: normalizeId(row.platform),
     proxy: normalizeId(row.proxy),
     bot_personality: normalizeId(row.bot_personality),
@@ -701,7 +729,7 @@ async function saveCampaignAssignment(accountId) {
 }
 
 async function deleteAccount(row) {
-  const ok = window.confirm(`¿Eliminar la cuenta "${row.account_name || row.id}"?`);
+  const ok = window.confirm(`Â¿Eliminar la cuenta "${row.account_name || row.id}"?`);
 
   if (!ok) return;
 
@@ -754,7 +782,7 @@ async function saveCookie() {
   try {
     cookies = JSON.parse(cookieRaw.value || "[]");
   } catch {
-    cookieError.value = "El JSON de cookies no es válido.";
+    cookieError.value = "El JSON de cookies no es vÃ¡lido.";
     return;
   }
 
@@ -800,21 +828,26 @@ function buildAccountPayload() {
     "other_credentials debe ser un objeto JSON válido."
   );
 
+  if (!form.value.owner) {
+    throw new Error("El propietario es obligatorio.");
+  }
+
+  if (!form.value.bot_personality) {
+    throw new Error("La personalidad es obligatoria.");
+  }
+
   const payload = {
     account_name: form.value.account_name.trim(),
-    account_kind: form.value.account_kind || "personal",
-    owner: DEFAULT_OWNER_ID,
-    group: DEFAULT_GROUP_ID,
+    account_type: "instagram",
+    owner_id: Number(form.value.owner),
+    bot_personality_id: Number(form.value.bot_personality),
     other_credentials: normalizeCredentials(otherCredentials),
   };
 
-  addNullableId(payload, "platform", form.value.platform);
-  addNullableId(payload, "proxy", form.value.proxy);
-  addNullableId(payload, "bot_personality", form.value.bot_personality);
+  addNullableId(payload, "proxy_id", form.value.proxy);
 
   return payload;
 }
-
 function addNullableId(payload, key, value) {
   if (value !== null && value !== undefined && value !== "") {
     payload[key] = Number(value);
@@ -841,6 +874,7 @@ function getEmptyForm() {
   return {
     account_name: "",
     account_kind: "personal",
+    owner: null,
     platform: null,
     proxy: null,
     bot_personality: null,
@@ -934,9 +968,9 @@ function buildLookupLabel(item, keys) {
 }
 
 function buildCampaignLabel(item) {
-  const name = item.name || item.campaign_name || `Campaña #${item.id}`;
-  const status = item.status ? ` · ${item.status}` : "";
-  const platform = item.platform ? ` · ${item.platform}` : "";
+  const name = item.name || item.campaign_name || `CampaÃ±a #${item.id}`;
+  const status = item.status ? ` Â· ${item.status}` : "";
+  const platform = item.platform ? ` Â· ${item.platform}` : "";
 
   return `${name}${platform}${status}`;
 }
@@ -952,7 +986,7 @@ function buildProxyOptionLabel(item) {
   const port = item.port ? `:${item.port}` : "";
   const username = item.username || item.user || "";
 
-  return username ? `${host}${port} · ${username}` : `${host}${port}`;
+  return username ? `${host}${port} Â· ${username}` : `${host}${port}`;
 }
 
 function getPlatformLabel(row) {
@@ -993,7 +1027,7 @@ function getProxySecondary(row) {
     row.proxy.username || row.proxy.user || "",
   ].filter(Boolean);
 
-  return parts.join(" · ");
+  return parts.join(" Â· ");
 }
 
 function getPersonalityLabel(row) {
@@ -1057,7 +1091,7 @@ function getActiveAssignmentByAccountId(accountId) {
 function getAssignedCampaignName(accountId) {
   const assignment = getActiveAssignmentByAccountId(accountId);
 
-  if (!assignment) return "Sin campaña";
+  if (!assignment) return "Sin campaÃ±a";
 
   if (assignment.campaign_name) return assignment.campaign_name;
 
@@ -1066,7 +1100,7 @@ function getAssignedCampaignName(accountId) {
     (item) => Number(item.id) === Number(campaignId)
   );
 
-  return campaign?.name || campaign?.campaign_name || `Campaña #${campaignId}`;
+  return campaign?.name || campaign?.campaign_name || `CampaÃ±a #${campaignId}`;
 }
 
 function getAssignedCampaignMeta(accountId) {
@@ -1080,7 +1114,7 @@ function getAssignedCampaignMeta(accountId) {
     assignment.total_limit ? `Total: ${assignment.total_limit}` : "",
   ].filter(Boolean);
 
-  return parts.join(" · ");
+  return parts.join(" Â· ");
 }
 </script>
 
