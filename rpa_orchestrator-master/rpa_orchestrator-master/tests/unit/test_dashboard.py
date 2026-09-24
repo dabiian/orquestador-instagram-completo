@@ -152,3 +152,27 @@ def test_instagram_dashboard_contract_is_present() -> None:
     assert 'window.confirm(' in source
     assert 'innerHTML = payload' not in source
     assert 'textContent =' in source
+
+
+def test_instagram_provisioning_defaults_campaign_to_draft_and_labels_are_associated() -> None:
+    root = Path(__file__).resolve().parents[2]
+    source = (root / "frontend" / "instagram.js").read_text(encoding="utf-8")
+
+    assert '<option value="draft">Draft</option><option value="active">Active</option>' in source
+    assert 'status: adminValue("ig-c-status") || "draft"' in source
+
+    provisioning_control_ids = (
+        "ig-p-name", "ig-p-location", "ig-p-language", "ig-p-style", "ig-p-bio",
+        "ig-p-values", "ig-p-preferences", "ig-p-dislikes", "ig-p-examples",
+        "ig-p-knowledge", "ig-p-cultural", "ig-p-phraseology", "ig-p-past",
+        "ig-p-emotional", "ig-p-objectives", "ig-p-behavior",
+        "ig-o-name", "ig-o-email", "ig-o-phone", "ig-o-urls", "ig-o-services",
+        "ig-x-ip", "ig-x-port", "ig-x-user", "ig-x-password",
+        "ig-a-name", "ig-a-kind", "ig-a-group", "ig-a-user", "ig-a-password",
+        "ig-a-cookie", "ig-c-name", "ig-c-status", "ig-c-services",
+        "ig-c-strategy", "ig-c-description", "ig-c-hours", "ig-c-phone",
+        "ig-c-email", "ig-c-owner-url", "ig-as-daily", "ig-as-total",
+        "ig-as-active", "ig-resource-kind", "ig-resource-id", "ig-resource-json",
+    )
+    for control_id in provisioning_control_ids:
+        assert f'<label for="{control_id}">' in source
