@@ -371,7 +371,7 @@ function mount() {
                     <textarea
                         id="ig-custom"
                         rows="3"
-                        placeholder='{"campaign_id":10}'
+                        placeholder='{"campaign_id":10,"post":"texto opcional","links_image":["https://..."]}'
                     ></textarea>
 
                 </div>
@@ -395,7 +395,7 @@ function mount() {
                     >
 
                     <label for="ig-max-accounts">
-                        Máximo de cuentas (opcional)
+                        Máximo de cuentas procesadas en esta ejecución (opcional)
                     </label>
                     <input
                         id="ig-max-accounts"
@@ -572,8 +572,8 @@ function mount() {
                 <details class="ig-step" open>
                     <summary>6. Asignación cuenta ↔ campaña</summary>
                     <div class="ig-admin-grid">
-                        <div class="ig-field"><label>Límite diario</label><input id="ig-as-daily" type="number" min="1"></div>
-                        <div class="ig-field"><label>Límite total</label><input id="ig-as-total" type="number" min="1"></div>
+                        <div class="ig-field"><label for="ig-as-daily">Prospectos por día (opcional)</label><input id="ig-as-daily" type="number" min="1" placeholder="Vacío = sin límite configurado"><small>Control anti-spam por cuenta. Puede dejarse vacío.</small></div>
+                        <div class="ig-field"><label for="ig-as-total">Prospectos históricos (opcional)</label><input id="ig-as-total" type="number" min="1" placeholder="Vacío = sin límite configurado"><small>Máximo histórico de prospectos identificados por esta cuenta/campaña. Puede dejarse vacío.</small></div>
                         <div class="ig-field"><label>Activa</label><select id="ig-as-active"><option value="true">Sí</option><option value="false">No</option></select></div>
                     </div>
                 </details>
