@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from dashboard.models import AccountOwner, SocialMediaAccount, TaskType
+from dashboard.models.instagram_prospecting import InstagramProspectingCampaignAccount
 
 
 def _authorized(request) -> bool:
@@ -31,13 +32,23 @@ def instagram_catalog(request):
         .order_by("id")
         .values("id", "task_name", "descripcion", "operation", "platform__platform_name")
     )
-    # The legacy schema has no platform FK on SocialMediaAccount. Fail closed:
-    # only rows explicitly marked as Instagram are exposed by this catalog.
+    # Platform ownership is defined by the campaign-account assignment.
+    # The account itself intentionally does not store the platform.
+    instagram_account_ids = InstagramProspectingCampaignAccount.objects.filter(
+        platform__iexact="instagram",
+        is_active=True,
+    ).values_list("social_media_account_id", flat=True)
     accounts = list(
         SocialMediaAccount.objects.select_related("owner")
-        .filter(account_type__iexact="instagram")
+        .filter(id__in=instagram_account_ids)
         .order_by("id")
-        .values("id", "account_name", "account_type", "owner_id", "owner__owner_name")
+        .values(
+            "id",
+            "account_name",
+            "account_kind",
+            "owner_id",
+            "owner__owner_name",
+        )
     )
     owners = list(AccountOwner.objects.order_by("id").values("id", "owner_name", "owner_email"))
     return Response(
@@ -46,6 +57,6 @@ def instagram_catalog(request):
             "accounts": accounts,
             "owners": owners,
             "task_types": task_types,
-            "account_platform_note": "Accounts are fail-closed using account_type=instagram because the legacy schema has no platform FK.",
+            "account_platform_note": "Instagram membership is derived from active campaign-account assignments.",
         }
     )
