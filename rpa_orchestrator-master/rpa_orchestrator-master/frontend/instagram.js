@@ -2252,15 +2252,10 @@ async function createExecution() {
 
         state.executionId = id;
 
-        document.getElementById(
-            "ig-cancel"
-        ).disabled =
-            ![
-                "queued",
-                "running",
-            ].includes(
-                execution.status
-            );
+        const createdCancel = document.getElementById("ig-cancel");
+        const createdCanCancel = ["queued", "running"].includes(execution.status);
+        createdCancel.hidden = !createdCanCancel;
+        createdCancel.disabled = !createdCanCancel;
 
         message.textContent =
             `Creada: ${id}`;
