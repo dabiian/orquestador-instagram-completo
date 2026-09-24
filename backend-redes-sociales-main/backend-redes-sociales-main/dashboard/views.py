@@ -163,9 +163,10 @@ class SocialMediaAccountsViewSet(viewsets.ModelViewSet):
         # Suponiendo que request.data es una lista de cookies
         cookie_data = request.data
 
-        if cookie_data and isinstance(cookie_data, list):
-            # Aquí actualizas solo el campo cookie
-            social_media_account.other_credentials["cookie"] = cookie_data
+        if isinstance(cookie_data, list):
+            credentials = dict(social_media_account.other_credentials or {})
+            credentials["cookie"] = cookie_data
+            social_media_account.other_credentials = credentials
             social_media_account.save(update_fields=["other_credentials"])
             return Response({"status": "cookie updated"}, status=status.HTTP_200_OK)
         else:
