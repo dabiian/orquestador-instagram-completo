@@ -319,8 +319,19 @@ function ensureStyles() {
 
         #view-instagram .ig-status {
             font-weight: 700;
-            text-transform: uppercase;
         }
+
+        #view-instagram .ig-execution-detail {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 5px 12px;
+            margin: 12px 0;
+        }
+
+        #view-instagram .ig-execution-detail dt { font-weight: 600; }
+        #view-instagram .ig-execution-detail dd { margin: 0; overflow-wrap: anywhere; }
+        #view-instagram .ig-error { margin-top: 10px; font-weight: 600; }
+        #view-instagram .ig-field-help { min-height: 0; font-size: 12px; }
 
         #view-instagram .ig-muted {
             opacity: .7;
@@ -921,6 +932,29 @@ function mount() {
     `;
 
     views.appendChild(section);
+
+    // Accessibility: every native form control gets an associated label and
+    // an aria-describedby target. This also covers the provisioning wizard.
+    section.querySelectorAll("input[id], select[id], textarea[id]").forEach((control) => {
+        let label = section.querySelector(`label[for="${control.id}"]`);
+        if (!label) {
+            const wrapper = control.closest(".ig-field");
+            label = wrapper?.querySelector("label");
+            if (label) label.htmlFor = control.id;
+        }
+        const describedBy = control.getAttribute("aria-describedby");
+        if (!describedBy) {
+            const hint = document.createElement("span");
+            hint.id = `${control.id}-help`;
+            hint.className = "ig-field-help";
+            hint.textContent = "";
+            control.insertAdjacentElement("afterend", hint);
+            control.setAttribute("aria-describedby", hint.id);
+        }
+    });
+
+    document.getElementById("ig-events").setAttribute("aria-live", "polite");
+    document.getElementById("ig-result").setAttribute("aria-live", "polite");
 
     tab.addEventListener("click", activate);
 
