@@ -453,6 +453,8 @@ class SocialMediaAccountsSerializer2(serializers.ModelSerializer):
         fields = [
             "id",
             "bot_personality",
+            "group",
+            "account_kind",
             "groups_to_search",
             "professional_mode",
             "account_name",
@@ -502,6 +504,8 @@ class PendingSocialMediaAccountSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "bot_personality",
+            "group",
+            "account_kind",
             "groups_to_search",
             "professional_mode",
             "account_name",
