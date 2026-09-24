@@ -18,6 +18,7 @@ from .orchestrator.catalog import instagram_catalog
 from .orchestrator.claims import claim_instagram_task
 from .instagram_prospecting_views import (
     InstagramProspectingCampaignViewSet,
+    InstagramProspectingCampaignAccountViewSet,
     InstagramProspectViewSet,
     InstagramProspectPostViewSet,
     InstagramProspectInteractionViewSet,
@@ -54,6 +55,7 @@ router.register(r"prospectation-groups", ProspectationGroupsViewSet, basename="p
 
 prospecting_router = DefaultRouter()
 prospecting_router.register(r"campaigns", InstagramProspectingCampaignViewSet, basename="instagram-prospecting-campaigns")
+prospecting_router.register(r"campaign-accounts", InstagramProspectingCampaignAccountViewSet, basename="instagram-prospecting-campaign-accounts")
 prospecting_router.register(r"prospects", InstagramProspectViewSet, basename="instagram-prospects")
 prospecting_router.register(r"prospect-posts", InstagramProspectPostViewSet, basename="instagram-prospect-posts")
 prospecting_router.register(r"prospect-interactions", InstagramProspectInteractionViewSet, basename="instagram-prospect-interactions")
