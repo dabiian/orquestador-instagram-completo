@@ -101,319 +101,8 @@ function getTaskLabel(task) {
    ========================================================= */
 
 function ensureStyles() {
-    if (document.getElementById("instagram-dashboard-styles")) {
-        return;
-    }
-
-    const style = document.createElement("style");
-    style.id = "instagram-dashboard-styles";
-
-    style.textContent = `
-        #view-instagram .ig-grid {
-            display: grid;
-            grid-template-columns: minmax(320px, 1fr) minmax(420px, 1.4fr);
-            gap: 16px;
-        }
-
-        #view-instagram .ig-card {
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-
-        #view-instagram .ig-row {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        #view-instagram [hidden] {
-            display: none !important;
-        }
-
-        #view-instagram .ig-field {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin: 14px 0;
-        }
-
-        #view-instagram .ig-field > label,
-        #view-instagram .ig-field > span:first-child {
-            font-weight: 600;
-        }
-
-        #view-instagram .ig-field input,
-        #view-instagram .ig-field select,
-        #view-instagram .ig-field textarea {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        #view-instagram .ig-field select,
-        #view-instagram .ig-field input,
-        #view-instagram .ig-field textarea {
-            min-height: 40px;
-        }
-
-        /* =====================================================
-           MULTISELECT DE TAREAS
-           ===================================================== */
-
-        #view-instagram .ig-multiselect {
-            position: relative;
-            width: 100%;
-        }
-
-        #view-instagram .ig-multiselect-trigger {
-            width: 100%;
-            min-height: 42px;
-            border: 1px solid var(--border, #d7dce3);
-            border-radius: 7px;
-            background: var(--surface, #fff);
-            color: inherit;
-            padding: 9px 12px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            cursor: pointer;
-            text-align: left;
-            font: inherit;
-        }
-
-        #view-instagram .ig-multiselect-trigger:hover {
-            border-color: #9aa7b5;
-        }
-
-        #view-instagram .ig-multiselect-trigger:focus {
-            outline: 2px solid rgba(0, 123, 255, 0.18);
-            outline-offset: 1px;
-        }
-
-        #view-instagram .ig-multiselect-value {
-            flex: 1;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
-        #view-instagram .ig-multiselect-arrow {
-            font-size: 12px;
-            opacity: .65;
-            transition: transform .15s ease;
-        }
-
-        #view-instagram .ig-multiselect.open .ig-multiselect-arrow {
-            transform: rotate(180deg);
-        }
-
-        #view-instagram .ig-multiselect-menu {
-            display: none;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: calc(100% + 4px);
-            z-index: 1000;
-            background: var(--surface, #fff);
-            border: 1px solid var(--border, #d7dce3);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
-            overflow: hidden;
-        }
-
-        #view-instagram .ig-multiselect.open .ig-multiselect-menu {
-            display: block;
-        }
-
-        #view-instagram .ig-task-search-wrap {
-            padding: 9px;
-            border-bottom: 1px solid var(--border, #e4e7eb);
-        }
-
-        #view-instagram .ig-task-search {
-            width: 100%;
-            min-height: 36px !important;
-            padding: 7px 10px;
-            border: 1px solid var(--border, #d7dce3);
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-
-        #view-instagram .ig-task-options {
-            max-height: 270px;
-            overflow-y: auto;
-            padding: 5px 0;
-        }
-
-        #view-instagram .ig-task-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 9px 12px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        #view-instagram .ig-task-option:hover {
-            background: rgba(127, 127, 127, .08);
-        }
-
-        #view-instagram .ig-task-option input {
-            width: 16px !important;
-            min-height: auto !important;
-            height: 16px;
-            margin: 0;
-            flex: 0 0 auto;
-        }
-
-        #view-instagram .ig-task-option-content {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            min-width: 0;
-        }
-
-        #view-instagram .ig-task-option-name {
-            font-size: 14px;
-        }
-
-        #view-instagram .ig-task-option-meta {
-            font-size: 11px;
-            opacity: .62;
-        }
-
-        #view-instagram .ig-task-empty {
-            padding: 14px 12px;
-            opacity: .65;
-        }
-
-        #view-instagram .ig-selected-summary {
-            font-size: 12px;
-            opacity: .72;
-            margin-top: 2px;
-        }
-
-        /* =====================================================
-           CUENTAS
-           ===================================================== */
-
-        #view-instagram .ig-checks {
-            max-height: 180px;
-            overflow: auto;
-            border: 1px solid var(--border, #ddd);
-            padding: 8px;
-            border-radius: 8px;
-        }
-
-        #view-instagram .ig-check {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 5px 2px;
-        }
-
-        #view-instagram .ig-check input {
-            width: auto;
-            min-height: auto;
-        }
-
-        /* =====================================================
-           RESTO DEL DASHBOARD
-           ===================================================== */
-
-        #view-instagram .ig-status {
-            font-weight: 700;
-        }
-
-        #view-instagram .ig-execution-detail {
-            display: grid;
-            grid-template-columns: max-content 1fr;
-            gap: 5px 12px;
-            margin: 12px 0;
-        }
-
-        #view-instagram .ig-execution-detail dt { font-weight: 600; }
-        #view-instagram .ig-execution-detail dd { margin: 0; overflow-wrap: anywhere; }
-        #view-instagram .ig-error { margin-top: 10px; font-weight: 600; }
-        #view-instagram .ig-field-help { min-height: 0; font-size: 12px; }
-
-        #view-instagram .ig-muted {
-            opacity: .7;
-        }
-
-        #view-instagram .ig-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        #view-instagram .ig-table th,
-        #view-instagram .ig-table td {
-            padding: 7px;
-            border-bottom: 1px solid var(--border, #ddd);
-            text-align: left;
-            vertical-align: top;
-        }
-
-        #view-instagram .ig-events {
-            max-height: 220px;
-            overflow: auto;
-            font-family: monospace;
-            font-size: 12px;
-            white-space: pre-wrap;
-        }
-
-        #view-instagram .ig-admin-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-        }
-
-        #view-instagram .ig-admin-grid .full {
-            grid-column: 1 / -1;
-        }
-
-        #view-instagram .ig-step {
-            border: 1px solid var(--border, #ddd);
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin: 10px 0;
-        }
-
-        #view-instagram .ig-step > summary {
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        #view-instagram .ig-admin-message {
-            margin-top: 10px;
-            white-space: pre-wrap;
-        }
-
-        #view-instagram .ig-result {
-            max-height: 340px;
-            overflow: auto;
-            font-family: monospace;
-            font-size: 12px;
-            white-space: pre-wrap;
-        }
-
-        @media (max-width: 900px) {
-            #view-instagram .ig-grid,
-            #view-instagram .ig-admin-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #view-instagram .ig-admin-grid .full {
-                grid-column: auto;
-            }
-        }
-    `;
-
-    document.head.appendChild(style);
+    // Los estilos de Instagram viven en frontend/styles.css, junto al sistema visual existente.
 }
-
 
 /* =========================================================
    MONTAJE DE LA PESTAÑA
@@ -425,24 +114,26 @@ function mount() {
     const tabs = document.querySelector(".workspace-tabs");
     const views = document.querySelector("main.shell");
 
-    if (
-        !tabs ||
-        !views ||
-        document.getElementById("view-instagram")
-    ) {
-        return;
+    if (!tabs || !views) return;
+
+    let tab = tabs.querySelector('.workspace-tab[data-view="instagram"]');
+    if (!tab) {
+        tab = document.createElement("button");
+        tab.className = "workspace-tab";
+        tab.dataset.view = "instagram";
+        tab.textContent = "Instagram";
+        tabs.appendChild(tab);
     }
 
-    const tab = document.createElement("button");
-    tab.className = "workspace-tab";
-    tab.dataset.view = "instagram";
-    tab.textContent = "Instagram";
-
-    tabs.appendChild(tab);
-
-    const section = document.createElement("div");
-    section.id = "view-instagram";
-    section.className = "workspace-view";
+    let section = document.getElementById("view-instagram");
+    if (!section) {
+        section = document.createElement("div");
+        section.id = "view-instagram";
+        section.className = "workspace-view";
+        views.appendChild(section);
+    }
+    if (section.dataset.instagramMounted === "1") return;
+    section.dataset.instagramMounted = "1";
 
     section.innerHTML = `
         <div class="ig-grid">
@@ -947,8 +638,6 @@ function mount() {
 
         </section>
     `;
-
-    views.appendChild(section);
 
     // Accessibility: every native form control gets an associated label and
     // an aria-describedby target. This also covers the provisioning wizard.
