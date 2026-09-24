@@ -4,7 +4,7 @@ from typing import Any
 
 import httpx
 from fastapi import APIRouter, Body, Depends, HTTPException, Request, status
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 
 from orchestrator.api.v1.auth import require_dashboard_operator
 from orchestrator.core.config import get_settings
@@ -40,7 +40,7 @@ async def _proxy(
     *,
     params: Any = None,
     payload: Any = None,
-) -> JSONResponse:
+) -> Response:
     settings = get_settings()
     try:
         async with httpx.AsyncClient(timeout=settings.bot_request_timeout_seconds) as client:
@@ -56,6 +56,9 @@ async def _proxy(
             status_code=status.HTTP_502_BAD_GATEWAY,
             detail="Instagram backend is unavailable",
         ) from exc
+
+    if response.status_code == status.HTTP_204_NO_CONTENT:
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
 
     try:
         data = response.json()
