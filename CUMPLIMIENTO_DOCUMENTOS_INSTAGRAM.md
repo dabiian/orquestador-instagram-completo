@@ -39,7 +39,7 @@ Esta matriz separa **implementación** de **validación runtime**. Un requisito 
 | 21.4 | Catálogos | Implementado vía BFF |
 | 21.5 | Contrato prospecting | Confirmado por adaptador: `instagram.prospecting.input.v1` / `instagram_prospecting` y resultado simétrico |
 | 21.6 | custom_task por capability | Confirmado por la implementación del adaptador: el mismo objeto `custom_task` se propaga a `TaskBot` para maduración y prospección; no hay variante por capability en el contrato actual |
-| 21.7 | límites máximos | Auditado: el contrato actual no define máximos de cuentas, cantidad de `links_image` ni longitud de `post`. `max_accounts` se acepta como entero positivo y el adaptador lo aplica. No se inventan topes que los documentos no proporcionan; si el equipo exige máximos finitos, debe suministrar esas cifras antes de producción |
+| 21.7 | límites máximos | Confirmado con el equipo: pueden quedar vacíos. `daily_limit`/`total_limit` son opcionales (`null`) y, cuando se configuran, controlan prospectos identificados por cuenta/campaña mediante usage diario e histórico. `links_image` y `post` siguen opcionales y sin máximo finito cuando no se configura una guía. `options.max_accounts` se mantiene separado: limita cuentas procesadas por una ejecución, no prospectos históricos. |
 
 ### Nota §17
 
@@ -78,4 +78,16 @@ Ejecutar, sobre la rama actual:
 9. Verificar pending → queued → running → terminal, eventos, resultado y cancelación.
 10. Confirmar que el bot Selenium consume los TaskBot y libera capacidad.
 
-Hasta completar C, la afirmación correcta es: **todos los requisitos implementables a partir de los dos documentos están plasmados en código; la validación runtime sigue pendiente. El único dato que los propios documentos dejan sin definir son los máximos finitos de §21.7.**
+Hasta completar C, la afirmación correcta es: **100% del contrato definido por los dos documentos y las aclaraciones del equipo está plasmado en código; la validación runtime sigue pendiente. §21.7 queda cerrado con límites opcionales: vacío/null significa que no se configuró un máximo finito.**
+
+
+## D. Aclaración funcional de límites (§21.7)
+
+La aclaración del equipo se implementa así:
+
+- `daily_limit`: máximo opcional de prospectos distintos identificados por una cuenta/campaña durante el día. Vacío → `null` → sin máximo diario configurado.
+- `total_limit`: máximo histórico opcional de prospectos distintos identificados por una cuenta/campaña. Vacío → `null` → sin máximo histórico configurado.
+- El backend expone el consumo de esos límites y el bot de discovery lo consulta antes y durante la identificación; al agotarse una cuota configurada detiene nuevas identificaciones.
+- `options.max_accounts` conserva el significado del contrato del Orquestador: cantidad máxima de cuentas a procesar en una ejecución. No se reutiliza como límite histórico de prospectos.
+- `custom_task.post` y `custom_task.links_image` son opcionales. Si el equipo no fija una guía de longitud/cantidad, no se inventa un máximo. Cuando se proporcionan imágenes, la UI valida URLs HTTPS.
+- La generación personal de posts/stories conserva el contexto por cuenta (personalidad, ubicación y contexto de tarea/campaña), de modo que una guía futura de longitud/cantidad puede añadirse sin convertirla en un valor global obligatorio para todas las cuentas.
