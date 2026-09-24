@@ -16,6 +16,7 @@ from .orchestrator_instagram import OrchestratorInstagramExecution, Orchestrator
 
 from .instagram_prospecting import (
     InstagramProspectingCampaign,
+    InstagramProspectingCampaignAccount,
     InstagramProspect,
     InstagramProspectPost,
     InstagramProspectInteraction,
