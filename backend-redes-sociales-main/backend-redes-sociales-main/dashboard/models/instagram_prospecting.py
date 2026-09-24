@@ -64,8 +64,8 @@ class InstagramProspectingCampaignAccount(models.Model):
             )
         ]
         indexes = [
-            models.Index(fields=["social_media_account", "platform", "is_active"]),
-            models.Index(fields=["campaign", "is_active"]),
+            models.Index(fields=["social_media_account", "platform", "is_active"], name="ig_ca_acct_plat_active"),
+            models.Index(fields=["campaign", "is_active"], name="ig_ca_campaign_active"),
         ]
 
     def __str__(self):
