@@ -226,6 +226,9 @@ class StandaloneInstagramRequest(BaseModel):
 
     @model_validator(mode="after")
     def validate_operation_contract(self) -> StandaloneInstagramRequest:
+        if any(value <= 0 for value in self.task_types):
+            raise ValueError("task_types must contain positive integers")
+        self.task_types = list(dict.fromkeys(self.task_types))
         operation = self.capability.rsplit(".", 1)[-1]
         if self.schema_version != f"instagram.{operation}.input.v1":
             raise ValueError("schema_version does not match Instagram capability")
