@@ -440,6 +440,11 @@ class ProxySerializer(serializers.ModelSerializer):
         model = Proxy
         fields = "__all__"
 
+    def validate_port(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("port debe ser un entero positivo.")
+        return value
+
 
 class SocialMediaAccountsSerializer2(serializers.ModelSerializer):
     bot_personality = BotPersonalitiesSerializer()
