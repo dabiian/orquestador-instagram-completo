@@ -838,13 +838,14 @@ function buildAccountPayload() {
 
   const payload = {
     account_name: form.value.account_name.trim(),
-    account_type: "instagram",
-    owner_id: Number(form.value.owner),
-    bot_personality_id: Number(form.value.bot_personality),
+    group: [],
+    owner: Number(form.value.owner),
+    bot_personality: Number(form.value.bot_personality),
+    account_kind: normalizeAccountKind(form.value.account_kind),
     other_credentials: normalizeCredentials(otherCredentials),
   };
 
-  addNullableId(payload, "proxy_id", form.value.proxy);
+  addNullableId(payload, "proxy", form.value.proxy);
 
   return payload;
 }
