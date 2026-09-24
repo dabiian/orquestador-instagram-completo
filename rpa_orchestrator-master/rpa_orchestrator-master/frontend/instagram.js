@@ -502,70 +502,70 @@ function mount() {
                 <details class="ig-step" open>
                     <summary>1. Personalidad</summary>
                     <div class="ig-admin-grid">
-                        <div class="ig-field"><label>Nombre</label><input id="ig-p-name"></div>
-                        <div class="ig-field"><label>Ubicación</label><input id="ig-p-location"></div>
-                        <div class="ig-field"><label>Idioma</label><input id="ig-p-language" value="ESPAÑOL"></div>
-                        <div class="ig-field"><label>Estilo de comunicación</label><input id="ig-p-style"></div>
-                        <div class="ig-field full"><label>Bio</label><textarea id="ig-p-bio" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Valores</label><textarea id="ig-p-values" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Preferencias</label><textarea id="ig-p-preferences" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Dislikes</label><textarea id="ig-p-dislikes" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Respuestas de ejemplo</label><textarea id="ig-p-examples" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Conocimiento especial</label><textarea id="ig-p-knowledge" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Referencias culturales</label><textarea id="ig-p-cultural" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Fraseología</label><textarea id="ig-p-phraseology" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Interacciones pasadas</label><textarea id="ig-p-past" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Reacciones emocionales</label><textarea id="ig-p-emotional" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Objetivos</label><textarea id="ig-p-objectives" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Tendencias de comportamiento</label><textarea id="ig-p-behavior" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-name">Nombre</label><input id="ig-p-name"></div>
+                        <div class="ig-field"><label for="ig-p-location">Ubicación</label><input id="ig-p-location"></div>
+                        <div class="ig-field"><label for="ig-p-language">Idioma</label><input id="ig-p-language" value="ESPAÑOL"></div>
+                        <div class="ig-field"><label for="ig-p-style">Estilo de comunicación</label><input id="ig-p-style"></div>
+                        <div class="ig-field full"><label for="ig-p-bio">Bio</label><textarea id="ig-p-bio" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-values">Valores</label><textarea id="ig-p-values" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-preferences">Preferencias</label><textarea id="ig-p-preferences" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-dislikes">Dislikes</label><textarea id="ig-p-dislikes" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-examples">Respuestas de ejemplo</label><textarea id="ig-p-examples" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-knowledge">Conocimiento especial</label><textarea id="ig-p-knowledge" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-cultural">Referencias culturales</label><textarea id="ig-p-cultural" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-phraseology">Fraseología</label><textarea id="ig-p-phraseology" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-past">Interacciones pasadas</label><textarea id="ig-p-past" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-emotional">Reacciones emocionales</label><textarea id="ig-p-emotional" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-objectives">Objetivos</label><textarea id="ig-p-objectives" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-p-behavior">Tendencias de comportamiento</label><textarea id="ig-p-behavior" rows="2"></textarea></div>
                     </div>
                 </details>
 
                 <details class="ig-step" open>
                     <summary>2. Owner</summary>
                     <div class="ig-admin-grid">
-                        <div class="ig-field"><label>Nombre *</label><input id="ig-o-name" required></div>
-                        <div class="ig-field"><label>Email *</label><input id="ig-o-email" type="email" required></div>
-                        <div class="ig-field"><label>Teléfono *</label><input id="ig-o-phone" required></div>
-                        <div class="ig-field"><label>URLs (JSON)</label><textarea id="ig-o-urls" rows="2">[]</textarea></div>
-                        <div class="ig-field full"><label>Servicios (JSON)</label><textarea id="ig-o-services" rows="2">[]</textarea></div>
+                        <div class="ig-field"><label for="ig-o-name">Nombre *</label><input id="ig-o-name" required></div>
+                        <div class="ig-field"><label for="ig-o-email">Email *</label><input id="ig-o-email" type="email" required></div>
+                        <div class="ig-field"><label for="ig-o-phone">Teléfono *</label><input id="ig-o-phone" required></div>
+                        <div class="ig-field"><label for="ig-o-urls">URLs (JSON)</label><textarea id="ig-o-urls" rows="2">[]</textarea></div>
+                        <div class="ig-field full"><label for="ig-o-services">Servicios (JSON)</label><textarea id="ig-o-services" rows="2">[]</textarea></div>
                     </div>
                 </details>
 
                 <details class="ig-step">
                     <summary>3. Proxy (opcional)</summary>
                     <div class="ig-admin-grid">
-                        <div class="ig-field"><label>IP</label><input id="ig-x-ip"></div>
-                        <div class="ig-field"><label>Puerto</label><input id="ig-x-port" type="number" min="1"></div>
-                        <div class="ig-field"><label>Usuario</label><input id="ig-x-user"></div>
-                        <div class="ig-field"><label>Contraseña</label><input id="ig-x-password" type="password"></div>
+                        <div class="ig-field"><label for="ig-x-ip">IP</label><input id="ig-x-ip"></div>
+                        <div class="ig-field"><label for="ig-x-port">Puerto</label><input id="ig-x-port" type="number" min="1"></div>
+                        <div class="ig-field"><label for="ig-x-user">Usuario</label><input id="ig-x-user"></div>
+                        <div class="ig-field"><label for="ig-x-password">Contraseña</label><input id="ig-x-password" type="password"></div>
                     </div>
                 </details>
 
                 <details class="ig-step" open>
                     <summary>4. Cuenta Instagram</summary>
                     <div class="ig-admin-grid">
-                        <div class="ig-field"><label>Usuario / account_name *</label><input id="ig-a-name" required></div>
-                        <div class="ig-field"><label>Tipo</label><select id="ig-a-kind"><option value="business">Business</option><option value="personal">Personal</option></select></div>
-                        <div class="ig-field full"><label>Group (JSON) *</label><textarea id="ig-a-group" rows="2">["grupo_1"]</textarea></div>
-                        <div class="ig-field"><label>Usuario credencial *</label><input id="ig-a-user" required></div>
-                        <div class="ig-field"><label>Contraseña *</label><input id="ig-a-password" type="password" required></div>
-                        <div class="ig-field full"><label>Cookies (JSON array)</label><textarea id="ig-a-cookie" rows="3">[]</textarea></div>
+                        <div class="ig-field"><label for="ig-a-name">Usuario / account_name *</label><input id="ig-a-name" required></div>
+                        <div class="ig-field"><label for="ig-a-kind">Tipo</label><select id="ig-a-kind"><option value="business">Business</option><option value="personal">Personal</option></select></div>
+                        <div class="ig-field full"><label for="ig-a-group">Group (JSON) *</label><textarea id="ig-a-group" rows="2">["grupo_1"]</textarea></div>
+                        <div class="ig-field"><label for="ig-a-user">Usuario credencial *</label><input id="ig-a-user" required></div>
+                        <div class="ig-field"><label for="ig-a-password">Contraseña *</label><input id="ig-a-password" type="password" required></div>
+                        <div class="ig-field full"><label for="ig-a-cookie">Cookies (JSON array)</label><textarea id="ig-a-cookie" rows="3">[]</textarea></div>
                     </div>
                 </details>
 
                 <details class="ig-step" open>
                     <summary>5. Campaña de prospección</summary>
                     <div class="ig-admin-grid">
-                        <div class="ig-field"><label>Nombre *</label><input id="ig-c-name" required></div>
-                        <div class="ig-field"><label>Estado</label><select id="ig-c-status"><option value="active">Active</option><option value="draft">Draft</option><option value="paused">Paused</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></div>
-                        <div class="ig-field full"><label>Servicios snapshot (JSON)</label><textarea id="ig-c-services" rows="2">[]</textarea></div>
-                        <div class="ig-field full"><label>Estrategia snapshot (JSON)</label><textarea id="ig-c-strategy" rows="3">{}</textarea></div>
-                        <div class="ig-field full"><label>Descripción del negocio</label><textarea id="ig-c-description" rows="2"></textarea></div>
-                        <div class="ig-field"><label>Horario</label><input id="ig-c-hours"></div>
-                        <div class="ig-field"><label>Teléfono seguimiento</label><input id="ig-c-phone"></div>
-                        <div class="ig-field"><label>Email seguimiento</label><input id="ig-c-email" type="email"></div>
-                        <div class="ig-field"><label>Instagram del owner</label><input id="ig-c-owner-url"></div>
+                        <div class="ig-field"><label for="ig-c-name">Nombre *</label><input id="ig-c-name" required></div>
+                        <div class="ig-field"><label for="ig-c-status">Estado</label><select id="ig-c-status"><option value="draft">Draft</option><option value="active">Active</option><option value="paused">Paused</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></div>
+                        <div class="ig-field full"><label for="ig-c-services">Servicios snapshot (JSON)</label><textarea id="ig-c-services" rows="2">[]</textarea></div>
+                        <div class="ig-field full"><label for="ig-c-strategy">Estrategia snapshot (JSON)</label><textarea id="ig-c-strategy" rows="3">{}</textarea></div>
+                        <div class="ig-field full"><label for="ig-c-description">Descripción del negocio</label><textarea id="ig-c-description" rows="2"></textarea></div>
+                        <div class="ig-field"><label for="ig-c-hours">Horario</label><input id="ig-c-hours"></div>
+                        <div class="ig-field"><label for="ig-c-phone">Teléfono seguimiento</label><input id="ig-c-phone"></div>
+                        <div class="ig-field"><label for="ig-c-email">Email seguimiento</label><input id="ig-c-email" type="email"></div>
+                        <div class="ig-field"><label for="ig-c-owner-url">Instagram del owner</label><input id="ig-c-owner-url"></div>
                     </div>
                 </details>
 
@@ -574,7 +574,7 @@ function mount() {
                     <div class="ig-admin-grid">
                         <div class="ig-field"><label for="ig-as-daily">Prospectos por día (opcional)</label><input id="ig-as-daily" type="number" min="1" placeholder="Vacío = sin límite configurado"><small>Control anti-spam por cuenta. Puede dejarse vacío.</small></div>
                         <div class="ig-field"><label for="ig-as-total">Prospectos históricos (opcional)</label><input id="ig-as-total" type="number" min="1" placeholder="Vacío = sin límite configurado"><small>Máximo histórico de prospectos identificados por esta cuenta/campaña. Puede dejarse vacío.</small></div>
-                        <div class="ig-field"><label>Activa</label><select id="ig-as-active"><option value="true">Sí</option><option value="false">No</option></select></div>
+                        <div class="ig-field"><label for="ig-as-active">Activa</label><select id="ig-as-active"><option value="true">Sí</option><option value="false">No</option></select></div>
                     </div>
                 </details>
 
@@ -1115,7 +1115,7 @@ async function provisionInstagramAccount() {
                 social_media_account: account.id,
                 name: adminValue("ig-c-name"),
                 platform: "instagram",
-                status: adminValue("ig-c-status") || "active",
+                status: adminValue("ig-c-status") || "draft",
                 services_snapshot: parseAdminJson("ig-c-services", []),
                 strategy_snapshot: parseAdminJson("ig-c-strategy", {}),
                 business_description: adminValue("ig-c-description") || null,
