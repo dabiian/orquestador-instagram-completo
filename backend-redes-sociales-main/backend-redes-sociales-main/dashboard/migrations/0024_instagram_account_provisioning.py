@@ -30,6 +30,11 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="instagramprospectingcampaign",
+            name="status",
+            field=models.CharField(db_index=True, default="draft", max_length=30),
+        ),
+        migrations.AlterField(
+            model_name="instagramprospectingcampaign",
             name="name",
             field=models.CharField(max_length=150),
         ),
